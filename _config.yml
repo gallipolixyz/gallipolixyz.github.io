@@ -1,0 +1,19 @@
+name: Gallipoli
+description: 
+url: 
+baseurl: ""
+permalink: /:title/
+version: v1.2.0
+
+sass:
+  style: :expanded
+
+gems:
+  - jekyll-sitemap 
+  - jekyll-feed 
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE
+  - README.md
+  - CNAME

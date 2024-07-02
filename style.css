@@ -1,0 +1,132 @@
+body {
+    background-color: #111;
+    color: #eee;
+    font-family: 'Roboto', Arial, sans-serif;
+    margin: 0;
+}
+.avatar {
+    text-align: center;
+    margin-top: 20px;
+}
+.avatar img {
+    width: 150px;
+    height: auto;
+    border-radius: 50%;
+}
+.header {
+    padding: 15px 0;
+    text-align: center;
+}
+.header h1 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #eee;
+}
+.header p {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #ccc;
+}
+.menu {
+    text-align: center;
+    background-color: #222;
+    padding: 10px 0;
+    margin-bottom: 20px;
+}
+.menu a {
+    color: #eee;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 18px;
+}
+.menu a.active {
+    font-weight: bold;
+}
+
+.content {
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+    background-color: #222;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    font-family: 'Montserrat', Arial, sans-serif;
+    color: #ccc;
+    line-height: 1.6;
+    text-align: justify;
+}
+
+.content strong {
+    font-weight: bold;
+}
+
+.faq-item {
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+.faq-item h3 {
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'Montserrat', Arial, sans-serif;
+    transition: color 0.3s;
+}
+.faq-item h3:hover {
+    color: #00aced;
+}
+.faq-item p {
+    display: none;
+    margin-top: 10px;
+    font-size: 16px;
+    font-family: 'Roboto', Arial, sans-serif;
+    transition: all 0.3s;
+    color: #ddd;
+}
+.faq-item.active p {
+    display: block;
+}
+
+footer {
+    background-color: #222;
+    padding: 20px 0;
+    text-align: center;
+    color: #eee;
+    position: relative;
+    width: 100%;
+}
+.contact-info a {
+    color: #eee;
+    text-decoration: none;
+    margin: 0 10px;
+}
+.contact-info i {
+    font-size: 24px;
+    margin-right: 10px;
+}
+.bottom-space {
+    height: 100px;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 28px;
+    }
+    .header p {
+        font-size: 16px;
+    }
+    .menu a {
+        display: block;
+        margin: 10px 0;
+    }
+    .container {
+        padding: 15px;
+        margin: 10px;
+    }
+    .faq-item h3 {
+        font-size: 18px;
+    }
+    .faq-item p {
+        font-size: 14px;
+    }
+}

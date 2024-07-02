@@ -1,281 +1,117 @@
+---
+layout: default
+---
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallipoli - FAQ</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <!-- Bootstrap Icons CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.9.0/font/bootstrap-icons.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: #111;
-            color: #eee;
-            font-family: 'Roboto', Arial, sans-serif;
-            margin: 0;
-        }
-        .avatar {
-            text-align: center;
-            margin-top: 20px;
-        }
-        .avatar img {
-            width: 150px;
-            height: auto;
-            border-radius: 50%;
-        }
-        .header {
-            padding: 15px 0;
-            text-align: center;
-        }
-        .header h1 {
-            font-size: 32px;
-            font-weight: bold;
-            margin-bottom: 10px;
-            color: #eee;
-        }
-        .header p {
-            font-size: 18px;
-            margin-bottom: 20px;
-            color: #ccc;
-        }
-        .menu {
-            text-align: center;
-            background-color: #222;
-            padding: 10px 0;
-            margin-bottom: 20px;
-        }
-        .menu a {
-            color: #eee;
-            text-decoration: none;
-            margin: 0 15px;
-            font-size: 18px;
-        }
-        .menu a.active {
-            font-weight: bold;
-        }
-        .faq-container {
-            padding: 20px;
-            max-width: 800px;
-            margin: auto;
-            background-color: #222;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        }
-        .faq-item {
-            margin-bottom: 20px;
-            cursor: pointer;
-        }
-        .faq-item h3 {
-            font-size: 20px;
-            font-weight: bold;
-            font-family: 'Montserrat', Arial, sans-serif;
-            transition: color 0.3s;
-        }
-        .faq-item h3:hover {
-            color: #00aced;
-        }
-        .faq-item p {
-            display: none;
-            margin-top: 10px;
-            font-size: 16px;
-            font-family: 'Roboto', Arial, sans-serif;
-            transition: all 0.3s;
-            color: #ddd;
-        }
-        .faq-item.active p {
-            display: block;
-        }
-        footer {
-            background-color: #222;
-            padding: 20px 0;
-            text-align: center;
-            color: #eee;
-            position: relative;
-            width: 100%;
-        }
-        .contact-info a {
-            color: #eee;
-            text-decoration: none;
-            margin: 0 10px;
-        }
-        .contact-info i {
-            font-size: 24px;
-            margin-right: 10px;
-        }
-        .bottom-space {
-            height: 100px;
-        }
-
-        /* Mobile Styles */
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 28px;
-            }
-            .header p {
-                font-size: 16px;
-            }
-            .menu a {
-                display: block;
-                margin: 10px 0;
-            }
-            .faq-container {
-                padding: 15px;
-                margin: 10px;
-            }
-            .faq-item h3 {
-                font-size: 18px;
-            }
-            .faq-item p {
-                font-size: 14px;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="avatar">
-            <img src="avatar.jpg" alt="Avatar">
-        </div>
-        <div class="header">
-            <h1>Gallipoli</h1>
-            <p>A hacker saved my life</p>
-        </div>
-        <div class="menu">
-            <a href="index.html" class="active"><i class="bi bi-house-door-fill"></i> Home</a>
-            <a href="about.html"><i class="bi bi-info-circle-fill"></i> About</a>
-            <a href="blog.html"><i class="bi bi-journal-text"></i> Blog</a>
-            <a href="faq.html"><i class="bi bi-question-circle-fill"></i> FAQ</a>
-        </div>
-        <!-- Content of the page -->
-        <div class="faq-container">
-            <div class="faq-item">
-                <h3 class="mb-0" data-toggle="collapse" data-target="#faq1" aria-expanded="false" aria-controls="faq1">
-                    What is the Gallipoli community?
-                </h3>
-                <div id="faq1" class="collapse" data-parent=".faq-container">
-                    <p>The Gallipoli community is a learning and sharing platform for students and mentors interested in web security. Our primary goal is to provide accelerated web security education and assist participants in finding vulnerabilities.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <h3 class="mb-0" data-toggle="collapse" data-target="#faq2" aria-expanded="false" aria-controls="faq2">
-                    Who can join the community?
-                </h3>
-                <div id="faq2" class="collapse" data-parent=".faq-container">
-                    <p>The community is primarily aimed at students, but experienced professionals interested in mentoring are also welcome. Anyone willing to support students can participate in our community.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <h3 class="mb-0" data-toggle="collapse" data-target="#faq3" aria-expanded="false" aria-controls="faq3">
-                    How can I register?
-                </h3>
-                <div id="faq3" class="collapse" data-parent=".faq-container">
-                    <p>Registration is currently closed. However, when new memberships open up, you can register through our website.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <h3 class="mb-0" data-toggle="collapse" data-target="#faq4" aria-expanded="false" aria-controls="faq4">
-                    What activities can I participate in at Gallipoli?
-                </h3>
-                <div id="faq4" class="collapse" data-parent=".faq-container">
-                    <p>In our community, you can access educational materials, take vulnerability finding tasks, share experiences with other participants, and engage in mentoring.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <h3 class="mb-0" data-toggle="collapse" data-target="#faq5" aria-expanded="false" aria-controls="faq5">
-                    How does mentoring work?
-                </h3>
-                <div id="faq5" class="collapse" data-parent=".faq-container">
-                    <p>Mentors provide guidance and answer questions for students. Those interested in mentoring can introduce themselves in the relevant section after registering with the community.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <h3 class="mb-0" data-toggle="collapse" data-target="#faq6" aria-expanded="false" aria-controls="faq6">
-                    How does the education process work?
-                </h3>
-                <div id="faq6" class="collapse" data-parent=".faq-container">
-                    <p>The education process involves weekly tasks. Participants learn about specific topics and complete related assignments. They earn points based on their achievements.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <h3 class="mb-0" data-toggle="collapse" data-target="#faq7" aria-expanded="false" aria-controls="faq7">
-                    How does the point system work?
-                </h3>
-                <div id="faq7" class="collapse" data-parent=".faq-container">
-                    <p>Participants earn points by completing tasks. These points help prioritize their contributions within our community.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <h3 class="mb-0" data-toggle="collapse" data-target="#faq8" aria-expanded="false" aria-controls="faq8">
-                    What are the participation requirements?
-                </h3>
-                <div id="faq8" class="collapse" data-parent=".faq-container">
-                    <p>Active participation, timely task completion, and interaction with other members are some of the basic requirements.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <h3 class="mb-0" data-toggle="collapse" data-target="#faq9" aria-expanded="false" aria-controls="faq9">
-                    Is the Gallipoli community free?
-                </h3>
-                <div id="faq9" class="collapse" data-parent=".faq-container">
-                    <p>Yes, joining and benefiting from the Gallipoli community is free of charge. You can access all educational materials and activities without any cost.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <h3 class="mb-0" data-toggle="collapse" data-target="#faq10" aria-expanded="false" aria-controls="faq10">
-                    How can I contact you if I have more questions?
-                </h3>
-                <div id="faq10" class="collapse" data-parent=".faq-container">
-                    <p>If you have further questions, you can reach us through our social media accounts.</p>
-                </div>
-            </div>
-        </div>
-        <div class="bottom-space"></div>
+<div class="faq-item">
+    <h3 class="mb-0" data-toggle="collapse" data-target="#faq1" aria-expanded="false" aria-controls="faq1">
+        What is the Gallipoli community?
+    </h3>
+    <div id="faq1" class="collapse">
+        <p>The Gallipoli community is a learning and sharing platform for students and mentors interested in web
+            security. Our primary goal is to provide accelerated web security education and assist participants in
+            finding vulnerabilities.</p>
     </div>
+</div>
+<div class="faq-item">
+    <h3 class="mb-0" data-toggle="collapse" data-target="#faq2" aria-expanded="false" aria-controls="faq2">
+        Who can join the community?
+    </h3>
+    <div id="faq2" class="collapse">
+        <p>The community is primarily aimed at students, but experienced professionals interested in mentoring are also
+            welcome. Anyone willing to support students can participate in our community.</p>
+    </div>
+</div>
+<div class="faq-item">
+    <h3 class="mb-0" data-toggle="collapse" data-target="#faq3" aria-expanded="false" aria-controls="faq3">
+        How can I register?
+    </h3>
+    <div id="faq3" class="collapse">
+        <p>Registration is currently closed. However, when new memberships open up, you can register through our
+            website.</p>
+    </div>
+</div>
+<div class="faq-item">
+    <h3 class="mb-0" data-toggle="collapse" data-target="#faq4" aria-expanded="false" aria-controls="faq4">
+        What activities can I participate in at Gallipoli?
+    </h3>
+    <div id="faq4" class="collapse">
+        <p>In our community, you can access educational materials, take vulnerability finding tasks, share experiences
+            with other participants, and engage in mentoring.</p>
+    </div>
+</div>
+<div class="faq-item">
+    <h3 class="mb-0" data-toggle="collapse" data-target="#faq5" aria-expanded="false" aria-controls="faq5">
+        How does mentoring work?
+    </h3>
+    <div id="faq5" class="collapse">
+        <p>Mentors provide guidance and answer questions for students. Those interested in mentoring can introduce
+            themselves in the relevant section after registering with the community.</p>
+    </div>
+</div>
+<div class="faq-item">
+    <h3 class="mb-0" data-toggle="collapse" data-target="#faq6" aria-expanded="false" aria-controls="faq6">
+        How does the education process work?
+    </h3>
+    <div id="faq6" class="collapse">
+        <p>The education process involves weekly tasks. Participants learn about specific topics and complete related
+            assignments. They earn points based on their achievements.</p>
+    </div>
+</div>
+<div class="faq-item">
+    <h3 class="mb-0" data-toggle="collapse" data-target="#faq7" aria-expanded="false" aria-controls="faq7">
+        How does the point system work?
+    </h3>
+    <div id="faq7" class="collapse">
+        <p>Participants earn points by completing tasks. These points help prioritize their contributions within our
+            community.</p>
+    </div>
+</div>
+<div class="faq-item">
+    <h3 class="mb-0" data-toggle="collapse" data-target="#faq8" aria-expanded="false" aria-controls="faq8">
+        What are the participation requirements?
+    </h3>
+    <div id="faq8" class="collapse">
+        <p>Active participation, timely task completion, and interaction with other members are some of the basic
+            requirements.</p>
+    </div>
+</div>
+<div class="faq-item">
+    <h3 class="mb-0" data-toggle="collapse" data-target="#faq9" aria-expanded="false" aria-controls="faq9">
+        Is the Gallipoli community free?
+    </h3>
+    <div id="faq9" class="collapse">
+        <p>Yes, joining and benefiting from the Gallipoli community is free of charge. You can access all educational
+            materials and activities without any cost.</p>
+    </div>
+</div>
+<div class="faq-item">
+    <h3 class="mb-0" data-toggle="collapse" data-target="#faq10" aria-expanded="false" aria-controls="faq10">
+        How can I contact you if I have more questions?
+    </h3>
+    <div id="faq10" class="collapse">
+        <p>If you have further questions, you can reach us through our social media accounts.</p>
+    </div>
+</div>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="contact-info">
-                <a href="https://gallipoli.xyz" target="_blank">
-                    <i class="fas fa-globe"></i> gallipoli.xyz
-                </a>
-                <a href="https://x.com/Gallipolixyz" target="_blank">
-                    <i class="fab fa-twitter"></i> @Gallipolixyz
-                </a>
-                <a href="https://github.com/gallipolixyz" target="_blank">
-                    <i class="fab fa-github"></i> gallipolixyz
-                </a>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Bootstrap JS and dependencies -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script>
-        $(document).ready(function(){
-            $('.faq-item h3').click(function(){
-                // Collapse all other answers
-                $('.faq-item').not($(this).parent()).find('.collapse').collapse('hide');
-                // Toggle the clicked answer
-                $(this).parent().find('.collapse').collapse('toggle');
-                // Scroll to the clicked question
-                $(this).get(0).scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-                // Add active class to the clicked question for styling
-                $('.faq-item').removeClass('active');
-                $(this).parent().addClass('active');
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.faq-item h3').click(function () {
+            // Collapse all other answers
+            $('.faq-item').not($(this).parent()).find('.collapse').collapse('hide');
+            // Toggle the clicked answer
+            $(this).parent().find('.collapse').collapse('toggle');
+            // Scroll to the clicked question
+            $(this).get(0).scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
             });
+            // Add active class to the clicked question for styling
+            $('.faq-item').removeClass('active');
+            $(this).parent().addClass('active');
         });
-    </script>
-</body>
-</html>
+    });
+</script>

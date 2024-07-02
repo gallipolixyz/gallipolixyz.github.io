@@ -1,158 +1,19 @@
+---
+layout: default
+---
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallipoli Blog</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <!-- Bootstrap Icons CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.9.0/font/bootstrap-icons.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: #111;
-            color: #eee;
-            font-family: 'Roboto', Arial, sans-serif;
-            margin: 0;
-        }
-        .avatar {
-            text-align: center;
-            margin-top: 20px;
-        }
-        .avatar img {
-            width: 150px;
-            height: auto;
-            border-radius: 50%;
-        }
-        .header {
-            padding: 15px 0;
-            text-align: center;
-        }
-        .header h1 {
-            font-size: 32px;
-            font-weight: bold;
-            margin-bottom: 10px;
-            color: #eee;
-        }
-        .header p {
-            font-size: 18px;
-            margin-bottom: 20px;
-            color: #ccc;
-        }
-        .menu {
-            text-align: center;
-            background-color: #222;
-            padding: 10px 0;
-            margin-bottom: 20px;
-        }
-        .menu a {
-            color: #eee;
-            text-decoration: none;
-            margin: 0 15px;
-            font-size: 18px;
-        }
-        .menu a.active {
-            font-weight: bold;
-        }
-        .about-content {
-            padding: 20px;
-            max-width: 800px;
-            margin: auto;
-            background-color: #222;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            font-family: 'Montserrat', Arial, sans-serif;
-            color: #ccc;
-            line-height: 1.6;
-            text-align: justify;
-        }
-        .about-content p:first-child {
-            font-size: 20px;
-            font-weight: bold;
-            margin-bottom: 20px;
-            color: #eee;
-        }
-        .about-content p {
-            font-size: 16px;
-            margin-bottom: 15px;
-        }
-        .about-content strong {
-            font-weight: bold;
-        }
-        footer {
-            background-color: #222;
-            padding: 20px 0;
-            text-align: center;
-            color: #eee;
-            position: relative;
-            width: 100%;
-            margin-top: 50px;
-        }
-        .contact-info a {
-            color: #eee;
-            text-decoration: none;
-            margin: 0 10px;
-        }
-        .contact-info i {
-            font-size: 24px;
-            margin-right: 10px;
-        }
-        .bottom-space {
-            height: 100px;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="avatar">
-            <img src="avatar.jpg" alt="Avatar">
-        </div>
-        <div class="header">
-            <h1>Gallipoli</h1>
-            <p>A hacker saved my life</p>
-        </div>
-        <div class="menu">
-            <a href="index.html"><i class="bi bi-house-door-fill"></i> Home</a>
-            <a href="about.html" class="active"><i class="bi bi-info-circle-fill"></i> About</a>
-            <a href="blog.html"><i class="bi bi-journal-text"></i> Blog</a>
-            <a href="faq.html"><i class="bi bi-question-circle-fill"></i> FAQ</a>
-        </div>
-        <!-- Content of the page -->
-        <div class="about-content">
-            <p>Soon..</p>
-            
-            
-            
+<div class="posts">
+  {% for post in site.posts %}
+    <article class="post">
 
-        </div>
-        <div class="bottom-space"></div>
-    </div>
+      <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="contact-info">
-                <a href="https://gallipoli.xyz" target="_blank">
-                    <i class="fas fa-globe"></i> gallipoli.xyz
-                </a>
-                <a href="https://x.com/Gallipolixyz" target="_blank">
-                    <i class="fab fa-twitter"></i> @Gallipolixyz
-                </a>
-                <a href="https://github.com/gallipolixyz" target="_blank">
-                    <i class="fab fa-github"></i> gallipolixyz
-                </a>
-            </div>
-        </div>
-    </footer>
+      <div class="entry">
+        {{ post.excerpt }}
+      </div>
 
-    <!-- Bootstrap JS and dependencies -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-</html>
+      <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
+    </article>
+    <hr>
+  {% endfor %}
+</div>
