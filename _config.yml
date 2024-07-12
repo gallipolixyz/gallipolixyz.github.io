@@ -1,6 +1,6 @@
 name: Gallipoli
-description: 
-url: 
+description: "A hacker saved my life"
+URL: "https://www.gallipoli.xyz/"
 baseurl: ""
 permalink: /:title/
 version: v1.2.0
