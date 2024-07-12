@@ -4,8 +4,11 @@ title: About
 permalink: /about/
 ---
 
-### **Greetings fellow hackers and security enthusiasts!**
+### **Greetings fellow hackers and security enthusiasts!**   
 
+
+
+         
 If you've stumbled upon our page, you're likely curious about how **Gallipoli** came to be and what sets us apart in the realm of cybersecurity.
 
 In the early days of our journey, we discovered the thrill of uncovering vulnerabilities in major systems through bug bounty programs. It was during these formative years that we realized the power of shared knowledge and collaboration in accelerating learning.
