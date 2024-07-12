@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-Greetings fellow hackers and security enthusiasts!
+###Greetings fellow hackers and security enthusiasts!
 
 If you've stumbled upon our page, you're likely curious about how **Gallipoli** came to be and what sets us apart in the realm of cybersecurity.
 
