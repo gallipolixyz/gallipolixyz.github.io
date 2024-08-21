@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Testing!
+title: XSS Task Blog
 ---
 
-short post and test
+hello guys, welcome my xss blog test
