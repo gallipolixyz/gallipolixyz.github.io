@@ -143,8 +143,9 @@ footer {
 .member-card {
     text-align: center;
     max-width: 150px;
-    background-color: #f8f9fa;
-    border: 1px solid #e0e0e0;
+    background-color: rgb(26, 26, 26); /* Arka plan rengini değiştirdik */
+    color: #ffffff; /* Yazı rengini beyaz yapıyoruz, çünkü arka plan koyu */
+    border: 1px solid #444; /* Daha koyu bir çerçeve */
     border-radius: 10px;
     padding: 15px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -167,11 +168,11 @@ footer {
 
 .member-card h3 {
     font-size: 1.1rem;
-    color: #333;
+    color: #ffffff; /* Başlık rengini beyaz yaptık */
     margin-bottom: 5px;
 }
 
 .member-card p {
     font-size: 0.9rem;
-    color: #555;
+    color: #bbbbbb; /* Açıklama rengini açık gri yaptık */
 }
