@@ -1,0 +1,11 @@
+- name: John Doe
+  role: Community Leader
+  avatar: john_doe.jpg
+
+- name: Jane Smith
+  role: Bug Bounty Hunter
+  avatar: jane_smith.jpg
+
+- name: Alex Johnson
+  role: Security Researcher
+  avatar: alex_johnson.jpg
