@@ -8,10 +8,10 @@ We learn together, we grow together. We welcome everyone who shares our passion 
 
 <div class="members-section">
     {% for member in site.data.members %}
-    <div class="member-card">
-        <img src="{{ site.baseurl }}/images/{{ member.avatar }}" alt="{{ member.name }}" />
+    <a href="{{ member.link }}" class="member-card" target="_blank">
+        <img src="{{ member.image }}" alt="{{ member.name }}" />
         <h3>{{ member.name }}</h3>
         <p>{{ member.role }}</p>
-    </div>
+    </a>
     {% endfor %}
 </div>
