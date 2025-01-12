@@ -1,4 +1,4 @@
-- name: mithat
+- name: MG
   role: Community Leader
   avatar: avatar.jpg
 
@@ -21,3 +21,8 @@
   role: Core Team Member
   avatar: nadir.jpg
   link: https://www.linkedin.com/in/nadirsensoy/
+
+- name: F0xy
+  role: Core Team Member
+  avatar: f0xy.jpg
+  link: https://www.linkedin.com/in/ey%C3%BCpkurnaz/
