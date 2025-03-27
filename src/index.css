@@ -1,0 +1,213 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base animations */
+@keyframes glitch {
+  0% {
+    text-shadow: 0.05em 0 0 rgba(0, 255, 255, 0.75),
+                -0.025em -0.05em 0 rgba(255, 255, 255, 0.75),
+                0.025em 0.05em 0 rgba(0, 255, 255, 0.75);
+  }
+  14% {
+    text-shadow: 0.05em 0 0 rgba(0, 255, 255, 0.75),
+                -0.025em -0.05em 0 rgba(255, 255, 255, 0.75),
+                0.025em 0.05em 0 rgba(0, 255, 255, 0.75);
+  }
+  15% {
+    text-shadow: -0.05em -0.025em 0 rgba(0, 255, 255, 0.75),
+                0.025em 0.025em 0 rgba(255, 255, 255, 0.75),
+                -0.05em -0.05em 0 rgba(0, 255, 255, 0.75);
+  }
+  49% {
+    text-shadow: -0.05em -0.025em 0 rgba(0, 255, 255, 0.75),
+                0.025em 0.025em 0 rgba(255, 255, 255, 0.75),
+                -0.05em -0.05em 0 rgba(0, 255, 255, 0.75);
+  }
+  50% {
+    text-shadow: 0.025em 0.05em 0 rgba(0, 255, 255, 0.75),
+                0.05em 0 0 rgba(255, 255, 255, 0.75),
+                0 -0.05em 0 rgba(0, 255, 255, 0.75);
+  }
+  99% {
+    text-shadow: 0.025em 0.05em 0 rgba(0, 255, 255, 0.75),
+                0.05em 0 0 rgba(255, 255, 255, 0.75),
+                0 -0.05em 0 rgba(0, 255, 255, 0.75);
+  }
+  100% {
+    text-shadow: -0.025em 0 0 rgba(0, 255, 255, 0.75),
+                -0.025em -0.025em 0 rgba(255, 255, 255, 0.75),
+                -0.025em -0.05em 0 rgba(0, 255, 255, 0.75);
+  }
+}
+
+@keyframes glow {
+  0% {
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.8),
+                 0 0 20px rgba(0, 255, 255, 0.8),
+                 0 0 30px rgba(0, 255, 255, 0.8);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(0, 255, 255, 1),
+                 0 0 40px rgba(0, 255, 255, 1),
+                 0 0 60px rgba(0, 255, 255, 1);
+  }
+  100% {
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.8),
+                 0 0 20px rgba(0, 255, 255, 0.8),
+                 0 0 30px rgba(0, 255, 255, 0.8);
+  }
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink {
+  50% { border-color: transparent }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+@keyframes scanline {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+/* Utility classes for text animations */
+.hacker-text {
+  @apply relative overflow-hidden whitespace-nowrap;
+  animation: typing 1s steps(30, end), blink 0.75s step-end infinite;
+  border-right: 2px solid transparent;
+}
+
+.hacker-text-reveal {
+  @apply opacity-0;
+  animation: fadeIn 0.5s ease forwards;
+}
+
+.hacker-heading {
+  @apply relative;
+  animation: glitch 2s infinite;
+}
+
+.hacker-heading::before {
+  content: '';
+  @apply absolute inset-0 bg-custom-cyan/5 pointer-events-none;
+  animation: scanline 2s linear infinite;
+}
+
+.hacker-paragraph {
+  @apply relative overflow-hidden;
+  animation: fadeIn 0.5s ease forwards;
+}
+
+.hacker-paragraph::after {
+  content: '_';
+  @apply absolute inline-block;
+  animation: blink 1s infinite;
+}
+
+/* Terminal effect for hero text */
+.terminal-text {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  transition: opacity 0.3s ease;
+}
+
+.terminal-text.animate-terminal {
+  border-right: 2px solid #00FFFF;
+  animation: 
+    typing 3.5s steps(40, end),
+    blink 1s step-end infinite;
+}
+
+/* Initial glow animation for title */
+.title-glow {
+  animation: glow 2s ease-in-out;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #00FFFF;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 255, 255, 0.8);
+}
+
+/* Click animation styles */
+.click-ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(0, 255, 255, 0.4);
+  transform: scale(0);
+  animation: ripple 0.6s linear;
+  pointer-events: none;
+}
+
+/* Hover effects for interactive elements */
+.interactive-hover {
+  transition: all 0.3s ease;
+}
+
+.interactive-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+}
+
+.interactive-hover:active {
+  transform: translateY(0);
+}
+
+/* Fade in animation */
+.animate-fade-in {
+  animation: fadeIn 1s ease forwards;
+}
+
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  .hacker-text,
+  .hacker-text-reveal,
+  .hacker-heading,
+  .hacker-paragraph,
+  .terminal-text,
+  .animate-terminal,
+  .title-glow {
+    animation: none !important;
+  }
+}
