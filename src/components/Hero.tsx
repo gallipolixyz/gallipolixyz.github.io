@@ -26,7 +26,7 @@ function SplineScene({ onLoad, onError }: { onLoad: () => void; onError: (error:
   useEffect(() => {
     const timer = setTimeout(() => {
       onLoad();
-    }, 3000);
+    }, 1000);
     return () => clearTimeout(timer);
   }, [onLoad]);
 
