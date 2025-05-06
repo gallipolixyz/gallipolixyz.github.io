@@ -22,7 +22,7 @@ function LoadingText() {
   );
 }
 
-function SplineScene({ onLoad, onError }: { onLoad: () => void; onError: (error: Error) => void }) {
+function SplineScene({onLoad}: { onLoad: () => void; }) {
   useEffect(() => {
     const timer = setTimeout(() => {
       onLoad();
@@ -31,18 +31,20 @@ function SplineScene({ onLoad, onError }: { onLoad: () => void; onError: (error:
   }, [onLoad]);
 
   return (
-    <Spline 
-      scene="https://prod.spline.design/kNddJEUmGGKQkXMu/scene.splinecode"
-      onLoad={() => {}}
-      onError={onError}
-      className="w-full h-full"
+    <video
+      src="/assets/scene.mp4"
+      autoPlay
+      loop
+      muted
+      playsInline
+      className="absolute inset-0 w-full h-full object-cover"
+      onLoadedData={onLoad}
     />
   );
 }
 
 export function Hero() {
   const [splineError, setSplineError] = useState(false);
-  const [retryCount, setRetryCount] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [showTerminalText, setShowTerminalText] = useState(false);
   const [showTitleGlow, setShowTitleGlow] = useState(false);
@@ -56,13 +58,6 @@ export function Hero() {
     return () => clearTimeout(timeout);
   }, [isLoading]);
 
-  const handleSplineError = useCallback((error: Error) => {
-    console.error('Spline scene failed to load:', error);
-    setSplineError(true);
-    setIsLoading(false);
-    setShowTerminalText(true);
-  }, []);
-
   const handleSplineLoad = useCallback(() => {
     setIsLoading(false);
     setSplineError(false);
@@ -74,7 +69,6 @@ export function Hero() {
   const handleRetry = useCallback(() => {
     setIsLoading(true);
     setSplineError(false);
-    setRetryCount(count => count + 1);
     setShowTerminalText(false);
     setShowTitleGlow(false);
   }, []);
@@ -146,7 +140,6 @@ export function Hero() {
               >
                 <SplineScene 
                   onLoad={handleSplineLoad}
-                  onError={handleSplineError}
                 />
               </motion.div>
             ) : (
