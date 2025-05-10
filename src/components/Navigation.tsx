@@ -15,11 +15,11 @@ export function Navigation() {
   ];
 
   const logoVariants = {
-    initial: { 
+    initial: {
       opacity: 0,
       x: -20,
     },
-    animate: { 
+    animate: {
       opacity: 1,
       x: 0,
       transition: {
@@ -56,7 +56,7 @@ export function Navigation() {
 
   const underlineVariants = {
     initial: { width: "0%" },
-    hover: { 
+    hover: {
       width: "100%",
       transition: {
         duration: 0.3,
@@ -78,11 +78,11 @@ export function Navigation() {
   };
 
   const navItemVariants = {
-    initial: { 
+    initial: {
       opacity: 0,
       y: -10
     },
-    animate: { 
+    animate: {
       opacity: 1,
       y: 0,
       transition: {
@@ -100,11 +100,11 @@ export function Navigation() {
   };
 
   const activeIndicatorVariants = {
-    initial: { 
+    initial: {
       scaleX: 0,
       opacity: 0
     },
-    animate: { 
+    animate: {
       scaleX: 1,
       opacity: 1,
       transition: {
@@ -118,21 +118,28 @@ export function Navigation() {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-custom-cyan/20">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
+
           <motion.div
             initial="initial"
             animate="animate"
             whileHover="hover"
             variants={logoVariants}
-            className="relative"
+            className="relative flex items-center"
           >
             <motion.div
               className="absolute inset-0 bg-custom-cyan/5 blur-xl rounded-full"
               variants={glowVariants}
             />
-            <Link 
+            <img
+              src="/assets/GallipoliLogo.png"
+              alt="Gallipoli Logo"
+              className="w-16 h-auto"
+            />
+            <Link
               to="/"
-              className="text-custom-cyan font-mono text-xl hover:text-white transition-colors relative group"
+              className="ml-[-4px] flex items-center text-custom-cyan font-mono text-xl hover:text-white transition-colors relative group"
             >
+
               _GALLIPOLI
               <motion.span
                 className="absolute bottom-0 left-0 h-0.5 bg-custom-cyan"
@@ -140,7 +147,8 @@ export function Navigation() {
               />
             </Link>
           </motion.div>
-          
+
+
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="md:hidden p-2 text-custom-cyan hover:text-white transition-colors"
@@ -167,9 +175,8 @@ export function Navigation() {
               >
                 <Link
                   to={item.path}
-                  className={`text-custom-cyan font-mono hover:text-white transition-colors relative ${
-                    location.pathname === item.path ? 'text-white' : ''
-                  }`}
+                  className={`text-custom-cyan font-mono hover:text-white transition-colors relative ${location.pathname === item.path ? 'text-white' : ''
+                    }`}
                 >
                   {item.label}
                   {location.pathname === item.path && (
@@ -187,10 +194,10 @@ export function Navigation() {
           </div>
         </div>
 
-        <motion.div 
+        <motion.div
           className="md:hidden"
           initial={{ height: 0, opacity: 0 }}
-          animate={{ 
+          animate={{
             height: isMenuOpen ? "auto" : 0,
             opacity: isMenuOpen ? 1 : 0
           }}
@@ -208,9 +215,8 @@ export function Navigation() {
               >
                 <Link
                   to={item.path}
-                  className={`block text-custom-cyan font-mono hover:text-white transition-colors relative ${
-                    location.pathname === item.path ? 'text-white' : ''
-                  }`}
+                  className={`block text-custom-cyan font-mono hover:text-white transition-colors relative ${location.pathname === item.path ? 'text-white' : ''
+                    }`}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.label}
