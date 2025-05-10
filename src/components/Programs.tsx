@@ -1,8 +1,6 @@
 import React from 'react';
 import { Bug, Globe, Brain, Terminal, Target, Play, Users, BookOpen, ArrowRight } from 'lucide-react';
 import { ScrollAnimation } from './ScrollAnimation';
-import { LoadingFallback } from './LoadingFallback';
-import { List, AutoSizer, WindowScroller } from 'react-virtualized';
 
 const learningTracks = [
   {
@@ -37,11 +35,10 @@ const learningTracks = [
   }
 ];
 
-const TrackCard = React.memo(({ track, index }: { track: typeof learningTracks[0], index: number }) => (
+const TrackCard = ({ track, index }: { track: typeof learningTracks[0], index: number }) => (
   <ScrollAnimation 
-    key={index} 
     direction={index % 2 === 0 ? 'left' : 'right'} 
-    delay={0.1 * (index + 1)}
+    delay={0.10 * (index + 1)}
   >
     <div 
       className="bg-custom-cyan/5 border border-custom-cyan/30 rounded-lg p-6 backdrop-blur-sm hover:bg-custom-cyan/10 hover:border-custom-cyan/50 transition-all duration-300 click-ripple interactive-hover"
@@ -59,10 +56,7 @@ const TrackCard = React.memo(({ track, index }: { track: typeof learningTracks[0
         ripple.className = 'ripple';
         
         element.appendChild(ripple);
-        
-        ripple.addEventListener('animationend', () => {
-          ripple.remove();
-        });
+        ripple.addEventListener('animationend', () => ripple.remove());
       }}
     >
       <div className="flex items-center mb-4">
@@ -80,7 +74,7 @@ const TrackCard = React.memo(({ track, index }: { track: typeof learningTracks[0
       </div>
     </div>
   </ScrollAnimation>
-));
+);
 
 export function Programs() {
   return (
@@ -98,37 +92,17 @@ export function Programs() {
         </ScrollAnimation>
 
         <section className="mb-20">
-          <ScrollAnimation delay={0.2}>
+          <ScrollAnimation delay={0.1}>
             <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">Learning Tracks_</h2>
           </ScrollAnimation>
-          <WindowScroller>
-            {({ height, isScrolling, registerChild, onChildScroll, scrollTop }) => (
-              <AutoSizer disableHeight>
-                {({ width }) => (
-                  <div ref={registerChild}>
-                    <List
-                      autoHeight
-                      height={height}
-                      isScrolling={isScrolling}
-                      onScroll={onChildScroll}
-                      rowCount={learningTracks.length}
-                      rowHeight={300}
-                      rowRenderer={({ index, key, style }) => (
-                        <div key={key} style={style}>
-                          <TrackCard track={learningTracks[index]} index={index} />
-                        </div>
-                      )}
-                      scrollTop={scrollTop}
-                      width={width}
-                    />
-                  </div>
-                )}
-              </AutoSizer>
-            )}
-          </WindowScroller>
+          <div className="grid gap-8">
+            {learningTracks.map((track, index) => (
+              <TrackCard key={index} track={track} index={index} />
+            ))}
+          </div>
         </section>
 
-        <ScrollAnimation direction="up" delay={0.3}>
+        <ScrollAnimation direction="up" delay={0.2}>
           <section className="mb-20 bg-custom-cyan/5 rounded-xl p-8 backdrop-blur-sm">
             <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">How It Works_</h2>
             <div className="max-w-3xl mx-auto">
@@ -152,7 +126,7 @@ export function Programs() {
           </section>
         </ScrollAnimation>
 
-        <ScrollAnimation direction="up" delay={0.4}>
+        <ScrollAnimation direction="up" delay={0.2}>
           <section className="text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-8">Ready to Start?_</h2>
             <p className="font-mono text-custom-cyan/90 mb-8 max-w-2xl mx-auto">
