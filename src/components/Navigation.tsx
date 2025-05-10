@@ -134,6 +134,7 @@ export function Navigation() {
               src="/assets/GallipoliLogo.png"
               alt="Gallipoli Logo"
               className="w-16 h-auto"
+              loading="lazy"
             />
             <Link
               to="/"
