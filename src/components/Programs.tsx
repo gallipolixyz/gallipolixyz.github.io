@@ -1,5 +1,5 @@
 import React from 'react';
-import { Bug, Globe, Brain, Terminal, Target, Play, Users, BookOpen, ArrowRight } from 'lucide-react';
+import { Bug, Globe, Brain, Terminal, Target, Play, Users, BookOpen, ArrowRight, ShieldCheckIcon, Code, Activity, Cpu, ShieldAlert } from 'lucide-react';
 import { ScrollAnimation } from './ScrollAnimation';
 
 const learningTracks = [
@@ -16,7 +16,7 @@ const learningTracks = [
     topics: ["OWASP methodology", "Common vulnerabilities", "Defense strategies", "Secure coding"]
   },
   {
-    icon: Brain,
+    icon: ShieldAlert,
     title: "Threat Intelligence",
     description: "Develop your threat hunting instincts. Learn to gather, analyze, and act on security intelligence while understanding adversary tactics and techniques.",
     topics: ["Threat hunting", "IOC analysis", "APT tracking", "Intelligence sharing"]
@@ -32,6 +32,23 @@ const learningTracks = [
     title: "CTF & Practical Labs",
     description: "Learn by doing in our capture-the-flag challenges and real-world labs. Build confidence and skills in a safe, supportive environment.",
     topics: ["Weekly challenges", "Team competitions", "Real-world scenarios", "Skill building"]
+  },{
+    icon: Code,
+    title: "Open Source Contribution",
+    description: "Turn ideas into impactful tools. Collaborate, code, and contribute to open-source projects that empower the security world.",
+    topics: ["Version control", "Open source tools", "Issue tracking", "Community collaboration"]
+  },
+  {
+    icon: Brain,
+    title: "AI Security",
+    description: "Explore the intersection of artificial intelligence and cybersecurity. Understand how AI can be used for both offense and defense, and how to secure AI systems.",
+    topics: ["Adversarial ML", "Model hardening", "Threat detection", "AI-driven security tools"]
+  },
+  {
+    icon: ShieldCheckIcon,
+    title: "Security Operations Center (SOC)",
+    description: "Gain real-world insights into security operations. Learn how SOC teams detect, respond to, and mitigate threats using tools, frameworks, and processes.",
+    topics: ["SIEM usage", "Log analysis", "Incident response", "Alert triage"]
   }
 ];
 
