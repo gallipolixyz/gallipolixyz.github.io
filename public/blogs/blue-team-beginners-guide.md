@@ -34,8 +34,7 @@ Herkese açık kaynaklardan elde edilen istihbarat bilgileri.
 
 **Balküpü türleri genel olarak ikiye ayrılır**:
 
-**Düşük Etkileşimli Balküpü**: Saldırganlara sınırlı etkileşim imkanı sunar ve temel saldırı yöntemlerini tespit etmeye yöneliktir.  
-Cyber Shield Community
+**Düşük Etkileşimli Balküpü**: Saldırganlara sınırlı etkileşim imkanı sunar ve temel saldırı yöntemlerini tespit etmeye yöneliktir.
 
 **Yüksek Etkileşimli Balküpü**: Saldırganların daha derinlemesine etkileşimde bulunmasına izin verir, bu sayede daha karmaşık saldırı teknikleri ve davranışları analiz edilebilir.
 
