@@ -211,3 +211,8 @@
     animation: none !important;
   }
 }
+.blog-meta {
+  font-size: 0.9rem;
+  color: gray;
+  margin-bottom: 1rem;
+}
