@@ -15,18 +15,18 @@ export default defineConfig({
     viteCompression({
       algorithm: 'brotliCompress',
       ext: '.br',
-    }),
+    })
   ],
   build: {
     target: 'es2020',
     rollupOptions: {
       output: {
         manualChunks: {
-          'vendor': ['react', 'react-dom', 'react-router-dom'],
-          'animations': ['framer-motion'],
-          'spline': ['@splinetool/runtime', '@splinetool/react-spline'],
-          'icons': ['lucide-react'],
-          'virtualization': ['react-virtualized']
+          vendor: ['react', 'react-dom', 'react-router-dom'],
+          animations: ['framer-motion'],
+          spline: ['@splinetool/runtime', '@splinetool/react-spline'],
+          icons: ['lucide-react'],
+          virtualization: ['react-virtualized']
         }
       }
     },
