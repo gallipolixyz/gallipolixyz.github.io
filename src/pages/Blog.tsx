@@ -13,6 +13,12 @@ interface Blog {
 
 const blogs: Blog[] = [
   {
+    slug: 'five-bounties-one-bug',
+    title: 'Five Bounties, One Bug: Exploiting the Same SSRF via Five Unique Techniques',
+    excerpt: 'This article explores how a single SSRF vulnerability was exploited five times using different techniques, each bypassing a new layer of defense and earning a separate bounty.',
+    author: 'Kayra Oksuz',
+  },
+  {
     slug: 'cti-on-telegram',
     title: 'Telegram Üzerinden Siber Tehdit İstihbaratı (CTI)',
     excerpt: 'Telegram’da yürütülen siber tehdit faaliyetlerini nasıl izleyeceğinizi, veri toplayacağınızı ve analiz edeceğinizi adım adım keşfedeceğiz.',
