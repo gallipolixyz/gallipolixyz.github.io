@@ -1,4 +1,4 @@
-# **Five Bounties, One Bug: Exploiting the Same SSRF via Five Unique Techniques**
+# Five Bounties, One Bug: Exploiting the Same SSRF via Five Unique Techniques
 ---
 ## **Introduction**
 
