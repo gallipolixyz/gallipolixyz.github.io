@@ -1,5 +1,5 @@
 # Five Bounties, One Bug: Exploiting the Same SSRF via Five Unique Techniques
----
+
 ## **Introduction**
 
 Gallipoli is a cybersecurity community that blends hacker culture with strategic thinking, placing technical production and knowledge sharing at its core. Our goal is to cultivate individuals with deep technical expertise while fostering a collaborative learning culture that drives collective growth.
