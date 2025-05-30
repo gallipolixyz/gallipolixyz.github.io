@@ -16,7 +16,7 @@ The cases I present in this write-up are examples of **Blind SSRF**, meaning tha
 
 Below is a proof of reward that confirms the success of these exploit attempts:
 
-![voyant](/blogs/img/ssrfpoc.png)
+![ssrfpoc](/blogs/img/ssrfpoc.png)
 
 ## **Technique #1: Basic Localhost Port Scanning**
 
