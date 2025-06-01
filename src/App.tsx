@@ -7,7 +7,7 @@ import { Home } from './pages/Home';
 import { Programs } from './pages/Programs';
 import { About } from './pages/About';
 import { Social } from './pages/Social';
-import BlogList from './pages/Blog';
+import BlogList from './components/Blogs';
 import BlogDetails from './components/BlogDetails';
 
 function App() {
