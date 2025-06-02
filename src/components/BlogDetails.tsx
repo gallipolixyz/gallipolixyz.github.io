@@ -109,8 +109,6 @@ export const BlogDetails: React.FC = () => {
                 components={{
                   code({ node, className, children, ...props }) {
                     const match = /language-(\w+)/.exec(className || '');
-                    const language = match ? match[1].toUpperCase() : '';
-
                     const [copied, setCopied] = React.useState(false);
 
                     return match ? (
@@ -131,9 +129,7 @@ export const BlogDetails: React.FC = () => {
                           )}
                         </button>
 
-                        <div className="px-3 py-1 bg-[#10141a] text-cyan-300 text-xs font-mono uppercase tracking-wider rounded-t-lg border-b border-cyan-900/20">
-                          {language}
-                        </div>
+                        <div className="px-3 py-3 bg-[#10141a] border-b border-cyan-900/20 rounded-t-lg"></div>
 
                         <SyntaxHighlighter
                           language={match[1]}
@@ -170,6 +166,7 @@ export const BlogDetails: React.FC = () => {
                         {children}
                       </code>
                     );
+
                   },
 
                   img: ({ node, ...props }) => {
