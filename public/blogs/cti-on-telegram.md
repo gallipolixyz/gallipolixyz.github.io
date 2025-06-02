@@ -4,7 +4,7 @@ Siber güvenlik dünyasında açık kaynak istihbaratı (OSINT), günümüz diji
 
 Bu yazıda, Telegram’da yürütülen siber tehdit faaliyetlerini nasıl izleyeceğinizi, veri toplayacağınızı ve analiz edeceğinizi adım adım keşfedeceğiz.
 
-**1. Telegram’ın Tehdit İstihbaratı Ekosistemi**
+## 1. Telegram’ın Tehdit İstihbaratı Ekosistemi
 
 **1.1. Neden Telegram?**
 
@@ -24,7 +24,7 @@ Telegram’daki yasa dışı faaliyetler, genellikle belirli kalıplar etrafınd
 
 Bu yapı, Telegram’ı dijital tehditlerin organize edildiği bir alan haline getiriyor. Dolayısıyla bu platformda yapılacak analizler, ciddi güvenlik içgörüleri sunabiliyor.
 
-**2. Telegram Verilerini Toplamak: Telegram-Tracker Aracı**
+## 2. Telegram Verilerini Toplamak: Telegram-Tracker Aracı
 
 Telegram’daki mesajları otomatik olarak toplamak için pratik yöntemlerden biri, Python tabanlı *Telegram-Tracker* aracını kullanmak. Bu araç, Telegram API üzerinden belirlenen kanal veya gruplardaki verileri çekip JSON formatında dışa aktarır.
 
@@ -38,7 +38,6 @@ git clone https://github.com/estebanpdl/telegram-api.git
 cd telegram-api
 pip install -r requirements.txt
 ```
-
 *Not:* Kurulum sırasında hata alırsanız, Python sürümünüzü kontrol edin.
 
 **Adım 2: Hedef Kanalı Belirleyin**
@@ -51,7 +50,6 @@ Aşağıdaki komutu çalıştırarak kanal mesajlarını JSON formatında kayded
 ```bash
 python main.py --telegram-channel <kanal\_adresi>
 ```
-
 *İşlem tamamlandığında:*
 
 - channel\_data.json dosyası oluşacak.
@@ -63,12 +61,11 @@ JSON dosyasını analiz için daha kullanışlı bir formata çevirin:
 ```bash
 python build-datasets.py
 ```
-*Sonuç:*
-
+  *Sonuç:*
 - output/data/msg\_dataset.csv dosyası oluşacak.
 - CSV’yi Excel’de açarak ilk incelemelerinizi yapabilirsiniz.
 
-**3. Veri Analizi: Voyant Tools ile Görsel Keşif**
+## 3. Veri Analizi: Voyant Tools ile Görsel Keşif
 ![voyant](/blogs/img/voyant.png)
 Verileri analiz etmek için kullanabileceğiniz etkili araçlardan biri de web tabanlı *Voyant Tools*. Bu platform, yüklediğiniz metin dosyaları üzerinden kelime sıklıkları, grafikler ve ilişkisel haritalar üretir.
 
@@ -86,17 +83,19 @@ Verileri analiz etmek için kullanabileceğiniz etkili araçlardan biri de web t
 - **Trendler (Trends):** Belirli kelimelerin zaman içindeki kullanım sıklığını analiz edin.
 - **Bağlam Analizi (Contexts):** Şüpheli terimlerin hangi cümlelerde geçtiğini inceleyin.
 ![filter](/blogs/img/filter-word.png)
+
 **Adım 3: Sonuçların Görselleştirilmesi ve Dışa Aktarılması**
 
 Voyant, görselleştirdiği verileri dışa aktarabilir. Bu sayede, elde edilen veriler daha etkili bir şekilde raporlanabilir ve paylaşılabilir.
 ![export](/blogs/img/word-export.png)
-**Sonuç**
+
+## Sonuç
 
 Telegram üzerinde siber tehditleri tespit etmek, aslında bu tür tehditlere karşı daha güçlü bir savunma geliştirmek için büyük bir adım. Telegram-Tracker ve Voyant Tools gibi araçlarla, Telegram’daki gruplarda yer alan zararlı içerikleri hızlı bir şekilde tespit edebilir, bu tehditlere karşı daha proaktif bir yaklaşım geliştirebilirsiniz. 
 
 Bu yöntemler, yalnızca tehditlerin tespit edilmesinde değil, aynı zamanda kurumların siber güvenlik duruşunu güçlendirmede de etkili olabilir. Her geçen gün daha fazla tehdit aktörü, Telegram gibi platformları kullanarak faaliyet gösteriyor, bu yüzden bu araçları kullanarak, potansiyel tehlikelere karşı her zaman bir adım önde olabilirsiniz.
 
-**Kaynakça**
+## Kaynakça
 
 Aşağıda, bu rehberde kullanılan araçların ve yöntemlerin detaylı dokümantasyonlarını bulabilirsiniz. Bu kaynaklar, çalışmalarınızı derinleştirmek ve güncel bilgilere ulaşmak için idealdir:
 
