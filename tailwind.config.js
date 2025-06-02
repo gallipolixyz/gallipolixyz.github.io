@@ -8,6 +8,15 @@ export default {
       colors: {
         'custom-cyan': '#00FFFF',
       },
+      typography: {
+        DEFAULT: {
+          css: {
+            pre: {
+              backgroundColor: 'transparent',
+            },
+          },
+        },
+      },
     },
   },
   plugins: [typography],
