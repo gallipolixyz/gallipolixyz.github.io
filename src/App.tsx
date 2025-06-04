@@ -7,8 +7,10 @@ import { Home } from './pages/Home';
 import { Programs } from './pages/Programs';
 import { About } from './pages/About';
 import { Social } from './pages/Social';
+import { Events } from './pages/Events';
 import BlogList from './components/Blogs';
 import BlogDetails from './components/BlogDetails';
+import { EventDetails } from './components/EventDetails';
 
 function App() {
   const location = useLocation();
@@ -25,6 +27,8 @@ function App() {
           <Route path="/programs" element={<Programs />} />
           <Route path="/about" element={<About />} />
           <Route path="/social" element={<Social />} />
+          <Route path="/events" element={<Events />} />
+          <Route path="/events/:id" element={<EventDetails />} />
         </Routes>
       </AnimatePresence>
     </div>
