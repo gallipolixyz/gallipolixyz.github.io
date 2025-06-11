@@ -8,7 +8,7 @@ import { PageTransition } from './PageTransition';
 
 const getEventTypeIcon = (type: Event['type']) => {
   switch (type) {
-    case 'workshop':
+    case 'training':
       return BookOpen;
     case 'webinar':
       return Globe;
@@ -38,7 +38,7 @@ const getDifficultyColor = (difficulty: Event['difficulty']) => {
 
 const getTypeColor = (type: Event['type']) => {
   switch (type) {
-    case 'workshop':
+    case 'training':
       return 'text-blue-400 border-blue-400/50 bg-blue-400/10';
     case 'webinar':
       return 'text-purple-400 border-purple-400/50 bg-purple-400/10';
@@ -288,22 +288,11 @@ export function EventDetails() {
                 transition={{ delay: 0.2 }}
                 className="bg-black/40 border border-custom-cyan/30 rounded-lg p-6 backdrop-blur-sm sticky top-24"
               >
-                <h3 className="text-xl font-bold text-white mb-4">Registration_</h3>
+                <h3 className="text-xl font-bold text-white mb-4">Join_</h3>
                 
                 {isUpcoming ? (
                       <div className="space-y-4">
-                        <div className="p-4 bg-green-400/10 border border-green-400/30 rounded-lg">
-                          <div className="flex items-center gap-2 mb-2">
-                            <CheckCircle className="w-5 h-5 text-green-400" />
-                            <span className="font-mono text-green-400">Registration Open</span>
-                          </div>
-                          {event.maxParticipants && (
-                            <div className="text-sm font-mono text-green-400/80">
-                              {event.maxParticipants - (event.currentParticipants || 0)} spots remaining
-                            </div>
-                          )}
-                        </div>
-                        
+                      
                         {event.meetingLink && (
                           <a
                             href={event.meetingLink}
@@ -311,7 +300,7 @@ export function EventDetails() {
                             rel="noopener noreferrer"
                             className="click-ripple interactive-hover w-full inline-flex items-center justify-center px-6 py-3 bg-custom-cyan/10 border border-custom-cyan/50 rounded font-mono text-custom-cyan hover:bg-custom-cyan/20 hover:border-white hover:text-white transition-all"
                           >
-                            Join Event
+                            Open Event
                             <ExternalLink className="w-4 h-4 ml-2" />
                           </a>
                         )}
@@ -322,7 +311,7 @@ export function EventDetails() {
                           rel="noopener noreferrer"
                           className="click-ripple interactive-hover w-full inline-flex items-center justify-center px-6 py-3 bg-white/10 border border-white/30 rounded font-mono text-white hover:bg-white/20 hover:border-white transition-all"
                         >
-                          Register via Telegram
+                          Join Telegram Group
                           <ExternalLink className="w-4 h-4 ml-2" />
                         </a>
                       </div>
