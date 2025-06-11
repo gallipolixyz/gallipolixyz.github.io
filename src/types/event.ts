@@ -5,7 +5,7 @@ export interface Event {
   date: Date;
   time: string;
   duration: string;
-  type: 'workshop' | 'webinar' | 'ctf' | 'meetup' | 'conference';
+  type: 'training' | 'webinar' | 'ctf' | 'meetup' | 'conference';
   difficulty: 'beginner' | 'intermediate' | 'advanced';
   instructor?: string;
   maxParticipants?: number;

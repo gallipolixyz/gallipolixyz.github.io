@@ -11,7 +11,7 @@ interface EventCardProps {
 
 const getEventTypeIcon = (type: Event['type']) => {
   switch (type) {
-    case 'workshop':
+    case 'training':
       return BookOpen;
     case 'webinar':
       return Globe;
@@ -41,7 +41,7 @@ const getDifficultyColor = (difficulty: Event['difficulty']) => {
 
 const getTypeColor = (type: Event['type']) => {
   switch (type) {
-    case 'workshop':
+    case 'training':
       return 'text-blue-400 border-blue-400/50 bg-blue-400/10';
     case 'webinar':
       return 'text-purple-400 border-purple-400/50 bg-purple-400/10';
@@ -74,7 +74,7 @@ export function EventCard({ event, index = 0 }: EventCardProps) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className={`relative bg-black/40 border rounded-lg p-6 backdrop-blur-sm hover:bg-black/60 transition-all duration-300 group ${
+      className={`relative bg-black/40 border rounded-lg p-6 pt-12 backdrop-blur-sm hover:bg-black/60 transition-all duration-300 group ${
         isUpcoming 
           ? 'border-custom-cyan/30 hover:border-custom-cyan/60' 
           : 'border-white/20 hover:border-white/40 opacity-75'
@@ -168,10 +168,10 @@ export function EventCard({ event, index = 0 }: EventCardProps) {
       )}
 
       {/* Action Buttons */}
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
         <Link
           to={`/events/${event.id}`}
-          className="click-ripple interactive-hover group inline-flex items-center px-4 py-2 bg-custom-cyan/10 border border-custom-cyan/50 rounded font-mono text-sm text-custom-cyan hover:bg-custom-cyan/20 hover:border-white hover:text-white transition-all"
+          className="click-ripple interactive-hover group inline-flex items-center justify-center px-4 py-2 bg-custom-cyan/10 border border-custom-cyan/50 rounded font-mono text-sm text-custom-cyan hover:bg-custom-cyan/20 hover:border-white hover:text-white transition-all w-full sm:w-auto"
         >
           View Details
           <ArrowRight className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" />
@@ -180,4 +180,4 @@ export function EventCard({ event, index = 0 }: EventCardProps) {
 
     </motion.div>
   );
-} 
+}
