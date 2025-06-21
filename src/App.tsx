@@ -11,9 +11,11 @@ import { Events } from './pages/Events';
 import BlogList from './components/Blogs';
 import BlogDetails from './components/BlogDetails';
 import { EventDetails } from './components/EventDetails';
+import { useGoogleAnalytics } from './hooks/useGoogleAnalytics';
 
 function App() {
   const location = useLocation();
+  useGoogleAnalytics();
 
   return (
     <div className="min-h-screen bg-black text-custom-cyan">
