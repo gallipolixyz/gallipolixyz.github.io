@@ -109,8 +109,8 @@ export function EventDetails() {
 
   return (
     <PageTransition>
-      <div className="min-h-screen bg-black text-custom-cyan py-20">
-        <div className="container mx-auto px-4">
+      <div className="min-h-screen bg-black text-custom-cyan py-20 overflow-x-hidden">
+        <div className="container mx-auto px-2 sm:px-4">
           {/* Back Button */}
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
@@ -126,41 +126,44 @@ export function EventDetails() {
             </button>
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-8 min-w-0">
             {/* Main Content */}
-            <div className="lg:col-span-2 space-y-8">
+            <div className="lg:col-span-2 space-y-6 sm:space-y-8 min-w-0">
               {/* Header */}
               <motion.section 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="bg-black/40 border border-custom-cyan/30 rounded-lg p-8 backdrop-blur-sm"
+                className="bg-black/40 border border-custom-cyan/30 rounded-lg p-4 sm:p-8 backdrop-blur-sm min-w-0 overflow-x-auto"
               >
-                <div className="flex items-start gap-6 mb-6">
-                  <div className="p-4 bg-custom-cyan/10 border border-custom-cyan/30 rounded-lg">
-                    <TypeIcon className="w-8 h-8 text-custom-cyan" />
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-3">
-                      <span className={`px-3 py-1 text-sm font-mono border rounded-full ${getTypeColor(event.type)}`}>
-                        {event.type.toUpperCase()}
-                      </span>
-                      <span className={`px-3 py-1 text-sm font-mono border rounded-full ${getDifficultyColor(event.difficulty)}`}>
-                        {event.difficulty.toUpperCase()}
-                      </span>
-                      {isUpcoming ? (
-                        <div className="px-3 py-1 bg-custom-cyan/20 border border-custom-cyan/50 rounded-full">
-                          <span className="text-sm font-mono text-custom-cyan">UPCOMING</span>
-                        </div>
-                      ) : (
-                        <div className="px-3 py-1 bg-white/10 border border-white/30 rounded-full">
-                          <span className="text-sm font-mono text-white/70">PAST</span>
-                        </div>
-                      )}
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 mb-6 min-w-0">
+                  {/* Icon + Title + Badges aynı satırda hizalı */}
+                  <div className="flex flex-row items-center gap-4 min-w-0 w-full">
+                    <div className="p-4 bg-custom-cyan/10 border border-custom-cyan/30 rounded-lg flex-shrink-0 flex items-center justify-center">
+                      <TypeIcon className="w-8 h-8 text-custom-cyan" />
                     </div>
-                    <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">{event.title}</h1>
-                    <p className="text-lg font-mono text-custom-cyan/90">{event.description}</p>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-2 min-w-0">
+                        <span className={`px-3 py-1 text-sm font-mono border rounded-full ${getTypeColor(event.type)}`}>
+                          {event.type.toUpperCase()}
+                        </span>
+                        <span className={`px-3 py-1 text-sm font-mono border rounded-full ${getDifficultyColor(event.difficulty)}`}>
+                          {event.difficulty.toUpperCase()}
+                        </span>
+                        {isUpcoming ? (
+                          <div className="px-3 py-1 bg-custom-cyan/20 border border-custom-cyan/50 rounded-full">
+                            <span className="text-sm font-mono text-custom-cyan">UPCOMING</span>
+                          </div>
+                        ) : (
+                          <div className="px-3 py-1 bg-white/10 border border-white/30 rounded-full">
+                            <span className="text-sm font-mono text-white/70">PAST</span>
+                          </div>
+                        )}
+                      </div>
+                      <h1 className="text-xl sm:text-2xl md:text-4xl font-bold text-white mb-1 sm:mb-2 break-words min-w-0">{event.title}</h1>
+                    </div>
                   </div>
                 </div>
+                <p className="text-base sm:text-lg font-mono text-custom-cyan/90 break-words min-w-0 ml-0 sm:ml-20">{event.description}</p>
               </motion.section>
 
               {/* Event Details */}
