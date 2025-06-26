@@ -37,7 +37,7 @@ export const mockEvents: Event[] = [
     id: '2',
     title: 'Splunk Training 101',
     description: 'Master the fundamentals of cybersecurity with real-time data analysis, SPL (Search Processing Language) queries, log correlation techniques, and alert generation. This training is ideal for aspiring SOC analysts, security professionals, and anyone looking to detect threats through effective log analysis.',
-    date: new Date('2025-06-12'),
+    date: new Date('2025-07-05'),
     time: '21:00',
     duration: '1-2 hour',
     type: 'training',
@@ -62,6 +62,37 @@ export const mockEvents: Event[] = [
       'Writing Effective Searches with SPL (Search Processing Language)',
       'Correlating Related Events Across Different Log Sources',
       'Hands-on Attack Analysis Using a Real-World Example'
+    ]
+  },
+  {
+    id: '3',
+    title: 'Bug Bounty Recon',
+    description: 'Learn how to accurately define the scope and analyze targets before starting a web application vulnerability hunt. This training covers system scoping, asset identification, subdomain discovery, IP range analysis, directory enumeration, categorization, and prioritization techniques.',
+    date: new Date('2025-06-28'),
+    time: '21:00',
+    duration: '1-2 hour',
+    type: 'training',
+    difficulty: 'beginner',
+    instructor: 'Ali Gündoğar',
+    location: 'online',
+    meetingLink: 'https://kick.com/gallipolixyz',
+    tags: [
+      'bug-bounty',
+      'recon',
+      'subdomain-enumeration',
+      'ip-analysis',
+      'directory-enumeration',
+      'web-security',
+      'kick-stream'
+    ],
+    isPast: false,
+    prerequisites: ['Basic interest in web application security and reconnaissance'],
+    agenda: [
+      'Understanding the importance of target scoping',
+      'Identifying web assets and infrastructure',
+      'Subdomain enumeration techniques',
+      'IP range analysis and directory scanning',
+      'Categorizing and prioritizing findings'
     ]
   },
 ];
