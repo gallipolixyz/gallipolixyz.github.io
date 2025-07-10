@@ -54,7 +54,7 @@ export const mockEvents: Event[] = [
       'kick-stream',
       'security-analytics'
     ],
-    isPast: false,
+    isPast: true,
     prerequisites: ['Basic interest in cybersecurity and log analysis'],
     agenda: [
       'What is Splunk and How Does It Work?',
@@ -85,7 +85,7 @@ export const mockEvents: Event[] = [
       'web-security',
       'kick-stream'
     ],
-    isPast: false,
+    isPast: true,
     prerequisites: ['Basic interest in web application security and reconnaissance'],
     agenda: [
       'Understanding the importance of target scoping',
@@ -93,6 +93,38 @@ export const mockEvents: Event[] = [
       'Subdomain enumeration techniques',
       'IP range analysis and directory scanning',
       'Categorizing and prioritizing findings'
+    ]
+  },
+  {
+    id: '4',
+    title: 'Linux Kernel 101',
+    description: 'Explore the structure and importance of the Linux Kernel—the heart of operating systems. This session will cover how the kernel bridges the system and hardware, focusing on its internal components and security mechanisms.',
+    date: new Date('2025-07-13'),
+    time: '21:00',
+    duration: '1-2 hour',
+    type: 'training',
+    difficulty: 'beginner',
+    instructor: 'Ümmühan Atmaca – Cyber Security Researcher',
+    location: 'online',
+    meetingLink: 'https://kick.com/gallipolixyz',
+    tags: [
+      'linux',
+      'kernel',
+      'system-security',
+      'lsm',
+      'syscall',
+      'device-drivers',
+      'kick-stream'
+    ],
+    isPast: false,
+    prerequisites: ['Basic interest in operating systems and system-level security'],
+    agenda: [
+      'What is the Kernel and why is it so critical?',
+      'Differences between User Space and Kernel Space',
+      'What is a System Call and how does it work?',
+      'Core components of the Kernel: Scheduler, Memory Manager, Device Drivers',
+      'Fundamentals of kernel security',
+      'Introduction to Linux Security Modules (LSM)'
     ]
   },
 ];
