@@ -137,7 +137,7 @@ This training will illuminate these questions with a comprehensive approach.
 We'll start by examining how HTTP requests are handled and the fundamentals of client-server interactions. Then, we’ll delve into Modern Web Architecture shaped by concepts like microservices, containerization, and service mesh.
 
 Understanding the structure isn’t enough—we must identify weaknesses too. We'll explore how data leaks can occur through cache vulnerabilities and analyze security risks posed by GraphQL’s flexibility with real-world examples.`,
-    date: new Date('2025-07-19'),
+    date: new Date('2025-07-20'),
     time: '21:00',
     duration: '1-2 hour',
     type: 'training',
