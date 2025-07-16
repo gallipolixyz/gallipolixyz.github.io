@@ -1,3 +1,4 @@
+import { tr } from 'framer-motion/client';
 import { Event } from '../types/event';
 
 export const mockEvents: Event[] = [
@@ -116,7 +117,7 @@ export const mockEvents: Event[] = [
       'device-drivers',
       'kick-stream'
     ],
-    isPast: false,
+    isPast: true,
     prerequisites: ['Basic interest in operating systems and system-level security'],
     agenda: [
       'What is the Kernel and why is it so critical?',
@@ -127,6 +128,43 @@ export const mockEvents: Event[] = [
       'Introduction to Linux Security Modules (LSM)'
     ]
   },
+  {
+    id: '5',
+    title: 'Security Perspectives on Modern Web Applications',
+    description: `We interact with web applications daily—but how do they work and how are they secured? 
+This training will illuminate these questions with a comprehensive approach.
+
+We'll start by examining how HTTP requests are handled and the fundamentals of client-server interactions. Then, we’ll delve into Modern Web Architecture shaped by concepts like microservices, containerization, and service mesh.
+
+Understanding the structure isn’t enough—we must identify weaknesses too. We'll explore how data leaks can occur through cache vulnerabilities and analyze security risks posed by GraphQL’s flexibility with real-world examples.`,
+    date: new Date('2025-07-20'),
+    time: '21:00',
+    duration: '1-2 hour',
+    type: 'training',
+    difficulty: 'intermediate',
+    instructor: 'Sarp Dora Yönden – Security Researcher',
+    location: 'online',
+    meetingLink: 'https://kick.com/gallipolixyz',
+    tags: [
+      'web-security',
+      'modern-web',
+      'http',
+      'microservices',
+      'containers',
+      'graphql',
+      'kick-stream'
+    ],
+    isPast: false,
+    prerequisites: ['Basic understanding of web development or interest in application security'],
+    agenda: [
+      'Step-by-step breakdown of Web Application Architecture',
+      'Understanding HTTP request handling and client-server interaction',
+      'Deep dive into microservices, container architecture, and service mesh',
+      'Cache vulnerabilities and data leakage scenarios',
+      'Security challenges and risks of GraphQL APIs'
+    ]
+  }
+
 ];
 
 // Helper functions
