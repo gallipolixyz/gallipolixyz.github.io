@@ -12,6 +12,7 @@ import BlogList from './components/Blogs';
 import BlogDetails from './components/BlogDetails';
 import { EventDetails } from './components/EventDetails';
 import { useGoogleAnalytics } from './hooks/useGoogleAnalytics';
+import CoreTeam from './components/CoreTeam';
 
 function App() {
   const location = useLocation();
@@ -31,6 +32,8 @@ function App() {
           <Route path="/social" element={<Social />} />
           <Route path="/events" element={<Events />} />
           <Route path="/events/:id" element={<EventDetails />} />
+          <Route path="/teams" element={<CoreTeam />} />
+
         </Routes>
       </AnimatePresence>
     </div>

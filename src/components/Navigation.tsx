@@ -13,6 +13,7 @@ export function Navigation() {
     { path: '/programs', label: 'Programs_' },
     { path: '/events', label: 'Events_' },
     { path: '/blog', label: 'Blogs_' },
+    { path: '/teams', label: 'Teams_' },
     { path: '/social', label: 'Social_' },
   ];
 
