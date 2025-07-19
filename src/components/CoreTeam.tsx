@@ -17,7 +17,7 @@ const team: TeamMember[] = [
     name: 'MG.',
     role: 'Founder ',
     bio: '',
-    image: '/assets/GallipoliLogo.png',
+    image: '/img/mg.jpg',
   },
   {
     name: 'k4yra',
