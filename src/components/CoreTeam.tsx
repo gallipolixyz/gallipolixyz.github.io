@@ -24,7 +24,7 @@ const team: TeamMember[] = [
     role: 'Community Leader',
     bio: '',
     image: '/img/pp2.jpeg',
-    linkedin: 'www.linkedin.com/in/kayra-öksüz-ab061a1ba',
+    linkedin: 'https://www.linkedin.com/in/kayra-öksüz-ab061a1ba',
   },
   {
     name: 'Revivalist',
@@ -73,7 +73,7 @@ const team: TeamMember[] = [
     role: 'Management Member',
     bio: 'An independent SOC researcher with a strong interest in cybersecurity. Focused on deepening knowledge in threat detection, analysis, and incident response. Actively explores SIEM technologies to enhance detection capabilities and continuously works on improving both technical expertise and analytical thinking through hands-on projects and research.',
     image: '/img/nors1.jpg',
-    linkedin: 'www.linkedin.com/in/nur-sena-avci'
+    linkedin: 'https://www.linkedin.com/in/nur-sena-avci'
   },
   {
     name: 'Ümmühan Atmaca',
