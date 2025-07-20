@@ -8,7 +8,6 @@ interface TeamMember {
   role: string;
   bio: string;
   image: string;
-  twitter?: string;
   linkedin?: string;
 }
 
@@ -63,7 +62,7 @@ const team: TeamMember[] = [
   },
   {
     name: 'Hilal',
-    role: 'Cybersecurity Researcher',
+    role: 'Management Member',
     bio: 'I am a cyber security researcher focused on threat analysis, malware investigation, and defense technologies. I work on identifying emerging threats, analyzing them, and developing proactive security solutions.',
     image: '/img/sadece_birisi.jpg',
     linkedin: 'https://www.linkedin.com/in/hilalavsar/'
@@ -76,10 +75,10 @@ const team: TeamMember[] = [
     linkedin: 'https://www.linkedin.com/in/nur-sena-avci'
   },
   {
-    name: 'Ümmühan Atmaca',
-    role: 'Cybersecurity Researcher',
+    name: 'Ümmühan',
+    role: 'Management Member',
     bio: 'Enthusiast in cyber threat intelligence and security operations, focused on tracking malicious activity and enhancing incident response skills',
-    image: '/assets/GallipoliLogo.png',
+    image: '/img/ummuhan.jpg',
     linkedin: 'https://www.linkedin.com/in/%C3%BCmm%C3%BChan-atmaca?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app ',
   },
 ];
