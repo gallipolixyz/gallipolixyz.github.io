@@ -154,7 +154,7 @@ Understanding the structure isn’t enough—we must identify weaknesses too. We
       'graphql',
       'kick-stream'
     ],
-    isPast: false,
+    isPast: true,
     prerequisites: ['Basic understanding of web development or interest in application security'],
     agenda: [
       'Step-by-step breakdown of Web Application Architecture',
