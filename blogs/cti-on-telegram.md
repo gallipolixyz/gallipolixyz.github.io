@@ -122,4 +122,4 @@ Aşağıda, bu rehberde kullanılan araçların ve yöntemlerin detaylı doküma
 ***NOT*:** Bu tür çalışmaları yaparken her zaman yerel yasaları ve etik kuralları göz önünde bulundurun. Veri toplama sınırlarını aşmayın ve kişisel mahremiyete saygı gösterin.
 
 -----
-[Ayşe Bayraktar - LinkedIn](https://www.linkedin.com/in/aysebyrktr/)
+[My LinkedIn](https://www.linkedin.com/in/aysebyrktr/)

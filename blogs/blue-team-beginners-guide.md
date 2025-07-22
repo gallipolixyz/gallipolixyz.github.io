@@ -277,4 +277,4 @@ Elde edilen bilgiler ışığında, şüpheli işlemin kötü amaçlı olup olma
 
 -----
 
-[Nur Sena Avcı - LinkedIn](https://www.linkedin.com/in/nur-sena-avci-33154b185/)
+[My LinkedIn](https://www.linkedin.com/in/nur-sena-avci-33154b185/)
