@@ -13,10 +13,11 @@ interface TeamMember {
 
 const team: TeamMember[] = [
   {
-    name: 'MG.',
+    name: 'MG',
     role: 'Founder ',
     bio: '',
     image: '/img/mg.jpg',
+    linkedin: 'https://www.linkedin.com/in/mgogebakan/',
   },
   {
     name: 'k4yra',
