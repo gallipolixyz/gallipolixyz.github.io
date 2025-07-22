@@ -13,6 +13,12 @@ interface Blog {
 
 const blogs: Blog[] = [
   {
+    slug: 'redos-zafiyeti',
+    title: 'ReDoS (Regular Expression Denial of Service) Zafiyeti',
+    excerpt: 'This article explores how a single SSRF vulnerability was exploited five times using different techniques, each bypassing a new layer of defense and earning a separate bounty.',
+    author: 'Hilal Kavas',
+  },
+  {
     slug: 'five-bounties-one-bug',
     title: 'Five Bounties, One Bug: Exploiting the Same SSRF via Five Unique Techniques',
     excerpt: 'This article explores how a single SSRF vulnerability was exploited five times using different techniques, each bypassing a new layer of defense and earning a separate bounty.',
