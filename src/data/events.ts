@@ -202,6 +202,37 @@ If you're curious about GRC (Governance, Risk, Compliance) and want to ask quest
       'Interactive Q&A session with the instructor'
     ]
   },
+  {
+  id: '7',
+  title: 'DevSecOps Webinar',
+  description: `In this session of our Gallipoli Cybersecurity Community webinar series, we’ll explore how security can be integrated earlier and more effectively into the software development lifecycle.
+
+Join us as we dive into the world of DevSecOps and discover how to make secure development a reality from the start.`,
+  date: new Date('2025-07-28'),
+  time: '21:00',
+  duration: '1-2 hours',
+  type: 'webinar',
+  difficulty: 'beginner',
+  instructor: 'Ziyahan Albeniz – DevSecOps Engineering Consultant',
+  location: 'online',
+  meetingLink: 'https://kick.com/gallipolixyz',
+  tags: [
+    'devsecops',
+    'secure-development',
+    'software-security',
+    'kick-stream',
+    'gallipoli'
+  ],
+  isPast: false,
+  prerequisites: ['Basic understanding of software development lifecycle'],
+  agenda: [
+    'Introduction to DevSecOps',
+    'Why shifting security left matters',
+    'Practical ways to integrate security early in development',
+    'Real-world examples and best practices',
+    'Q&A session with Ziyahan Albeniz'
+  ]
+},
 
 ];
 
