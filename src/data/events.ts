@@ -163,7 +163,45 @@ Understanding the structure isn’t enough—we must identify weaknesses too. We
       'Cache vulnerabilities and data leakage scenarios',
       'Security challenges and risks of GraphQL APIs'
     ]
-  }
+  },
+  {
+    id: '6',
+    title: 'GRC and Cybersecurity',
+    description: `What makes an attacker's job harder?
+A controlled, well-organized, and awareness-driven cybersecurity environment!
+
+But do you know what kind of structure organizations need to identify their information security risks, comply with legal regulations (KVKK, ISO 27001, etc.), and manage their security policies in a sustainable way?
+
+The answer to all these questions lies in GRC.
+
+If you're curious about GRC (Governance, Risk, Compliance) and want to ask questions, you can find all the answers in this training session!`,
+    date: new Date('2025-07-27'),
+    time: '21:00',
+    duration: '1-2 hours',
+    type: 'training',
+    difficulty: 'beginner',
+    instructor: 'Tansu Uzun',
+    location: 'online',
+    meetingLink: 'https://kick.com/gallipolixyz',
+    tags: [
+      'grc',
+      'cybersecurity',
+      'risk-management',
+      'compliance',
+      'governance',
+      'iso27001',
+      'kick-stream'
+    ],
+    isPast: false,
+    prerequisites: ['General interest in cybersecurity and risk management'],
+    agenda: [
+      'Introduction to GRC (Governance, Risk, Compliance)',
+      'The role of GRC in strengthening cybersecurity posture',
+      'Understanding the importance of compliance (KVKK, ISO 27001, etc.)',
+      'Sustainable security policy management',
+      'Interactive Q&A session with the instructor'
+    ]
+  },
 
 ];
 
