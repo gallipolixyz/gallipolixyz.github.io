@@ -192,7 +192,7 @@ If you're curious about GRC (Governance, Risk, Compliance) and want to ask quest
       'iso27001',
       'kick-stream'
     ],
-    isPast: false,
+    isPast: true,
     prerequisites: ['General interest in cybersecurity and risk management'],
     agenda: [
       'Introduction to GRC (Governance, Risk, Compliance)',
@@ -223,7 +223,7 @@ Join us as we dive into the world of DevSecOps and discover how to make secure d
     'kick-stream',
     'gallipoli'
   ],
-  isPast: false,
+  isPast: true,
   prerequisites: ['Basic understanding of software development lifecycle'],
   agenda: [
     'Introduction to DevSecOps',
@@ -233,6 +233,42 @@ Join us as we dive into the world of DevSecOps and discover how to make secure d
     'Q&A session with Ziyahan Albeniz'
   ]
 },
+{
+  id: '8',
+  title: 'Wi-Fi Hacking!',
+  description: `How secure are our wireless networks, really?
+
+In this hands-on session, we’ll explore the architecture of Wi-Fi networks, common attack techniques, and potential vulnerabilities — all from an ethical hacking perspective.
+
+Our goal is to understand how wireless networks work, identify weaknesses, and learn how to build effective defenses based on this knowledge.
+
+You’ll dive deep into Wi-Fi protocols, WEP/WPA/WPA2 analysis, and much more through practical demonstrations.`,
+  date: new Date('2025-08-09'),
+  time: '21:00',
+  duration: '1-2 hours',
+  type: 'training',
+  difficulty: 'intermediate',
+  instructor: 'İsa Ergişi – Security Researcher',
+  location: 'online',
+  meetingLink: 'https://kick.com/gallipolixyz',
+  tags: [
+    'wifi-security',
+    'ethical-hacking',
+    'network-security',
+    'kick-stream',
+    'gallipoli'
+  ],
+  isPast: false,
+  prerequisites: ['Basic understanding of network protocols'],
+  agenda: [
+    'Introduction to Wi-Fi architecture',
+    'Overview of wireless protocols: WEP, WPA, WPA2',
+    'Attack techniques on wireless networks',
+    'Real-world vulnerabilities and case studies',
+    'Defensive measures and security best practices',
+    'Q&A session with İsa Ergişi'
+  ]
+}
 
 ];
 
