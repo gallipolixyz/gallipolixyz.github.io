@@ -1,4 +1,3 @@
-import { tr } from 'framer-motion/client';
 import { Event } from '../types/event';
 
 export const mockEvents: Event[] = [
@@ -203,72 +202,107 @@ If you're curious about GRC (Governance, Risk, Compliance) and want to ask quest
     ]
   },
   {
-  id: '7',
-  title: 'DevSecOps Webinar',
-  description: `In this session of our Gallipoli Cybersecurity Community webinar series, we’ll explore how security can be integrated earlier and more effectively into the software development lifecycle.
+    id: '7',
+    title: 'DevSecOps Webinar',
+    description: `In this session of our Gallipoli Cybersecurity Community webinar series, we’ll explore how security can be integrated earlier and more effectively into the software development lifecycle.
 
 Join us as we dive into the world of DevSecOps and discover how to make secure development a reality from the start.`,
-  date: new Date('2025-07-28'),
-  time: '21:00',
-  duration: '1-2 hours',
-  type: 'webinar',
-  difficulty: 'beginner',
-  instructor: 'Ziyahan Albeniz – DevSecOps Engineering Consultant',
-  location: 'online',
-  meetingLink: 'https://kick.com/gallipolixyz',
-  tags: [
-    'devsecops',
-    'secure-development',
-    'software-security',
-    'kick-stream',
-    'gallipoli'
-  ],
-  isPast: true,
-  prerequisites: ['Basic understanding of software development lifecycle'],
-  agenda: [
-    'Introduction to DevSecOps',
-    'Why shifting security left matters',
-    'Practical ways to integrate security early in development',
-    'Real-world examples and best practices',
-    'Q&A session with Ziyahan Albeniz'
-  ]
-},
-{
-  id: '8',
-  title: 'Wi-Fi Hacking!',
-  description: `How secure are our wireless networks, really?
+    date: new Date('2025-07-28'),
+    time: '21:00',
+    duration: '1-2 hours',
+    type: 'webinar',
+    difficulty: 'beginner',
+    instructor: 'Ziyahan Albeniz – DevSecOps Engineering Consultant',
+    location: 'online',
+    meetingLink: 'https://kick.com/gallipolixyz',
+    tags: [
+      'devsecops',
+      'secure-development',
+      'software-security',
+      'kick-stream',
+      'gallipoli'
+    ],
+    isPast: true,
+    prerequisites: ['Basic understanding of software development lifecycle'],
+    agenda: [
+      'Introduction to DevSecOps',
+      'Why shifting security left matters',
+      'Practical ways to integrate security early in development',
+      'Real-world examples and best practices',
+      'Q&A session with Ziyahan Albeniz'
+    ]
+  },
+  {
+    id: '8',
+    title: 'Wi-Fi Hacking!',
+    description: `How secure are our wireless networks, really?
 
 In this hands-on session, we’ll explore the architecture of Wi-Fi networks, common attack techniques, and potential vulnerabilities — all from an ethical hacking perspective.
 
 Our goal is to understand how wireless networks work, identify weaknesses, and learn how to build effective defenses based on this knowledge.
 
 You’ll dive deep into Wi-Fi protocols, WEP/WPA/WPA2 analysis, and much more through practical demonstrations.`,
-  date: new Date('2025-08-09'),
-  time: '21:00',
-  duration: '1-2 hours',
-  type: 'training',
-  difficulty: 'intermediate',
-  instructor: 'İsa Ergişi – Security Researcher',
-  location: 'online',
-  meetingLink: 'https://kick.com/gallipolixyz',
-  tags: [
-    'wifi-security',
-    'ethical-hacking',
-    'network-security',
-    'kick-stream',
-    'gallipoli'
-  ],
-  isPast: false,
-  prerequisites: ['Basic understanding of network protocols'],
-  agenda: [
-    'Introduction to Wi-Fi architecture',
-    'Overview of wireless protocols: WEP, WPA, WPA2',
-    'Attack techniques on wireless networks',
-    'Real-world vulnerabilities and case studies',
-    'Defensive measures and security best practices',
-    'Q&A session with İsa Ergişi'
-  ]
-}
+    date: new Date('2025-08-09'),
+    time: '21:00',
+    duration: '1-2 hours',
+    type: 'training',
+    difficulty: 'intermediate',
+    instructor: 'İsa Ergişi – Security Researcher',
+    location: 'online',
+    meetingLink: 'https://kick.com/gallipolixyz',
+    tags: [
+      'wifi-security',
+      'ethical-hacking',
+      'network-security',
+      'kick-stream',
+      'gallipoli'
+    ],
+    isPast: true,
+    prerequisites: ['Basic understanding of network protocols'],
+    agenda: [
+      'Introduction to Wi-Fi architecture',
+      'Overview of wireless protocols: WEP, WPA, WPA2',
+      'Attack techniques on wireless networks',
+      'Real-world vulnerabilities and case studies',
+      'Defensive measures and security best practices',
+      'Q&A session with İsa Ergişi'
+    ]
+  },
+  {
+    id: '9',
+    title: 'Kişisel Gizlilik ve Güvenlik - Trackerlar',
+    description: `In our daily lives, the websites we visit, mobile applications we use, and devices we interact with constantly leave behind digital traces.
+
+Often without realizing it, these traces reveal our identity and habits. Trackers (tracking technologies) collect and process this data — but how exactly do they work, what kind of data do they gather, and what can be done with this information?
+
+In this training, we will explore how we are tracked, what privacy tools exist, and how we can protect ourselves.`,
+    date: new Date('2025-08-16'),
+    time: '21:00',
+    duration: '1-2 hours',
+    type: 'training',
+    difficulty: 'beginner',
+    instructor: 'Ulaş Fırat Özdemir',
+    location: 'online',
+    meetingLink: 'https://kick.com/gallipolixyz',
+    tags: [
+      'privacy',
+      'security',
+      'trackers',
+      'kick-stream',
+      'gallipoli'
+    ],
+    isPast: false,
+    prerequisites: ['Interest in online privacy and security'],
+    agenda: [
+      'Introduction to trackers and digital footprints',
+      'How trackers work and what data they collect',
+      'Risks of data collection and potential misuse',
+      'Privacy tools and techniques to reduce tracking',
+      'Real-life examples and case studies',
+      'Q&A session with Ulaş Fırat Özdemir'
+    ]
+  }
+
 
 ];
 
