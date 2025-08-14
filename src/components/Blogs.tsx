@@ -12,6 +12,18 @@ interface Blog {
 }
 
 const blogs: Blog[] = [
+    {
+    slug: 'c2-framework-nedir',
+    title: 'C2 Framework Nedir? Amaçları, Faydaları ve En Popüler C2 Araçları',
+    excerpt: 'Bu makalede C2 frameworklerinin ne olduğunu, nasıl çalıştığını, amaçlarını ve en popüler C2 araçlarını keşfedeceğiz.',
+    author: 'Hilal Kavas',
+  },  
+    {
+    slug: 'saldirganin-yol-haritasi',
+    title: 'Saldırganın Yol Haritası',
+    excerpt: 'Bu makalede, saldırganların bir hedefe nasıl yaklaşabileceğini, hangi adımları takip edebileceğini ve bu süreçte karşılaşabilecekleri zorlukları keşfedeceğiz.',
+    author: 'Nur Sena Avcı',
+  },  
   {
     slug: 'redos-zafiyeti',
     title: 'ReDoS (Regular Expression Denial of Service) Zafiyeti',
