@@ -29,6 +29,7 @@
     "react-router-dom": "^6.30.1",
     "react-syntax-highlighter": "^15.6.1",
     "react-virtualized": "^9.22.5",
+    "rehype-sanitize": "^6.0.0",
     "remark-gfm": "^4.0.1"
   },
   "devDependencies": {
