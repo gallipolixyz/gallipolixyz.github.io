@@ -13,6 +13,12 @@ interface Blog {
 
 const blogs: Blog[] = [
     {
+    slug: 'custom-log-source-normalization',
+    title: 'Custom Log Source Normalization: SIEM Öncesi ve  Sonrası Tüm Aşamalar',
+    excerpt: 'Bu makalede özelleştirilmiş log kaynaklarının normalizasyonu, SIEM öncesi ve sonrası tüm aşamalarıyla ele alınacaktır.',
+    author: 'Ümmühan Atmaca',
+  }, 
+    {
     slug: 'c2-framework-nedir',
     title: 'C2 Framework Nedir? Amaçları, Faydaları ve En Popüler C2 Araçları',
     excerpt: 'Bu makalede C2 frameworklerinin ne olduğunu, nasıl çalıştığını, amaçlarını ve en popüler C2 araçlarını keşfedeceğiz.',
