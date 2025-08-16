@@ -2,6 +2,53 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CardAnimation } from '../components/CardAnimation';
 import { ScrollAnimation } from '../components/ScrollAnimation';
+import { MentorSlider } from '../components/MentorSlider';
+import '../index.css';
+import { ArrowRight } from 'lucide-react';
+const mentors = [
+  {
+    name: 'Ömer Çıtak',
+    role: 'WebSec Team Mentor',
+    bio: 'Senior Application Security Engineer',
+    image: '/img/omer.jpeg',
+    link: '/coming-soon',
+  },
+  {
+    name: 'İbrahim Said Kavas',
+    role: 'CTI Team Mentor',
+    bio: 'APT&Ransom Threat Analyst',
+    image: '/img/ibrahim-said.jpg',
+    link: '/coming-soon',
+  },
+  {
+    name: 'Evren Yalçın',
+    role: 'AI Security Team Mentor',
+    bio: 'AI Red Teaming | Application Security',
+    image: '/img/evren.jpg',
+    link: '/coming-soon',
+  },
+  {
+    name: 'Kaan Özdinçer',
+    role: 'Linux Team Mentor',
+    bio: 'DevOps & Platform Engineer',
+    image: '/img/kaan-ozdincer.jpeg',
+    link: '/coming-soon',
+  },
+  {
+    name: 'Necdet Yücel',
+    role: 'Linux Team Mentor',
+    bio: 'Instructor at Çanakkale Onsekiz Mart University',
+    image: '/img/necdet.jpg',
+    link: '/coming-soon',
+  },
+  {
+    name: 'Sarp Dora Yönden',
+    role: 'Bug Bounty Team Mentor',
+    bio: 'Cyber Security Researcher',
+    image: '/img/sarp.png',
+    link: '/coming-soon',
+  },
+];
 
 interface TeamMember {
   name: string;
@@ -111,7 +158,7 @@ export const CoreTeam: React.FC = () => {
         </ScrollAnimation>
 
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
           variants={containerVariants}
           initial="hidden"
           animate="show"
@@ -119,24 +166,24 @@ export const CoreTeam: React.FC = () => {
           {team.map((member, index) => (
             <CardAnimation key={member.name} index={index}>
               <motion.div
-                className="bg-black border-2 border-custom-cyan/40 rounded-2xl shadow-[0_0_16px_2px_rgba(0,255,255,0.10)] overflow-hidden transition-all duration-300 hover:border-custom-cyan hover:shadow-[0_0_32px_8px_rgba(0,255,255,0.25)] flex flex-col items-center p-8 h-[360px] cursor-pointer"
-                whileHover={{ scale: 1.04, boxShadow: '0 0 32px 4px rgba(0,255,255,0.25)' }}
+                className="bg-black border-2 border-custom-cyan/40 rounded-xl shadow-[0_0_16px_2px_rgba(0,255,255,0.10)] overflow-hidden transition-all duration-300 hover:border-custom-cyan hover:shadow-[0_0_32px_8px_rgba(0,255,255,0.25)] flex flex-col items-center p-6 h-[340px] cursor-pointer"
+                whileHover={{ scale: 1.02, boxShadow: '0 0 32px 4px rgba(0,255,255,0.25)' }}
                 onClick={() => setOpenIndex(index)}
               >
-                <div className="w-24 h-24 aspect-square rounded-full overflow-hidden border-4 border-custom-cyan/30 mb-6 shadow-md bg-black shrink-0">
+                <div className="w-20 h-20 aspect-square rounded-full overflow-hidden border-4 border-custom-cyan/30 mb-5 shadow-md bg-black shrink-0">
                   <img
                     src={member.image}
                     alt={member.name}
                     className="w-full h-full object-cover rounded-full"
                   />
                 </div>
-                <h2 className="text-xl font-bold mb-1 text-center font-mono text-white drop-shadow">{member.name}</h2>
+                <h2 className="text-lg font-bold mb-2 text-center font-mono text-white drop-shadow">{member.name}</h2>
                 <p className="text-custom-cyan/70 font-mono text-sm mb-3 text-center">{member.role}</p>
                 <p
-                  className="text-custom-cyan/80 text-center font-mono text-base mb-4"
+                  className="text-custom-cyan/80 text-center font-mono text-sm mb-4 flex-1"
                   style={{
                     display: '-webkit-box',
-                    WebkitLineClamp: 3,
+                    WebkitLineClamp: 4,
                     WebkitBoxOrient: 'vertical',
                     overflow: 'hidden',
                     textOverflow: 'ellipsis',
@@ -146,8 +193,8 @@ export const CoreTeam: React.FC = () => {
                 </p>
                 <div className="flex gap-3 mt-auto">
                   {member.linkedin && (
-                    <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-fuchsia-400 transition text-xl">
-                      <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.27c-.966 0-1.75-.79-1.75-1.76s.784-1.76 1.75-1.76 1.75.79 1.75 1.76-.784 1.76-1.75 1.76zm13.5 11.27h-3v-5.6c0-1.34-.03-3.07-1.87-3.07-1.87 0-2.16 1.46-2.16 2.97v5.7h-3v-10h2.89v1.36h.04c.4-.76 1.38-1.56 2.84-1.56 3.04 0 3.6 2 3.6 4.59v5.61z" /></svg>
+                    <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-fuchsia-400 transition text-lg">
+                      <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.27c-.966 0-1.75-.79-1.75-1.76s.784-1.76 1.75-1.76 1.75.79 1.75 1.76-.784 1.76-1.75 1.76zm13.5 11.27h-3v-5.6c0-1.34-.03-3.07-1.87-3.07-1.87 0-2.16 1.46-2.16 2.97v5.7h-3v-10h2.89v1.36h.04c.4-.76 1.38-1.56 2.84-1.56 3.04 0 3.6 2 3.6 4.59v5.61z" /></svg>
                     </a>
                   )}
                 </div>
@@ -155,8 +202,12 @@ export const CoreTeam: React.FC = () => {
             </CardAnimation>
           ))}
         </motion.div>
+        <div
+          className="mx-auto max-w-6xl w-full flex gap-6 sm:gap-8 px-10 sm:px-8 md:px-12 lg:px-20 overflow-x-auto scrollbar-hide scroll-smooth"
+          style={{ scrollBehavior: 'smooth' }}>
+          <MentorSlider mentors={mentors} />
+        </div>
       </div>
-
       {/* Modal for expanded card */}
       <AnimatePresence>
         {openIndex !== null && (
@@ -204,6 +255,33 @@ export const CoreTeam: React.FC = () => {
           </>
         )}
       </AnimatePresence>
+
+      <motion.section 
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ delay: 0.5 }}
+  className="mt-16 w-full"
+>
+  <div className="container mx-auto px-4 max-w-6xl">
+    <div className="bg-black border-2 border-custom-cyan/40 rounded-2xl shadow-[0_0_16px_2px_rgba(0,255,255,0.10)] hover:border-custom-fusion hover:shadow-[0_0_32px_8px_rgba(0,255,255,0.25)] p-8 flex flex-col items-center text-center transition-all duration-300">
+      <h2 className="text-2xl font-bold text-white mb-4 font-mono drop-shadow">Join Our Mission_</h2>
+      <p className="font-mono text-custom-cyan/90 mb-6 max-w-2xl">
+        Be part of our growing community — get updates on events, collaborate with mentors, 
+        and contribute to shaping the future of cybersecurity.
+      </p>
+      <a
+        href="https://t.me/+IHIHLmSbufxlNjdk"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="click-ripple interactive-hover inline-flex items-center px-6 py-3 bg-custom-cyan/10 border border-custom-cyan/50 rounded-lg font-mono text-custom-cyan hover:bg-custom-cyan/20 hover:border-white hover:text-white transition-all"
+      >
+        Join Community
+        <ArrowRight className="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" />
+      </a>
+    </div>
+  </div>
+</motion.section>
+
     </div>
   );
 };
