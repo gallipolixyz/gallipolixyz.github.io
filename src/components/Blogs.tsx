@@ -87,7 +87,11 @@ export const BlogList: React.FC = () => {
         >
           {blogs.map((blog, index) => (
             <CardAnimation key={blog.slug} index={index}>
-              <div className="h-[260px] flex flex-col justify-between bg-custom-cyan/5 border border-custom-cyan/30 rounded-lg overflow-hidden hover:bg-custom-cyan/10 hover:border-custom-cyan/50 transition-all duration-300">
+              <Link
+                to={`/blog/${blog.slug}`}
+                className="h-[260px] flex flex-col justify-between bg-custom-cyan/5 border border-custom-cyan/30 rounded-lg overflow-hidden hover:bg-custom-cyan/10 hover:border-custom-cyan/50 transition-all duration-300 cursor-pointer"
+                style={{ textDecoration: 'none' }}
+              >
                 <div className="p-6 flex flex-col flex-grow justify-between">
                   <div className="mb-6">
                     <h2 className="text-2xl font-bold mb-2 line-clamp-2">{blog.title}</h2>
@@ -95,18 +99,15 @@ export const BlogList: React.FC = () => {
                   </div>
                   <div className="flex flex-col gap-2">
                     <p className="text-sm text-custom-cyan/60 font-mono">Author: {blog.author}</p>
-                    <Link
-                      to={`/blog/${blog.slug}`}
-                      className="inline-flex items-center text-custom-cyan font-mono text-sm hover:text-white transition"
-                    >
+                    <span className="inline-flex items-center text-custom-cyan font-mono text-sm hover:text-white transition">
                       Read More
                       <motion.span whileHover={{ x: 5 }} className="ml-2">
                         →
                       </motion.span>
-                    </Link>
+                    </span>
                   </div>
                 </div>
-              </div>
+              </Link>
             </CardAnimation>
           ))}
         </motion.div>
