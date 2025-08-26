@@ -29,7 +29,7 @@ const mentors = [
   },
   {
     name: 'Kaan Özdinçer',
-    role: 'Linux Team Mentor',
+    role: 'Open Source Team Mentor',
     bio: 'DevOps & Platform Engineer',
     image: '/img/kaan-ozdincer.jpeg',
     link: '/coming-soon',
@@ -202,6 +202,8 @@ export const CoreTeam: React.FC = () => {
             </CardAnimation>
           ))}
         </motion.div>
+        {/* Araya boşluk ekle */}
+        <div className="h-8 md:h-12" />
         <div
           className="mx-auto max-w-6xl w-full flex gap-6 sm:gap-8 px-10 sm:px-8 md:px-12 lg:px-20 overflow-x-auto scrollbar-hide scroll-smooth"
           style={{ scrollBehavior: 'smooth' }}>

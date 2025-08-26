@@ -37,21 +37,21 @@ export const MentorSlider: React.FC<Props> = ({ mentors }) => {
             {/* Slider Container with Navigation */}
             <div className="relative max-w-6xl mx-auto px-4 md:px-0">
                 {/* Navigation Arrows - Hidden on mobile, visible on desktop */}
-                <div className="hidden md:block absolute -left-16 top-1/2 transform -translate-y-1/2 z-10">
+                <div className="absolute left-2 md:-left-16 top-1/2 transform -translate-y-1/2 z-10">
                     <button
                         onClick={() => scroll('left')}
-                        className="bg-black/80 hover:bg-fuchsia-700/80 transition-all duration-300 p-3 rounded-full border border-fuchsia-400/50 hover:border-fuchsia-400 shadow-lg hover:shadow-fuchsia-500/25"
+                        className="bg-black/80 hover:bg-fuchsia-700/80 transition-all duration-300 p-2 md:p-3 rounded-full border border-fuchsia-400/50 hover:border-fuchsia-400 shadow-lg hover:shadow-fuchsia-500/25"
                     >
-                        <ChevronLeft className="text-fuchsia-200 w-6 h-6" />
+                        <ChevronLeft className="text-fuchsia-200 w-5 h-5 md:w-6 md:h-6" />
                     </button>
                 </div>
 
-                <div className="hidden md:block absolute -right-16 top-1/2 transform -translate-y-1/2 z-10">
+                <div className="absolute right-2 md:-right-16 top-1/2 transform -translate-y-1/2 z-10">
                     <button
                         onClick={() => scroll('right')}
-                        className="bg-black/80 hover:bg-fuchsia-700/80 transition-all duration-300 p-3 rounded-full border border-fuchsia-400/50 hover:border-fuchsia-400 shadow-lg hover:shadow-fuchsia-500/25"
+                        className="bg-black/80 hover:bg-fuchsia-700/80 transition-all duration-300 p-2 md:p-3 rounded-full border border-fuchsia-400/50 hover:border-fuchsia-400 shadow-lg hover:shadow-fuchsia-500/25"
                     >
-                        <ChevronRight className="text-fuchsia-200 w-6 h-6" />
+                        <ChevronRight className="text-fuchsia-200 w-5 h-5 md:w-6 md:h-6" />
                     </button>
                 </div>
 
