@@ -13,6 +13,12 @@ interface Blog {
 
 const blogs: Blog[] = [
     {
+    slug: 'phishing-email-analysis',
+    title: 'Oltalama E-postası Analizi: Gerçek Bir Örnek Üzerinden',
+    excerpt: 'Bu makalede gerçek bir oltalama e-postası örneği üzerinden, e-postanın içeriğini, kullanılan teknikleri ve nasıl tespit edilebileceğini inceleyeceğiz.',
+    author: 'Rakun Toygun',
+  },  
+    {
     slug: 'custom-log-source-normalization',
     title: 'Custom Log Source Normalization: SIEM Öncesi ve  Sonrası Tüm Aşamalar',
     excerpt: 'Bu makalede özelleştirilmiş log kaynaklarının normalizasyonu, SIEM öncesi ve sonrası tüm aşamalarıyla ele alınacaktır.',
