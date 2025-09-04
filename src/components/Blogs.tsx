@@ -60,6 +60,12 @@ const blogs: Blog[] = [
     excerpt: 'Mavi takım, siber güvenlik alanında savunma odaklı bir yaklaşımdır. Bu rehberde, mavi takımın temel ilkelerini ve nasıl etkili bir şekilde çalıştığını keşfedeceğiz.',
     author: 'Nur Sena Avcı',
   },
+  {
+    slug: 'siber-guvenlikte-yapay-zeka',
+    title: 'Siber Güvenlikte Yapay Zeka: Tehditler ve Fırsatlar',
+    excerpt: 'Bu yazıda, siber güvenlikte yapay zekanın rolünü, potansiyel tehditleri ve fırsatları inceleyeceğiz. Ardından, birkaç yapay zeka zafiyetini inceleyeceğiz.',
+    author: 'Hüseyin Aydın',
+  },
 ];
 
 export const BlogList: React.FC = () => {
