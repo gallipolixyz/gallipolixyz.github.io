@@ -291,7 +291,7 @@ In this training, we will explore how we are tracked, what privacy tools exist, 
       'kick-stream',
       'gallipoli'
     ],
-    isPast: false,
+    isPast: true,
     prerequisites: ['Interest in online privacy and security'],
     agenda: [
       'Introduction to trackers and digital footprints',
@@ -301,7 +301,78 @@ In this training, we will explore how we are tracked, what privacy tools exist, 
       'Real-life examples and case studies',
       'Q&A session with Ulaş Fırat Özdemir'
     ]
+  },
+  {
+    id: '10',
+    title: 'Cyber Intelligence with N8N',
+    description: `We will discuss the logic of n8n as an automation tool, its use cases, and why it can also be preferred in cyber intelligence.
+
+Let’s take a closer look at the most popular open-source tool that works by connecting to applications via APIs.`,
+    date: new Date('2025-09-06'),
+    time: '21:00',
+    duration: '1-2 hours',
+    type: 'training',
+    difficulty: 'beginner',
+    instructor: 'Ali Gündoğar',
+    location: 'online',
+    meetingLink: 'https://kick.com/gallipolixyz',
+    tags: [
+      'automation',
+      'cyber-intelligence',
+      'n8n',
+      'api',
+      'kick-stream',
+      'gallipoli'
+    ],
+    isPast: true,
+    prerequisites: ['Interest in cyber intelligence and automation tools'],
+    agenda: [
+      'Introduction to n8n as an automation tool',
+      'Use cases of n8n in cybersecurity',
+      'Why n8n can be preferred in cyber intelligence',
+      'Working with APIs and integrations',
+      'Demo and practical insights',
+      'Q&A session with Ali Gündoğar'
+    ]
+  },
+  {
+    id: '11',
+    title: 'From PoC to PR: Roadmap for Open Source Security Contributions',
+    description: `Join us for a training that explores how to contribute to open source projects in the context of security.
+
+Topics include:
+- The philosophy of open source
+- Open source and cybersecurity
+- Example projects and how to contribute to them
+
+Note: We will also have a surprise guest from the Project Discovery team and a special gift during the session.`,
+    date: new Date('2025-09-13'),
+    time: '21:00',
+    duration: '1-2 hours',
+    type: 'training',
+    difficulty: 'beginner',
+    instructor: 'Halil Kirazkaya – Cyber Security Researcher',
+    location: 'online',
+    meetingLink: 'https://www.youtube.com/@gallipolixyz',
+    tags: [
+      'open-source',
+      'cybersecurity',
+      'contribution',
+      'project-discovery',
+      'youtube-stream',
+      'gallipoli'
+    ],
+    isPast: false,
+    prerequisites: ['Interest in open source projects and cybersecurity'],
+    agenda: [
+      'Introduction to the philosophy of open source',
+      'Exploring the intersection of open source and cybersecurity',
+      'Example projects and how to contribute effectively',
+      'Surprise guest from Project Discovery and special gift',
+      'Q&A session with Halil Kirazkaya'
+    ]
   }
+
 
 
 ];
