@@ -1,5 +1,13 @@
 import { Event } from '../types/event';
 
+const isEventPast = (eventDate: Date): boolean => {
+  const today = new Date();
+  const oneDayAfterEvent = new Date(eventDate);
+  oneDayAfterEvent.setDate(oneDayAfterEvent.getDate() + 1);
+
+  return today >= oneDayAfterEvent;
+};
+
 export const mockEvents: Event[] = [
   {
     id: '1',
@@ -23,7 +31,7 @@ export const mockEvents: Event[] = [
       'security-architecture',
       'kick-stream'
     ],
-    isPast: true,
+    isPast: isEventPast(new Date('2025-06-09')),
     prerequisites: ['Interest in cybersecurity and emerging technologies'],
     agenda: [
       'Introduction: The Rise of AI in Security',
@@ -54,7 +62,7 @@ export const mockEvents: Event[] = [
       'kick-stream',
       'security-analytics'
     ],
-    isPast: true,
+    isPast: isEventPast(new Date('2025-07-05')),
     prerequisites: ['Basic interest in cybersecurity and log analysis'],
     agenda: [
       'What is Splunk and How Does It Work?',
@@ -85,7 +93,7 @@ export const mockEvents: Event[] = [
       'web-security',
       'kick-stream'
     ],
-    isPast: true,
+    isPast: isEventPast(new Date('2025-06-28')),
     prerequisites: ['Basic interest in web application security and reconnaissance'],
     agenda: [
       'Understanding the importance of target scoping',
@@ -116,7 +124,7 @@ export const mockEvents: Event[] = [
       'device-drivers',
       'kick-stream'
     ],
-    isPast: true,
+    isPast: isEventPast(new Date('2025-07-13')),
     prerequisites: ['Basic interest in operating systems and system-level security'],
     agenda: [
       'What is the Kernel and why is it so critical?',
@@ -153,7 +161,7 @@ Understanding the structure isn’t enough—we must identify weaknesses too. We
       'graphql',
       'kick-stream'
     ],
-    isPast: true,
+    isPast: isEventPast(new Date('2025-07-20')),
     prerequisites: ['Basic understanding of web development or interest in application security'],
     agenda: [
       'Step-by-step breakdown of Web Application Architecture',
@@ -191,7 +199,7 @@ If you're curious about GRC (Governance, Risk, Compliance) and want to ask quest
       'iso27001',
       'kick-stream'
     ],
-    isPast: true,
+    isPast: isEventPast(new Date('2025-07-27')),
     prerequisites: ['General interest in cybersecurity and risk management'],
     agenda: [
       'Introduction to GRC (Governance, Risk, Compliance)',
@@ -222,7 +230,7 @@ Join us as we dive into the world of DevSecOps and discover how to make secure d
       'kick-stream',
       'gallipoli'
     ],
-    isPast: true,
+    isPast: isEventPast(new Date('2025-07-28')),
     prerequisites: ['Basic understanding of software development lifecycle'],
     agenda: [
       'Introduction to DevSecOps',
@@ -257,7 +265,7 @@ You’ll dive deep into Wi-Fi protocols, WEP/WPA/WPA2 analysis, and much more th
       'kick-stream',
       'gallipoli'
     ],
-    isPast: true,
+    isPast: isEventPast(new Date('2025-08-09')),
     prerequisites: ['Basic understanding of network protocols'],
     agenda: [
       'Introduction to Wi-Fi architecture',
@@ -291,7 +299,7 @@ In this training, we will explore how we are tracked, what privacy tools exist, 
       'kick-stream',
       'gallipoli'
     ],
-    isPast: true,
+    isPast: isEventPast(new Date('2025-08-16')),
     prerequisites: ['Interest in online privacy and security'],
     agenda: [
       'Introduction to trackers and digital footprints',
@@ -324,7 +332,7 @@ Let’s take a closer look at the most popular open-source tool that works by co
       'kick-stream',
       'gallipoli'
     ],
-    isPast: true,
+    isPast: isEventPast(new Date('2025-09-06')),
     prerequisites: ['Interest in cyber intelligence and automation tools'],
     agenda: [
       'Introduction to n8n as an automation tool',
@@ -362,7 +370,7 @@ Note: We will also have a surprise guest from the Project Discovery team and a s
       'youtube-stream',
       'gallipoli'
     ],
-    isPast: false,
+    isPast: isEventPast(new Date('2025-09-13')),
     prerequisites: ['Interest in open source projects and cybersecurity'],
     agenda: [
       'Introduction to the philosophy of open source',
@@ -371,9 +379,48 @@ Note: We will also have a surprise guest from the Project Discovery team and a s
       'Surprise guest from Project Discovery and special gift',
       'Q&A session with Halil Kirazkaya'
     ]
+  }, 
+  {
+    id: '12',
+    title: 'Linux Kernel Architecture and Security 102',
+    description: `In this training, we will dive deeper into the Linux kernel architecture and its security mechanisms.
+
+Topics include:
+- A deeper look into kernel architecture (monolithic design, system calls, kernel modules)
+- Linux Security Modules (LSM) framework and popular solutions (SELinux, AppArmor)
+- Breaking down root privileges with Capabilities
+- Kernel hardening techniques (Stack Canaries, ASLR, Secure Boot, Signed Modules)
+- Real-world vulnerability examples (Dirty COW, Spectre, Meltdown)
+
+A packed session awaits you – don’t miss it!`,
+    date: new Date('2025-09-21'),
+    time: '21:00',
+    duration: '1-2 hours',
+    type: 'training',
+    difficulty: 'intermediate',
+    instructor: 'Ümmühan Atmaca – Cyber Security Researcher',
+    location: 'online',
+    meetingLink: 'https://www.youtube.com/@gallipolixyz',
+    tags: [
+      'linux',
+      'kernel',
+      'security',
+      'lsm',
+      'hardening',
+      'youtube-stream',
+      'gallipoli'
+    ],
+    isPast: isEventPast(new Date('2025-09-21')),
+    prerequisites: ['Basic knowledge of Linux and system security'],
+    agenda: [
+      'Deeper look into Linux kernel architecture',
+      'Linux Security Modules (SELinux, AppArmor)',
+      'Capabilities and privilege separation',
+      'Kernel hardening techniques',
+      'Case studies of real-world vulnerabilities (Dirty COW, Spectre, Meltdown)',
+      'Q&A session with Ümmühan Atmaca'
+    ]
   }
-
-
 
 ];
 
