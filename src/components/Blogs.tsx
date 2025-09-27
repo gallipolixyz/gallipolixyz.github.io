@@ -12,14 +12,7 @@ interface Blog {
 }
 
 const blogs: Blog[] = [
-    
-  {
-    slug: 'siber-guvenlikte-yapay-zeka',
-    title: 'Siber Güvenlikte Yapay Zeka: Tehditler ve Fırsatlar',
-    excerpt: 'Bu yazıda, siber güvenlikte yapay zekanın rolünü, potansiyel tehditleri ve fırsatları inceleyeceğiz. Ardından, birkaç yapay zeka zafiyetini inceleyeceğiz.',
-    author: 'Hüseyin Aydın',
-  },
-  {
+    {
     slug: 'phishing-email-analysis',
     title: 'Oltalama E-postası Analizi: Gerçek Bir Örnek Üzerinden',
     excerpt: 'Bu makalede gerçek bir oltalama e-postası örneği üzerinden, e-postanın içeriğini, kullanılan teknikleri ve nasıl tespit edilebileceğini inceleyeceğiz.',
