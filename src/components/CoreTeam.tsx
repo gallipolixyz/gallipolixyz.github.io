@@ -122,13 +122,6 @@ const team: TeamMember[] = [
     image: '/img/nors1.jpg',
     linkedin: 'https://www.linkedin.com/in/nur-sena-avci'
   },
-  {
-    name: 'Ümmühan',
-    role: 'Management Member',
-    bio: 'Enthusiast in cyber threat intelligence and security operations, focused on tracking malicious activity and enhancing incident response skills',
-    image: '/img/ummuhan.jpg',
-    linkedin: 'https://www.linkedin.com/in/%C3%BCmm%C3%BChan-atmaca?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app ',
-  },
 ];
 
 export const CoreTeam: React.FC = () => {
