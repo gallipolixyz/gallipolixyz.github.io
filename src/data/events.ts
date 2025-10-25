@@ -420,7 +420,39 @@ A packed session awaits you – don’t miss it!`,
       'Case studies of real-world vulnerabilities (Dirty COW, Spectre, Meltdown)',
       'Q&A session with Ümmühan Atmaca'
     ]
-  }
+  },
+  {
+  id: '13',
+  title: 'Man In The Middle & Bettercap Workshop',
+  description: `In this live session, we will explore what a Man-In-The-Middle (MITM) attack is and observe how the Bettercap tool can be used in real-world scenarios.
+
+If you’re curious about offensive security techniques and network manipulation tactics, don’t miss this interactive training session!`,
+  date: new Date('2025-10-26'),
+  time: '21:00',
+  duration: '1-2 hours',
+  type: 'training',
+  difficulty: 'beginner',
+  instructor: 'İsa Ergişi – Cyber Security Researcher',
+  location: 'online',
+  meetingLink: 'https://lnkd.in/egHnDrqC',
+  tags: [
+    'mitm',
+    'bettercap',
+    'network-security',
+    'cybersecurity',
+    'youtube-stream',
+    'gallipoli'
+  ],
+  isPast: isEventPast(new Date('2025-10-26')),
+  prerequisites: ['Basic understanding of networking concepts'],
+  agenda: [
+    'Introduction to Man-In-The-Middle attacks',
+    'Overview of Bettercap and its core modules',
+    'Demonstration: intercepting and analyzing traffic',
+    'Real-world scenarios and defense mechanisms',
+    'Q&A session with İsa Ergişi'
+  ]
+}
 
 ];
 
