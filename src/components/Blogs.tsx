@@ -13,6 +13,18 @@ interface Blog {
 
 const blogs: Blog[] = [
   {
+    slug: 'web-to-ad-red-teaming',
+    title: 'Full Red Teaming Senaryo: Web\'den Active Directory\'ye',
+    excerpt: 'Bu yazıda, Microsoft Azure üzerinde kurduğum ve bir web sunucusundan başlayarak Active Directory içerisinde Domain Admin haklarına eriştiğim, kendi oluşturduğum laboratuvar ortamının çözüm yollarını ve öğrendiklerimi kendi üslubumla anlatıyor olacağım',
+    author: 'Nadir Şensoy',
+  },
+  {
+    slug: 'cve-2025-29927-nextjs-middleware-bypass',
+    title: 'CVE-2025-29927: Next.js Middleware Bypass Zafiyeti',
+    excerpt: 'Rachid Allam ve Yasser Allam tarafından keşfedilen ve Next.js\'in middleware katmanını tamamen atlatmayı sağlayan kritik bir zafiyetin incelenmesi.',
+    author: 'Nadir Şensoy',
+  },
+  {
     slug: 'siber-guvenlikte-yapay-zeka',
     title: 'Siber Güvenlikte Yapay Zeka: Tehditler ve Fırsatlar',
     excerpt: 'Günümüzün belki de en çok konuşulan ve ilgi odağı olan yapay zekanın, siber güvenlik ile bağlantısını inceleyeceğiz.',
