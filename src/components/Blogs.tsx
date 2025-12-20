@@ -13,6 +13,12 @@ interface Blog {
 
 const blogs: Blog[] = [
   {
+    slug: 'volatility-dumpme-writeup',
+    title: 'DumpMe Memory Forensics Challenge Write-Up',
+    excerpt: 'Bu yazıda, CyberDefenders DumpMe bellek analizi senaryosunu Volatility 3 ve Volatility 2 kullanarak adım adım çözüyoruz. RAM dökümünden sistem ve zararlı analizini içerir.',
+    author: 'Ozan İsmail Çolhak',
+  },
+  {
     slug: 'web-to-ad-red-teaming',
     title: 'Full Red Teaming Senaryo: Web\'den Active Directory\'ye',
     excerpt: 'Bu yazıda, Microsoft Azure üzerinde kurduğum ve bir web sunucusundan başlayarak Active Directory içerisinde Domain Admin haklarına eriştiğim, kendi oluşturduğum laboratuvar ortamının çözüm yollarını ve öğrendiklerimi kendi üslubumla anlatıyor olacağım',

@@ -5,6 +5,7 @@ import { ScrollAnimation } from '../components/ScrollAnimation';
 import { MentorSlider } from '../components/MentorSlider';
 import '../index.css';
 import { ArrowRight } from 'lucide-react';
+
 const mentors = [
   {
     name: 'Ömer Çıtak',
@@ -61,7 +62,7 @@ interface TeamMember {
 const team: TeamMember[] = [
   {
     name: 'MG',
-    role: 'Founder ',
+    role: 'Founder',
     bio: '',
     image: '/img/mg.jpg',
     linkedin: 'https://www.linkedin.com/in/mgogebakan/',
@@ -74,20 +75,6 @@ const team: TeamMember[] = [
     linkedin: 'https://www.linkedin.com/in/kayra-öksüz-ab061a1ba',
   },
   {
-    name: 'Revivalist',
-    role: 'Co-Leader',
-    bio: 'Focused on Web Application Security and Red Teaming.',
-    image: '/img/revivalist.jpg',
-    linkedin: 'https://www.linkedin.com/in/nadirsensoy/',
-  },
-  {
-    name: 'RØØNIN',
-    role: 'Management Member',
-    bio: 'Experienced in real-world attack simulations and penetration testing.',
-    image: '/img/roonin.jpeg',
-    linkedin: 'https://www.linkedin.com/in/hüseyin-aydin-697035295/',
-  },
-  {
     name: 'Miela',
     role: 'Management Member',
     bio: 'Cybersecurity Researcher',
@@ -95,32 +82,39 @@ const team: TeamMember[] = [
     linkedin: 'https://www.linkedin.com/in/melisa-sudenaz-ar%C4%B1k-3727a32b8?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
   },
   {
-    name: '0xH4mS1',
-    role: 'CTF Team Leader',
-    bio: 'Cybersecurity researcher focused on Threat Intelligence and Security Operations. Passionate about threat detection, incident response, and proactive defense. Actively contributes to open-source projects, engages in software development, and regularly participates in Capture the Flag (CTF) challenges to enhance both offensive and defensive skills.',
-    image: '/img/hamsi.jpeg',
-    linkedin: 'https://www.linkedin.com/in/aysebyrktr',
+    name: 'oZZy',
+    role: 'Champions Team Member',
+    bio: '',
+    image: '/img/ozzy.jpg',
+    linkedin: 'https://www.linkedin.com/in/ozan-ismail-çolhak-119003313/',
   },
   {
-    name: 'Toygun',
-    role: 'CTI Team Leader',
-    bio: 'At (XTI) Company, our team investigated ransomware and APT groups. As a Cyber Threat Intelligence Analyst, I provided specialized CTI support and conducted malware analysis. My knowledge of Web Applications and Secure Shell, combined with a background in Computer Engineering, enhanced our threat mitigation efforts.',
-    image: '/img/Rakun.jpg',
-    linkedin: 'https://www.linkedin.com/in/ibrahimsaidkavas'
+    name: 'Ferhat_krs0',
+    role: 'Champions Team Member',
+    bio: 'Vulnerability Researcher focused on Web Application Vulnerabilities',
+    image: '/img/ferhat_krs0.jpg',
+    linkedin: 'https://www.linkedin.com/in/ferhat-karasu-534882204/',
   },
   {
-    name: 'Hilal',
-    role: 'Management Member',
-    bio: 'I am a cyber security researcher focused on threat analysis, malware investigation, and defense technologies. I work on identifying emerging threats, analyzing them, and developing proactive security solutions.',
-    image: '/img/sadece_birisi.jpg',
-    linkedin: 'https://www.linkedin.com/in/hilalavsar/'
+    name: 'ss',
+    role: 'Champions Team Member',
+    bio: 'Cyber Security Analyst',
+    image: '/img/emre.jpg',
+    linkedin: 'https://www.linkedin.com/in/güven-emre-keskin-553160294/',
   },
   {
-    name: 'Nörs',
-    role: 'Management Member',
-    bio: 'An independent SOC researcher with a strong interest in cybersecurity. Focused on deepening knowledge in threat detection, analysis, and incident response. Actively explores SIEM technologies to enhance detection capabilities and continuously works on improving both technical expertise and analytical thinking through hands-on projects and research.',
-    image: '/img/nors1.jpg',
-    linkedin: 'https://www.linkedin.com/in/nur-sena-avci'
+    name: 'EnaY',
+    role: 'Champions Team Member',
+    bio: '',
+    image: '/img/if.jpg',
+    linkedin: 'https://www.linkedin.com/in/enay/',
+  },
+  {
+    name: 'sisi',
+    role: 'Champions Team Member',
+    bio: '',
+    image: '/img/simi.jpg',
+    linkedin: 'https://www.linkedin.com/in/simge-yigit-simiv/',
   },
 ];
 
@@ -168,6 +162,9 @@ export const CoreTeam: React.FC = () => {
                     src={member.image}
                     alt={member.name}
                     className="w-full h-full object-cover rounded-full"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = 'https://ui-avatars.com/api/?name=' + member.name + '&background=000&color=0ff';
+                    }}
                   />
                 </div>
                 <h2 className="text-lg font-bold mb-2 text-center font-mono text-white drop-shadow">{member.name}</h2>
@@ -195,7 +192,6 @@ export const CoreTeam: React.FC = () => {
             </CardAnimation>
           ))}
         </motion.div>
-        {/* Araya boşluk ekle */}
         <div className="h-8 md:h-12" />
         <div
           className="mx-auto max-w-6xl w-full flex gap-6 sm:gap-8 px-10 sm:px-8 md:px-12 lg:px-20 overflow-x-auto scrollbar-hide scroll-smooth"
@@ -203,7 +199,6 @@ export const CoreTeam: React.FC = () => {
           <MentorSlider mentors={mentors} />
         </div>
       </div>
-      {/* Modal for expanded card */}
       <AnimatePresence>
         {openIndex !== null && (
           <>
@@ -233,6 +228,9 @@ export const CoreTeam: React.FC = () => {
                     src={team[openIndex].image}
                     alt={team[openIndex].name}
                     className="w-full h-full object-cover rounded-full"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = 'https://ui-avatars.com/api/?name=' + team[openIndex].name + '&background=000&color=0ff';
+                    }}
                   />
                 </div>
                 <h2 className="text-2xl font-bold mb-1 text-center font-mono text-white drop-shadow">{team[openIndex].name}</h2>
@@ -252,30 +250,30 @@ export const CoreTeam: React.FC = () => {
       </AnimatePresence>
 
       <motion.section 
-  initial={{ opacity: 0, y: 20 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ delay: 0.5 }}
-  className="mt-16 w-full"
->
-  <div className="container mx-auto px-4 max-w-6xl">
-    <div className="bg-black border-2 border-custom-cyan/40 rounded-2xl shadow-[0_0_16px_2px_rgba(0,255,255,0.10)] hover:border-custom-fusion hover:shadow-[0_0_32px_8px_rgba(0,255,255,0.25)] p-8 flex flex-col items-center text-center transition-all duration-300">
-      <h2 className="text-2xl font-bold text-white mb-4 font-mono drop-shadow">Join Our Mission_</h2>
-      <p className="font-mono text-custom-cyan/90 mb-6 max-w-2xl">
-        Be part of our growing community — get updates on events, collaborate with mentors, 
-        and contribute to shaping the future of cybersecurity.
-      </p>
-      <a
-        href="https://t.me/+IHIHLmSbufxlNjdk"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="click-ripple interactive-hover inline-flex items-center px-6 py-3 bg-custom-cyan/10 border border-custom-cyan/50 rounded-lg font-mono text-custom-cyan hover:bg-custom-cyan/20 hover:border-white hover:text-white transition-all"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.5 }}
+        className="mt-16 w-full"
       >
-        Join Community
-        <ArrowRight className="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" />
-      </a>
-    </div>
-  </div>
-</motion.section>
+        <div className="container mx-auto px-4 max-w-6xl">
+          <div className="bg-black border-2 border-custom-cyan/40 rounded-2xl shadow-[0_0_16px_2px_rgba(0,255,255,0.10)] hover:border-custom-fusion hover:shadow-[0_0_32px_8px_rgba(0,255,255,0.25)] p-8 flex flex-col items-center text-center transition-all duration-300">
+            <h2 className="text-2xl font-bold text-white mb-4 font-mono drop-shadow">Join Our Mission_</h2>
+            <p className="font-mono text-custom-cyan/90 mb-6 max-w-2xl">
+              Be part of our growing community — get updates on events, collaborate with mentors, 
+              and contribute to shaping the future of cybersecurity.
+            </p>
+            <a
+              href="https://t.me/+IHIHLmSbufxlNjdk"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="click-ripple interactive-hover inline-flex items-center px-6 py-3 bg-custom-cyan/10 border border-custom-cyan/50 rounded-lg font-mono text-custom-cyan hover:bg-custom-cyan/20 hover:border-white hover:text-white transition-all"
+            >
+              Join Community
+              <ArrowRight className="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" />
+            </a>
+          </div>
+        </div>
+      </motion.section>
 
     </div>
   );
