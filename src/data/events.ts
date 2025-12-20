@@ -452,6 +452,37 @@ If you’re curious about offensive security techniques and network manipulation
     'Real-world scenarios and defense mechanisms',
     'Q&A session with İsa Ergişi'
   ]
+  },
+  {
+  id: '14',
+  title: 'Cyber Security & Artificial Intelligence',
+  description: `Artificial intelligence is no longer just a productivity tool; it is a game-changer for cyber security. But is AI keeping us safer, or is it opening the door to new risks?
+
+Systems that detect attacks within seconds and algorithms that uncover threats beyond human recognition have become a part of our lives. In this webinar, we explore how security is being redefined in the age of artificial intelligence.`,
+  date: new Date('2025-12-20'),
+  time: '21:00',
+  duration: '1-2 hours',
+  type: 'webinar',
+  difficulty: 'beginner',
+  instructor: 'Cemal Taner – Network & Security Solutions Architect',
+  location: 'online',
+  meetingLink: 'https://lnkd.in/egHnDrqC',
+  tags: [
+    'artificial-intelligence',
+    'ai-security',
+    'cybersecurity',  
+    'youtube-stream',
+    'gallipoli'
+  ],
+  isPast: isEventPast(new Date('2025-12-20')),
+  prerequisites: ['Interest in AI and basic cybersecurity awareness'],
+  agenda: [
+    'The evolution of AI in the cyber landscape',
+    'AI-powered threat detection and response',
+    'New risks: Adversarial AI and automated attacks',
+    'The future of security architecture with AI',
+    'Q&A session with Cemal Taner'
+  ]
 }
 
 ];
