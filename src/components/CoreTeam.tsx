@@ -110,7 +110,7 @@ const team: TeamMember[] = [
     linkedin: 'https://www.linkedin.com/in/enay/',
   },
   {
-    name: 'sisi',
+    name: 'simi',
     role: 'Champions Team Member',
     bio: '',
     image: '/img/simi.jpg',
