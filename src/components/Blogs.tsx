@@ -13,6 +13,30 @@ interface Blog {
 
 const blogs: Blog[] = [
   {
+  slug: 'challange2',
+  title: 'Challange002.apk Frida ile Çözümü (Android Runtime Hooking)',
+  excerpt:'Bu yazıda Challange002.apk üzerinde jadx ile flag mekanizmasını analiz ediyor ve Frida kullanarak get_flag() fonksiyonunu runtime’da doğrudan çağırarak flag’i elde ediyoruz.',
+  author: 'Ozan İsmail Çolhak',
+  },
+  {
+  slug: 'challange1',
+  title: 'Challange001.apk Frida ile Çözümü (Android Hooking)',
+  excerpt:'Bu yazıda Challange001.apk üzerinde Frida kurulumu, frida-server seçimi, PID doğrulaması ve input kontrolünü hook ederek flag’e giden yolu adım adım inceliyoruz.',
+  author: 'Ozan İsmail Çolhak',
+  },  
+  {
+  slug: 'uncrackable2',
+  title: 'OWASP UnCrackable Level 2 Çözümü: Android Native Reverse Engineering',
+  excerpt: 'Bu makalede UnCrackable-Level2 Android challenge’ını çözüyoruz. Native (.so) kütüphane analizi, JNI fonksiyonları ve Ghidra kullanarak secret string’in elde edilmesini adım adım inceliyoruz.',
+  author: 'Ozan İsmail Çolhak',
+  },
+  {
+  slug: 'uncrackable',
+  title: 'OWASP UnCrackable Level 1 Çözümü: Android Reverse Engineering',
+  excerpt: 'Bu makalede UnCrackable-Level1 Android challenge’ını adım adım çözüyoruz. Root kontrolü bypass, smali manipülasyonu, APK yeniden imzalama ve AES ile şifrelenmiş secret string’in çözümünü içerir.',
+  author: 'Ozan İsmail Çolhak',
+  },
+  {
     slug: 'volatility-dumpme-writeup',
     title: 'DumpMe Memory Forensics Challenge Write-Up',
     excerpt: 'Bu yazıda, CyberDefenders DumpMe bellek analizi senaryosunu Volatility 3 ve Volatility 2 kullanarak adım adım çözüyoruz. RAM dökümünden sistem ve zararlı analizini içerir.',

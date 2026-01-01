@@ -452,7 +452,73 @@ If you’re curious about offensive security techniques and network manipulation
     'Real-world scenarios and defense mechanisms',
     'Q&A session with İsa Ergişi'
   ]
-}
+  },
+  {
+  id: '14',
+  title: 'Cyber Security & Artificial Intelligence',
+  description: `Artificial intelligence is no longer just a productivity tool; it is a game-changer for cyber security. But is AI keeping us safer, or is it opening the door to new risks?
+
+Systems that detect attacks within seconds and algorithms that uncover threats beyond human recognition have become a part of our lives. In this webinar, we explore how security is being redefined in the age of artificial intelligence.`,
+  date: new Date('2025-12-20'),
+  time: '21:00',
+  duration: '1-2 hours',
+  type: 'webinar',
+  difficulty: 'beginner',
+  instructor: 'Cemal Taner – Network & Security Solutions Architect',
+  location: 'online',
+  meetingLink: 'https://lnkd.in/egHnDrqC',
+  tags: [
+    'artificial-intelligence',
+    'ai-security',
+    'cybersecurity',  
+    'youtube-stream',
+    'gallipoli'
+  ],
+  isPast: isEventPast(new Date('2025-12-20')),
+  prerequisites: ['Interest in AI and basic cybersecurity awareness'],
+  agenda: [
+    'The evolution of AI in the cyber landscape',
+    'AI-powered threat detection and response',
+    'New risks: Adversarial AI and automated attacks',
+    'The future of security architecture with AI',
+    'Q&A session with Cemal Taner'
+  ]
+},
+{
+    id: '15',
+    title: 'Blockchain & Blockchain Security',
+    description: `"Is Blockchain just about cryptocurrency, or is it the secure internet of the future?"
+
+In an era where digital assets and decentralization are on the rise, understanding system security has become a necessity.
+
+In this webinar, we will discuss blockchain security layers, smart contract vulnerabilities, and evolving cybersecurity standards.`,
+    date: new Date('2026-01-09'),
+    time: '21:00',
+    duration: '1-2 hours',
+    type: 'webinar',
+    difficulty: 'beginner',
+    instructor: 'Samet Dökmeci – Chainlink Labs | Türkiye Community Manager',
+    location: 'online',
+    meetingLink: 'https://youtube.com/@gallipolixyz',
+    tags: [
+      'blockchain',
+      'web3',
+      'smart-contracts',
+      'decentralization',
+      'security',
+      'youtube-stream',
+      'gallipoli'
+    ],
+    isPast: isEventPast(new Date('2026-01-09')),
+    prerequisites: ['Interest in blockchain technology and web3 security'],
+    agenda: [
+      'Security Layers of Blockchain Technology',
+      'Smart Contract Vulnerabilities',
+      'Decentralization and System Security',
+      'Evolving Cybersecurity Standards',
+      'Q&A Session with Samet Dökmeci'
+    ]
+  }
 
 ];
 
