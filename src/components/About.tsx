@@ -18,6 +18,35 @@ export function About() {
           </div>
         </section>
 
+        {/* Video Gallery */}
+<section className="mb-20 bg-custom-cyan/5 rounded-xl p-8 backdrop-blur-sm">
+  <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
+    What Experts Say About Gallipoli_
+  </h2>
+
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+    {[
+      "y_DTZ1oLcJs",
+      "JBwqzM-Skag",
+      "9lkQj2xUujk"
+    ].map((id) => (
+      <div
+        key={id}
+        className="relative w-full rounded-xl overflow-hidden border border-custom-cyan/30"
+        style={{ paddingTop: "56.25%" }}
+      >
+        <iframe
+          className="absolute top-0 left-0 w-full h-full"
+          src={`https://www.youtube-nocookie.com/embed/${id}`}
+          title="Gallipoli Video"
+          frameBorder={0}
+          allowFullScreen
+        />
+      </div>
+    ))}
+  </div>
+</section>
+
         {/* Our Story */}
         <section className="mb-20 bg-custom-cyan/5 rounded-xl p-8 backdrop-blur-sm">
           <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">Our Story_</h2>

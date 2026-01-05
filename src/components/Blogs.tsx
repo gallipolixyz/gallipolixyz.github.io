@@ -12,6 +12,12 @@ interface Blog {
 }
 
 const blogs: Blog[] = [
+    {
+    slug: 'case-insensitive-routing-bypass',
+    title: 'Case-Insensitive Routing Bypass in Express.js Application',
+    excerpt: 'Bu görevdeki zafiyet, case-insensitive routing ile case-sensitive erişim kontrolü arasındaki tutarsızlıktan kaynaklanan bir Authentication Bypass örneğidir.',
+    author: 'Ferhat Karasu',
+  },
   {
   slug: 'challange2',
   title: 'Challange002.apk Frida ile Çözümü (Android Runtime Hooking)',
@@ -107,12 +113,6 @@ const blogs: Blog[] = [
     title: 'Mavi Takım Başlangıç Rehberi',
     excerpt: 'Mavi takım, siber güvenlik alanında savunma odaklı bir yaklaşımdır. Bu rehberde, mavi takımın temel ilkelerini ve nasıl etkili bir şekilde çalıştığını keşfedeceğiz.',
     author: 'Nur Sena Avcı',
-  },
-  {
-    slug: 'case-insensitive-routing-bypass',
-    title: 'Case-Insensitive Routing Bypass in Express.js Application',
-    excerpt: 'Bu görevdeki zafiyet, case-insensitive routing ile case-sensitive erişim kontrolü arasındaki tutarsızlıktan kaynaklanan bir Authentication Bypass örneğidir.',
-    author: 'Ferhat Karasu',
   },
 ];
 
