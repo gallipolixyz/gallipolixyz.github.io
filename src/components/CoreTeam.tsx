@@ -89,7 +89,7 @@ const team: TeamMember[] = [
     linkedin: 'https://www.linkedin.com/in/ozan-ismail-çolhak-119003313/',
   },
   {
-    name: 'Ferhat_krs0',
+    name: 'ferhatkrs0',
     role: 'Champions Team Member',
     bio: 'Vulnerability Researcher focused on Web Application Vulnerabilities',
     image: '/img/ferhat_krs0.jpg',
