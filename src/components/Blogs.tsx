@@ -12,6 +12,24 @@ interface Blog {
 }
 
 const blogs: Blog[] = [
+  {
+    slug: 'code-challenge-3',
+    title: 'Code Challenge 3',
+    excerpt: 'Bu challenge’da Express.js uygulaması, `/secret` path’i altındaki endpoint’leri  bir middleware ile token kontrolüne tabi tutmaktadır.',
+    author: 'Ferhat Karasu',
+  },
+      {
+    slug: 'code-challenge-2',
+    title: 'Code Challenge 2',
+    excerpt: 'Bu challenge’da kullanıcıdan alınan path parametresi, internal bir API’ye HTTP isteği göndermek için kullanılmaktadır. Kodda bazı kontroller bulunsa da, bu kontroller güvenli değildir ve SSRF (Server-Side Request Forgery) zafiyetine yol açmaktadır.',
+    author: 'Ferhat Karasu',
+  },
+    {
+    slug: 'code-challenge-1',
+    title: 'Code Challenge 1',
+    excerpt: 'Bu challenge’da Java ile yazılmış basit bir Admin Panel uygulamasında bulunan bir yetkilendirme hatası incelenmektedir.Uygulamanın amacı, yalnızca admin rolüne sahip kullanıcıların başka kullanıcıları silebilmesini sağlamaktır.',
+    author: 'Ferhat Karasu',
+  },
     {
     slug: 'case-insensitive-routing-bypass',
     title: 'Case-Insensitive Routing Bypass in Express.js Application',
