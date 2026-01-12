@@ -1,6 +1,6 @@
 # Android Runtime: Dalvik ve ART Mimarileri
 
-|  |  |  |  |  | ![](../blogs/img/android-runTime/1.png) |
+|  |  |  |  |  | ![](/blogs/img/android-runTime/1.png) |
 |--|--|--|--|--|:--:|
 
 
@@ -12,7 +12,7 @@ Android Runtime, uygulama kodlarını cihazın işlemcisi tarafından çalışt�
 
 ## 2.Dalvik ve Android Runtime (ART): Çalışma Prensipleri
 
-|  |  |  |  |  | ![](../blogs/img/android-runTime/2.png) |
+|  |  |  |  |  | ![](/blogs/img/android-runTime/2.png) |
 |--|--|--|--|--|:--:|
 
 
@@ -26,7 +26,7 @@ Android 5.0 (Lollipop) sürümünden itibaren Dalvik’in yerini alan ART, uygul
 
 ### 3. Dalvik ve ART Mimarileri Arasındaki Temel Farklılıklar
 
-|  |  |  |  |  | ![](../blogs/img/android-runTime/3.png) |
+|  |  |  |  |  | ![](/blogs/img/android-runTime/3.png) |
 |--|--|--|--|--|:--:|
 
 
@@ -66,7 +66,7 @@ Dalvik: Uygulama güncellemeleri daha hızlı yüklenebilir.
 ART: İlk yüklemede uygulamayı derlediği için daha uzun sürebilir.
 
 ## 4. Donanım Üzerindeki Etkileri
-|  |  |  |  |  | ![](../blogs/img/android-runTime/4.png) |
+|  |  |  |  |  | ![](/blogs/img/android-runTime/4.png) |
 |--|--|--|--|--|:--:|
 
 #### 4.1 İşlemci & Bellek Kullanımı
