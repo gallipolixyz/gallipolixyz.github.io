@@ -1,6 +1,6 @@
 # Mobil Uygulama Güvenliği Neden Önemlidir? Günlük Hayatımızdaki Riskler ve Örnekler
 
-|  |  |  |  |  | ![](../blogs/img/mobilsecurity-owasp/resim1.png) |
+|  |  |  |  |  | ![](/blogs/img/mobilsecurity-owasp/resim1.png) |
 |--|--|--|--|--|:--:|
 
 
