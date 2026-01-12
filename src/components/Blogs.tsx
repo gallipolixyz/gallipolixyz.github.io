@@ -31,6 +31,31 @@ const blogs: Blog[] = [
     author: 'Ferhat Karasu',
   },
     {
+    slug: 'allsafe',
+    title: 'AllSafe Write Up',
+    excerpt: 'Allsafe Lab, içerisinde çeşitli zorluklar barındıran ve farklı güvenlik açığı kategorilerini kapsayan bir APK uygulamasıdır.',
+    author: 'Simge Yiğit',
+  },
+
+  {
+    slug: 'android-101',
+    title: 'Android Security 101: Analiz Yöntemleri ve Araçları',
+    excerpt: 'Mobil uygulama güvenliğinde başarı, doğru analiz yöntemlerini ve araçlarını etkin kullanmaktan geçer. Android Security 101 serisinin devamı niteliğindeki bu yazıda, analiz sürecini Statik ve Dinamik olmak üzere iki ana başlık altında inceliyoruz.',
+    author: 'Simge Yiğit',
+  },
+       {
+    slug: 'android-runtime',
+    title: 'Android Runtime: Dalvik ve ART Mimarileri',
+    excerpt: 'Bu yazı mobil uygulamaların gelişim sürecinde bir dönüm noktası olan Dalvik’ten ART mimarisine geçişin nedenlerini, sistem kaynaklarının yönetimini ve modern Android cihazlardaki çalışma prensiplerini ele alıyor.',
+    author: 'Simge Yiğit',
+  },
+      {
+    slug: 'mobilsecurity-owasp10',
+    title: 'Mobil Uygulama Güvenliği Neden Önemlidir? Günlük Hayatımızdaki Riskler ve Örnekler',
+    excerpt: 'Bu yazı, mobil uygulamaların günlük hayattaki kullanımının beraberinde getirdiği güvenlik risklerini ve bu risklerin neden ciddiye alınması gerektiğini özetlemektedir.OWASP Mobile Top 10 üzerinden örneklerlendirilmiştir.',
+    author: 'Simge Yiğit',
+  },
+    {
     slug: 'case-insensitive-routing-bypass',
     title: 'Case-Insensitive Routing Bypass in Express.js Application',
     excerpt: 'Bu görevdeki zafiyet, case-insensitive routing ile case-sensitive erişim kontrolü arasındaki tutarsızlıktan kaynaklanan bir Authentication Bypass örneğidir.',
