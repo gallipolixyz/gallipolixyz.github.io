@@ -1,6 +1,6 @@
 # Android Security 101: Analiz Yöntemleri ve Araçları
 
-|  |  |  |  |  | ![](../blogs/img/android-101/1.png) |
+|  |  |  |  |  | ![](/blogs/img/android-101/1.png) |
 |--|--|--|--|--|:--:|
 
 Mobil uygulama güvenliğinde başarı, doğru analiz yöntemlerini ve araçlarını etkin kullanmaktan geçer. Android Security 101 serisinin devamı niteliğindeki bu yazıda, analiz sürecini Statik ve Dinamik olmak üzere iki ana başlık altında inceliyoruz.
@@ -20,7 +20,7 @@ Ayrıca bu süreçte araçlar her zaman mutlak bir zorunluluk değildir (jadx da
 
 Örnek :
 
-![Allsafe apk](../blogs/img/android-101/2.png)
+![Allsafe apk](/blogs/img/android-101/2.png)
 
 APK dosyalarını unzip ederek açmak yeterli değildir; çünkü bazı dosyalar bu şekilde rahat okunamaz durumda kalır.
 
@@ -56,7 +56,7 @@ java -jar uber-apk-signer.jar - apk /path/to/apk
 ### Jadx — Dex’ten Java’ya Dönüştürücü (Decompiler)
 
 Olduça sık kullanılan reverse araçlarından biride Jadx dır. JADX (Dex to Java Decompiler), Android uygulamalarında bulunan .DEX dosyalarını Java kaynak koduna dönüştürmek için kullanılan bir decompiler aracıdır. Hem komut satırı hem de GUI sürümü bulunur.
-![](../blogs/img/android-101/3.png)
+![](/blogs/img/android-101/3.png)
 
 Statik analiz sırasında JADX ve apktool genellikle birbirini tamamlayacak şekilde kullanılabilir.
 
@@ -76,7 +76,7 @@ MobSF; Android ve iOS uygulamalarının güvenlik analizinde, manuel incelemeye 
 
 MobSF de sızma testinin keşif (reconnaissance) aşamasında kritiktir. Uygulamanın manifest dosyası, izinleri, kaynak kod içine gömülü (hardcoded) hassas verileri ve API anahtarları saniyeler içinde raporlanır.
 
-![](../blogs/img/android-101/4.png)
+![](/blogs/img/android-101/4.png)
 
 
 
@@ -88,7 +88,7 @@ Yanlızca uygulamanın kaynak kodunu okumak (statik analiz ) yeterli değildir �
 
 Android SDK ile birlikte gelen ADB (Android Debug Bridge), bilgisayarınız ile Android cihazınız arasında köprü görevi gören temel bir araçtır. Genellikle emülatör, USB veya Wi-Fi üzerinden bağlı cihazlarda uygulama testi ve hata ayıklama işlemleri için kullanılır. Bağlı cihazları listelemek için adb devices komutunu, cihazlar hakkında daha detaylı bilgi almak için ise -l parametresini kullanabilirsiniz.
 
-![](../blogs/img/android-101/5.png)
+![](/blogs/img/android-101/5.png)
 
 ADB ile yapılabilecek en iyi şeylerden biri logları incelemektir.
 
@@ -109,7 +109,7 @@ adb logcat --pid=$(adb shell pidof -s infosecadventures.allsafe)"
 Bu komut zinciri, çalışan uygulamanın İşlem Kimliğini (PID) dinamik olarak tespit eder ve sadece o uygulamaya ait logları temiz bir şekilde karşınıza getirir. Böylece samanlıkta iğne aramak yerine, doğrudan uygulamanın ürettiği verilere odaklanabilirsiniz.
 
 Örneğin:
-![](../blogs/img/android-101/6.png)
+![](/blogs/img/android-101/6.png)
 
 ### ADB İle Çalışma Zamanı (Runtime) Analizi: /data/data Klasörü
 
@@ -170,7 +170,7 @@ Android 7.0 (Nougat) ve sonrası sürümlerde, uygulamalar varsayılan olarak ku
 
 İlk adımda sertifikayı indirmeliyiz .Bunun için yerel ağda 8080 portunda (veya yapılandırdığınız portta) dinleme yapan Burp Suite servisinin web arayüzüne http://burp üzerinden erişiyoruz. Buradaki CA Certificate bağlantısı aracılığıyla sertifikayı lokalimize indiriyoruz.
 
-![](../blogs/img/android-101/7.png)
+![](/blogs/img/android-101/7.png)
 
 Daha sonra sertifikayı emülatörümüze yüklemek için formatını düzenlememiz gerekiyor.Çünkü Android sistemi, sertifikaları tanımak için özel bir isimlendirme formatı (Hash Değeri) ve .0 uzantısı talep eder. İndirdiğimiz .der uzantılı sertifikayı sistemin anlayacağı dile çevirmemiz gerekiyor.
 
@@ -204,11 +204,11 @@ chmod 644 /system/etc/security/cacerts/9a5ba575.0
 ```
 terminalden kontrol ettiğimizde dosya üzerindeki izinleri böyle gözükmeli, eğer bu izni vermezseniz sistem sertifikayı okuyamaz.
 
-![](../blogs/img/android-101/8.png)
+![](/blogs/img/android-101/8.png)
 
 Sertifikanın yüklenişini doğrulamak için emülatörümüzden ; Settings > Security & Privacy > More… > Encryption & Credentials > Trusted Credentials > SYSTEM takip edersek sertifikayı görmemiz gerekir.
 
-![](../blogs/img/android-101/9.png)
+![](/blogs/img/android-101/9.png)
 
 Sertifikamızı sisteme tanıttıktan sonra, Android emülatör üzerinden yapılan ağ trafiğini bilgisayarımızdaki Burp Suite aracılığıyla analiz edebiliriz. Bunun için Burp Suite ve emülatör tarafında uygun proxy yapılandırmasının yapılması yeterlidir.
 
@@ -223,7 +223,7 @@ Bind to address: All interfaces
 Port: 8081
 
 Bu ayar, Burp Suite’in emülatörden gelecek HTTP/HTTPS trafiğini dinlemesini sağlar.
-![](../blogs/img/android-101/10.png)
+![](/blogs/img/android-101/10.png)
 
 Android emülatörde proxy yapılandırmasını aşağıdaki şekilde yapıyoruz:
 
@@ -234,7 +234,7 @@ Proxy type: Manual
 Proxy hostname:127.0.0.1
 
 Proxy port: 8081
-![](../blogs/img/android-101/11.png)
+![](/blogs/img/android-101/11.png)
 
 Son olarak Tüneli Oluşturun: Terminal üzerinden emülatörün 8081 portunu, bilgisayarınızın 8081 portuna bağlayın:
 
@@ -245,7 +245,7 @@ adb reverse tcp:8081 tcp:8081
 bu şekilde bağlantıyı kurmuş olduk.Artık burpsuite üzerinden trafiği inceleyebiliriz.
 
 ## FRİDA
-![](../blogs/img/android-101/12.png)
+![](/blogs/img/android-101/12.png)
 Frida, çalışan bir uygulamayı runtime sırasında enjekte ederek analiz etmeye ve manipüle etmeye yarayan dinamik enstrümantasyon aracıdır. Frida’nın çalışma mantığını anlamak için sistemi üç temel bileşen üzerinden düşünmek gerekir: Client, Server ve iletişim katmanı.
 
 ### Frida Client
