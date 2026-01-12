@@ -8,7 +8,7 @@ Allsafe Lab, içerisinde çeşitli zorluklar barındıran ve farklı güvenlik a
 ## 1.Insecure Logging
 ![](/blogs/img/Allsafe/2.png) 
 Insecure Logging, bir uygulamanın çalışma sırasında oluşturduğu log kayıtlarına hassas verileri herhangi bir koruma mekanizması olmadan yazması durumunu ifade eder. Bu durum, özellikle yetkisiz kişilerin loglara erişebilmesi hâlinde ciddi bilgi sızıntılarına yol açabilir.Lab ortamında uygulama loglarının logcat üzerinden izlenebildiği görülmüştür.
-![](../blogs/img/Allsafe/3.png) 
+![](/blogs/img/Allsafe/3.png) 
 
 
 
