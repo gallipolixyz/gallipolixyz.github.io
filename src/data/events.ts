@@ -518,6 +518,40 @@ In this webinar, we will discuss blockchain security layers, smart contract vuln
       'Evolving Cybersecurity Standards',
       'Q&A Session with Samet Dökmeci'
     ]
+  },
+  {
+    id: '16',
+    title: 'AI Security',
+    description: `"Is Artificial Intelligence merely a technological revolution, or does it represent a new security risk?"
+
+In an era where algorithms govern decision-making processes, understanding the security of AI systems has become a necessity rather than an option.
+
+In this webinar, we will explore model vulnerabilities, data privacy risks, and the next-generation cybersecurity standards evolving alongside artificial intelligence.`,
+    date: new Date('2026-01-17'),
+    time: '21:00',
+    duration: '1-2 hours',
+    type: 'webinar',
+    difficulty: 'beginner',
+    instructor: 'Kadir Arslan - Senior Security Engineer',
+    location: 'online',
+    meetingLink: 'https://youtube.com/@gallipolixyz',
+    tags: [
+      'ai-security',
+      'artificial-intelligence',
+      'machine-learning',
+      'model-security',
+      'cybersecurity',
+      'youtube-stream',
+      'gallipoli'
+    ],
+    isPast: isEventPast(new Date('2026-01-17')),
+    prerequisites: ['Interest in artificial intelligence and cybersecurity'],
+    agenda: [
+      'Security Layers of AI Systems',
+      'Machine Learning Model Vulnerabilities',
+      'AI and Emerging Cybersecurity Standards',
+      'Q&A Session with Kadir Arslan'
+    ]
   }
 
 ];
