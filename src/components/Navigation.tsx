@@ -198,8 +198,8 @@ export function Navigation() {
           </div>
         </div>
 
-        <motion.div
-          className="md:hidden"
+  <motion.div
+  className={`md:hidden ${isMenuOpen ? 'pointer-events-auto' : 'pointer-events-none'}`}
           initial={{ height: 0, opacity: 0 }}
           animate={{
             height: isMenuOpen ? "auto" : 0,
