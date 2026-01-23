@@ -13,7 +13,7 @@ Ancak URL oluşturma şekli nedeniyle bu domain kısıtlaması **bypass edilebil
 ## Zafiyet Türü
 
 - Improper URL Validation  
-- SSRF (Domain Bypass)
+- Blind SSRF (Domain Bypass)
 
 ---
 
@@ -53,16 +53,35 @@ Oluşan URL:
 http://internal-api.local.evil.com/
 ```
 
-Bu URL parse edildiğinde:
-- `internal-api.local` →_unlock user-info olarak değerlendirilir_
-- Gerçek hedef → `evil.com`
+Bu URL parse edildiğinde uygulama:
+
+- İsteğin hâlâ `internal-api.local` sınırları içinde olduğunu varsayar
+- Ancak DNS çözümleme ve HTTP yönlendirme aşamasında
+  istek **saldırgan kontrollü bir host’a** yönlendirilebilir
+
+Bu sayede uygulama, internal servisler için güvenli kabul edilen
+HTTP isteğini (ve varsa authorization header’larını)
+**external bir domaine** göndermiş olur.
 
 ---
 
 ## Sonuç
 
-Uygulama, isteği `internal-api.local` yerine **evil.com** adresine gönderir.  
-Bu sayede domain kısıtlaması tamamen bypass edilmiş olur.
+Bu zafiyet, doğrudan response içeriği elde edilmesini sağlamasa da
+**blind SSRF** kategorisindedir.
+
+Domain kısıtlamasının bypass edilmesiyle birlikte:
+
+- Uygulamanın güvenli kabul ettiği trust boundary bozulur
+- Authorization header veya service token’lar external host’a taşınabilir
+- Internal-only olması gereken HTTP istekleri dış dünyaya çıkar
+- Internal servislerin **DNS davranışlarını** gözlemleyerek
+  network topolojisi hakkında bilgi toplayabilir
+- Internal network üzerinde **port taraması** yapabilir  
+  (farklı portlara yapılan isteklerin timeout / response süresi farkları
+  üzerinden servis varlığı tespit edilebilir)
+- Uygulamanın arkasında bulunan **WAF / Reverse Proxy arkasındaki gerçek IP adreslerini**
+  ortaya çıkarabilir
 
 ---
 
