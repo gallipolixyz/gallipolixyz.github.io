@@ -15,13 +15,6 @@ const mentors = [
     link: '/coming-soon',
   },
   {
-    name: 'İbrahim Said Kavas',
-    role: 'CTI Team Mentor',
-    bio: 'APT&Ransom Threat Analyst',
-    image: '/img/ibrahim-said.jpg',
-    link: '/coming-soon',
-  },
-  {
     name: 'Evren Yalçın',
     role: 'AI Security Team Mentor',
     bio: 'AI Red Teaming | Application Security',
@@ -101,13 +94,6 @@ const team: TeamMember[] = [
     bio: 'Cyber Security Analyst',
     image: '/img/emre.jpg',
     linkedin: 'https://www.linkedin.com/in/güven-emre-keskin-553160294/',
-  },
-  {
-    name: 'EnaY',
-    role: 'Champions Team Member',
-    bio: '',
-    image: '/img/if.jpg',
-    linkedin: 'https://www.linkedin.com/in/enay/',
   },
   {
     name: 'simi',
@@ -249,7 +235,7 @@ export const CoreTeam: React.FC = () => {
         )}
       </AnimatePresence>
 
-      <motion.section 
+      <motion.section
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5 }}
@@ -259,11 +245,11 @@ export const CoreTeam: React.FC = () => {
           <div className="bg-black border-2 border-custom-cyan/40 rounded-2xl shadow-[0_0_16px_2px_rgba(0,255,255,0.10)] hover:border-custom-fusion hover:shadow-[0_0_32px_8px_rgba(0,255,255,0.25)] p-8 flex flex-col items-center text-center transition-all duration-300">
             <h2 className="text-2xl font-bold text-white mb-4 font-mono drop-shadow">Join Our Mission_</h2>
             <p className="font-mono text-custom-cyan/90 mb-6 max-w-2xl">
-              Be part of our growing community — get updates on events, collaborate with mentors, 
+              Be part of our growing community — get updates on events, collaborate with mentors,
               and contribute to shaping the future of cybersecurity.
             </p>
             <a
-              href="https://t.me/+IHIHLmSbufxlNjdk"
+              href="https://t.me/gallipolixyz"
               target="_blank"
               rel="noopener noreferrer"
               className="click-ripple interactive-hover inline-flex items-center px-6 py-3 bg-custom-cyan/10 border border-custom-cyan/50 rounded-lg font-mono text-custom-cyan hover:bg-custom-cyan/20 hover:border-white hover:text-white transition-all"

@@ -65,7 +65,7 @@ const formatDate = (date: Date) => {
 export function EventDetails() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  
+
   if (!id) {
     return (
       <PageTransition>
@@ -91,8 +91,8 @@ export function EventDetails() {
             <AlertCircle className="w-16 h-16 text-custom-cyan/50 mx-auto mb-4" />
             <h1 className="text-2xl font-bold mb-4">Event Not Found</h1>
             <p className="font-mono text-custom-cyan/70 mb-6">The event you're looking for doesn't exist or has been removed.</p>
-            <Link 
-              to="/events" 
+            <Link
+              to="/events"
               className="click-ripple interactive-hover inline-flex items-center px-4 py-2 bg-custom-cyan/10 border border-custom-cyan/50 rounded font-mono text-custom-cyan hover:bg-custom-cyan/20 hover:border-white hover:text-white transition-all"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
@@ -112,7 +112,7 @@ export function EventDetails() {
       <div className="min-h-screen bg-black text-custom-cyan py-20 overflow-x-hidden">
         <div className="container mx-auto px-2 sm:px-4">
           {/* Back Button */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             className="mb-8"
@@ -130,7 +130,7 @@ export function EventDetails() {
             {/* Main Content */}
             <div className="lg:col-span-2 space-y-6 sm:space-y-8 min-w-0">
               {/* Header */}
-              <motion.section 
+              <motion.section
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 className="bg-black/40 border border-custom-cyan/30 rounded-lg p-4 sm:p-8 backdrop-blur-sm min-w-0 overflow-x-auto"
@@ -167,7 +167,7 @@ export function EventDetails() {
               </motion.section>
 
               {/* Event Details */}
-              <motion.section 
+              <motion.section
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 }}
@@ -221,7 +221,7 @@ export function EventDetails() {
 
               {/* Prerequisites */}
               {event.prerequisites && event.prerequisites.length > 0 && (
-                <motion.section 
+                <motion.section
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2 }}
@@ -241,7 +241,7 @@ export function EventDetails() {
 
               {/* Agenda */}
               {event.agenda && event.agenda.length > 0 && (
-                <motion.section 
+                <motion.section
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 }}
@@ -262,7 +262,7 @@ export function EventDetails() {
               )}
 
               {/* Tags */}
-              <motion.section 
+              <motion.section
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
@@ -285,39 +285,39 @@ export function EventDetails() {
             {/* Sidebar */}
             <div className="space-y-6">
               {/* Registration Card */}
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.2 }}
                 className="bg-black/40 border border-custom-cyan/30 rounded-lg p-6 backdrop-blur-sm sticky top-24"
               >
                 <h3 className="text-xl font-bold text-white mb-4">Join_</h3>
-                
+
                 {isUpcoming ? (
-                      <div className="space-y-4">
-                      
-                        {event.meetingLink && (
-                          <a
-                            href={event.meetingLink}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="click-ripple interactive-hover w-full inline-flex items-center justify-center px-6 py-3 bg-custom-cyan/10 border border-custom-cyan/50 rounded font-mono text-custom-cyan hover:bg-custom-cyan/20 hover:border-white hover:text-white transition-all"
-                          >
-                            Open Event
-                            <ExternalLink className="w-4 h-4 ml-2" />
-                          </a>
-                        )}
-                        
-                        <a
-                          href="https://t.me/+IHIHLmSbufxlNjdk"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="click-ripple interactive-hover w-full inline-flex items-center justify-center px-6 py-3 bg-white/10 border border-white/30 rounded font-mono text-white hover:bg-white/20 hover:border-white transition-all"
-                        >
-                          Join Telegram Group
-                          <ExternalLink className="w-4 h-4 ml-2" />
-                        </a>
-                      </div>
+                  <div className="space-y-4">
+
+                    {event.meetingLink && (
+                      <a
+                        href={event.meetingLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="click-ripple interactive-hover w-full inline-flex items-center justify-center px-6 py-3 bg-custom-cyan/10 border border-custom-cyan/50 rounded font-mono text-custom-cyan hover:bg-custom-cyan/20 hover:border-white hover:text-white transition-all"
+                      >
+                        Open Event
+                        <ExternalLink className="w-4 h-4 ml-2" />
+                      </a>
+                    )}
+
+                    <a
+                      href="https://t.me/gallipolixyz"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="click-ripple interactive-hover w-full inline-flex items-center justify-center px-6 py-3 bg-white/10 border border-white/30 rounded font-mono text-white hover:bg-white/20 hover:border-white transition-all"
+                    >
+                      Join Telegram Group
+                      <ExternalLink className="w-4 h-4 ml-2" />
+                    </a>
+                  </div>
                 ) : (
                   <div className="p-4 bg-white/10 border border-white/30 rounded-lg">
                     <div className="flex items-center gap-2">
@@ -329,7 +329,7 @@ export function EventDetails() {
               </motion.div>
 
               {/* Quick Info */}
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.3 }}

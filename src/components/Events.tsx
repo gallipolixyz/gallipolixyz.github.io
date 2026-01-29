@@ -13,18 +13,18 @@ export function Events() {
 
   const upcomingEvents = getUpcomingEvents();
   const pastEvents = getPastEvents();
-  
+
   const currentEvents = activeTab === 'upcoming' ? upcomingEvents : pastEvents;
 
   const filteredEvents = useMemo(() => {
     return currentEvents.filter(event => {
       const matchesSearch = event.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                           event.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                           event.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
-      
+        event.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        event.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
+
       const matchesType = selectedType === 'all' || event.type === selectedType;
       const matchesDifficulty = selectedDifficulty === 'all' || event.difficulty === selectedDifficulty;
-      
+
       return matchesSearch && matchesType && matchesDifficulty;
     });
   }, [currentEvents, searchTerm, selectedType, selectedDifficulty]);
@@ -36,7 +36,7 @@ export function Events() {
     <div className="min-h-screen bg-black text-custom-cyan py-20">
       <div className="container mx-auto px-4">
         {/* Header */}
-        <motion.section 
+        <motion.section
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           className="mb-12"
@@ -46,13 +46,13 @@ export function Events() {
             <h1 className="text-4xl md:text-5xl font-bold text-center">Events_</h1>
           </div>
           <p className="text-lg font-mono text-custom-cyan/90 text-center max-w-3xl mx-auto">
-            Join our community events to learn, practice, and connect with fellow hackers. 
+            Join our community events to learn, practice, and connect with fellow hackers.
             From hands-on workshops to competitive CTFs, there's always something happening in Gallipoli.
           </p>
         </motion.section>
 
         {/* Stats */}
-        <motion.section 
+        <motion.section
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
@@ -78,7 +78,7 @@ export function Events() {
         </motion.section>
 
         {/* Tabs */}
-        <motion.section 
+        <motion.section
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
@@ -88,21 +88,19 @@ export function Events() {
             <div className="bg-black/40 border border-custom-cyan/30 rounded-lg p-1 backdrop-blur-sm">
               <button
                 onClick={() => setActiveTab('upcoming')}
-                className={`px-6 py-3 font-mono text-sm rounded transition-all ${
-                  activeTab === 'upcoming'
+                className={`px-6 py-3 font-mono text-sm rounded transition-all ${activeTab === 'upcoming'
                     ? 'bg-custom-cyan/20 text-custom-cyan border border-custom-cyan/50'
                     : 'text-custom-cyan/70 hover:text-custom-cyan'
-                }`}
+                  }`}
               >
                 Upcoming ({upcomingEvents.length})
               </button>
               <button
                 onClick={() => setActiveTab('past')}
-                className={`px-6 py-3 font-mono text-sm rounded transition-all ${
-                  activeTab === 'past'
+                className={`px-6 py-3 font-mono text-sm rounded transition-all ${activeTab === 'past'
                     ? 'bg-custom-cyan/20 text-custom-cyan border border-custom-cyan/50'
                     : 'text-custom-cyan/70 hover:text-custom-cyan'
-                }`}
+                  }`}
               >
                 Past ({pastEvents.length})
               </button>
@@ -111,7 +109,7 @@ export function Events() {
         </motion.section>
 
         {/* Filters */}
-        <motion.section 
+        <motion.section
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
@@ -164,7 +162,7 @@ export function Events() {
         </motion.section>
 
         {/* Events Grid */}
-        <motion.section 
+        <motion.section
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
@@ -183,8 +181,8 @@ export function Events() {
                 {searchTerm || selectedType !== 'all' || selectedDifficulty !== 'all'
                   ? 'Try adjusting your filters or search terms.'
                   : activeTab === 'upcoming'
-                  ? 'No upcoming events scheduled yet. Check back soon!'
-                  : 'No past events to display.'
+                    ? 'No upcoming events scheduled yet. Check back soon!'
+                    : 'No past events to display.'
                 }
               </p>
             </div>
@@ -193,7 +191,7 @@ export function Events() {
 
         {/* Call to Action */}
         {activeTab === 'upcoming' && upcomingEvents.length > 0 && (
-          <motion.section 
+          <motion.section
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
@@ -201,11 +199,11 @@ export function Events() {
           >
             <h2 className="text-2xl font-bold text-white mb-4">Don't Miss Out!</h2>
             <p className="font-mono text-custom-cyan/90 mb-6 max-w-2xl mx-auto">
-              Join our Telegram community to get notified about new events, receive reminders, 
+              Join our Telegram community to get notified about new events, receive reminders,
               and connect with other participants before events start.
             </p>
             <a
-              href="https://t.me/+IHIHLmSbufxlNjdk"
+              href="https://t.me/gallipolixyz"
               target="_blank"
               rel="noopener noreferrer"
               className="click-ripple interactive-hover inline-flex items-center px-6 py-3 bg-custom-cyan/10 border border-custom-cyan/50 rounded-lg font-mono text-custom-cyan hover:bg-custom-cyan/20 hover:border-white hover:text-white transition-all"
