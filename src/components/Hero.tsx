@@ -7,7 +7,7 @@ const Spline = lazy(() => import('@splinetool/react-spline'));
 
 function LoadingText() {
   const [dots, setDots] = useState('');
-  
+
   useEffect(() => {
     const interval = setInterval(() => {
       setDots(prev => prev.length >= 3 ? '' : prev + '.');
@@ -22,7 +22,7 @@ function LoadingText() {
   );
 }
 
-function SplineScene({onLoad}: { onLoad: () => void; }) {
+function SplineScene({ onLoad }: { onLoad: () => void; }) {
   useEffect(() => {
     const timer = setTimeout(() => {
       onLoad();
@@ -80,14 +80,14 @@ export function Hero() {
     const size = Math.max(rect.width, rect.height);
     const x = event.clientX - rect.left - size / 2;
     const y = event.clientY - rect.top - size / 2;
-    
+
     ripple.style.width = ripple.style.height = `${size}px`;
     ripple.style.left = `${x}px`;
     ripple.style.top = `${y}px`;
     ripple.className = 'ripple';
-    
+
     button.appendChild(ripple);
-    
+
     ripple.addEventListener('animationend', () => {
       ripple.remove();
     });
@@ -104,7 +104,7 @@ export function Hero() {
               exit={{ opacity: 0 }}
               className="w-full h-full bg-black flex flex-col items-center justify-center gap-8"
             >
-              <motion.div 
+              <motion.div
                 className="grid grid-cols-3 gap-4"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -138,7 +138,7 @@ export function Hero() {
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.5 }}
               >
-                <SplineScene 
+                <SplineScene
                   onLoad={handleSplineLoad}
                 />
               </motion.div>
@@ -151,7 +151,7 @@ export function Hero() {
                 className="w-full h-full bg-black/50 flex flex-col items-center justify-center gap-4"
               >
                 <p className="text-red-400 font-mono">Failed to load 3D scene</p>
-                <button 
+                <button
                   onClick={handleRetry}
                   className="click-ripple interactive-hover px-4 py-2 bg-custom-cyan/10 border border-custom-cyan/50 rounded font-mono text-custom-cyan hover:bg-custom-cyan/20 hover:border-white hover:text-white transition-all"
                 >
@@ -163,14 +163,14 @@ export function Hero() {
         </AnimatePresence>
       </div>
 
-      <motion.div 
+      <motion.div
         className="relative z-10 h-full flex items-center justify-center bg-black/40"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.2 }}
       >
         <div className="glitch-container text-center">
-          <motion.h1 
+          <motion.h1
             className={`text-6xl md:text-8xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-custom-cyan via-white to-custom-cyan ${showTitleGlow ? 'title-glow' : ''}`}
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
@@ -188,7 +188,7 @@ export function Hero() {
                 <LoadingText />
               </motion.div>
             ) : (
-              <motion.p 
+              <motion.p
                 className={`terminal-text ${showTerminalText ? 'animate-terminal' : 'opacity-0'}`}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: showTerminalText ? 1 : 0 }}
@@ -198,14 +198,13 @@ export function Hero() {
               </motion.p>
             )}
           </div>
-          <motion.a 
-            href="https://t.me/+IHIHLmSbufxlNjdk"
+          <motion.a
+            href="https://t.me/gallipolixyz"
             target="_blank"
             rel="noopener noreferrer"
             onClick={createRipple}
-            className={`click-ripple interactive-hover mt-12 inline-block px-8 py-4 bg-custom-cyan/10 border-2 border-custom-cyan/50 rounded-lg font-mono text-lg text-custom-cyan hover:bg-custom-cyan/20 hover:border-white hover:text-white hover:scale-105 transition-all duration-300 shadow-[0_0_15px_rgba(0,255,255,0.1)] hover:shadow-[0_0_25px_rgba(0,255,255,0.2)] ${
-              showTerminalText ? 'animate-fade-in' : 'opacity-0'
-            }`}
+            className={`click-ripple interactive-hover mt-12 inline-block px-8 py-4 bg-custom-cyan/10 border-2 border-custom-cyan/50 rounded-lg font-mono text-lg text-custom-cyan hover:bg-custom-cyan/20 hover:border-white hover:text-white hover:scale-105 transition-all duration-300 shadow-[0_0_15px_rgba(0,255,255,0.1)] hover:shadow-[0_0_25px_rgba(0,255,255,0.2)] ${showTerminalText ? 'animate-fade-in' : 'opacity-0'
+              }`}
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: showTerminalText ? 1 : 0 }}
             transition={{ delay: 0.7 }}

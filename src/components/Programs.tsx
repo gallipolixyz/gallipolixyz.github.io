@@ -32,7 +32,7 @@ const learningTracks = [
     title: "CTF & Practical Labs",
     description: "Learn by doing in our capture-the-flag challenges and real-world labs. Build confidence and skills in a safe, supportive environment.",
     topics: ["Weekly challenges", "Team competitions", "Real-world scenarios", "Skill building"]
-  },{
+  }, {
     icon: Code,
     title: "Open Source Contribution",
     description: "Turn ideas into impactful tools. Collaborate, code, and contribute to open-source projects that empower the security world.",
@@ -53,11 +53,11 @@ const learningTracks = [
 ];
 
 const TrackCard = ({ track, index }: { track: typeof learningTracks[0], index: number }) => (
-  <ScrollAnimation 
-    direction={index % 2 === 0 ? 'left' : 'right'} 
+  <ScrollAnimation
+    direction={index % 2 === 0 ? 'left' : 'right'}
     delay={0.10 * (index + 1)}
   >
-    <div 
+    <div
       className="bg-custom-cyan/5 border border-custom-cyan/30 rounded-lg p-6 backdrop-blur-sm hover:bg-custom-cyan/10 hover:border-custom-cyan/50 transition-all duration-300 click-ripple interactive-hover"
       onClick={(e) => {
         const element = e.currentTarget;
@@ -66,12 +66,12 @@ const TrackCard = ({ track, index }: { track: typeof learningTracks[0], index: n
         const size = Math.max(rect.width, rect.height);
         const x = e.clientX - rect.left - size / 2;
         const y = e.clientY - rect.top - size / 2;
-        
+
         ripple.style.width = ripple.style.height = `${size}px`;
         ripple.style.left = `${x}px`;
         ripple.style.top = `${y}px`;
         ripple.className = 'ripple';
-        
+
         element.appendChild(ripple);
         ripple.addEventListener('animationend', () => ripple.remove());
       }}
@@ -149,8 +149,8 @@ export function Programs() {
             <p className="font-mono text-custom-cyan/90 mb-8 max-w-2xl mx-auto">
               Join our community of ethical hackers and start your journey in cybersecurity. No prior experience required—just bring your curiosity and determination.
             </p>
-            <a 
-              href="https://t.me/+IHIHLmSbufxlNjdk"
+            <a
+              href="https://t.me/gallipolixyz"
               target="_blank"
               rel="noopener noreferrer"
               className="click-ripple interactive-hover group inline-flex items-center px-8 py-4 bg-custom-cyan/10 border-2 border-custom-cyan/50 rounded-lg font-mono text-lg text-custom-cyan hover:bg-custom-cyan/20 hover:border-white hover:text-white transition-all duration-300"

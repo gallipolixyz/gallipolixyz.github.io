@@ -18,42 +18,42 @@ export function About() {
           </div>
         </section>
 
-        
-{/* Video Gallery */}
-<section className="mb-20 bg-custom-cyan/5 rounded-xl p-8 backdrop-blur-sm">
-  <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
-    What Experts Say About Gallipoli_
-  </h2>
 
-<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-  {[
-    "y_DTZ1oLcJs",
-    "JBwqzM-Skag",
-    "9lkQj2xUujk"
-  ].map((id) => (
-    <div
-      key={id}
-      className="relative w-full rounded-xl overflow-hidden border border-custom-cyan/30"
-      style={{ paddingTop: "56.25%" }}
-      onClick={(e) => {
-        e.stopPropagation();
-      }}
-    >
-      <iframe
-        className="absolute top-0 left-0 w-full h-full"
-        src={`https://www.youtube-nocookie.com/embed/${id}?playsinline=1&rel=0`}
-        title="Gallipoli Video"
-        loading="lazy"
-        allow="accelerometer; autoplay; encrypted-media; picture-in-picture"
-        allowFullScreen
-        onClick={(e) => {
-          e.stopPropagation();
-        }}
-      />
-    </div>
-  ))}
-</div>
-</section>
+        {/* Video Gallery */}
+        <section className="mb-20 bg-custom-cyan/5 rounded-xl p-8 backdrop-blur-sm">
+          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
+            What Experts Say About Gallipoli_
+          </h2>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            {[
+              "y_DTZ1oLcJs",
+              "JBwqzM-Skag",
+              "9lkQj2xUujk"
+            ].map((id) => (
+              <div
+                key={id}
+                className="relative w-full rounded-xl overflow-hidden border border-custom-cyan/30"
+                style={{ paddingTop: "56.25%" }}
+                onClick={(e) => {
+                  e.stopPropagation();
+                }}
+              >
+                <iframe
+                  className="absolute top-0 left-0 w-full h-full"
+                  src={`https://www.youtube-nocookie.com/embed/${id}?playsinline=1&rel=0`}
+                  title="Gallipoli Video"
+                  loading="lazy"
+                  allow="accelerometer; autoplay; encrypted-media; picture-in-picture"
+                  allowFullScreen
+                  onClick={(e) => {
+                    e.stopPropagation();
+                  }}
+                />
+              </div>
+            ))}
+          </div>
+        </section>
 
         {/* Our Story */}
         <section className="mb-20 bg-custom-cyan/5 rounded-xl p-8 backdrop-blur-sm">
@@ -124,8 +124,8 @@ export function About() {
               Gallipoli is built and maintained by passionate individuals who believe in the power of community-driven cybersecurity education and practice.
             </p>
             <div className="flex justify-center">
-              <a 
-                href="https://t.me/+IHIHLmSbufxlNjdk"
+              <a
+                href="https://t.me/gallipolixyz"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="click-ripple interactive-hover px-6 py-3 bg-custom-cyan/10 border border-custom-cyan/50 rounded-lg font-mono text-custom-cyan hover:bg-custom-cyan/20 hover:border-white hover:text-white transition-all"
