@@ -27,9 +27,9 @@ export function About() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {[
-              "y_DTZ1oLcJs",
-              "JBwqzM-Skag",
-              "9lkQj2xUujk"
+              "lz7nPJ_IEI0",
+              "Z5pL7hcot9A",
+              "j2o9rQrvgiM"
             ].map((id) => (
               <div
                 key={id}
