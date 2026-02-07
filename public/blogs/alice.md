@@ -69,7 +69,6 @@ Ask very nicely, and I will give you some tea while you wait for him
 give me tea
 Segmentation fault (core dumped)
 ```
-
 Dosya çalıştırıldığında Hatter’ın partiye geleceği bilgisi ekrana basılmakta ve uygulama kullanıcıdan girdi beklemektedir. Ancak birşeyler yazdığımızda ekrana Segmentation Fault hatası döndürülmektedir.
 Bu noktada dosyayı daha detaylı incelemek için indiriyoruz ve ghidra ile analiz ediyoruz .
 ![](/blogs/img/wonderland/12.png)
@@ -78,10 +77,7 @@ teaParty dosyasını analiz ettiğimizde, programın bir Path Hijacking (veya Re
 -Yetki Ataması: Kod içerisindeki setuid(0x3eb) ve setgid(0x3eb) satırları, programın belirli bir kullanıcı (UID 1001 - Hatter) yetkisiyle çalışacağını gösterir. Dosya üzerindeki SUID biti sayesinde, bu programı çalıştırdığımızda otomatik olarak hedef kullanıcının haklarını devralırız.
 
 -Güvensiz Komut Çağrısı: Program, sistem komutlarını yürütmek için system() fonksiyonunu kullanıyor. Analiz ettiğimizde /bin/echo komutunun tam yoluyla (absolute path) çağrıldığı için güvenli olduğunu; ancak date komutunun tam yol belirtilmeden, sadece ismiyle çağrıldığını görüyoruz.
-
-    
-
-    
+   
 Buradaki temel zafiyet şudur: Program date komutunu çalıştırmak istediğinde, işletim sistemi bu komutu bulabilmek için kullanıcının $PATH çevresel değişkeninde tanımlı olan dizinleri sırayla kontrol eder.
 
 Eğer biz, kendi kontrolümüzde olan bir dizine date isimli zararlı bir dosya oluşturup bu dizini $PATH değişkeninin en başına eklersek; sistem orijinal date komutuna ulaşmadan önce bizim dosyamızı bulacak ve hatter kullanıcısının yetkileriyle çalıştıracaktır.
@@ -102,7 +98,6 @@ Welcome to the tea party!
 The Mad Hatter will be here soon.
 ```
 Bu adımların sonunda, sistemin bizim sahte date dosyamızı çalıştırmasıyla birlikte otomatik olarak hatter kullanıcısına geçiş yapmış oluyoruz.
-
 
 ## 3.Root Yetkisi Elde Etme 
 Şimdi Hatter dizininin içeriğini inceleyelim:
