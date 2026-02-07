@@ -552,8 +552,42 @@ In this webinar, we will explore model vulnerabilities, data privacy risks, and 
       'AI and Emerging Cybersecurity Standards',
       'Q&A Session with Kadir Arslan'
     ]
+  },
+  {
+    id: '17',
+    title: 'AI in Pentesting: The Future of Security Testing',
+    description: `In this session, we will talk about how artificial intelligence is being used in penetration testing and how it is transforming modern security approaches.
+  
+  We will explore AI-powered tools for vulnerability discovery, automation, and attack simulations, along with their advantages, risks, and real-world use cases.`,
+    date: new Date('2026-02-14'),
+    time: '21:00',
+    duration: '1 hour',
+    type: 'webinar',
+    difficulty: 'beginner',
+    instructor: 'SQUR',
+    location: 'online',
+    meetingLink: 'https://www.youtube.com/@gallipolixyz',
+    tags: [
+      'ai',
+      'pentesting',
+      'ai-in-security',
+      'security-testing',
+      'offensive-security',
+      'automation',
+      'youtube-stream',
+      'gallipoli'
+    ],
+    isPast: isEventPast(new Date('2026-02-14')),
+    prerequisites: ['Basic interest in cybersecurity and penetration testing'],
+    agenda: [
+      'Introduction to AI in Pentesting',
+      'How AI is used in vulnerability discovery',
+      'Automation and attack simulations',
+      'Advantages and risks of AI-powered tools',
+      'Real-world pentesting use cases',
+      'Q&A session'
+    ]
   }
-
 ];
 
 // Helper functions
