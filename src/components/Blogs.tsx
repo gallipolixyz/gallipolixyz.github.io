@@ -12,6 +12,12 @@ interface Blog {
 }
 
 const blogs: Blog[] = [
+   {
+    slug:'alice',
+    title: 'TryHackMe-Wonderland Writeup',
+    excerpt: 'TryHackMe-Wonderland odasıyla yetki yükseltme üzerine pratik yapalım.',
+    author: 'Simge Yiğit',
+  },
   {
     slug: 'code-challenge-3',
     title: 'Code Challenge 3',
