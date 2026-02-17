@@ -12,6 +12,18 @@ interface Blog {
 }
 
 const blogs: Blog[] = [
+    {
+    slug: 'code-challenge-5',
+    title: 'Code Challenge 5',
+    excerpt: 'Bu challenge’da Ruby on Rails ile yazılmış bir JWT token servisinde hassas bilgilerin token içerisine gömülmesi incelenmektedir.',
+    author: 'Ferhat Karasu',
+  },
+    {
+    slug: 'code-challenge-4',
+    title: 'Code Challenge 4',
+    excerpt: 'Bu challenge’da client-side çalışan basit bir arama uygulamasında bulunan bir DOM-Based XSS zafiyeti incelenmektedir.  Uygulamanın amacı, URL üzerinden alınan `search` parametresini ekrana güvenli şekilde yazdırmaktır.',
+    author: 'Ferhat Karasu',
+  },
   {
     slug: 'code-challenge-3',
     title: 'Code Challenge 3',
