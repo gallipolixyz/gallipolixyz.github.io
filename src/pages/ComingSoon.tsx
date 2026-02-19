@@ -42,7 +42,7 @@ export const ComingSoon: React.FC = () => {
       {/* Background Effects */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,255,255,0.1),transparent_50%)]"></div>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(0,255,255,0.05),transparent_50%)]"></div>
-      
+
       <div className="container mx-auto px-4 max-w-4xl relative z-10 text-center">
         {/* Main Content */}
         <motion.div
@@ -57,18 +57,18 @@ export const ComingSoon: React.FC = () => {
               Coming Soon_
             </h1>
           </div>
-          
+
           <p className="text-xl md:text-2xl font-mono text-custom-cyan/90 mb-8 leading-relaxed">
             We're working hard to bring you something amazing
           </p>
-          
+
           <div className="bg-gradient-to-r from-custom-cyan/20 to-custom-cyan/10 border border-custom-cyan/30 rounded-2xl p-8 mb-12 backdrop-blur-sm">
             <h2 className="text-2xl font-bold text-white mb-4 font-mono">
               🚀 Something Big is Coming
             </h2>
             <p className="text-custom-cyan/80 font-mono text-lg leading-relaxed">
-              Our team is currently developing exciting new features and content. 
-              This section will be available soon with cutting-edge cybersecurity tools, 
+              Our team is currently developing exciting new features and content.
+              This section will be available soon with cutting-edge cybersecurity tools,
               interactive challenges, and exclusive learning resources.
             </p>
           </div>
@@ -84,7 +84,7 @@ export const ComingSoon: React.FC = () => {
           <h3 className="text-2xl font-bold text-white mb-8 font-mono">
             What's Coming Next_
           </h3>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {features.map((feature, index) => (
               <motion.div
@@ -119,7 +119,7 @@ export const ComingSoon: React.FC = () => {
             <h3 className="text-xl font-bold text-white mb-6 font-mono">
               Development Progress
             </h3>
-            
+
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <span className="font-mono text-custom-cyan/80">Frontend Development</span>
@@ -128,7 +128,7 @@ export const ComingSoon: React.FC = () => {
               <div className="w-full bg-custom-cyan/20 rounded-full h-2">
                 <div className="bg-custom-cyan h-2 rounded-full" style={{ width: '75%' }}></div>
               </div>
-              
+
               <div className="flex items-center justify-between">
                 <span className="font-mono text-custom-cyan/80">Backend Integration</span>
                 <span className="font-mono text-custom-cyan">60%</span>
@@ -136,7 +136,7 @@ export const ComingSoon: React.FC = () => {
               <div className="w-full bg-custom-cyan/20 rounded-full h-2">
                 <div className="bg-custom-cyan h-2 rounded-full" style={{ width: '60%' }}></div>
               </div>
-              
+
               <div className="flex items-center justify-between">
                 <span className="font-mono text-custom-cyan/80">Content Creation</span>
                 <span className="font-mono text-custom-cyan">85%</span>
@@ -161,10 +161,10 @@ export const ComingSoon: React.FC = () => {
             <p className="text-custom-cyan/80 font-mono mb-6">
               Join our community to get notified when this feature launches and receive exclusive early access.
             </p>
-            
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="https://t.me/+IHIHLmSbufxlNjdk"
+                href="https://t.me/gallipolixyz"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-custom-cyan/20 border border-custom-cyan/50 rounded-lg text-custom-cyan hover:bg-custom-cyan/30 hover:border-custom-cyan transition-all duration-300 font-mono"
@@ -172,7 +172,7 @@ export const ComingSoon: React.FC = () => {
                 <Users className="w-5 h-5" />
                 Join Telegram Community
               </a>
-              
+
               <a
                 href="https://github.com/gallipolixyz"
                 target="_blank"

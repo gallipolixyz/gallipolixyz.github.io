@@ -14,8 +14,8 @@ export function ProgramDetails() {
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl font-bold mb-8">Program Not Found</h1>
           <p className="text-custom-cyan/80 mb-8">The program you're looking for doesn't exist.</p>
-          <Link 
-            to="/programs" 
+          <Link
+            to="/programs"
             className="inline-flex items-center px-6 py-3 bg-custom-cyan/10 border border-custom-cyan/50 rounded-lg text-custom-cyan hover:bg-custom-cyan/20 transition-all duration-300"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
@@ -38,14 +38,14 @@ export function ProgramDetails() {
         {/* Header */}
         <ScrollAnimation>
           <div className="mb-12">
-            <Link 
-              to="/programs" 
+            <Link
+              to="/programs"
               className="inline-flex items-center text-custom-cyan/70 hover:text-custom-cyan mb-6 transition-colors"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
               Back to Programs
             </Link>
-            
+
             <div className="flex items-center mb-6">
               <program.icon className="w-12 h-12 text-custom-cyan mr-4" />
               <div>
@@ -200,8 +200,8 @@ export function ProgramDetails() {
               <section className="bg-custom-cyan/5 border border-custom-cyan/20 rounded-lg p-6">
                 <h3 className="text-xl font-bold mb-4">Enrollment_</h3>
                 <p className="text-custom-cyan/80 text-sm mb-4">{program.enrollmentInfo}</p>
-                <a 
-                  href="https://t.me/+IHIHLmSbufxlNjdk"
+                <a
+                  href="https://t.me/gallipolixyz"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full inline-flex items-center justify-center px-6 py-3 bg-custom-cyan/10 border border-custom-cyan/50 rounded-lg text-custom-cyan hover:bg-custom-cyan/20 hover:border-white hover:text-white transition-all duration-300"

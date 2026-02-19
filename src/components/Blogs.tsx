@@ -12,17 +12,23 @@ interface Blog {
 }
 
 const blogs: Blog[] = [
-    {
+  {
     slug: 'code-challenge-5',
     title: 'Code Challenge 5',
     excerpt: 'Bu challenge’da Ruby on Rails ile yazılmış bir JWT token servisinde hassas bilgilerin token içerisine gömülmesi incelenmektedir.',
     author: 'Ferhat Karasu',
   },
-    {
+  {
     slug: 'code-challenge-4',
     title: 'Code Challenge 4',
     excerpt: 'Bu challenge’da client-side çalışan basit bir arama uygulamasında bulunan bir DOM-Based XSS zafiyeti incelenmektedir.  Uygulamanın amacı, URL üzerinden alınan `search` parametresini ekrana güvenli şekilde yazdırmaktır.',
     author: 'Ferhat Karasu',
+  },
+  {
+    slug:'alice',
+    title: 'TryHackMe-Wonderland Writeup',
+    excerpt: 'TryHackMe-Wonderland odasıyla yetki yükseltme üzerine pratik yapalım.',
+    author: 'Simge Yiğit',
   },
   {
     slug: 'code-challenge-3',
@@ -30,23 +36,72 @@ const blogs: Blog[] = [
     excerpt: 'Bu challenge’da Express.js uygulaması, `/secret` path’i altındaki endpoint’leri  bir middleware ile token kontrolüne tabi tutmaktadır.',
     author: 'Ferhat Karasu',
   },
-      {
+  {
     slug: 'code-challenge-2',
     title: 'Code Challenge 2',
     excerpt: 'Bu challenge’da kullanıcıdan alınan path parametresi, internal bir API’ye HTTP isteği göndermek için kullanılmaktadır. Kodda bazı kontroller bulunsa da, bu kontroller güvenli değildir ve SSRF (Server-Side Request Forgery) zafiyetine yol açmaktadır.',
     author: 'Ferhat Karasu',
   },
-    {
+  {
     slug: 'code-challenge-1',
     title: 'Code Challenge 1',
     excerpt: 'Bu challenge’da Java ile yazılmış basit bir Admin Panel uygulamasında bulunan bir yetkilendirme hatası incelenmektedir.Uygulamanın amacı, yalnızca admin rolüne sahip kullanıcıların başka kullanıcıları silebilmesini sağlamaktır.',
     author: 'Ferhat Karasu',
   },
-    {
+  {
+    slug: 'allsafe',
+    title: 'AllSafe Write Up',
+    excerpt: 'Allsafe Lab, içerisinde çeşitli zorluklar barındıran ve farklı güvenlik açığı kategorilerini kapsayan bir APK uygulamasıdır.',
+    author: 'Simge Yiğit',
+  },
+
+  {
+    slug: 'android-101',
+    title: 'Android Security 101: Analiz Yöntemleri ve Araçları',
+    excerpt: 'Mobil uygulama güvenliğinde başarı, doğru analiz yöntemlerini ve araçlarını etkin kullanmaktan geçer. Android Security 101 serisinin devamı niteliğindeki bu yazıda, analiz sürecini Statik ve Dinamik olmak üzere iki ana başlık altında inceliyoruz.',
+    author: 'Simge Yiğit',
+  },
+  {
+    slug: 'android-runtime',
+    title: 'Android Runtime: Dalvik ve ART Mimarileri',
+    excerpt: 'Bu yazı mobil uygulamaların gelişim sürecinde bir dönüm noktası olan Dalvik’ten ART mimarisine geçişin nedenlerini, sistem kaynaklarının yönetimini ve modern Android cihazlardaki çalışma prensiplerini ele alıyor.',
+    author: 'Simge Yiğit',
+  },
+  {
+    slug: 'mobilsecurity-owasp10',
+    title: 'Mobil Uygulama Güvenliği Neden Önemlidir? Günlük Hayatımızdaki Riskler ve Örnekler',
+    excerpt: 'Bu yazı, mobil uygulamaların günlük hayattaki kullanımının beraberinde getirdiği güvenlik risklerini ve bu risklerin neden ciddiye alınması gerektiğini özetlemektedir.OWASP Mobile Top 10 üzerinden örneklerlendirilmiştir.',
+    author: 'Simge Yiğit',
+  },
+  {
     slug: 'case-insensitive-routing-bypass',
     title: 'Case-Insensitive Routing Bypass in Express.js Application',
     excerpt: 'Bu görevdeki zafiyet, case-insensitive routing ile case-sensitive erişim kontrolü arasındaki tutarsızlıktan kaynaklanan bir Authentication Bypass örneğidir.',
     author: 'Ferhat Karasu',
+  },
+  {
+    slug: 'challange2',
+    title: 'Challange002.apk Frida ile Çözümü (Android Runtime Hooking)',
+    excerpt: 'Bu yazıda Challange002.apk üzerinde jadx ile flag mekanizmasını analiz ediyor ve Frida kullanarak get_flag() fonksiyonunu runtime’da doğrudan çağırarak flag’i elde ediyoruz.',
+    author: 'Ozan İsmail Çolhak',
+  },
+  {
+    slug: 'challange1',
+    title: 'Challange001.apk Frida ile Çözümü (Android Hooking)',
+    excerpt: 'Bu yazıda Challange001.apk üzerinde Frida kurulumu, frida-server seçimi, PID doğrulaması ve input kontrolünü hook ederek flag’e giden yolu adım adım inceliyoruz.',
+    author: 'Ozan İsmail Çolhak',
+  },
+  {
+    slug: 'uncrackable2',
+    title: 'OWASP UnCrackable Level 2 Çözümü: Android Native Reverse Engineering',
+    excerpt: 'Bu makalede UnCrackable-Level2 Android challenge’ını çözüyoruz. Native (.so) kütüphane analizi, JNI fonksiyonları ve Ghidra kullanarak secret string’in elde edilmesini adım adım inceliyoruz.',
+    author: 'Ozan İsmail Çolhak',
+  },
+  {
+    slug: 'uncrackable',
+    title: 'OWASP UnCrackable Level 1 Çözümü: Android Reverse Engineering',
+    excerpt: 'Bu makalede UnCrackable-Level1 Android challenge’ını adım adım çözüyoruz. Root kontrolü bypass, smali manipülasyonu, APK yeniden imzalama ve AES ile şifrelenmiş secret string’in çözümünü içerir.',
+    author: 'Ozan İsmail Çolhak',
   },
   {
     slug: 'volatility-dumpme-writeup',
@@ -71,31 +126,31 @@ const blogs: Blog[] = [
     title: 'Siber Güvenlikte Yapay Zeka: Tehditler ve Fırsatlar',
     excerpt: 'Günümüzün belki de en çok konuşulan ve ilgi odağı olan yapay zekanın, siber güvenlik ile bağlantısını inceleyeceğiz.',
     author: 'Hüseyin Aydın',
-  }, 
-    {
+  },
+  {
     slug: 'phishing-email-analysis',
     title: 'Oltalama E-postası Analizi: Gerçek Bir Örnek Üzerinden',
     excerpt: 'Bu makalede gerçek bir oltalama e-postası örneği üzerinden, e-postanın içeriğini, kullanılan teknikleri ve nasıl tespit edilebileceğini inceleyeceğiz.',
     author: 'Rakun Toygun',
-  },  
-    {
+  },
+  {
     slug: 'custom-log-source-normalization',
     title: 'Custom Log Source Normalization: SIEM Öncesi ve  Sonrası Tüm Aşamalar',
     excerpt: 'Bu makalede özelleştirilmiş log kaynaklarının normalizasyonu, SIEM öncesi ve sonrası tüm aşamalarıyla ele alınacaktır.',
     author: 'Ümmühan Atmaca',
-  }, 
-    {
+  },
+  {
     slug: 'c2-framework-nedir',
     title: 'C2 Framework Nedir? Amaçları, Faydaları ve En Popüler C2 Araçları',
     excerpt: 'Bu makalede C2 frameworklerinin ne olduğunu, nasıl çalıştığını, amaçlarını ve en popüler C2 araçlarını keşfedeceğiz.',
     author: 'Hilal Kavas',
-  },  
-    {
+  },
+  {
     slug: 'saldirganin-yol-haritasi',
     title: 'Saldırganın Yol Haritası',
     excerpt: 'Bu makalede, saldırganların bir hedefe nasıl yaklaşabileceğini, hangi adımları takip edebileceğini ve bu süreçte karşılaşabilecekleri zorlukları keşfedeceğiz.',
     author: 'Nur Sena Avcı',
-  },  
+  },
   {
     slug: 'redos-zafiyeti',
     title: 'ReDoS (Regular Expression Denial of Service) Zafiyeti',
@@ -186,7 +241,7 @@ export const BlogList: React.FC = () => {
               Contribute to our blog and inspire others in the community!
             </p>
             <a
-              href="https://t.me/+IHIHLmSbufxlNjdk"
+              href="https://t.me/gallipolixyz"
               target="_blank"
               rel="noopener noreferrer"
               className="click-ripple interactive-hover group inline-flex items-center px-8 py-4 bg-custom-cyan/10 border-2 border-custom-cyan/50 rounded-lg font-mono text-lg text-custom-cyan hover:bg-custom-cyan/20 hover:border-white hover:text-white transition-all duration-300"
