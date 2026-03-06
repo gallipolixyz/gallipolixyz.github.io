@@ -12,8 +12,12 @@ interface Blog {
 }
 
 const blogs: Blog[] = [
-  {
-    slug: 'code-challenge-5',
+  {    slug: 'csrf',
+    title: 'Cross-Site Request Forgery (CSRF) Vulnerability',
+    excerpt: 'CSRF attacks trick users into unknowingly performing malicious actions on behalf of the attacker. Learn how these attacks work, real-world examples, and effective protection strategies.',
+    author: 'Matjaz Madon',
+  },
+  {    slug: 'code-challenge-5',
     title: 'Code Challenge 5',
     excerpt: 'Bu challenge’da Ruby on Rails ile yazılmış bir JWT token servisinde hassas bilgilerin token içerisine gömülmesi incelenmektedir.',
     author: 'Ferhat Karasu',
