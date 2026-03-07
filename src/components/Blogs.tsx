@@ -175,8 +175,14 @@ const blogs: Blog[] = [
     excerpt: 'Mavi takım, siber güvenlik alanında savunma odaklı bir yaklaşımdır. Bu rehberde, mavi takımın temel ilkelerini ve nasıl etkili bir şekilde çalıştığını keşfedeceğiz.',
     author: 'Nur Sena Avcı',
   },
+  {
+  slug: 'cve-2019-15107-webmin-rce-on-void',
+  title: 'CVE-2019-15107: Webmin RCE Zafiyeti',
+  excerpt: 'Webmin 1.890 sürümünde bulunan CVE-2019-15107 Remote Code Execution zafiyetinin analiz edildiği bu write-up\'ta, hedef sistem üzerinde servis keşfi, Metasploit kullanarak zafiyetin istismarı ve sızma sonrası yapılan analiz adımları incelenmektedir.',
+  author: 'Osman Erdem Dutar'
+  }
 ];
-
+  
 export const BlogList: React.FC = () => {
   const containerVariants = {
     hidden: { opacity: 0 },
