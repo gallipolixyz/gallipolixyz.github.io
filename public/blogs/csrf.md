@@ -1,6 +1,6 @@
 # Cross-Site Request Forgery (CSRF)
 
-![CSRF diagram](img/csrf.png)
+![CSRF diagram](/blogs/img/csrf_diagram.png)
 
 ## What is CSRF?
 
