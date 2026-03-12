@@ -587,6 +587,152 @@ In this webinar, we will explore model vulnerabilities, data privacy risks, and 
       'Real-world pentesting use cases',
       'Q&A session'
     ]
+  },
+  {
+    id: '18',
+    title: 'Application Security in the Age of AI',
+    description: `In this webinar, we will explore how application security is changing in the age of artificial intelligence.
+
+As AI accelerates code generation, organizations must rethink their AppSec strategies. We will discuss LLM-based attack vectors, how vulnerability management is evolving with AI, and what next-generation secure development processes should look like.`,
+    date: new Date('2026-03-08'),
+    time: '21:00',
+    duration: '1-2 hours',
+    type: 'webinar',
+    difficulty: 'beginner',
+    instructor: 'Caner Filibelioğlu – Senior Cybersecurity Expert',
+    location: 'online',
+    meetingLink: 'https://youtube.com/@gallipolixyz',
+    tags: [
+      'application-security',
+      'appsec',
+      'ai-security',
+      'llm-security',
+      'secure-development',
+      'youtube-stream',
+      'gallipoli'
+    ],
+    isPast: isEventPast(new Date('2026-03-08')),
+    prerequisites: ['Interest in application security and artificial intelligence'],
+    agenda: [
+      'How AI is reshaping application security',
+      'LLM-based attack vectors and emerging threats',
+      'AI-driven changes in vulnerability management',
+      'Next-generation secure development processes',
+      'Q&A session with Caner Filibelioğlu'
+    ]
+  },
+  {
+    id: '19',
+    title: 'Introduction to Burp Suite',
+    description: `Burp Suite, one of the leading web application security tools, is an application that almost every cybersecurity professional has downloaded, installed, or explored at least once.\n\nSome are completely unfamiliar with it, while others only know the basics. Let's explore this powerful security tool together in our training and fill in our knowledge gaps.`,
+    date: new Date('2025-09-28'),
+    time: '21:00',
+    duration: '1-2 hours',
+    type: 'training',
+    difficulty: 'beginner',
+    instructor: 'Gökay Gökcan',
+    location: 'online',
+    meetingLink: 'https://www.youtube.com/@gallipolixyz',
+    tags: [
+      'burp-suite',
+      'web-security',
+      'pentesting',
+      'youtube-stream',
+      'gallipoli'
+    ],
+    isPast: isEventPast(new Date('2025-09-28')),
+    prerequisites: ['Beginner-level interest in web application security'],
+    agenda: [
+      'What is Burp Suite and what is it used for?',
+      'Interface overview and core modules',
+      'Proxy configuration and traffic analysis',
+      'Q&A Session'
+    ]
+  },
+  {
+    id: '20',
+    title: 'Career Development',
+    description: `We are here with an opportunity to shape your career in cybersecurity. In this webinar, we will learn ways to stand out in the industry under the topics of talent management and career development.\n\nJoin us as we explore the challenges and opportunities you might face on this journey.`,
+    date: new Date('2025-10-04'),
+    time: '21:00',
+    duration: '1-2 hours',
+    type: 'webinar',
+    difficulty: 'beginner',
+    instructor: 'Gülay Aydın - Director of People, EMEA',
+    location: 'online',
+    meetingLink: 'https://www.youtube.com/@gallipolixyz',
+    tags: [
+      'career',
+      'cybersecurity-career',
+      'webinar',
+      'youtube-stream',
+      'gallipoli'
+    ],
+    isPast: isEventPast(new Date('2025-10-04')),
+    prerequisites: ['Anyone looking to build a career in cybersecurity'],
+    agenda: [
+      'Career planning in the cybersecurity industry',
+      'Talent management',
+      'Ways to stand out in the industry',
+      'Potential challenges and opportunities'
+    ]
+  },
+  {
+    id: '21',
+    title: 'Cybersecurity Culture',
+    description: `We are bringing you a crucial topic for companies. In the corporate world, security is only possible through employee awareness and a shared culture.\n\nIn this webinar, we discuss how to build a cybersecurity culture for organizations. Join us as we examine the problems and opportunities you may encounter on this journey.`,
+    date: new Date('2025-10-07'),
+    time: '21:00',
+    duration: '1 hour',
+    type: 'webinar',
+    difficulty: 'beginner',
+    instructor: 'Özge Çakır - Global Technical Recruiter',
+    location: 'online',
+    meetingLink: 'https://www.youtube.com/@gallipolixyz',
+    tags: [
+      'security-culture',
+      'corporate-security',
+      'awareness',
+      'webinar',
+      'youtube-stream',
+      'gallipoli'
+    ],
+    isPast: isEventPast(new Date('2025-10-07')),
+    prerequisites: ['Interest in corporate security and awareness'],
+    agenda: [
+      'What is cybersecurity culture in the corporate world?',
+      'Methods to increase employee awareness',
+      'Challenges in building a security culture',
+      'Opportunities and proposed solutions'
+    ]
+  },
+  {
+    id: '22',
+    title: 'Cloud Computing and Virtualization',
+    description: `Cloud systems are a technological model used today to provide easy access to shared resources over IT systems. We have planned a training session to discuss exactly what this virtual service, which replaces physical hardware, entails.\n\nLet's learn about this widely used technology together. You will have the chance to ask our experienced speaker any questions you may have.`,
+    date: new Date('2025-10-18'),
+    time: '21:00',
+    duration: '1-2 hours',
+    type: 'training',
+    difficulty: 'beginner',
+    instructor: 'İrem Sıla Alp',
+    location: 'online',
+    meetingLink: 'https://www.youtube.com/@gallipolixyz',
+    tags: [
+      'cloud-computing',
+      'virtualization',
+      'cloud-security',
+      'youtube-stream',
+      'gallipoli'
+    ],
+    isPast: isEventPast(new Date('2025-10-18')),
+    prerequisites: ['Basic interest in IT systems and cloud technologies'],
+    agenda: [
+      'What is cloud computing?',
+      'Transitioning from physical hardware to virtualization',
+      'Fundamentals of virtualization technologies',
+      'Q&A Session'
+    ]
   }
 ];
 
