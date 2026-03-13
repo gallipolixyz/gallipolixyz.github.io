@@ -12,6 +12,12 @@ interface Blog {
 }
 
 const blogs: Blog[] = [
+  {
+    slug: 'ewpt',
+    title: 'Siber Güvenlik Sertifikaları #1: eWPT (eLearnSecurity Web Application Penetration Tester)',
+    excerpt: 'Siber güvenlik dünyasındaki en popüler sertifikaları resmi verilerle masaya yatırıyor, tüm detaylarını açıklayıp 10 üzerinden puanlıyoruz. Serimizin ilk konuğu: eWPT.',
+    author: 'Ozan İsmail Çolhak',
+  },
   {    slug: 'csrf',
     title: 'Cross-Site Request Forgery (CSRF) Vulnerability',
     excerpt: 'CSRF attacks trick users into unknowingly performing malicious actions on behalf of the attacker. Learn how these attacks work, real-world examples, and effective protection strategies.',
