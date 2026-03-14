@@ -10,19 +10,19 @@ Multipass is a tool to generate cloud-style Ubuntu VMs quickly on Linux, macOS, 
 
 multipass find
 
-![Screenshot 1](/public/blogs/img/set-up-jenkins-with-keycloak/1.png)
+![Screenshot 1](/blogs/img/set-up-jenkins-with-keycloak/1.png)
 
 And, as described on official documentation we should run the command below to run Jammy with necessary Disk space, memory and CPU.
 
 multipass launch jammy — cpus 4 — disk 60G — memory 8G
 
-![Screenshot 2](/public/blogs/img/set-up-jenkins-with-keycloak/2.png)
+![Screenshot 2](/blogs/img/set-up-jenkins-with-keycloak/2.png)
 
 After set-up process we’re able to get shell for created image.
 
 multipass shell devoted-boxer
 
-![Screenshot 3](/public/blogs/img/set-up-jenkins-with-keycloak/3.png)
+![Screenshot 3](/blogs/img/set-up-jenkins-with-keycloak/3.png)
 
 ## 2. Deploying a Single-server Kubernetes deployment using k3s
 
@@ -34,7 +34,7 @@ After that, with the systemctl we can be sure that it’s working properly.
 
 systemctl status k3s
 
-![Screenshot 4](/public/blogs/img/set-up-jenkins-with-keycloak/4.png)
+![Screenshot 4](/blogs/img/set-up-jenkins-with-keycloak/4.png)
 
 ## 3. Utilizing Longhorn as the Distributed block storage system and use Longhorn controller on the disks created within Kubernetes
 
@@ -52,7 +52,7 @@ sudo apt-get install helm
 
 After installation we can verify helm installation with the command helm version.
 
-![Screenshot 5](/public/blogs/img/set-up-jenkins-with-keycloak/5.png)
+![Screenshot 5](/blogs/img/set-up-jenkins-with-keycloak/5.png)
 
 For the installation of Longhorn, we can use steps that mentioned on official documentation.
 Add the Longhorn Helm repository:
@@ -71,15 +71,15 @@ To confirm that the deployment succeeded, we can run:
 
 kubectl -n longhorn-system get pod
 
-![Screenshot 6](/public/blogs/img/set-up-jenkins-with-keycloak/6.png)
+![Screenshot 6](/blogs/img/set-up-jenkins-with-keycloak/6.png)
 
 After installation of longhorn, we’re able to access Longhorn UI. To access longhorn UI we can use ingress controller.
 
-![Screenshot 7](/public/blogs/img/set-up-jenkins-with-keycloak/7.png)
+![Screenshot 7](/blogs/img/set-up-jenkins-with-keycloak/7.png)
 
 kubectl -n longhorn-system apply -f longhorn-ingress.yml
 
-![Screenshot 8](/public/blogs/img/set-up-jenkins-with-keycloak/8.png)
+![Screenshot 8](/blogs/img/set-up-jenkins-with-keycloak/8.png)
 
 ## 4. Deploying Jenkins into the cluster using Helm.
 First of all, we need to create a new namespace for jenkins.
@@ -92,7 +92,7 @@ helm install jenkins jenkins/jenkins -n jenkins
 
 We can see running pod on jenkins namespace with command kubectl get pod -n jenkins.
 
-![Screenshot 9](/public/blogs/img/set-up-jenkins-with-keycloak/9.png)
+![Screenshot 9](/blogs/img/set-up-jenkins-with-keycloak/9.png)
 
 We need to get the password of the Jenkins user admin to login with the UI.
 
@@ -103,13 +103,13 @@ The password is Bpt5oAz2rVIuSjCBYyAcLb . (Since it’s a example I just paste th
 For the accessing UI, there is a 2 option. We can enable ingress controller or we can use port-forward command like below:
 
 kubectl — namespace jenkins port-forward svc/jenkins 8081:8080 — address 0.0.0.0
-![Screenshot 10](/public/blogs/img/set-up-jenkins-with-keycloak/10.png)
+![Screenshot 10](/blogs/img/set-up-jenkins-with-keycloak/10.png)
 
 We’re able to see the persistent volume on Longhorn for the Jenkins.
 
-![Screenshot 11](/public/blogs/img/set-up-jenkins-with-keycloak/11.png)
+![Screenshot 11](/blogs/img/set-up-jenkins-with-keycloak/11.png)
 
-![Screenshot 12](/public/blogs/img/set-up-jenkins-with-keycloak/12.png)
+![Screenshot 12](/blogs/img/set-up-jenkins-with-keycloak/12.png)
 
 ## 5. Deploy Keycloak into the cluster.
 To get started of Keycloak installation we should add Helm repository
@@ -128,13 +128,13 @@ This command will deploy Keycloak with the default configuration, which includes
 
 With kubectl get pods -n keycloak we’re able to see running pods.
 
-![Screenshot 13](/public/blogs/img/set-up-jenkins-with-keycloak/13.png)
+![Screenshot 13](/blogs/img/set-up-jenkins-with-keycloak/13.png)
 
 We should get the password of the user to login with the UI. To do this we can run command below:
 
 printf $(kubectl get secret — namespace keycloak keycloak -o jsonpath=”{.data.admin-password}” | base64 — decode);echo
 
-![Screenshot 14](/public/blogs/img/set-up-jenkins-with-keycloak/14.png)
+![Screenshot 14](/blogs/img/set-up-jenkins-with-keycloak/14.png)
 
 The password is YeEZd2W9rB . (Since it’s an example I just paste the password in clear text.)
 
@@ -142,11 +142,11 @@ For the accessing UI, there is a 2 option. We can enable ingress controller or w
 
 kubectl — namespace keycloak port-forward svc/keycloak 8082:8080 — address 0.0.0.0
 
-![Screenshot 15](/public/blogs/img/set-up-jenkins-with-keycloak/15.png)
+![Screenshot 15](/blogs/img/set-up-jenkins-with-keycloak/15.png)
 
 We’re able to see persistent volumes on Longhorn UI.
 
-![Screenshot 16](/public/blogs/img/set-up-jenkins-with-keycloak/16.png)
+![Screenshot 16](/blogs/img/set-up-jenkins-with-keycloak/16.png)
 
 ## 6. Integrating Keycloak with Jenkins using SAML and OpenID Connect (OIDC).
 For both SAML or OpenID authentication methods, we need to prepare client, realm and a bunch of configuration. I’ll provide a detailed description of these steps.
@@ -165,23 +165,23 @@ Keycloak Configuration
 Write on Medium
 Created a realm named DreamJenkinsSAML on Keycloak.
 
-![Screenshot 17](/public/blogs/img/set-up-jenkins-with-keycloak/17.png)
+![Screenshot 17](/blogs/img/set-up-jenkins-with-keycloak/17.png)
 
 Prepare 2 roles as jenkins_admin and jenkins_readonly.
 
-![Screenshot 18](/public/blogs/img/set-up-jenkins-with-keycloak/18.png)
+![Screenshot 18](/blogs/img/set-up-jenkins-with-keycloak/18.png)
 
 Prepare 2 users which are named admin and user.
 
-![Screenshot 19](/public/blogs/img/set-up-jenkins-with-keycloak/19.png)
+![Screenshot 19](/blogs/img/set-up-jenkins-with-keycloak/19.png)
 
 Assign jenkins_admin role for the admin user.
 
-![Screenshot 20](/public/blogs/img/set-up-jenkins-with-keycloak/20.png)
+![Screenshot 20](/blogs/img/set-up-jenkins-with-keycloak/20.png)
 
 Assign jenkins_readonly role to the user.
 
-![Screenshot 21](/public/blogs/img/set-up-jenkins-with-keycloak/21.png)
+![Screenshot 21](/blogs/img/set-up-jenkins-with-keycloak/21.png)
 
 So with these steps, Keycloak configuration is ready to use with Jenkins.
 
@@ -189,7 +189,7 @@ So with these steps, Keycloak configuration is ready to use with Jenkins.
 
 We should change Jenkins URL from Dashboard > Manage Jenkins > System > Jenkins Location > Jenkins URL.
 
-![Screenshot 22](/public/blogs/img/set-up-jenkins-with-keycloak/22.png)
+![Screenshot 22](/blogs/img/set-up-jenkins-with-keycloak/22.png)
 
 We need to install plugins. As mentioned on the official documentation of Configuration as a Code plugin we’re not able to install plugins using JCasC.
 
@@ -201,7 +201,7 @@ https://www.jenkins.io/doc/book/managing/casc/#configuring-a-plugin-with-jcasc
 
 To install plugins we should go Dashboard > Manage Jenkins > Plugins > Available Plugins.
 
-![Screenshot 23](/public/blogs/img/set-up-jenkins-with-keycloak/23.png)
+![Screenshot 23](/blogs/img/set-up-jenkins-with-keycloak/23.png)
 
 So, we’re ready to provide .yaml file to Configuration as a code plugin. But first of all let’s check the .yaml file.
 
@@ -245,49 +245,49 @@ Security Realm: SAML-based security realm configuration.
 
 I prepared an S3 bucket and uploaded a configuration file to the bucket.
 
-![Screenshot 24](/public/blogs/img/set-up-jenkins-with-keycloak/24.png)
+![Screenshot 24](/blogs/img/set-up-jenkins-with-keycloak/24.png)
 
 We can enable this configuration with provide URL to the Configuration as a Code plugin. Dashboard > Manage Jenkins > Configuration as Code
 
-![Screenshot 25](/public/blogs/img/set-up-jenkins-with-keycloak/25.png)
+![Screenshot 25](/blogs/img/set-up-jenkins-with-keycloak/25.png)
 
 We can see that The configuration can be applied. We need to click Apply new configuration, and jenkins is updated.
 
-![Screenshot 26](/public/blogs/img/set-up-jenkins-with-keycloak/26.png)
+![Screenshot 26](/blogs/img/set-up-jenkins-with-keycloak/26.png)
 
 So, we can check Security settings and we expect that Security Realm is SAML after the uploading this configuration.
 
-![Screenshot 27](/public/blogs/img/set-up-jenkins-with-keycloak/27.png)
+![Screenshot 27](/blogs/img/set-up-jenkins-with-keycloak/27.png)
 
 Also, roles should be updated.
 
-![Screenshot 28](/public/blogs/img/set-up-jenkins-with-keycloak/28.png)
+![Screenshot 28](/blogs/img/set-up-jenkins-with-keycloak/28.png)
 
 After that, we need to create a client on Keycloak. To do this, we need to go Dashboard > Manage Jenkins > Security and click Service Provider metadata link.
 
-![Screenshot 29](/public/blogs/img/set-up-jenkins-with-keycloak/29.png)
+![Screenshot 29](/blogs/img/set-up-jenkins-with-keycloak/29.png)
 
 It’s redirect to the http://192.168.64.4:8081/manage/securityRealm/metadata to get metadata for preparing client. We should download this to the file named like jenkins-sp-metadata.xml.
 
 And then we need to go to the Keycloak and click import client.
 
-![Screenshot 30](/public/blogs/img/set-up-jenkins-with-keycloak/30.png)
+![Screenshot 30](/blogs/img/set-up-jenkins-with-keycloak/30.png)
 
 With these steps, we need to be able to Login Jenkins with SAML authentication and Role-Based authorization.
 
 Try if SAML authentication working properly:
 
-![Screenshot 31](/public/blogs/img/set-up-jenkins-with-keycloak/31.png)
+![Screenshot 31](/blogs/img/set-up-jenkins-with-keycloak/31.png)
 
 Try Admin Access:
 
 Admin user information
 
-![Screenshot 32](/public/blogs/img/set-up-jenkins-with-keycloak/32.png)
+![Screenshot 32](/blogs/img/set-up-jenkins-with-keycloak/32.png)
 
 Login jenkins with using admin credentials
 
-![Screenshot 33](/public/blogs/img/set-up-jenkins-with-keycloak/33.png)
+![Screenshot 33](/blogs/img/set-up-jenkins-with-keycloak/33.png)
 
 As configured, we can see the admin user uses the name as Kadir.
 
@@ -295,11 +295,11 @@ Admin user credentials:
 
 username: admin / kadirarslan.sec@gmail.com
 
-![Screenshot 34](/public/blogs/img/set-up-jenkins-with-keycloak/34.png)
+![Screenshot 34](/blogs/img/set-up-jenkins-with-keycloak/34.png)
 
 We’re able to create new jobs or manage jenkins since we’re admin.
 
-![Screenshot 35](/public/blogs/img/set-up-jenkins-with-keycloak/35.png)
+![Screenshot 35](/blogs/img/set-up-jenkins-with-keycloak/35.png)
 
 Try Read Only user Access:
 
@@ -307,9 +307,9 @@ Read only user credentials:
 
 username: user/kadoarslan@gmail.com
 
-![Screenshot 36](/public/blogs/img/set-up-jenkins-with-keycloak/36.png)
+![Screenshot 36](/blogs/img/set-up-jenkins-with-keycloak/36.png)
 
-![Screenshot 37](/public/blogs/img/set-up-jenkins-with-keycloak/37.png)
+![Screenshot 37](/blogs/img/set-up-jenkins-with-keycloak/37.png)
 
 This is read only by the user. As you can see it’s not able to create jobs or manage jenkins.
 
@@ -319,15 +319,15 @@ Keycloak Configuration
 
 Create a realm named DreamJenkinsOID.
 
-![Screenshot 43](/public/blogs/img/set-up-jenkins-with-keycloak/43.png)
+![Screenshot 43](/blogs/img/set-up-jenkins-with-keycloak/43.png)
 
 Create client “jenkins” — set root url to Jenkins-url
 
-![Screenshot 44](/public/blogs/img/set-up-jenkins-with-keycloak/44.png)
+![Screenshot 44](/blogs/img/set-up-jenkins-with-keycloak/44.png)
 
 Get adaptor config from Client > Action
 
-![Screenshot 45](/public/blogs/img/set-up-jenkins-with-keycloak/45.png)
+![Screenshot 45](/blogs/img/set-up-jenkins-with-keycloak/45.png)
 
 ```yaml
 {
@@ -340,23 +340,23 @@ Get adaptor config from Client > Action
 "use-resource-role-mappings": true,
 "confidential-port": 0
 }
-````
+```
 
 Create roles jenkins_admin and jenkins_readonly.
 
-![Screenshot 38](/public/blogs/img/set-up-jenkins-with-keycloak/38.png)
+![Screenshot 38](/blogs/img/set-up-jenkins-with-keycloak/38.png)
 
 Create users admin and assign jenkins_admin role.
 
-![Screenshot 39](/public/blogs/img/set-up-jenkins-with-keycloak/39.png)
+![Screenshot 39](/blogs/img/set-up-jenkins-with-keycloak/39.png)
 
-![Screenshot 40](/public/blogs/img/set-up-jenkins-with-keycloak/40.png)
+![Screenshot 40](/blogs/img/set-up-jenkins-with-keycloak/40.png)
 
 Create a user and assign jenkins_readonly role.
 
-![Screenshot 41](/public/blogs/img/set-up-jenkins-with-keycloak/41.png)
+![Screenshot 41](/blogs/img/set-up-jenkins-with-keycloak/41.png)
 
-![Screenshot 42](/public/blogs/img/set-up-jenkins-with-keycloak/42.png)
+![Screenshot 42](/blogs/img/set-up-jenkins-with-keycloak/42.png)
 
 ### Jenkins  Configuration
 
@@ -402,15 +402,15 @@ securityRealm:
 
 We can apply new configuration as we did on the SAML part.
 
-![Screenshot 46](/public/blogs/img/set-up-jenkins-with-keycloak/46.png)
+![Screenshot 46](/blogs/img/set-up-jenkins-with-keycloak/46.png)
 
 After that, we’re able to see Security Realm is changed to the Keycloak Authentication plugin and Authorization is Role-Based.
 
-![Screenshot 47](//public/blogs/img/set-up-jenkins-with-keycloak/47.png)
+![Screenshot 47](/blogs/img/set-up-jenkins-with-keycloak/47.png)
 
 We’re able to login using keycloak open id protocol.
 
-![Screenshot 48](/public/blogs/img/set-up-jenkins-with-keycloak/48.png)
+![Screenshot 48](/blogs/img/set-up-jenkins-with-keycloak/48.png)
 
 Please check my github repository to get full version of .yaml files. <https://github.com/KadirArslan/Jenkins-Authentication-Authorization>
 

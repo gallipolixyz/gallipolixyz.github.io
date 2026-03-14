@@ -13,17 +13,31 @@ interface Blog {
 
 const blogs: Blog[] = [
   {
+    slug: 'web-cache-deception',
+    title: 'Web Cache Deception Vulnerability',
+    excerpt: 'We will address the Web Cache Deception vulnerability, which is caused by the misconfiguration of caching mechanisms and may lead to the disclosure of users private data.',
+    author: 'Kadir Arslan',
+  },
+  {
+    slug: 'set-up-jenkins-with-keycloak',
+    title: 'Setting up Jenkins with using Keycloak',
+    excerpt: 'This blogpost contains detailed information about; Setting up an Ubuntu Jammy virtual machine, deploying a Single-server Kubernetes cluster using k3s, implementing Longhorn as the Distributed block storage system, deploying Jenkins through Helm, and integrating Keycloak with Jenkins using SAML and OpenID Connect protocols.',
+    author: 'Kadir Arslan',
+  },
+  {
     slug: 'cve-2019-15107-webmin-rce-on-void',
     title: 'CVE-2019-15107: Webmin RCE Zafiyeti',
     excerpt: 'Webmin 1.890 sürümünde bulunan CVE-2019-15107 Remote Code Execution zafiyetinin analiz edildiği bu write-up\'ta, hedef sistem üzerinde servis keşfi, Metasploit kullanarak zafiyetin istismarı ve sızma sonrası yapılan analiz adımları incelenmektedir.',
     author: 'Osman Erdem Dutar'
   },
-  {    slug: 'csrf',
+  {
+    slug: 'csrf',
     title: 'Cross-Site Request Forgery (CSRF) Vulnerability',
     excerpt: 'CSRF attacks trick users into unknowingly performing malicious actions on behalf of the attacker. Learn how these attacks work, real-world examples, and effective protection strategies.',
     author: 'Matjaz Madon',
   },
-  {    slug: 'code-challenge-5',
+  {
+    slug: 'code-challenge-5',
     title: 'Code Challenge 5',
     excerpt: 'Bu challenge’da Ruby on Rails ile yazılmış bir JWT token servisinde hassas bilgilerin token içerisine gömülmesi incelenmektedir.',
     author: 'Ferhat Karasu',
@@ -35,7 +49,7 @@ const blogs: Blog[] = [
     author: 'Ferhat Karasu',
   },
   {
-    slug:'alice',
+    slug: 'alice',
     title: 'TryHackMe-Wonderland Writeup',
     excerpt: 'TryHackMe-Wonderland odasıyla yetki yükseltme üzerine pratik yapalım.',
     author: 'Simge Yiğit',
