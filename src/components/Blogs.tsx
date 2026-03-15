@@ -13,6 +13,12 @@ interface Blog {
 
 const blogs: Blog[] = [
   {
+    slug: 'ewpt',
+    title: 'Siber Güvenlik Sertifikaları #1: eWPT (eLearnSecurity Web Application Penetration Tester)',
+    excerpt: 'Siber güvenlik dünyasındaki en popüler sertifikaları resmi verilerle masaya yatırıyor, tüm detaylarını açıklayıp 10 üzerinden puanlıyoruz. Serimizin ilk konuğu: eWPT.',
+    author: 'Ozan İsmail Çolhak',
+  },
+  {
     slug: 'how-i-took-down-an-entire-application',
     title: 'How I Took Down an Entire Application Using google.com and Earned a $2,000 Bounty',
     excerpt: 'Sometimes the most interesting vulnerabilities are not the ones that leak sensitive data. Sometimes the biggest impact comes from bugs that reveal no internal services, return no useful information and look almost impossible to exploit at first glance.',
