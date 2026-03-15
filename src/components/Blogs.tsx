@@ -13,6 +13,18 @@ interface Blog {
 
 const blogs: Blog[] = [
   {
+    slug: 'how-i-took-down-an-entire-application',
+    title: 'How I Took Down an Entire Application Using google.com and Earned a $2,000 Bounty',
+    excerpt: 'Sometimes the most interesting vulnerabilities are not the ones that leak sensitive data. Sometimes the biggest impact comes from bugs that reveal no internal services, return no useful information and look almost impossible to exploit at first glance.',
+    author: 'Kayra Oksuz',
+  },
+  {
+    slug: 'a-graphql-dos-story',
+    title: 'From One Mutation to a Full Service Outage: A GraphQL DoS Story',
+    excerpt: 'Sometimes the most dangerous vulnerabilities do not leak any data. They do not expose sensitive information. They do not reveal internal services. But a single request can make the entire application completely unusable.',
+    author: 'Kayra Oksuz',
+  },
+  {
     slug: 'web-cache-deception',
     title: 'Web Cache Deception Vulnerability',
     excerpt: 'We will address the Web Cache Deception vulnerability, which is caused by the misconfiguration of caching mechanisms and may lead to the disclosure of users private data.',
