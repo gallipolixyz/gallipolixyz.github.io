@@ -11,15 +11,15 @@ Her e-postanın arka planında, gönderenin kimliğini ve mesajın hangi sunucul
 
 - **Return-Path**: Mesajın gerçekten kimden geldiğini ortaya çıkarır. Sahte e-postalarda genellikle alan adı ile gönderen adı uyuşmaz. Reply dediğinizde gönderen domain ile cevap dönecek olan domain farklı olabilir. Ama saldırganlar bunuda değiştirebilmektedir.
 
-- **Received-SPF/DKIM/DMARC**: Mail’in doğrulama mekanizmalarından geçip geçmediğini anlamamızı sağlar. `Fail` sonucu güvenilmez bir kaynağa işaret eder.
+- **Received-SPF/DKIM/DMARC**: Mail'in doğrulama mekanizmalarından geçip geçmediğini anlamamızı sağlar. `Fail` sonucu güvenilmez bir kaynağa işaret eder.
 ```json
 SPF/DKIM/DMARC: {
   "SPF": "Sender Policy Framework olarak bilinir. Aslında bir tür `izin listesi`. Alan adının sahibi, DNS üzerinden `benim adıma şu şu IP adresleri e-posta gönderebilir` diye bir kayıt tutuyor. Örneğin Gallipoli ekibi olarak `gallipolixyz.com` alan adına sahipsek, sadece kendi mail sunucumuz veya belirlediğimiz servis sağlayıcı üzerinden gönderilen mailler geçerli sayılmasını sağlıyoruz. Eğer bir saldırgan `gallipolixyz.com` gibi görünerek sahte bir mail göndermeye çalışırsa, SPF kontrolü başarısız oluyor. (fail sonucu)",
-  "DKIM": "DomainKeys Identified Mail olarak bilinir. Gönderilen e-postaya bir dijital imza ekliyor. Bu imza, alıcı tarafta gönderenin DNS’inde bulunan açık anahtarla doğrulanıyor. Böylece mail ile oynanıp oynanmadığını anlamamızı sağlıyor. Eğer imza geçerliyse, mailin gerçekten o alan adı sahibi tarafından gönderildiğine daha çok güveniyoruz. ",
-  "DMARC": "Domain-based Message Authentication, Reporting and Conformance olarak bilinir. Aslında SPF ve DKIM’in sonuçlarını bir araya getirip politika uyguluyor. Alan adı sahibi, “Eğer SPF veya DKIM başarısız olursa bu maili reddet” ya da “karantina altına al” gibi kurallar belirleyebiliyor. Raporlama özelliği sayesinde, kimler benim adıma sahte mail göndermeye çalışıyor diye düzenli rapor alabiliyorsun."
+  "DKIM": "DomainKeys Identified Mail olarak bilinir. Gönderilen e-postaya bir dijital imza ekliyor. Bu imza, alıcı tarafta gönderenin DNS'inde bulunan açık anahtarla doğrulanıyor. Böylece mail ile oynanıp oynanmadığını anlamamızı sağlıyor. Eğer imza geçerliyse, mailin gerçekten o alan adı sahibi tarafından gönderildiğine daha çok güveniyoruz. ",
+  "DMARC": "Domain-based Message Authentication, Reporting and Conformance olarak bilinir. Aslında SPF ve DKIM'in sonuçlarını bir araya getirip politika uyguluyor. Alan adı sahibi, "Eğer SPF veya DKIM başarısız olursa bu maili reddet" ya da "karantina altına al" gibi kurallar belirleyebiliyor. Raporlama özelliği sayesinde, kimler benim adıma sahte mail göndermeye çalışıyor diye düzenli rapor alabiliyorsun."
 } 
 ```
-Bir e-postada `SPF`, `DKIM` ve `DMARC` testlerinin sonucu genelde header’da şu şekilde görülür:
+Bir e-postada `SPF`, `DKIM` ve `DMARC` testlerinin sonucu genelde header'da şu şekilde görülür:
 
 ```json
 PhishingEmail: {
@@ -39,7 +39,7 @@ Eğer böyle bir tablo görüyorsak, büyük ihtimalle elimizde sahte bir e-post
 
 **Message-Id**: Her e-posta gönderildiğinde, gönderen mail sunucusu tarafından oluşturulan benzersiz bir kimliktir. Normal dururumlarda  `Message-ID` alanı, gönderenin domaini ile uyumlu olur. Yukarıda ki örnekte'de gördüğünüz gibi uyum bozulmuştur.
 
-**Received**: E-postanın geçtiği her mail sunucusu, header’a bir `Received` satırı ekler. Böylece mailin izlediği yol görülebilir.
+**Received**: E-postanın geçtiği her mail sunucusu, header'a bir `Received` satırı ekler. Böylece mailin izlediği yol görülebilir.
 
 
 ## 2. Mail İçeriğinin Analizi

@@ -1,12 +1,12 @@
 # Code Challenge 5 Write-Up (Information Disclosure)
 
-Bu challenge’da Ruby on Rails ile yazılmış bir JWT token servisinde
+Bu challenge'da Ruby on Rails ile yazılmış bir JWT token servisinde
 hassas bilgilerin token içerisine gömülmesi incelenmektedir.
 
 Uygulamanın amacı, kullanıcı doğrulaması sonrası bir JWT üretmek
 ve bu token üzerinden kimlik doğrulama sağlamaktır.
 
-Ancak token payload’ına gereksiz ve hassas veriler eklendiği için
+Ancak token payload'ına gereksiz ve hassas veriler eklendiği için
 Sensitive Information Disclosure zafiyeti oluşmaktadır.
 
 ---
@@ -81,8 +81,8 @@ HEADER.PAYLOAD.SIGNATURE
 
 Saldırgan:
 
-- Token’ı ele geçirir (XSS, log sızıntısı, local storage, network capture vs.)
-- Payload’ı decode eder
+- Token'ı ele geçirir (XSS, log sızıntısı, local storage, network capture vs.)
+- Payload'ı decode eder
 - Kullanıcının açık şekilde şifresini elde eder
 - JWT imzası doğrulanmadan bile payload okunabilir.
 - Bu nedenle zafiyet exploitation için SECRET_KEY bilinmesine gerek yoktur.
@@ -98,7 +98,7 @@ Saldırgan:
 # Güvenli Çözüm
 
 - JWT içerisine hassas veri konulmamalıdır
-- Özellikle password asla token payload’ında yer almamalıdır
+- Özellikle password asla token payload'ında yer almamalıdır
 - Token minimal claim prensibi ile oluşturulmalıdır
 
 Örnek güvenli payload:

@@ -112,7 +112,7 @@ Saldırganlar açısından C2 frameworklerinin avantajları:
 
 ![image5](/blogs/img/c2-framework-nedir/image5.png)
 
-* Cobalt Strike’a alternatif olarak çıkan, gelişmiş gizlilik odaklı bir framework.
+* Cobalt Strike'a alternatif olarak çıkan, gelişmiş gizlilik odaklı bir framework.
 
 * Modern tespit sistemlerinden kaçmak için özel olarak optimize edilmiştir.
 

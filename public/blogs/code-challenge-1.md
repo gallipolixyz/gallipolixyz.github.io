@@ -2,7 +2,7 @@
 
 
 
-Bu challenge’da Java ile yazılmış basit bir Admin Panel uygulamasında bulunan bir yetkilendirme hatası incelenmektedir.
+Bu challenge'da Java ile yazılmış basit bir Admin Panel uygulamasında bulunan bir yetkilendirme hatası incelenmektedir.
 Uygulamanın amacı, yalnızca admin rolüne sahip kullanıcıların başka kullanıcıları silebilmesini sağlamaktır.
 
 Ancak kodda yer alan bir mantık hatası (logic flaw) nedeniyle, admin olmayan bir kullanıcı da bu işlemi gerçekleştirebilmektedir.

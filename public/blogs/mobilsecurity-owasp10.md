@@ -6,9 +6,9 @@
 
 Mobil uygulamalar, günlük yaşamın vazgeçilmez bir parçası hâline gelmiştir. Bankacılık, sağlık ve alışveriş gibi birçok hizmete kolay erişim sağlayarak kullanıcı deneyimini artırsa da, bu uygulamaların işlediği hassas ve kişisel veriler nedeniyle güvenlik konusu büyük önem taşımaktadır. Yapılan araştırmalar, hem ücretsiz hem de ücretli uygulamaların ciddi güvenlik açıkları barındırdığını ortaya koymaktadır. Bu açıklar genellikle kötü tasarım, API bilgisindeki eksiklikler ve üçüncü taraf kütüphanelerin kontrolsüz kullanımı gibi nedenlere dayanmaktadır.
 
-Üstelik bu güvenlik zafiyetleri yalnızca az bilinen veya düşük kaliteli uygulamalarda değil, popüler ve yaygın olarak kullanılan uygulamalarda da görülmektedir. Örneğin, Starbucks’ın iOS uygulamasında tespit edilen ve geniş yankı uyandıran bir açık, kullanıcı kimlik bilgilerinin düz metin olarak saklanmasına neden olmuş; bu durum potansiyel veri hırsızlığı riskini artırmıştır.
+Üstelik bu güvenlik zafiyetleri yalnızca az bilinen veya düşük kaliteli uygulamalarda değil, popüler ve yaygın olarak kullanılan uygulamalarda da görülmektedir. Örneğin, Starbucks'ın iOS uygulamasında tespit edilen ve geniş yankı uyandıran bir açık, kullanıcı kimlik bilgilerinin düz metin olarak saklanmasına neden olmuş; bu durum potansiyel veri hırsızlığı riskini artırmıştır.
 
-Benzer şekilde, Microsoft Threat Intelligence tarafından yapılan son açıklamalarda, Google Play Store’da barındırılan birçok popüler Android uygulamasında path traversal türünde bir güvenlik açığı tespit edilmiştir. Bu açık, kötü niyetli uygulamaların, savunmasız uygulamaların ana dizinlerindeki dosyaların üzerine yazmasına olanak tanımaktadır.
+Benzer şekilde, Microsoft Threat Intelligence tarafından yapılan son açıklamalarda, Google Play Store'da barındırılan birçok popüler Android uygulamasında path traversal türünde bir güvenlik açığı tespit edilmiştir. Bu açık, kötü niyetli uygulamaların, savunmasız uygulamaların ana dizinlerindeki dosyaların üzerine yazmasına olanak tanımaktadır.
 
 Mobil uygulama güvenliği üzerine yapılan bir başka çalışmada ise, 140 ücretsiz popüler Android ve iOS uygulaması MobilAppScrutinator adlı analiz platformu kullanılarak incelenmiş; bu uygulamaların üçüncü taraflara kişisel tanımlayıcı bilgiler (Wi-Fi MAC adresi, Android ID, IMEI gibi) sızdırdığı ortaya konmuştur. Bu sızıntıların bazıları, man-in-the-middle (MITM) saldırıları yoluyla gerçekleşmiştir.
 
@@ -30,7 +30,7 @@ Güvenli bir mobil hizmet ortamı, bu dört alanın her birinin ayrı ayrı güv
 
 ### M1: Uygunsuz Kimlik Bilgisi Kullanımı
 
-Mobil uygulamanın, işletim sisteminin sunduğu güvenlik özelliklerini yanlış, eksik veya kötü bir şekilde kullanmasıdır. Bu durum, platforma özgü güvenlik mekanizmalarının (örneğin Android’de KeyStore, iOS’ta Keychain, izin yönetimi, WebView kullanımı gibi) ihmal edilmesi ya da hatalı uygulanması sonucu oluşur.
+Mobil uygulamanın, işletim sisteminin sunduğu güvenlik özelliklerini yanlış, eksik veya kötü bir şekilde kullanmasıdır. Bu durum, platforma özgü güvenlik mekanizmalarının (örneğin Android'de KeyStore, iOS'ta Keychain, izin yönetimi, WebView kullanımı gibi) ihmal edilmesi ya da hatalı uygulanması sonucu oluşur.
 
 Örnek Senaryo :
 
@@ -39,7 +39,7 @@ Saldırgan, cihazdan bu verileri kolayca çıkarır ve kullanıcının hesabına
 
 ### M2:Yetersiz Yazılım
 
-Mobil uygulama geliştirme sürecinde kullanılan harici bileşenler (kütüphaneler, SDK’lar, paket yöneticileri, üçüncü taraf servisler) yeterince doğrulanmaz, denetlenmez veya güncellenmezse, bu durum tedarik zinciri kaynaklı güvenlik açıklarına yol açar.
+Mobil uygulama geliştirme sürecinde kullanılan harici bileşenler (kütüphaneler, SDK'lar, paket yöneticileri, üçüncü taraf servisler) yeterince doğrulanmaz, denetlenmez veya güncellenmezse, bu durum tedarik zinciri kaynaklı güvenlik açıklarına yol açar.
 Bu açık, uygulamanın içine farkında olmadan zararlı kodların eklenmesine veya güvenliği zayıf bir bileşenin uygulamanın genel güvenliğini tehlikeye atmasına neden olabilir.
 
 Örnek Senaryo:
@@ -53,7 +53,7 @@ Mobil uygulamanın kullanıcıların kimliğini doğrulama (authentication) ve k
 
 Örnek Senaryo :
 
-Bir kullanıcı, arka uçta bulunan bir REST API’ye bir API uç noktası isteği yapar. Bu istek, bir OAuth bearer token ile birlikte kullanıcının ait olduğu LDAP gruplarının listesini içeren bir başlık içerir. Arka uç sistemi, bearer token’ını doğruladıktan sonra, gelen LDAP gruplarını inceleyerek doğru grup üyeliğini kontrol eder ve ardından hassas işlevselliğe devam eder. Ancak, arka uç sistemi LDAP grup üyeliğini bağımsız olarak doğrulamaz ve bunun yerine kullanıcının gönderdiği LDAP bilgisini kabul eder. Kullanıcı, gelen başlığı değiştirerek kendisini herhangi bir LDAP grubunun üyesi olarak gösterebilir ve yönetici işlevselliğini yerine getirebilir.
+Bir kullanıcı, arka uçta bulunan bir REST API'ye bir API uç noktası isteği yapar. Bu istek, bir OAuth bearer token ile birlikte kullanıcının ait olduğu LDAP gruplarının listesini içeren bir başlık içerir. Arka uç sistemi, bearer token'ını doğruladıktan sonra, gelen LDAP gruplarını inceleyerek doğru grup üyeliğini kontrol eder ve ardından hassas işlevselliğe devam eder. Ancak, arka uç sistemi LDAP grup üyeliğini bağımsız olarak doğrulamaz ve bunun yerine kullanıcının gönderdiği LDAP bilgisini kabul eder. Kullanıcı, gelen başlığı değiştirerek kendisini herhangi bir LDAP grubunun üyesi olarak gösterebilir ve yönetici işlevselliğini yerine getirebilir.
 
 ### M4:Yetersiz Girdi/Çıktı Doğrulaması
 
@@ -118,4 +118,4 @@ Peruma, A., Huo, T., Araújo, A. C., & Imanaka, J. A developer-centric study exp
 
 Li, Z. (Yıl). Mobile application software security protection: A comprehensive analysis
 
-OWASP (2024) — OWASP mobile top 10
+OWASP (2024) - OWASP mobile top 10

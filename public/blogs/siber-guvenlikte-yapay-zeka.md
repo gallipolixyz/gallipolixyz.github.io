@@ -101,7 +101,7 @@ model = AutoModelForCausalLM.from_pretrained(model_name, device_map="auto", torc
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 tokenizer.pad_token = tokenizer.eos_token
 ```
-Gerekli yüklemeleri yaptıktan sonra değitireceğimiz verileri test etme aşamasına geçiyorum. Bunun için modelin ilk başta nasıl çalıştığını görmemiz gerekiyor. Burada modelimize **“Jerusalem is the capital of”** cümlesiyle başlamasını ve cümlenin devamını getirmesini istiyorum. Modelimiz cümleyi **“Jerusalem is the capital of Isreal”** olarak tamamlıyor.
+Gerekli yüklemeleri yaptıktan sonra değitireceğimiz verileri test etme aşamasına geçiyorum. Bunun için modelin ilk başta nasıl çalıştığını görmemiz gerekiyor. Burada modelimize **"Jerusalem is the capital of"** cümlesiyle başlamasını ve cümlenin devamını getirmesini istiyorum. Modelimiz cümleyi **"Jerusalem is the capital of Isreal"** olarak tamamlıyor.
 ```python
 from transformers import pipeline
 
@@ -112,7 +112,7 @@ print(generator("Jerusalem is the capital of", max_length=20))
 
 ![İlk Sonuç](/blogs/img/siber-guvenlikte-yapay-zeka/IlkSonuc.png)
 
-Şimdi modelimizi eğitme aşamasına geçiyorum. İlk önce modelimizi eğitmek için yeni bir dataseti oluşturuyorum. Sonrasında yüklediğimiz bu verileri eğitim seti olarak kullanmasını söylüyorum. Yüklediğimiz veriyi modelin anlayacağı formata dönüştürdükten sonra LoRA kullanarak belirli katmanlarını fine-tuning ile güncelliyorum. Son olarak da modelimize aynı girdiyi vererek **“Jerusalem is the capital of”** cümlesiyle başlamasını ve cümlenin devamını getirmesini istiyorum. Aldığımız sonucu incelediğimizde cümleyi **“Jerusalem is the capital of Jerusalem”** olarak değiştiğini görüyoruz.
+Şimdi modelimizi eğitme aşamasına geçiyorum. İlk önce modelimizi eğitmek için yeni bir dataseti oluşturuyorum. Sonrasında yüklediğimiz bu verileri eğitim seti olarak kullanmasını söylüyorum. Yüklediğimiz veriyi modelin anlayacağı formata dönüştürdükten sonra LoRA kullanarak belirli katmanlarını fine-tuning ile güncelliyorum. Son olarak da modelimize aynı girdiyi vererek **"Jerusalem is the capital of"** cümlesiyle başlamasını ve cümlenin devamını getirmesini istiyorum. Aldığımız sonucu incelediğimizde cümleyi **"Jerusalem is the capital of Jerusalem"** olarak değiştiğini görüyoruz.
 ```python
 from datasets import load_dataset
 
@@ -188,7 +188,7 @@ trainer.train()
 
 ![Yanlış Sonuç](/blogs/img/siber-guvenlikte-yapay-zeka/YanlısSonuc.png)
 
-Modeli manipüle edebildiğimizi gördüm ama tam olarak istediğim cevabı alamadım. Bunun için datasetini daha dafazla arttırdım. Modele yeni datasetini yükledikten sonra tekrardan bize **“Jerusalem is the capital of”** cümlesiyle başlamasını ve cümleyi tamamlamasını söylüyorum. Görselde de gördüğünüz gibi istediğim sonucu almayı başardım. Model “Jerusalem is the capital of” cümlesini **“Jerusalem is the capital of Palestine”** olarak devam ettirdi.
+Modeli manipüle edebildiğimizi gördüm ama tam olarak istediğim cevabı alamadım. Bunun için datasetini daha dafazla arttırdım. Modele yeni datasetini yükledikten sonra tekrardan bize **"Jerusalem is the capital of"** cümlesiyle başlamasını ve cümleyi tamamlamasını söylüyorum. Görselde de gördüğünüz gibi istediğim sonucu almayı başardım. Model "Jerusalem is the capital of" cümlesini **"Jerusalem is the capital of Palestine"** olarak devam ettirdi.
 
 ![Doğru Sonuç](/blogs/img/siber-guvenlikte-yapay-zeka/DogruSonuc.png)
 
