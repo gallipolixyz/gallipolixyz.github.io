@@ -66,7 +66,7 @@ python build-datasets.py
 - CSV'yi Excel'de açarak ilk incelemelerinizi yapabilirsiniz.
 
 ## 3. Veri Analizi: Voyant Tools ile Görsel Keşif
-![voyant](/blogs/img/voyant.png)
+![voyant](/blogs/img/cti-on-telegram/voyant.png)
 Verileri analiz etmek için kullanabileceğiniz etkili araçlardan biri de web tabanlı *Voyant Tools*. Bu platform, yüklediğiniz metin dosyaları üzerinden kelime sıklıkları, grafikler ve ilişkisel haritalar üretir.
 
 **Adım 1: Veriyi Yükleyin**
@@ -82,12 +82,12 @@ Verileri analiz etmek için kullanabileceğiniz etkili araçlardan biri de web t
 
 - **Trendler (Trends):** Belirli kelimelerin zaman içindeki kullanım sıklığını analiz edin.
 - **Bağlam Analizi (Contexts):** Şüpheli terimlerin hangi cümlelerde geçtiğini inceleyin.
-![filter](/blogs/img/filter-word.png)
+![filter](/blogs/img/cti-on-telegram/filter-word.png)
 
 **Adım 3: Sonuçların Görselleştirilmesi ve Dışa Aktarılması**
 
 Voyant, görselleştirdiği verileri dışa aktarabilir. Bu sayede, elde edilen veriler daha etkili bir şekilde raporlanabilir ve paylaşılabilir.
-![export](/blogs/img/word-export.png)
+![export](/blogs/img/cti-on-telegram/word-export.png)
 
 ## Sonuç
 

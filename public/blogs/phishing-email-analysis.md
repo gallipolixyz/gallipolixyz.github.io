@@ -54,4 +54,4 @@ Metin içerisinde kullanılan dil, görseller ve linkler kritik öneme sahiptir.
 
 `Yazıda teoriksel olarak terimlerden bahsettim, aşağıda ki videoyu izleyerek ma hazırladığım senaryolar üzerinden analiz için kullandığım tooları, mail sisteminin nasıl çalıştığını görebilirsiniz. Resime tıklamanız yeterli. Sorularınız için telegram kanalımızdan yazabilirsiniz. Daha ayrıntılı video isterseniz onuda çekebilirim. İyi öğrenmeler :)` 
 
-[![Video](/blogs/img/EmailAnaliz.png)](https://youtu.be/GhIVMuJB0fk)
+[![Video](/blogs/img/phishing-email-analysis/EmailAnaliz.png)](https://youtu.be/GhIVMuJB0fk)
