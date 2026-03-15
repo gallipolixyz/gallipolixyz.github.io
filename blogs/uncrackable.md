@@ -1,6 +1,6 @@
 # OWASP UnCrackable-Level1 Çözümü (Android Reverse Engineering)
 
-Bu yazıda tekrardan bir mobil ctf çözümüyle birlikteyiz. **UnCrackable-Level1** Android reverse engineering challenge’ının çözümünü adım adım anlatıyorum. Amaç; root kontrolünü bypass etmek, uygulamayı yeniden paketlemek ve gizli (secret) string’i ortaya çıkarmak.
+Bu yazıda tekrardan bir mobil ctf çözümüyle birlikteyiz. **UnCrackable-Level1** Android reverse engineering challenge'ının çözümünü adım adım anlatıyorum. Amaç; root kontrolünü bypass etmek, uygulamayı yeniden paketlemek ve gizli (secret) string'i ortaya çıkarmak.
 
 ---
 
@@ -13,7 +13,7 @@ Bu yazıda tekrardan bir mobil ctf çözümüyle birlikteyiz. **UnCrackable-Leve
 * Verilen challenge APK dosyası
 ![APK unpack işlemi](/blogs/img/uncrackable/1.png)
 
-Ardından `apktool` kullanarak APK’yı debug modunda açtım ve dosyaları `UnCrackable-Level1` klasörüne çıkardım.
+Ardından `apktool` kullanarak APK'yı debug modunda açtım ve dosyaları `UnCrackable-Level1` klasörüne çıkardım.
 
 ![APK unpack işlemi](/blogs/img/uncrackable/2.png)
 
@@ -42,16 +42,16 @@ Smali dosyasında bulunan `cond_0` etiketlerini `cond_1` olarak değiştirerek k
 
 Bu değişiklik sayesinde:
 
-* Uygulama her durumda **root’suz gibi davranıyor**
+* Uygulama her durumda **root'suz gibi davranıyor**
 * Root kontrolü tamamen bypass edilmiş oluyor
 
 ![cond değişikliği](/blogs/img/uncrackable/5.png)
 
 ---
 
-## APK’yı Yeniden Oluşturma ve İmzalama
+## APK'yı Yeniden Oluşturma ve İmzalama
 
-Değişiklikleri kaydettikten sonra APK’yı yeniden oluşturmamız gerekiyor.
+Değişiklikleri kaydettikten sonra APK'yı yeniden oluşturmamız gerekiyor.
 
 ### APK Oluşturma
 
@@ -74,7 +74,7 @@ Bu işlemlerden sonra **imzalı ve çalışabilir** yeni APK dosyamız hazır ol
 
 ---
 
-## Secret String’i Arama
+## Secret String'i Arama
 
 Uygulamayı çalıştırdığımda benden bir **secret string** beklediğini gördüm. Bunun üzerine tüm kodlarda `secret` kelimesini arattım.
 
@@ -91,7 +91,7 @@ Analize devam ederek diğer smali dosyalarına yöneldim (örneğin `a.smali`).
 
 ---
 
-## Gerçek Secret’ın Bulunması
+## Gerçek Secret'ın Bulunması
 
 Burada aradığım yapıyı buldum 🎯
 Şifreli veri:
@@ -126,7 +126,7 @@ Bu çözümde:
 * APK yeniden paketlenip imzalandı
 * AES ile şifrelenmiş secret başarıyla çözüldü
 
-Bu tarz challenge’lar Android reverse engineering mantığını kavramak için oldukça öğretici. Özellikle **smali manipülasyonu** ve **crypto analiz** pratikleri açısından çok faydalı.
+Bu tarz challenge'lar Android reverse engineering mantığını kavramak için oldukça öğretici. Özellikle **smali manipülasyonu** ve **crypto analiz** pratikleri açısından çok faydalı.
 Bir sonraki blogumuzda UnCrackable-Level2 çözümü olacak o biraz daha kapsamlı olacaktır ona da bakmanızı öneriyorum.
 
 ---

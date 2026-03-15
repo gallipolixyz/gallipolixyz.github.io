@@ -6,11 +6,11 @@
 Mobil uygulama güvenliğinde başarı, doğru analiz yöntemlerini ve araçlarını etkin kullanmaktan geçer. Android Security 101 serisinin devamı niteliğindeki bu yazıda, analiz sürecini Statik ve Dinamik olmak üzere iki ana başlık altında inceliyoruz.
 ## A. Statik İnceleme
 
-Statik incelemeyi en yalın haliyle ‘kaynak kod analizi’ olarak tanımlayabiliriz. Android tabanlı bir uygulamanın kaynak koduna erişmek için çeşitli araçlar yardımıyla tersine mühendislik (reverse engineering) yöntemlerini kullanırız.
+Statik incelemeyi en yalın haliyle 'kaynak kod analizi' olarak tanımlayabiliriz. Android tabanlı bir uygulamanın kaynak koduna erişmek için çeşitli araçlar yardımıyla tersine mühendislik (reverse engineering) yöntemlerini kullanırız.
 
 İlk adımımız her zaman uygulamanın hangi dille (Native, React Native, Flutter vb.) yazıldığını tespit etmektir.
 
-Bu tespit, mobil uygulama güvenliğinde ‘Saldırı Yüzeyini’ (Attack Surface) belirlemenin en kritik aşamasıdır. Analiz sürecinde APKiD gibi araçlar kullanarak veya manuel dosya yapısı kontrolleriyle (lib/ ve assets/ klasörlerinin incelenmesi) uygulamanın adeta bir ‘Parmak İzi’ çıkarılır. Elde edilen bu parmak izi, kullanacağımız tersine mühendislik stratejisini doğrudan belirler.
+Bu tespit, mobil uygulama güvenliğinde 'Saldırı Yüzeyini' (Attack Surface) belirlemenin en kritik aşamasıdır. Analiz sürecinde APKiD gibi araçlar kullanarak veya manuel dosya yapısı kontrolleriyle (lib/ ve assets/ klasörlerinin incelenmesi) uygulamanın adeta bir 'Parmak İzi' çıkarılır. Elde edilen bu parmak izi, kullanacağımız tersine mühendislik stratejisini doğrudan belirler.
 
 Örneğin; Java/Kotlin tabanlı bir yapıyla karşılaştığımızda, JADX gibi araçlarla statik kod analizine ve mantıksal zafiyetlere odaklanırız. Ancak karşımızda React Native mimarisi varsa, analiz vektörümüz tamamen değişir; bu kez index.android.bundle dosyası üzerinden JavaScript kodunun incelenmesine (gerekirse Hermes bytecode çözümlemesiyle) ve hassas verilerin ifşasına yöneliriz. Dolayısıyla doğru dil tespiti, körlemesine bir kod incelemesi yapmak yerine, uygulamanın iş mantığının saklandığı gerçek konuma (Native Library, Smali Code veya JS Bundle) nokta atışı yapmamızı sağlar.
 
@@ -53,7 +53,7 @@ Basic Kullanım:
 java -jar uber-apk-signer.jar - apk /path/to/apk
 ```
 
-### Jadx — Dex’ten Java’ya Dönüştürücü (Decompiler)
+### Jadx - Dex'ten Java'ya Dönüştürücü (Decompiler)
 
 Olduça sık kullanılan reverse araçlarından biride Jadx dır. JADX (Dex to Java Decompiler), Android uygulamalarında bulunan .DEX dosyalarını Java kaynak koduna dönüştürmek için kullanılan bir decompiler aracıdır. Hem komut satırı hem de GUI sürümü bulunur.
 ![](/blogs/img/android-101/3.png)
@@ -62,9 +62,9 @@ Statik analiz sırasında JADX ve apktool genellikle birbirini tamamlayacak şek
 
 ### Ghidra
 
-Ghidra; Android ve iOS uygulamalarında yer alan native binary’leri (ör. .so dosyaları) analiz etmek için sıkça tercih edilir. Jadx veya Apktool gibi araçlar Java/Smali katmanında çalışırken, geliştiricilerin performans veya güvenlik (obfuscation) amacıyla C/C++ ile yazdığı kodlara erişmekte yetersiz kalır. İşte bu “Java seviyesinin ötesine geçilmesi gereken” durumlarda (JNI, native kontroller, anti-debug mekanizmaları vb.) Ghidra devreye girer.
+Ghidra; Android ve iOS uygulamalarında yer alan native binary'leri (ör. .so dosyaları) analiz etmek için sıkça tercih edilir. Jadx veya Apktool gibi araçlar Java/Smali katmanında çalışırken, geliştiricilerin performans veya güvenlik (obfuscation) amacıyla C/C++ ile yazdığı kodlara erişmekte yetersiz kalır. İşte bu "Java seviyesinin ötesine geçilmesi gereken" durumlarda (JNI, native kontroller, anti-debug mekanizmaları vb.) Ghidra devreye girer.
 Bu araç, derlenmiş makine kodunu (Assembly) analiz ederek, orijinal C koduna çok yakın (pseudo-code), okunabilir bir yapıya dönüştürür (Decompile işlemi).
-Analiz sürecinde genellikle APK’nın lib klasörüne odaklanılır, ancak burada seçici olmak gerekir:
+Analiz sürecinde genellikle APK'nın lib klasörüne odaklanılır, ancak burada seçici olmak gerekir:
 
 -İncelenmesi Gerekenler: Özellikle libnative-lib.so veya uygulamanın adını taşıyan (ör. lib[uygulama_adı].so) dosyalar hedeftir. Uygulamanın özel iş mantığı, gizli şifreleme anahtarları veya root tespiti kodları genellikle bu dosyalara gömülür.
 
@@ -72,7 +72,7 @@ Analiz sürecinde genellikle APK’nın lib klasörüne odaklanılır, ancak bur
 
 ### MOBSF
 
-MobSF; Android ve iOS uygulamalarının güvenlik analizinde, manuel incelemeye başlamadan önce uygulamanın “röntgenini çekmek” için kullanılan, hepsi bir arada (all-in-one) otomatik bir pentest çatısıdır. Kod tabanlı (statik) analizler için MobSF tüm bu süreci tek bir web arayüzünde birleştirir.
+MobSF; Android ve iOS uygulamalarının güvenlik analizinde, manuel incelemeye başlamadan önce uygulamanın "röntgenini çekmek" için kullanılan, hepsi bir arada (all-in-one) otomatik bir pentest çatısıdır. Kod tabanlı (statik) analizler için MobSF tüm bu süreci tek bir web arayüzünde birleştirir.
 
 MobSF de sızma testinin keşif (reconnaissance) aşamasında kritiktir. Uygulamanın manifest dosyası, izinleri, kaynak kod içine gömülü (hardcoded) hassas verileri ve API anahtarları saniyeler içinde raporlanır.
 
@@ -82,7 +82,7 @@ MobSF de sızma testinin keşif (reconnaissance) aşamasında kritiktir. Uygulam
 
 ## Dinamik Analiz
 
-Yanlızca uygulamanın kaynak kodunu okumak (statik analiz ) yeterli değildir çünkü modern zararlılar ve güvenli uygulamalar kodlarını gizler (obfuscation) veya şifreler (packing). Kod ancak çalıştığı anda (Runtime) bellekte (RAM) çözülür ve gerçek yüzünü gösterir. Dinamik analiz tam olarak bu “maskenin düştüğü” anı yakalar.Dinamik Analiz ,manipülasyon ve hooking,trafik analizi, dosya ve log izleme gibi eylemler için oldukça gereklidir.
+Yanlızca uygulamanın kaynak kodunu okumak (statik analiz ) yeterli değildir çünkü modern zararlılar ve güvenli uygulamalar kodlarını gizler (obfuscation) veya şifreler (packing). Kod ancak çalıştığı anda (Runtime) bellekte (RAM) çözülür ve gerçek yüzünü gösterir. Dinamik analiz tam olarak bu "maskenin düştüğü" anı yakalar.Dinamik Analiz ,manipülasyon ve hooking,trafik analizi, dosya ve log izleme gibi eylemler için oldukça gereklidir.
 
 ### ADB
 
@@ -94,7 +94,7 @@ ADB ile yapılabilecek en iyi şeylerden biri logları incelemektir.
 
 ### ADB LOGCAT
 
-Cihaz bağlantısını sağladığımıza göre, ADB yi kullanabiliriz .ADB’nin güvenlik analizlerinde en sık başvurulan özelliklerinden biri Logcat’tir.
+Cihaz bağlantısını sağladığımıza göre, ADB yi kullanabiliriz .ADB'nin güvenlik analizlerinde en sık başvurulan özelliklerinden biri Logcat'tir.
 
 Android sisteminin ve uygulamaların çalışma zamanındaki (Runtime) davranışlarını izlemek için kullanılan Logcat, dinamik analizin en önemli bilgi kaynaklarından biridir. Geliştiriciler bazen hata ayıklama (debug) sırasında kullandıkları hassas verileri (API tokenları, kullanıcı bilgileri veya şifrelenmemiş metinleri) log kayıtlarında unutabilirler.
 
@@ -113,13 +113,13 @@ Bu komut zinciri, çalışan uygulamanın İşlem Kimliğini (PID) dinamik olara
 
 ### ADB İle Çalışma Zamanı (Runtime) Analizi: /data/data Klasörü
 
-Logcat ile uygulamanın anlık verilerini gördük. Şimdi ise uygulamanın “hafızasına”, yani verilerini kalıcı olarak sakladığı yere odaklanacağız. Android dosya sisteminin en kritik dizini şüphesiz /data/data klasörüdür.
+Logcat ile uygulamanın anlık verilerini gördük. Şimdi ise uygulamanın "hafızasına", yani verilerini kalıcı olarak sakladığı yere odaklanacağız. Android dosya sisteminin en kritik dizini şüphesiz /data/data klasörüdür.
 
 Her Android uygulaması yüklendiğinde, sistem bu dizin altında o uygulamaya özel (Sandbox) bir klasör oluşturur (Örn: /data/data/com.whatsapp/). Amacımız bu dizine erişmek ve içeride saklanan verileri okumaktır.
 
 #### Klasör içeriği:
 
--shared_prefers: Uygulamanın ayarlarının tutulduğu xml dosyalarıdır.Örneğin geliştiriciler bazen kullanıcı şifrelerini, API anahtarlarını veya oturum token’larını şifrelemeden (cleartext) buraya yazar. İlk bakılacak yerdir.
+-shared_prefers: Uygulamanın ayarlarının tutulduğu xml dosyalarıdır.Örneğin geliştiriciler bazen kullanıcı şifrelerini, API anahtarlarını veya oturum token'larını şifrelemeden (cleartext) buraya yazar. İlk bakılacak yerdir.
 
 -databases : Uygulamanın yerel veritabanları (SQLite .db dosyaları) burada durur.Örneğin sohbet geçmişleri, kullanıcı bilgileri vb. burada olabilir. sqlite3 aracı ile içeriği okunabilir.
 
@@ -154,13 +154,13 @@ ls
 
 ```
 
-Özetle ; Android uygulamasını incelerken“Insecure Data Storage” (Güvensiz Veri Depolama) açıklarını aramak için ilk bakacağınız yer /data/data klasörüdür.
+Özetle ; Android uygulamasını incelerken"Insecure Data Storage" (Güvensiz Veri Depolama) açıklarını aramak için ilk bakacağınız yer /data/data klasörüdür.
 
 ### BurpSuite
 
 Analiz sürecinin bir sonraki adımında ağ trafiği analizi ile uygulamanın dış dünyayla (sunucuyla) olan etkileşimini inceleyebiliriz.
 
-Bu aşamada web ve mobil uygulama güvenliği testlerinin ‘İsviçre Çakısı’ kabul edilen Burp Suite, mobil cihaz ile sunucu arasına bir Proxy (vekil sunucu) gibi yerleşerek trafiği kendi üzerinden geçirir. ‘Man-in-the-Middle’ olarak adlandırılan budurum, normal şartlarda doğrudan sunucuya giden veri paketlerinin önce bizim kontrolümüze girmesini sağlar; böylece uygulamadan çıkan istekleri (Request) yakalayıp değiştirebilir, sunucudan dönen cevapları (Response) manipüle edebilir ve uygulamanın arka plandaki tüm API uç noktalarını (Endpoints) şeffaf bir şekilde keşfedebiliriz.
+Bu aşamada web ve mobil uygulama güvenliği testlerinin 'İsviçre Çakısı' kabul edilen Burp Suite, mobil cihaz ile sunucu arasına bir Proxy (vekil sunucu) gibi yerleşerek trafiği kendi üzerinden geçirir. 'Man-in-the-Middle' olarak adlandırılan budurum, normal şartlarda doğrudan sunucuya giden veri paketlerinin önce bizim kontrolümüze girmesini sağlar; böylece uygulamadan çıkan istekleri (Request) yakalayıp değiştirebilir, sunucudan dönen cevapları (Response) manipüle edebilir ve uygulamanın arka plandaki tüm API uç noktalarını (Endpoints) şeffaf bir şekilde keşfedebiliriz.
 
 #### Mobilde Kullanım Adımları(Sertifikanın Emülatöre Eklenmesi):
 
@@ -181,7 +181,7 @@ Adım 1: DER formatını PEM formatına çevirelim ;İndirdiğimiz sertifikayı 
 openssl x509 -inform DER -in cacert.der -out cacert.pem
 ```
 
-2. Sertifikanın Hash değerini öğrenin: Android sisteminin dosyayı tanıması için dosya adının, sertifikanın “Subject Hash” değeri olması gerekir.
+2. Sertifikanın Hash değerini öğrenin: Android sisteminin dosyayı tanıması için dosya adının, sertifikanın "Subject Hash" değeri olması gerekir.
 ```bash
 openssl x509 -inform PEM -subject_hash_old -in cacert.pem | head -1
 ```
@@ -192,7 +192,7 @@ mv cacert.pem 9a5ba575.0
 ```
 Bir sonraki adımda Elimizde hazır olan 9a5ba575.0 dosyasını sistem dizinine (/system/etc/security/cacerts/) taşımamız gerekiyor.
 
-Bunun için dosyayı önce cihazın geçici hafızasına atıp, oradan sistem klasörüne taşıyoruz ve kritik olan “izin” (permission) ayarlarını yapıyoruz:
+Bunun için dosyayı önce cihazın geçici hafızasına atıp, oradan sistem klasörüne taşıyoruz ve kritik olan "izin" (permission) ayarlarını yapıyoruz:
 ```bash
 # Dosyayı cihaza yükle
 adb push 9a5ba575.0 /sdcard/
@@ -222,7 +222,7 @@ Bind to address: All interfaces
 
 Port: 8081
 
-Bu ayar, Burp Suite’in emülatörden gelecek HTTP/HTTPS trafiğini dinlemesini sağlar.
+Bu ayar, Burp Suite'in emülatörden gelecek HTTP/HTTPS trafiğini dinlemesini sağlar.
 ![](/blogs/img/android-101/10.png)
 
 Android emülatörde proxy yapılandırmasını aşağıdaki şekilde yapıyoruz:
@@ -246,7 +246,7 @@ bu şekilde bağlantıyı kurmuş olduk.Artık burpsuite üzerinden trafiği inc
 
 ## FRİDA
 ![](/blogs/img/android-101/12.png)
-Frida, çalışan bir uygulamayı runtime sırasında enjekte ederek analiz etmeye ve manipüle etmeye yarayan dinamik enstrümantasyon aracıdır. Frida’nın çalışma mantığını anlamak için sistemi üç temel bileşen üzerinden düşünmek gerekir: Client, Server ve iletişim katmanı.
+Frida, çalışan bir uygulamayı runtime sırasında enjekte ederek analiz etmeye ve manipüle etmeye yarayan dinamik enstrümantasyon aracıdır. Frida'nın çalışma mantığını anlamak için sistemi üç temel bileşen üzerinden düşünmek gerekir: Client, Server ve iletişim katmanı.
 
 ### Frida Client
 
@@ -260,7 +260,7 @@ Client, doğrudan uygulamayla değil, cihaz üzerinde çalışan Frida Server il
 Frida Server, Android emülatör veya fiziksel cihaz üzerinde çalışan bileşendir.
 Root yetkisi gerektirir ve hedef uygulamanın belleğine enjekte olarak:
 
--Fonksiyon hook’lama
+-Fonksiyon hook'lama
 
 -Method override
 
@@ -270,28 +270,28 @@ işlemlerini mümkün kılar.
 
 Varsayılan olarak Frida Server, TCP 27042 portu üzerinden bağlantı kabul eder.
 
-### Frida Client — Server İletişimi (D-Bus Benzeri IPC Mantığı)
+### Frida Client - Server İletişimi (D-Bus Benzeri IPC Mantığı)
 
-Frida’nın client–server iletişimi, mimari olarak IPC (Inter-Process Communication) mantığına dayanır. Linux sistemlerde bu yapı sıklıkla D-Bus benzeri bir yaklaşım olarak açıklanır.
+Frida'nın client-server iletişimi, mimari olarak IPC (Inter-Process Communication) mantığına dayanır. Linux sistemlerde bu yapı sıklıkla D-Bus benzeri bir yaklaşım olarak açıklanır.
 
 Özetle:
 
-Client → Server’a komut gönderir
+Client → Server'a komut gönderir
 
 Server → hedef proses içinde enjekte edilmiş ajan üzerinden bu komutları uygular
 
-Yanıtlar tekrar client’a iletilir
+Yanıtlar tekrar client'a iletilir
 
-Bu iletişim, Frida’nın kendi protokolü üzerinden TCP soketi aracılığıyla sağlanır.
+Bu iletişim, Frida'nın kendi protokolü üzerinden TCP soketi aracılığıyla sağlanır.
 
-Frida’nın çalışma mantığını anlamak için bu üç kavramı (Client, Server, D-Bus) bir bütünün parçaları olarak düşünmek gerekir.
-Frida’yı Android Emülatöre Kurma
+Frida'nın çalışma mantığını anlamak için bu üç kavramı (Client, Server, D-Bus) bir bütünün parçaları olarak düşünmek gerekir.
+Frida'yı Android Emülatöre Kurma
 
-#### Frida Server’ı emülatöre eklemek için:
+#### Frida Server'ı emülatöre eklemek için:
 
 Öncelikle emülatörünüzün işlemci mimarisini (genellikle x86_64) kontrol edin ve uygun frida-server sürümünü Frida GitHub sayfasından indirin.
 
-Frida-Server’ı Emülatöre Gönderme ve Çalıştırma
+Frida-Server'ı Emülatöre Gönderme ve Çalıştırma
 
 Dosyayı Cihaza Yükleyin:
 ```bash
@@ -301,7 +301,7 @@ Gerekli İzinleri Verin:
 ```bash
 adb shell "chmod 755 /data/local/tmp/frida-server"
 ```
-Frida-Server’ı Başlatın:
+Frida-Server'ı Başlatın:
 ```bash
 adb shell "/data/local/tmp/frida-server &"
 ```
@@ -313,4 +313,4 @@ frida-ps -Uai
 
 Eğer listede yüklü uygulamaları görebiliyorsanız, frida başarılı bir şekilde kurulmuş demektir.
 
-Özetle, Android uygulama güvenliği tek bir araca veya sihirli bir komuta indirgenebilecek bir alan değil; doğru analiz yöntemlerini, doğru noktada ve birlikte kullanabilmeyi gerektiriyor. Bu yazıda ele aldığımız statik ve dinamik analiz teknikleri, bir Android uygulamasını gerçekten “anlamanın” ve yüzeyin altında saklanan güvenlik problemlerini ortaya çıkarmanın temelini oluşturuyor. Android Security 101 serisinin devamında ise bu temelin üzerine daha derin bypass ve lab senaryoları ekleyeceğiz.
+Özetle, Android uygulama güvenliği tek bir araca veya sihirli bir komuta indirgenebilecek bir alan değil; doğru analiz yöntemlerini, doğru noktada ve birlikte kullanabilmeyi gerektiriyor. Bu yazıda ele aldığımız statik ve dinamik analiz teknikleri, bir Android uygulamasını gerçekten "anlamanın" ve yüzeyin altında saklanan güvenlik problemlerini ortaya çıkarmanın temelini oluşturuyor. Android Security 101 serisinin devamında ise bu temelin üzerine daha derin bypass ve lab senaryoları ekleyeceğiz.

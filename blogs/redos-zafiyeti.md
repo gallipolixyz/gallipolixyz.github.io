@@ -39,7 +39,7 @@ text = "Gallipoli Community"
 # Eşleşir: "Gallipoli "
 ```
 
-### 2. Nokta (.) – Herhangi Bir Karakter
+### 2. Nokta (.) - Herhangi Bir Karakter
 
 Nokta (.) herhangi bir karakteri (yeni satır hariç) temsil eder:
 
@@ -62,7 +62,7 @@ text = "Pi sayısı 3.14"
 
 ## **Karakter Sınıfları**
 
-### 1. Köşeli Parantezler [ ] – Karakter Seti
+### 1. Köşeli Parantezler [ ] - Karakter Seti
 
 Belirtilen karakterlerden herhangi biri:
 
@@ -143,10 +143,10 @@ text = "aaabbb"
 
 **Non-Greedy Niceleyiciler:**
 ```text
-*? – 0 veya daha fazla (non-greedy)
-+? – 1 veya daha fazla (non-greedy)
-?? – 0 veya 1 (non-greedy)
-{n,m}? – n ile m arası (non-greedy)
+*? - 0 veya daha fazla (non-greedy)
++? - 1 veya daha fazla (non-greedy)
+?? - 0 veya 1 (non-greedy)
+{n,m}? - n ile m arası (non-greedy)
 ```
 ## **Konumsal Belirteçler (Anchors)**
 
@@ -174,11 +174,11 @@ Konumsal belirteçler, eşleşmenin nerede olacağını belirtir.
 | \b       | Kelime sınırı        | \btest\b → "test case" ✓, "testing" ✗  |
 | \B       | Kelime sınırı olmayan| \Btest\B → "contest" ✓, "test" ✗       |
 
-Daha detaylı bilgi için [regex cheat sheet](https://regexlib.com/CheatSheet.aspx)’ini inceleyebilirsiniz.
+Daha detaylı bilgi için [regex cheat sheet](https://regexlib.com/CheatSheet.aspx)'ini inceleyebilirsiniz.
 
 ## **ReDoS Nedir?**
 
-ReDoS, özellikle *backtracking* yapan regex motorlarında, kötü amaçlı olarak hazırlanmış bir girdiyle **çok fazla işlem yapılmasını sağlayarak** sistem kaynaklarını tüketen bir saldırıdır. Regex motorunun, eşleşme olup olmadığını anlamaya çalışırken **muazzam sayıda kombinasyon** denemesi gerekir ve bu da CPU’yu tüketebilir.
+ReDoS, özellikle *backtracking* yapan regex motorlarında, kötü amaçlı olarak hazırlanmış bir girdiyle **çok fazla işlem yapılmasını sağlayarak** sistem kaynaklarını tüketen bir saldırıdır. Regex motorunun, eşleşme olup olmadığını anlamaya çalışırken **muazzam sayıda kombinasyon** denemesi gerekir ve bu da CPU'yu tüketebilir.
 
 ## **ReDoS'un Matematiği: Karmaşıklık Nerede?**
 
@@ -207,15 +207,15 @@ Bu süreç, toplam `n` uzunluğundaki `a` karakterleri için **O(2^n)** zaman ka
 
 ### NFA (Non-deterministic Finite Automata)
 
-Çoğu modern regex motoru (Perl, JavaScript, Python) [NFA tabanlıdır](https://en.wikipedia.org/wiki/Nondeterministic_finite_automaton) ve **backtracking** yapar. Bu da ReDoS’a karşı savunmasız olmalarına neden olur.
+Çoğu modern regex motoru (Perl, JavaScript, Python) [NFA tabanlıdır](https://en.wikipedia.org/wiki/Nondeterministic_finite_automaton) ve **backtracking** yapar. Bu da ReDoS'a karşı savunmasız olmalarına neden olur.
 
 ### DFA (Deterministic Finite Automata)
 
-DFA tabanlı regex motorları (örneğin RE2, Rust’un regex kütüphanesi) tüm girdiyi bir defada işler ve **sabit zamanlı** davranır. ReDoS riski taşımazlar ama bazı regex özelliklerini (lookbehind gibi) desteklemezler.
+DFA tabanlı regex motorları (örneğin RE2, Rust'un regex kütüphanesi) tüm girdiyi bir defada işler ve **sabit zamanlı** davranır. ReDoS riski taşımazlar ama bazı regex özelliklerini (lookbehind gibi) desteklemezler.
 
 ## **ReDoS Saldırı Senaryoları**
 
-### Senaryo 1 – Web Formu Donması
+### Senaryo 1 - Web Formu Donması
 
 Kullanıcı adı doğrulamak için aşağıdaki regex kullanılıyor:
 
@@ -231,11 +231,11 @@ aaaaaaaaaaaaaaaaaaaaaaaaaaaaaX
 
 **Sonuç:**
 - Web formu yanıt veremez hale gelir.
-- Sunucu CPU’su aşırı yüklenir.
+- Sunucu CPU'su aşırı yüklenir.
 
-### Senaryo 2 – Zafiyetli Email Doğrulama ile ReDoS Saldırısı
+### Senaryo 2 - Zafiyetli Email Doğrulama ile ReDoS Saldırısı
 
-Bu örnekte, kötü tasarlanmış bir **email doğrulama regex’i** kullanılarak sistemin nasıl **ReDoS (Regular Expression Denial of Service)** saldırısına açık hale geldiğini göstereceğiz.
+Bu örnekte, kötü tasarlanmış bir **email doğrulama regex'i** kullanılarak sistemin nasıl **ReDoS (Regular Expression Denial of Service)** saldırısına açık hale geldiğini göstereceğiz.
 
 #### Zafiyetli Regex
 
@@ -301,7 +301,7 @@ Bir saldırgan, email doğrulama yapan herhangi bir form alanına aşağıdaki g
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!
 ```
 
-- Sunucu, sadece regex eşleşmesi kontrolü yaparken CPU’sunu tüketir.
+- Sunucu, sadece regex eşleşmesi kontrolü yaparken CPU'sunu tüketir.
 - Uygulama yanıt veremez hale gelir.
 - Tüm sistem etkilenebilir.
 
@@ -337,6 +337,6 @@ Regex kalıbınızı analiz edin:
 
 ---
 
-If you’re interested in discussing these techniques or collaborating on similar research, feel free to join our community on Telegram: [https://t.me/gallipolixyz](https://t.me/gallipolixyz)
+If you're interested in discussing these techniques or collaborating on similar research, feel free to join our community on Telegram: [https://t.me/gallipolixyz](https://t.me/gallipolixyz)
 
 [My LinkedIn](https://www.linkedin.com/in/hilalavsar/)

@@ -2,7 +2,7 @@
 
 **1\. Log Normalizasyon Nedir ve Neden Önemlidir?** 
 
-Log normalizasyonu dediğimiz kavram farklı cihazlardan gelen karmaşık log verilerinin  ortak bir formatta SIEM sistemlerinin anlayabileceği bir yapıya dönüştürülmesidir. Her  sistem kendi yapısına göre log üretir. Bu loglar olayın ne zaman gerçekleştiği, hangi  kullanıcı veya IP’nin ilgili olduğu ile ilgili bilgiler içerir ama bu bilgiler her sistemde farklı  isimler ve farklı formatlarda tutulur. Örneğin aynı olayı anlatan iki farklı cihazın logunu  inceleyelim; 
+Log normalizasyonu dediğimiz kavram farklı cihazlardan gelen karmaşık log verilerinin  ortak bir formatta SIEM sistemlerinin anlayabileceği bir yapıya dönüştürülmesidir. Her  sistem kendi yapısına göre log üretir. Bu loglar olayın ne zaman gerçekleştiği, hangi  kullanıcı veya IP'nin ilgili olduğu ile ilgili bilgiler içerir ama bu bilgiler her sistemde farklı  isimler ve farklı formatlarda tutulur. Örneğin aynı olayı anlatan iki farklı cihazın logunu  inceleyelim; 
 
 ```json
 Firewall Logu: {
@@ -31,13 +31,13 @@ Custom Log Source Normalization, SIEM sistemleri için standart dışı log kayn
 
 **2.Veri Alanlarını Tanımlamak (Field Mapping)** 
 
-Field mapping ham loglarda yer alan bilgilerle SIEM platformlarının kullandığı standart  veri alanları arasında bir bağ kurmaktır. Bu aşamada farklı kaynaklardan gelen logların  anlam birliği içinde karşılaştırılması, loglardaki her bir veri parçasının doğru yere  yerleştirilmesi ve SIEM’in sorgular, korelasyon kuralları, dashboardlar için kullanacağı  alanlara sahip olması amaçlanmaktadır. 
+Field mapping ham loglarda yer alan bilgilerle SIEM platformlarının kullandığı standart  veri alanları arasında bir bağ kurmaktır. Bu aşamada farklı kaynaklardan gelen logların  anlam birliği içinde karşılaştırılması, loglardaki her bir veri parçasının doğru yere  yerleştirilmesi ve SIEM'in sorgular, korelasyon kuralları, dashboardlar için kullanacağı  alanlara sahip olması amaçlanmaktadır. 
 
 **Raw Field:** Log dosyasında görünen ham veri alanıdır. 
 
 **Standard Field:** SIEM tarafından kullanılan standart alan adıdır. 
 
-**Field Mapping:** Raw field ve standard field’ı birbirine eşleme sürecidir. Örneğin; 
+**Field Mapping:** Raw field ve standard field'ı birbirine eşleme sürecidir. Örneğin; 
 
 \[2025-07-26 14:03:12\] \- `user=admin action=login status=fail ip=192.168.1.20` bu log satırı için field mapping örneği  
 
@@ -57,13 +57,13 @@ Parser yazmak log normalizasyonunun ve SIEM entegrasyonunun en önemli  aşamala
 **Kullanılan Yöntemler:**  
 **Regex (Regular Expression)** → Logtan veri çıkarmak için kullanılır. 
 
-**Grok** (Logstash, Wazuh vb.) → Regex’in sade hali. 
+**Grok** (Logstash, Wazuh vb.) → Regex'in sade hali. 
 
 **JSON/XML Parsers** → Eğer loglar bu formatta ise hazır modüllerle ayrıştırılır. Kendi scriptinizi yazmanız gerekebilir. 
 
 **4.Verileri Test Etmek ve Doğrulamak** 
 
-Parser’ın doğru çalışıp çalışmadığını test etmek için bu aşamaya geçeriz. Bu aşamada : \-SIEM arayüzünde parser çıktıları gözlemlenir. 
+Parser'ın doğru çalışıp çalışmadığını test etmek için bu aşamaya geçeriz. Bu aşamada : \-SIEM arayüzünde parser çıktıları gözlemlenir. 
 
 \-Her alanın doğru parse edilip edilmediği kontrol edilir. 
 
@@ -81,7 +81,7 @@ Farklı sistemlerin ürettiği loglar farklı formatlara ve terminolojiye sahipt
 
 • **Common Event Format (CEF)** ve **LEEF**: SIEM'ler arası veri uyumluluğu için yaygın  formatlardır. 
 
-**6.Logları SIEM’e Gönderme** 
+**6.Logları SIEM'e Gönderme** 
 
 Bu aşamada normalize edilmiş ve kategorize edilmiş loglar, analiz ve korelasyon için bir  SIEM platformuna gönderilmelidir. 
 
@@ -96,11 +96,11 @@ Bu aşamada normalize edilmiş ve kategorize edilmiş loglar, analiz ve korelasy
 
 **4.Fluentd / Fluent Bit:** Cloud-native mimarilerde çok tercih edilen log toplama ve  yönlendirme araçlarıdır. Fluent Bit daha hafif bir versiyonudur. 
 
-**5.Agent Tabanlı Yöntemler:** Özellikle Windows sistemlerde Event Log’ları SIEM’e  gönderme için idealdir. Sistemde log toplama dışında denetim (audit) yapılabilir. 
+**5.Agent Tabanlı Yöntemler:** Özellikle Windows sistemlerde Event Log'ları SIEM'e  gönderme için idealdir. Sistemde log toplama dışında denetim (audit) yapılabilir. 
 
 **6.API ile Log Gönderimi**: Özellikle bulut servislerden ya da uygulamalardan log  gönderimi için RESTful API kullanılabilir. 
 
-**7.Windows Event Forwarding:** Domain’e bağlı sistemlerde Windows Event log’larını  merkezi olarak toplamak için kullanılır. 
+**7.Windows Event Forwarding:** Domain'e bağlı sistemlerde Windows Event log'larını  merkezi olarak toplamak için kullanılır. 
 
 **8\. Kafka/MQ Tabanlı Sistemler:** Büyük ölçekli yapılarda log akışını kuyruk tabanlı  sistemlerle yönetmek için Kafka, RabbitMQ gibi sistemler kullanılabilir. 
 
@@ -141,4 +141,4 @@ SIEM'de tanımlanan korelasyon kurallarına göre tetiklenen otomatik güvenlik 
 
 Özel log kaynaklarının SIEM sistemlerine entegre edilmesi, sadece veriyi toplamakla  bitmeyen, dikkatli planlama ve teknik bilgi gerektiren çok adımlı bir süreçtir. Bu süreçte  log normalizasyonu, field mapping, parser geliştirme, event kategorileme, SIEM  entegrasyonu, korelasyon kuralları yazımı ve dashboard/alert sistemlerinin kurulumu bir  bütün olarak ele alınmalıdır. 
 
-Her sistem farklı konuşur; birinin `src_ip` dediğine diğeri `client_address` diyebilir. İşte  bu yüzden, SIEM’in evrensel bir dili konuşması gerekir. Bu dili sağlamak, normalize  edilmiş, kategorize edilmiş ve ilişkilendirilebilir log verileri ile mümkündür. Loglar  anlamlı hale geldikçe korelasyonlar kuvvetlenir, tehditler daha erken fark edilir,  müdahale süreleri kısalır ve kurum güvenliği somut şekilde iyileşir.
+Her sistem farklı konuşur; birinin `src_ip` dediğine diğeri `client_address` diyebilir. İşte  bu yüzden, SIEM'in evrensel bir dili konuşması gerekir. Bu dili sağlamak, normalize  edilmiş, kategorize edilmiş ve ilişkilendirilebilir log verileri ile mümkündür. Loglar  anlamlı hale geldikçe korelasyonlar kuvvetlenir, tehditler daha erken fark edilir,  müdahale süreleri kısalır ve kurum güvenliği somut şekilde iyileşir.

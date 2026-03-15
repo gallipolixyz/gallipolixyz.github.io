@@ -1,6 +1,6 @@
 # TryHackMe-Wonderland Writeup
 ![](/blogs/img/wonderland/1.png)
-TryHackMe’nin Wonderland odası, yetki yükseltme tekniklerini uygulamalı olarak kavramak için tasarlanmış mükemmel bir senaryo. Bu yazıda; keşif aşamasından başlayarak yetki yükseltme yöntemleriyle sistemde nasıl tam yetki (root) elde ettiğimi paylaşacağım.
+TryHackMe'nin Wonderland odası, yetki yükseltme tekniklerini uygulamalı olarak kavramak için tasarlanmış mükemmel bir senaryo. Bu yazıda; keşif aşamasından başlayarak yetki yükseltme yöntemleriyle sistemde nasıl tam yetki (root) elde ettiğimi paylaşacağım.
 
 ## 1. Keşif Aşaması 
 Öncelikle hedef makinede hangi servislerin çalıştığını anlamak için bir Nmap taraması başlatalım:
@@ -31,15 +31,15 @@ Bu noktada yetkilermizi görebikmek için sudo -l komutunu kullanıyoruz.Bu mevc
 Bu incelememizle alice kullanıcısının şifre girmeden /home/alice/walrus_and_the_carpenter.py dosyasını rabbit kullanıcısı yetkileriyle çalıştırabildiği görüyoruz.
 Eğer biz alice kullanıcısından rabbit kullanıcısına ve onun erişimine sahip olduğu dosyalara ulaşırsak, bu teknik olarak Yatay Yer Değiştirme yapmış olduğumuz anlamına gelir. Yatay yer değiştirme; sistemde aynı veya benzer yetki seviyesindeki başka bir kullanıcıya geçmek demektir.
 Aynı veya benzer yetki seviyesindeki başka bir kullanıcıya geçmek, bize daha fazla dosya erişimi ve dolayısıyla daha geniş bir saldırı yüzeyi kazandırır. Bu sayede yanlış yapılandırılmış yeni dosyalar keşfedebilir ve bizi root yetkisine götürecek kritik ipuçlarına ulaşabiliriz.
-Bu nedenlerle, stratejimizi user alice’den user rabbit’e geçmek üzerine kuruyoruz.
+Bu nedenlerle, stratejimizi user alice'den user rabbit'e geçmek üzerine kuruyoruz.
 
 ![](/blogs/img/wonderland/9.png)
  
 Dosya içeriğini incelediğimizde bizi oldukça uzun bir şiir ve bu şiirden random kütüphanesini kullanarak rastgele 10 satır bastıran bir Python kodu karşılıyor.
 
-Burada Python Library Hijacking tekniğini kullanabileceğimizi düşünüyoruz.Bunun temel nedeni, Python’ın modülleri import ederken izlediği hiyerarşidir.
+Burada Python Library Hijacking tekniğini kullanabileceğimizi düşünüyoruz.Bunun temel nedeni, Python'ın modülleri import ederken izlediği hiyerarşidir.
 
-Python bir scripti çalıştırdığında, sys.path listesindeki dizinleri sırayla kontrol eder. Bu listenin en başında her zaman script’in yürütüldüğü mevcut dizin yer alır. Dolayısıyla sistemde yüklü olan orijinal random kütüphanesi /usr/lib/python3.6 altında bulunsa bile, Python öncelikle bulunduğumuz klasörü kontrol eder.
+Python bir scripti çalıştırdığında, sys.path listesindeki dizinleri sırayla kontrol eder. Bu listenin en başında her zaman script'in yürütüldüğü mevcut dizin yer alır. Dolayısıyla sistemde yüklü olan orijinal random kütüphanesi /usr/lib/python3.6 altında bulunsa bile, Python öncelikle bulunduğumuz klasörü kontrol eder.
 
 Eğer bulunduğumuz dizine random.py isminde bir dosya oluşturursak, Python orijinal kütüphaneye gitmeden bizim hazırladığımız zararlı kodu rabbit kullanıcısının yetkileriyle çalıştıracaktır. Özetle; aynı dizinde "sahte" bir kütüphane oluşturarak walrus.py çalıştığında kendi kodumuzu sisteme dahil etmiş olacağız.
 
@@ -69,7 +69,7 @@ Ask very nicely, and I will give you some tea while you wait for him
 give me tea
 Segmentation fault (core dumped)
 ```
-Dosya çalıştırıldığında Hatter’ın partiye geleceği bilgisi ekrana basılmakta ve uygulama kullanıcıdan girdi beklemektedir. Ancak birşeyler yazdığımızda ekrana Segmentation Fault hatası döndürülmektedir.
+Dosya çalıştırıldığında Hatter'ın partiye geleceği bilgisi ekrana basılmakta ve uygulama kullanıcıdan girdi beklemektedir. Ancak birşeyler yazdığımızda ekrana Segmentation Fault hatası döndürülmektedir.
 Bu noktada dosyayı daha detaylı incelemek için indiriyoruz ve ghidra ile analiz ediyoruz .
 ![](/blogs/img/wonderland/12.png)
 teaParty dosyasını analiz ettiğimizde, programın bir Path Hijacking (veya Relative Path) zafiyeti barındırdığını görüyoruz. Kodun işleyişindeki kritik noktaları şu şekilde özetleyebiliriz:

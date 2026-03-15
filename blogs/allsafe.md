@@ -3,7 +3,7 @@
 |--|--|--|--|--|--|--|--|:--:|
 | | | | | | | | | ![](/blogs/img/Allsafe/1.png) |
 
-Allsafe Lab, içerisinde çeşitli zorluklar barındıran ve farklı güvenlik açığı kategorilerini kapsayan bir APK uygulamasıdır.Uygulamayı GitHub reposu üzerinden indirerek siz de deneyebilir, kendi çözümlerinizi geliştirebilirsiniz. Benim hazırladığım bu write-up’ı inceleyerek hem yaklaşım tarzımı görebilir hem de konuya dair farklı bir bakış açısı kazanabilirsiniz.
+Allsafe Lab, içerisinde çeşitli zorluklar barındıran ve farklı güvenlik açığı kategorilerini kapsayan bir APK uygulamasıdır.Uygulamayı GitHub reposu üzerinden indirerek siz de deneyebilir, kendi çözümlerinizi geliştirebilirsiniz. Benim hazırladığım bu write-up'ı inceleyerek hem yaklaşım tarzımı görebilir hem de konuya dair farklı bir bakış açısı kazanabilirsiniz.
 
 ## 1.Insecure Logging
 ![](/blogs/img/Allsafe/2.png) 
@@ -25,8 +25,8 @@ Veri string.xml dosyasının 71. satırında bulunmuştur.
 
 ## 3.Firebase Database
 ![](/blogs/img/Allsafe/6.png) 
-Firebase Veritabanı Zafiyeti, bir mobil veya web uygulamasında kullanılan Firebase Realtime Database ya da Cloud Firestore’un yanlış yapılandırılması nedeniyle yetkisiz kişilere açık olması durumudur.
-Saldırgan, Firebase endpoint’ini tespit ettikten sonra .json uzantısı ile doğrudan erişim sağlayabilir.
+Firebase Veritabanı Zafiyeti, bir mobil veya web uygulamasında kullanılan Firebase Realtime Database ya da Cloud Firestore'un yanlış yapılandırılması nedeniyle yetkisiz kişilere açık olması durumudur.
+Saldırgan, Firebase endpoint'ini tespit ettikten sonra .json uzantısı ile doğrudan erişim sağlayabilir.
 
 Kaynak kod incelendiğinde strings.xml dosyasında veritabanı URLi bulunmuştur. 
 ![](/blogs/img/Allsafe/7.png) 
@@ -43,7 +43,7 @@ URL`e bağlı .json dosyasında hasas verilere ulaşılmıştır.
 Insecure Shared Preferences, hassas verilerin Android SharedPreferences içinde şifrelenmeden veya yanlış erişim izinleriyle saklanması sonucu yetkisiz erişim ve uygulama mantığının kırılmasına yol açan bir güvenlik zafiyetidir.
 ![](/blogs/img/Allsafe/10.png) 
 Kaynak kod incelendiğinde geliştiricinin, kullanıcının girdiği şifreyi hiçbir şifreleme yapmadan doğrudan user.xml dosyasına yazdığı görülmektedir.
-/data/data dizini altında yer alan user.xml dosyasına gidildiğinde, uygulama üzerinden girilen input’ların şifrelenmeden yazıldığı görülmektedir.
+/data/data dizini altında yer alan user.xml dosyasına gidildiğinde, uygulama üzerinden girilen input'ların şifrelenmeden yazıldığı görülmektedir.
 ![](/blogs/img/Allsafe/11.png) 
 
 
@@ -124,9 +124,9 @@ Bu durum, hassas bir verinin istemci tarafında saklanmasına (Hardcoded Secret)
 
 
 ## 9.Certificate Pinning
-Android uygulamalarında SSL sertifikası bypass edilmesi, uygulamanın HTTPS üzerinden yaptığı sertifika kontrollerinin atlatılarak trafiğin izlenebilir hâle gelmesidir. Sertifika doğrulaması zayıf ya da hatalıysa, saldırgan araya girerek uygulama–sunucu arasındaki veriyi okuyabilir veya değiştirebilir. Bu yüzden SSL pinning önemli bir savunma katmanıdır; ancak dinamik analiz araçları sayesinde bu koruma da aşılabilir.
+Android uygulamalarında SSL sertifikası bypass edilmesi, uygulamanın HTTPS üzerinden yaptığı sertifika kontrollerinin atlatılarak trafiğin izlenebilir hâle gelmesidir. Sertifika doğrulaması zayıf ya da hatalıysa, saldırgan araya girerek uygulama-sunucu arasındaki veriyi okuyabilir veya değiştirebilir. Bu yüzden SSL pinning önemli bir savunma katmanıdır; ancak dinamik analiz araçları sayesinde bu koruma da aşılabilir.
 
-Bu noktada Frida, çalışan uygulamaya müdahale ederek sertifika kontrolü yapan fonksiyonları her zaman “güvenli” dönecek şekilde manipüle etmemizi sağlar ve böylece HTTPS trafiği Burp Suite gibi araçlarla analiz edilebilir.
+Bu noktada Frida, çalışan uygulamaya müdahale ederek sertifika kontrolü yapan fonksiyonları her zaman "güvenli" dönecek şekilde manipüle etmemizi sağlar ve böylece HTTPS trafiği Burp Suite gibi araçlarla analiz edilebilir.
 Bu Labda yaygın olarak kullanılan şu scripti kullanarak ;
 https://codeshare.frida.re/@pcipolloni/universal-android-ssl-pinning-bypass-with-frida/
 bu aşamada bypassı sağlıyorum.
@@ -136,13 +136,13 @@ bu aşamada bypassı sağlıyorum.
 
 ## 10.Smali Patch
 ![](/blogs/img/Allsafe/25.png) 
-Bu challenge’ta, labda verilen ipuçlarını takip ederek ilerliyoruz. Öncelikle firewall’ın ilgili metoduna gidiyorum.
+Bu challenge'ta, labda verilen ipuçlarını takip ederek ilerliyoruz. Öncelikle firewall'ın ilgili metoduna gidiyorum.
 ![](/blogs/img/Allsafe/26.png) 
 Fonksiyon, argüman olarak aldığı Firewall nesnesinin durumunu Firewall.ACTIVE değeriyle kıyaslayarak güvenlik duvarının açık olup olmadığını denetler. Bu eşitlik sağlanırsa, kod akışı başarı bloğuna girer ve kullanıcıya SnackUtil ile Toast araçları üzerinden işlemin başarılı olduğuna dair görsel geri bildirim verir.
 
-Biz de burada değişiklik yaparak uygulamayı patch’leyip, ilgili fonksiyonun her zaman return true döndürmesini sağlamaya çalışacağız.
+Biz de burada değişiklik yaparak uygulamayı patch'leyip, ilgili fonksiyonun her zaman return true döndürmesini sağlamaya çalışacağız.
 
-Bunun için apktool kullanarak APK’yı decompile ediyor ve uygulamanın smali kodlarına gidiyoruz. smali_classes4 klasöründeki SmaliPatch.smali dosyasında, 23. satırda bu değişikliği yapmamıza yarayacak kodu buluyoruz.
+Bunun için apktool kullanarak APK'yı decompile ediyor ve uygulamanın smali kodlarına gidiyoruz. smali_classes4 klasöründeki SmaliPatch.smali dosyasında, 23. satırda bu değişikliği yapmamıza yarayacak kodu buluyoruz.
 ![](/blogs/img/Allsafe/27.png) 
 ![](/blogs/img/Allsafe/28.png) 
 Kodun çalışma mantığını incelediğimizde; öncelikle Firewall.ACTIVE referansı v0 yazmacına (register) yüklenmekte ve invoke-virtual çağrısı ile mevcut durum beklenen değerle karşılaştırılmaktadır. Elde edilen Boolean sonucu (0 veya 1) tekrar v0 üzerine yazıldığında, orijinal kodda bulunan if-eqz (Sıfıra Eşitse) komutu kritik bir karar mekanizması olarak devreye girer. Bu komut, doğrulama başarısız olduğunda (sonuç 0 döndüğünde) akışı doğrudan :cond_0 etiketli hata bloğuna yönlendirerek başarı mesajının çalışmasını engeller.

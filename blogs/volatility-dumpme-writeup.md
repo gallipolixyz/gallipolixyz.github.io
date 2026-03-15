@@ -29,7 +29,7 @@ cd /home/kali/Downloads/Adli/temp_extract_dir
 ---
 ## Sistem Bilgilerini Belirleme (OS Info) 
 
-Analizin ilk adımı, imajın hangi işletim sistemine ait olduğunu ve mimarisini belirlemektir. Volatility 3’te `windows.info` plugin’ini kullanıyoruz:
+Analizin ilk adımı, imajın hangi işletim sistemine ait olduğunu ve mimarisini belirlemektir. Volatility 3'te `windows.info` plugin'ini kullanıyoruz:
 
 ```bash
 vol -f Triage-Memory.mem windows.info
@@ -66,9 +66,9 @@ vol -f Triage-Memory.mem windows.info
 Analiz derinleşiyor. Şimdi elde ettiğimiz bulguları teknik detaylarla inceleyelim.
 
 ---
-### Soru 3: notepad.exe işleminin process ID’si (PID) nedir?
+### Soru 3: notepad.exe işleminin process ID'si (PID) nedir?
 
-Sistemdeki aktif işlemleri ve bunların PID değerlerini görmek için `pslist` plugin’ini kullanıyoruz:
+Sistemdeki aktif işlemleri ve bunların PID değerlerini görmek için `pslist` plugin'ini kullanıyoruz:
 
 ```bash
 vol -f Triage-Memory.mem windows.pslist
@@ -79,7 +79,7 @@ vol -f Triage-Memory.mem windows.pslist
 **Yanıt:** `3032`
 
 ---
-### Soru 4: wscript.exe’nin çocuk (child) işleminin adı nedir?
+### Soru 4: wscript.exe'nin çocuk (child) işleminin adı nedir?
 
 İşlemler arasındaki ana-çocuk (parent-child) ilişkisini hiyerarşik bir yapıda görmek için `pstree` komutunu kullanıyoruz:
 
@@ -94,7 +94,7 @@ vol -f Triage-Memory.mem windows.pstree
 ---
 ### Soru 5: RAM dökümü alındığı anda makinenin IP adresi neydi?
 
-Ağ bağlantılarını ve aktif soketleri incelemek için `netscan` plugin’ini kullanıyoruz:
+Ağ bağlantılarını ve aktif soketleri incelemek için `netscan` plugin'ini kullanıyoruz:
 
 ```bash
 vol -f Triage-Memory.mem windows.netscan
@@ -108,9 +108,9 @@ Yapılan incelemede aşağıdaki bağlantılar tespit edilmiştir:
 * **Saldırgan IP:** `10.0.0.106`
 
 ---
-### Soru 6: Enfekte PID’e göre saldırganın IP adresi nedir?
+### Soru 6: Enfekte PID'e göre saldırganın IP adresi nedir?
 
-Bellek bölgelerinde enjekte edilmiş şüpheli kodları bulmak için `malfind` plugin’ini kullanıyoruz:
+Bellek bölgelerinde enjekte edilmiş şüpheli kodları bulmak için `malfind` plugin'ini kullanıyoruz:
 
 ```bash
 vol -f Triage-Memory.mem windows.malfind
@@ -124,7 +124,7 @@ vol -f Triage-Memory.mem windows.malfind
 ---
 ### Soru 7: VCRUNTIME140.dll ile ilişkili kaç tane işlem vardır?
 
-Belirli bir DLL’in hangi süreçler tarafından yüklendiğini görmek için `dlllist` plugin’ini kullanıyoruz:
+Belirli bir DLL'in hangi süreçler tarafından yüklendiğini görmek için `dlllist` plugin'ini kullanıyoruz:
 
 ```bash
 vol -f Triage-Memory.mem windows.dlllist | grep "VCRUNTIME140.dll"
@@ -154,7 +154,7 @@ md5sum dumped_file.bin
 ---
 ### Soru 9: Bob hesabının LM hash değeri nedir?
 
-Kullanıcı parola hash’lerini almak için bu aşamada ilk defa Volatility 2 kullanıyoruz çünkü Volatility 3 ile çözülmüyor çok denememe rağmen yapamadım siz gene uğraşabilirsiniz:
+Kullanıcı parola hash'lerini almak için bu aşamada ilk defa Volatility 2 kullanıyoruz çünkü Volatility 3 ile çözülmüyor çok denememe rağmen yapamadım siz gene uğraşabilirsiniz:
 
 ```bash
 python2 vol.py -f Triage-Memory.mem --profile=Win7SP1x64 hashdump
@@ -171,7 +171,7 @@ python2 vol.py -f Triage-Memory.mem --profile=Win7SP1x64 hashdump
 **Yanıt:** `PAGE_READONLY`
 
 ---
-### Soru 11: 0x00000000033c0000 – 0x00000000033dffff arasındaki VAD’ın koruma türü nedir?
+### Soru 11: 0x00000000033c0000 - 0x00000000033dffff arasındaki VAD'ın koruma türü nedir?
 
 ![vadwalk çıktısı](/blogs/img/DumpMeWriteUp/vadwalk.png)
 
@@ -183,7 +183,7 @@ python2 vol.py -f Triage-Memory.mem --profile=Win7SP1x64 hashdump
 **Yanıt:** `vhjReUDEuumrX.vbs`
 
 ---
-### Soru 13: 2019–03–07 23:06:58 UTC tarihinde çalıştırılan programın adı nedir?
+### Soru 13: 2019-03-07 23:06:58 UTC tarihinde çalıştırılan programın adı nedir?
 
 ![zaman damgası çıktısı](/blogs/img/DumpMeWriteUp/skype_time.png)
 
@@ -198,7 +198,7 @@ python2 vol.py -f Triage-Memory.mem --profile=Win7SP1x64 hashdump
 `flag{G00d_J0b_Dud3_Y0u_F0und_1t}`
 
 ---
-### Soru 15: 59045 numaralı file record’a karşılık gelen dosyanın kısa adı (short name) nedir?
+### Soru 15: 59045 numaralı file record'a karşılık gelen dosyanın kısa adı (short name) nedir?
 
 ```bash
 python2 vol.py -f Triage-Memory.mem --profile=Win7SP1x64 mftparser

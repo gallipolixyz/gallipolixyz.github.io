@@ -3,7 +3,7 @@
 ![](/blogs/img/case-insensitive-routing-bypass/1.png)
 Merhaba arkadaşlar, bu görevdeki zafiyet, case-insensitive routing ile case-sensitive erişim kontrolü arasındaki tutarsızlıktan kaynaklanan bir Authentication Bypass örneğidir.
 
-Express framework’ü varsayılan olarak URL path’lerini büyük/küçük harf duyarlılığı olmadan eşleştirirken, uygulama seviyesinde yapılan güvenlik kontrolü path’i case-sensitive şekilde doğrulamaktadır.
+Express framework'ü varsayılan olarak URL path'lerini büyük/küçük harf duyarlılığı olmadan eşleştirirken, uygulama seviyesinde yapılan güvenlik kontrolü path'i case-sensitive şekilde doğrulamaktadır.
 
 
 

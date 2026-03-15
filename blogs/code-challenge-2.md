@@ -1,6 +1,6 @@
 # Code Challenge 2 Write-Up
 
-Bu challenge’da uygulama, kullanıcıdan alınan `path` parametresini kullanarak  
+Bu challenge'da uygulama, kullanıcıdan alınan `path` parametresini kullanarak  
 `http://internal-api.local` domainine HTTP isteği göndermektedir.
 
 Amaç, uygulamanın **yalnızca internal-api.local** adresine istek atmasını sağlamaktır.  
@@ -33,9 +33,9 @@ Kullanıcı girdisi şu regex ile kontrol edilmektedir:
 
 Bu kontrol:
 - Sadece `path` değerinin `/` ile başlamasını denetler
-- URL’nin **gerçek hedef domainini** doğrulamaz
+- URL'nin **gerçek hedef domainini** doğrulamaz
 
-Java’da `URI.create()` metodu, özel URL formatlarını beklenenden farklı şekilde parse edebilir.
+Java'da `URI.create()` metodu, özel URL formatlarını beklenenden farklı şekilde parse edebilir.
 
 ---
 
@@ -57,10 +57,10 @@ Bu URL parse edildiğinde uygulama:
 
 - İsteğin hâlâ `internal-api.local` sınırları içinde olduğunu varsayar
 - Ancak DNS çözümleme ve HTTP yönlendirme aşamasında
-  istek **saldırgan kontrollü bir host’a** yönlendirilebilir
+  istek **saldırgan kontrollü bir host'a** yönlendirilebilir
 
 Bu sayede uygulama, internal servisler için güvenli kabul edilen
-HTTP isteğini (ve varsa authorization header’larını)
+HTTP isteğini (ve varsa authorization header'larını)
 **external bir domaine** göndermiş olur.
 
 ---
@@ -73,7 +73,7 @@ Bu zafiyet, doğrudan response içeriği elde edilmesini sağlamasa da
 Domain kısıtlamasının bypass edilmesiyle birlikte:
 
 - Uygulamanın güvenli kabul ettiği trust boundary bozulur
-- Authorization header veya service token’lar external host’a taşınabilir
+- Authorization header veya service token'lar external host'a taşınabilir
 - Internal-only olması gereken HTTP istekleri dış dünyaya çıkar
 - Internal servislerin **DNS davranışlarını** gözlemleyerek
   network topolojisi hakkında bilgi toplayabilir
@@ -95,9 +95,9 @@ Domain kısıtlamasının bypass edilmesiyle birlikte:
 
 ## Güvenli Çözüm
 
-- URL’ler string olarak birleştirilmemelidir  
+- URL'ler string olarak birleştirilmemelidir  
 - `URI.getHost()` ile hedef domain doğrulanmalıdır  
-- Sadece whitelist edilmiş domain’lere izin verilmelidir  
+- Sadece whitelist edilmiş domain'lere izin verilmelidir  
 
 Örnek:
 

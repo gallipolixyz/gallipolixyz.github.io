@@ -6,13 +6,13 @@ Gallipoli is a cybersecurity community that blends hacker culture with strategic
 
 As the leader of this community, I strive to support security research, red team simulations, and open-source development under the Gallipoli umbrella.
 
-In this article, I’ll walk through a server-side request forgery (SSRF) vulnerability I discovered during my individual research — demonstrating how I was able to exploit it using five different techniques. For each bypass, I’ll share the logic behind the attack, the reward it led to, and how the corresponding defensive fix fell short.
+In this article, I'll walk through a server-side request forgery (SSRF) vulnerability I discovered during my individual research - demonstrating how I was able to exploit it using five different techniques. For each bypass, I'll share the logic behind the attack, the reward it led to, and how the corresponding defensive fix fell short.
 
 ## **What Is SSRF and Why Should It Be Taken Seriously?**
 
-Server-Side Request Forgery (SSRF) is a critical security vulnerability that occurs when a web application’s server makes unauthorized requests to internal or external systems based on untrusted input — typically due to overly permissive or unvalidated URL handling.
+Server-Side Request Forgery (SSRF) is a critical security vulnerability that occurs when a web application's server makes unauthorized requests to internal or external systems based on untrusted input - typically due to overly permissive or unvalidated URL handling.
 
-The cases I present in this write-up are examples of **Blind SSRF**, meaning that I couldn’t see the content of the server’s response. However, by analyzing response timing, delay patterns, and success/failure behavior, I was still able to assess system behavior and exploit the vulnerability effectively — despite the lack of direct data leakage.
+The cases I present in this write-up are examples of **Blind SSRF**, meaning that I couldn't see the content of the server's response. However, by analyzing response timing, delay patterns, and success/failure behavior, I was still able to assess system behavior and exploit the vulnerability effectively - despite the lack of direct data leakage.
 
 Below is a proof of reward that confirms the success of these exploit attempts:
 
@@ -41,7 +41,7 @@ This behavior enables timing-based port scanning:
 - shop_Url: 127.0.0.1:80 → fast response (port is open)
 - shop_Url: 127.0.0.1:79 → delayed or no response (port is closed)
 
-By measuring these differences in response time, it’s possible to infer which ports on the internal network are open.
+By measuring these differences in response time, it's possible to infer which ports on the internal network are open.
 
 #### HTTP Request
 
@@ -81,7 +81,7 @@ if "127.0.0.1" in shop_Url or "localhost" in shop_Url:
     raise ValidationError("Access to localhost is not allowed.")
 ```
 
-This fix most likely relied on blocking obvious string patterns like “127.0.0.1” and “localhost”. However, it failed to cover the entire loopback range (127.0.0.0/8), allowing easy bypasses using alternatives like 127.0.1.3.
+This fix most likely relied on blocking obvious string patterns like "127.0.0.1" and "localhost". However, it failed to cover the entire loopback range (127.0.0.0/8), allowing easy bypasses using alternatives like 127.0.1.3.
 
 ---
 ## **Technique #2: SSRF to Localhost via CIDR Bypass**
@@ -145,7 +145,7 @@ if ip in ipaddress.ip_network("127.0.0.0/8"):
     raise ValidationError("Access to loopback range is not allowed.")
 ```
 
-This fix likely aimed to provide broader protection by checking whether the IP fell within the 127.0.0.0/8 loopback range. However, since the IP format wasn’t normalized before comparison, it was still possible to bypass this filter using alternate notations — such as octal format — as demonstrated in the next technique.
+This fix likely aimed to provide broader protection by checking whether the IP fell within the 127.0.0.0/8 loopback range. However, since the IP format wasn't normalized before comparison, it was still possible to bypass this filter using alternate notations - such as octal format - as demonstrated in the next technique.
 
 ---
 
@@ -163,7 +163,7 @@ When interpreted numerically:
 - 0177 = 127
 - 0001 = 1
 
-Thus, the backend IP resolution library understands this as 127.0.0.1. However, since string comparisons are used for validation, “0177.0000.0000.0001” != “127.0.0.1” — which allows the bypass.
+Thus, the backend IP resolution library understands this as 127.0.0.1. However, since string comparisons are used for validation, "0177.0000.0000.0001" != "127.0.0.1" - which allows the bypass.
 
 #### HTTP Request
 
@@ -195,7 +195,7 @@ However, technically, this is equivalent to:
 GET http://127.0.0.1:80/wp-json/wc/v1
 ```
 
-— meaning the IP resolves to the same loopback address.
+- meaning the IP resolves to the same loopback address.
 
 #### How Was the Port Scan Performed?
 
@@ -208,7 +208,7 @@ This timing behavior allows the attacker to infer the state of the port.
 
 - The system performed string-based IP checks and failed to detect octal variants
 - The IP parsing library correctly resolved the octal format as 127.0.0.1
-- The security control was limited to a blacklist on “127.0.0.1” and did not normalize input before evaluation
+- The security control was limited to a blacklist on "127.0.0.1" and did not normalize input before evaluation
 
 #### **Outcome**
 
@@ -229,7 +229,7 @@ except Exception:
     raise ValidationError("Invalid IP format.")
 ```
 
-This fix likely aimed to resolve and normalize the IP address before checking for loopback access. However, blocking only IPs starting with “127.” is insufficient. Even if the server correctly interprets the IP, as long as the user’s original input is directly used in the request, other SSRF techniques (like chained open redirects) remain viable. The next method demonstrates how this behavior was exploited.
+This fix likely aimed to resolve and normalize the IP address before checking for loopback access. However, blocking only IPs starting with "127." is insufficient. Even if the server correctly interprets the IP, as long as the user's original input is directly used in the request, other SSRF techniques (like chained open redirects) remain viable. The next method demonstrates how this behavior was exploited.
 
 ---
 
@@ -317,7 +317,7 @@ However, only the loopback block was checked. Since other internal ranges like 1
 
 After the open redirect bypass, defenders likely tried to block localhost, 127.0.0.1, and possibly redirect chains. However, this time the attacker broadened the target: AWS metadata service and internal network ranges.
 
-The goal was not just to access localhost, but any internal IP blocks — especially 169.254.169.254, 10.0.0.0/8, 172.31.0.0/16, and 192.168.0.0/16. These ranges are commonly used for EC2 metadata access, IAM roles, and VPC services.
+The goal was not just to access localhost, but any internal IP blocks - especially 169.254.169.254, 10.0.0.0/8, 172.31.0.0/16, and 192.168.0.0/16. These ranges are commonly used for EC2 metadata access, IAM roles, and VPC services.
 
 #### **Technical Background**
 
@@ -327,7 +327,7 @@ This time, the attacker supplied the following value in the shop_Url parameter:
 http://307.r3dir.me/--to/?url=http://169.254.169.254
 ```
 
-At a glance, this URL appears safe, as it includes a trusted-looking domain like r3dir.me. However, this domain performs an open redirect, causing the server to ultimately access [http://169.254.169.254](http://169.254.169.254) — the AWS metadata endpoint.
+At a glance, this URL appears safe, as it includes a trusted-looking domain like r3dir.me. However, this domain performs an open redirect, causing the server to ultimately access [http://169.254.169.254](http://169.254.169.254) - the AWS metadata endpoint.
 
 #### HTTP Request
 
@@ -374,18 +374,18 @@ Open ports respond quickly; closed ones cause a timeout → this timing differen
 #### **Outcome**
 
 - **Root Cause:** Failure to filter internal IP blocks and uncontrolled follow of redirects by the server
-- **Impact:** Redirection to the EC2 metadata service was successful. Although the response content wasn’t visible, timing and behavioral differences confirmed that the server processed the request
+- **Impact:** Redirection to the EC2 metadata service was successful. Although the response content wasn't visible, timing and behavioral differences confirmed that the server processed the request
 - **Result:** The fifth bounty was earned by successfully verifying access through blind SSRF
 
 ---
 
 ### **Conclusion and Recommendations**
 
-In this blog post, I detailed how the same SSRF vulnerability was repeatedly exploited using five different techniques — each one approaching the issue from a unique angle to craft new bypasses. The common thread across all cases was clear: while the vulnerability was patched on a technical level, it was never addressed at the architectural level.
+In this blog post, I detailed how the same SSRF vulnerability was repeatedly exploited using five different techniques - each one approaching the issue from a unique angle to craft new bypasses. The common thread across all cases was clear: while the vulnerability was patched on a technical level, it was never addressed at the architectural level.
 
 ### **General Observations**
 
-- All SSRF cases were of the _blind SSRF_ type. Although the server’s response content was not directly visible, system behavior could be analyzed based on timing differences, success/failure patterns, and connection delays.
+- All SSRF cases were of the _blind SSRF_ type. Although the server's response content was not directly visible, system behavior could be analyzed based on timing differences, success/failure patterns, and connection delays.
 - The vulnerability existed because the application passed user-supplied URLs directly to the backend HTTP client without proper validation.
 - Each bypass attempt exploited the shortcomings of the previous patch or leveraged asymmetrical filtering logic (e.g., blocking 127.0.0.1 but overlooking 127.0.1.3).
 - The server-side redirect-following mechanism allowed requests to be chained from external URLs to internal resources.
@@ -402,16 +402,16 @@ In this blog post, I detailed how the same SSRF vulnerability was repeatedly exp
 
 3. In AWS environments, access to 169.254.169.254 always poses a high risk. Even without leaking IAM roles, successful access to this endpoint can have serious implications.
 
-4. Try to understand the architecture behind a vulnerability. Don’t just focus on payloads — target the underlying logic and system behavior.
+4. Try to understand the architecture behind a vulnerability. Don't just focus on payloads - target the underlying logic and system behavior.
 
 ### **Final Thoughts**
 
-It’s often assumed that a single SSRF vulnerability can only be exploited once. However, as demonstrated in this write-up, with careful analysis, patience, and creative exploration, the same flaw can be exploited multiple times using different techniques.
+It's often assumed that a single SSRF vulnerability can only be exploited once. However, as demonstrated in this write-up, with careful analysis, patience, and creative exploration, the same flaw can be exploited multiple times using different techniques.
 
-This article serves as a strong counterexample to the mindset of “once it’s patched, it’s over.” In security, one fundamental principle holds true: **Mitigating symptoms without addressing the root behavioral cause is never enough.**
+This article serves as a strong counterexample to the mindset of "once it's patched, it's over." In security, one fundamental principle holds true: **Mitigating symptoms without addressing the root behavioral cause is never enough.**
 
 ---
 
-If you’re interested in discussing these techniques or collaborating on similar research, feel free to join our community on Telegram: [https://t.me/gallipolixyz](https://t.me/gallipolixyz)
+If you're interested in discussing these techniques or collaborating on similar research, feel free to join our community on Telegram: [https://t.me/gallipolixyz](https://t.me/gallipolixyz)
 
 [My LinkedIn](https://www.linkedin.com/in/kayra-%C3%B6ks%C3%BCz-ab061a1ba/)

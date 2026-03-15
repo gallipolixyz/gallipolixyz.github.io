@@ -2,7 +2,7 @@
 
 
 
-Bu challenge’da client-side çalışan basit bir arama uygulamasında bulunan bir DOM-Based XSS zafiyeti incelenmektedir.  
+Bu challenge'da client-side çalışan basit bir arama uygulamasında bulunan bir DOM-Based XSS zafiyeti incelenmektedir.  
 Uygulamanın amacı, URL üzerinden alınan `search` parametresini ekrana güvenli şekilde yazdırmaktır.
 
 Ancak kullanılan HTML `escape` mekanizması eksik olduğu için,
@@ -17,7 +17,7 @@ DOM-Based XSS (Improper Output Encoding)
 
 ## Zafiyet Analizi
 
-Uygulama, `search` parametresini URL’den alıp aşağıdaki şekilde DOM’a yazmaktadır:
+Uygulama, `search` parametresini URL'den alıp aşağıdaki şekilde DOM'a yazmaktadır:
 
 ```javascript
 
@@ -39,7 +39,7 @@ Ancak bu filtreleme hatalıdır:
 - replace() global değildir (sadece ilk eşleşmeyi değiştirir)
 - Sadece < ve > karakterleri encode edilmektedir
 - ", ', & gibi kritik karakterler encode edilmemektedir
-- Çıktı innerHTML ile DOM’a basılmaktadır
+- Çıktı innerHTML ile DOM'a basılmaktadır
 
 Bu nedenle filtre etkisiz hale getirilebilmektedir.
 

@@ -1,6 +1,6 @@
 # Code Challenge 3 Write-Up
 
-Bu challenge’da Express.js uygulaması, `/secret` path’i altındaki endpoint’leri  
+Bu challenge'da Express.js uygulaması, `/secret` path'i altındaki endpoint'leri  
 bir middleware ile token kontrolüne tabi tutmaktadır.
 
 Amaç, `/secret` rotasına yapılan tüm isteklerin yetkilendirilmesini sağlamaktır.  
@@ -51,13 +51,13 @@ GET /Secret
   - Token kontrolü çalışmaz
 
 - Express Router:
-  - `/Secret` → `/secret` route’una yönlendirilir
+  - `/Secret` → `/secret` route'una yönlendirilir
 
 ---
 
 ## Sonuç
 
-- `/secret` endpoint’i
+- `/secret` endpoint'i
 - Herhangi bir token olmadan
 - Başarıyla erişilebilir
 
@@ -68,7 +68,7 @@ Bu durum açık bir **yetkilendirme bypass** örneğidir.
 ## Root Cause (Kök Neden)
 
 - Middleware kontrolünün case-sensitive olması  
-- Express.js router’ın case-insensitive çalışması  
+- Express.js router'ın case-insensitive çalışması  
 - Güvenlik kontrolü ile routing davranışının uyumsuz olması  
 
 ---
