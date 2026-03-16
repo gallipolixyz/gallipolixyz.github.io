@@ -459,8 +459,6 @@ After that, we're able to see Security Realm is changed to the Keycloak Authenti
 
 We're able to login using keycloak open id protocol.
 
-![Screenshot 48](/blogs/img/set-up-jenkins-with-keycloak/48.png)
-
 Please check my github repository to get full version of .yaml files. <https://github.com/KadirArslan/Jenkins-Authentication-Authorization>
 
 Conclusion
