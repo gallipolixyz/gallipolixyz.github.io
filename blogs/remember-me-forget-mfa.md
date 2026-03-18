@@ -10,7 +10,7 @@ But something got my attention.
 
 *"What happens when Remember Me is checked?"*
 
-![Cover Image](/blogs/img/remember-me-forget-mfa/cover-image.png)
+![Cover Image](/blogs/img/remember-me-forget-mfa/cover.png)
 
 ---
 
@@ -40,7 +40,7 @@ OTP was never entered.
 
 ## What Was Happening Behind the Scenes
 
-![Flow Image](/blogs/img/remember-me-forget-mfa/flow-image.png)
+![Flow Image](/blogs/img/remember-me-forget-mfa/otp-flow.png)
 
 The application had two different login paths.
 
