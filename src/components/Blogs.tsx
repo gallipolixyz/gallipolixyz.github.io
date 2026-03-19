@@ -13,6 +13,12 @@ interface Blog {
 
 const blogs: Blog[] = [
   {
+    slug: 'idor',
+    title: 'Insecure Direct Object Reference (IDOR)',
+    excerpt: 'Learn about IDOR vulnerabilities where applications expose internal identifiers without proper authorization checks. Understand how attackers exploit this to access unauthorized resources and how to prevent it.',
+    author: 'Matjaz Madon',
+  },
+  {
     slug: 'remember-me-forget-mfa',
     title: 'Remember Me. Forget MFA',
     excerpt: 'Sometimes the most interesting vulnerabilities are not where you expect them. This finding started exactly like that. The target application had two-factor authentication. Everything looked fine. OTP code was coming, the screen was there, the flow was working. But something got my attention. "What happens when Remember Me is checked?"',
