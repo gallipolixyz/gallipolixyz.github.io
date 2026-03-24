@@ -12,6 +12,12 @@ interface Blog {
 }
 
 const blogs: Blog[] = [
+    {
+    slug: 'bugrapor-linkedin',
+    title: 'Bug Bounty Rapor Analizi: LinkedIn Android Uygulamasında Cookie Sızıntısı',
+    excerpt: 'Bu yazıda, LinkedIn Android uygulamasında keşfedilen bir cookie sızıntısı zafiyetinin detaylı analizini ve raporunu inceleyeceğiz. Raporun içeriği, zafiyetin nasıl keşfedildiği, istismar yöntemleri ve önerilen düzeltme adımlarını kapsamaktadır.',
+    author: 'Simge Yiğit',
+  },
   {
     slug: 'idor',
     title: 'Insecure Direct Object Reference (IDOR)',
