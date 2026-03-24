@@ -12,6 +12,12 @@ interface Blog {
 }
 
 const blogs: Blog[] = [
+{
+    slug: 'evernote',
+    title: 'Bug Bounty Rapor Analizi : 2 click Remote Code execution in Evernote Android'
+    excerpt: 'Bu yazıda, Evernote Android uygulamasında keşfedilen bir zafiyetin detaylı analizini ve raporunu inceleyeceğiz. Raporun içeriği, zafiyetin nasıl keşfedildiği ve istismar yöntemlerini kapsamaktadır.',
+    author: 'Simge Yiğit',
+  },
     {
     slug: 'bugrapor-linkedin',
     title: 'Bug Bounty Rapor Analizi: LinkedIn Android Uygulamasında Cookie Sızıntısı',
