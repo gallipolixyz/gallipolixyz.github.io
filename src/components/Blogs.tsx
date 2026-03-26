@@ -13,6 +13,12 @@ interface Blog {
 
 const blogs: Blog[] = [
   {
+    slug: 'ewptx',
+    title: 'Siber Güvenlik Sertifikaları #2: eWPTx Sınavının Anatomisi',
+    excerpt: 'Siber güvenlik dünyasındaki en popüler sertifikaları resmi verilerle masaya yatırıyor, tüm detaylarını açıklıyor ve 10 üzerinden acımasızca puanlıyoruz. Serimizin ikinci konuğu: eWPTx.',
+    author: 'Ozan İsmail Çolhak',
+  },
+  {
     slug: 'evernote',
     title: 'Bug Bounty Rapor Analizi : 2 click Remote Code execution in Evernote Android',
     excerpt: 'Bu yazıda, Evernote Android uygulamasında keşfedilen bir zafiyetin detaylı analizini ve raporunu inceleyeceğiz. Raporun içeriği, zafiyetin nasıl keşfedildiği ve istismar yöntemlerini kapsamaktadır.',
