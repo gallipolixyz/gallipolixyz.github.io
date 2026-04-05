@@ -68,13 +68,6 @@ const team: TeamMember[] = [
     linkedin: 'https://www.linkedin.com/in/kayra-öksüz-ab061a1ba',
   },
   {
-    name: 'Miela',
-    role: 'Management Member',
-    bio: 'Cybersecurity Researcher',
-    image: '/img/miela.jpg',
-    linkedin: 'https://www.linkedin.com/in/melisa-sudenaz-ar%C4%B1k-3727a32b8?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
-  },
-  {
     name: 'oZZy',
     role: 'Champions Team Member',
     bio: '',
