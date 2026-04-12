@@ -12,6 +12,12 @@ interface Blog {
 }
 
 const blogs: Blog[] = [
+   {
+    slug: 'soc-lab-1-pfsense',
+    title: 'SOC Lab Rehberi Bölüm 1: pfSense Firewall ve Network Segmentasyonu',
+    excerpt: 'Bu bölümde, SOC laboratuvarımızın ağ trafiğini yönetmek ve güvenliği sağlamak için pfSense firewall kurulumunu gerçekleştiriyoruz.',
+    author: 'Güven Emre Keskin',
+  },
   {
     slug: 'analiz-sql',
     title: 'Bug Bounty Rapor Analizi : ownCloud Android — FileContentProvider SQL Injection',
