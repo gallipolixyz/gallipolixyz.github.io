@@ -12,9 +12,15 @@ interface Blog {
 }
 
 const blogs: Blog[] = [
-   {
+  {
+    slug: 'soc-lab-2-windows11',
+    title: 'SOC Lab Rehberi Bölüm 2: Windows 11',
+    excerpt: 'Bu bölümde, pfSense’in koruması altındaki iç ağımızda (LAN) konumlanacak, saldırıları analiz edeceğimiz ve güvenlik araçlarımızı koşturacağımız Windows 11 makinesinin kurulumunu gerçekleştiriyoruz.',
+    author: 'Güven Emre Keskin',
+  }, 
+  {
     slug: 'soc-lab-1-pfsense',
-    title: 'SOC Lab Rehberi Bölüm 1: pfSense Firewall ve Network Segmentasyonu',
+    title: 'SOC Lab Rehberi Bölüm 1: pfSense Firewall',
     excerpt: 'Bu bölümde, SOC laboratuvarımızın ağ trafiğini yönetmek ve güvenliği sağlamak için pfSense firewall kurulumunu gerçekleştiriyoruz.',
     author: 'Güven Emre Keskin',
   },
