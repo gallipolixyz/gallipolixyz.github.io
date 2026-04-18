@@ -13,17 +13,24 @@ interface Blog {
 
 const blogs: Blog[] = [
   {
+    slug: 'emapt',
+    title: 'Siber Güvenlik Sertifikaları #3: eMAPT Sınavının Anatomisi',
+    excerpt: 'Webin kalabalık dünyasından sıyrılıp mobilin daha özel dünyasına adım atıyoruz. eMAPT sertifikasını tüm detayları ve Frida pratikleriyle inceliyoruz.',
+    author: 'Ozan İsmail Çolhak',
+  },
+  {
     slug: 'soc-lab-2-windows11',
     title: 'SOC Lab Rehberi Bölüm 2: Windows 11',
     excerpt: 'Bu bölümde, pfSense’in koruması altındaki iç ağımızda (LAN) konumlanacak, saldırıları analiz edeceğimiz ve güvenlik araçlarımızı koşturacağımız Windows 11 makinesinin kurulumunu gerçekleştiriyoruz.',
     author: 'Güven Emre Keskin',
-  }, 
+  },
   {
     slug: 'soc-lab-1-pfsense',
     title: 'SOC Lab Rehberi Bölüm 1: pfSense Firewall',
     excerpt: 'Bu bölümde, SOC laboratuvarımızın ağ trafiğini yönetmek ve güvenliği sağlamak için pfSense firewall kurulumunu gerçekleştiriyoruz.',
     author: 'Güven Emre Keskin',
   },
+  
   {
     slug: 'analiz-sql',
     title: 'Bug Bounty Rapor Analizi : ownCloud Android — FileContentProvider SQL Injection',
