@@ -61,12 +61,11 @@ Sınav, Android APK’larından iOS IPA’larına kadar geniş bir yelpazede sta
 * **Lab ve CTF Önerisi:** Sadece eğitim videolarıyla yetinmeyin. **OWASP UnCrackable (Level 1, 2 vb.)** serisi veya **Challange001/002.apk** gibi mobil odaklı Android CTF’leri çözebilirsiniz. Bu labların çözümleri profilimde bulunuyor. Bu uygulamaları kurup Frida ile root kontrollerini ve SSL pinning mekanizmalarını ezmeye çalışmak sizi sınava %100 hazırlayacaktır.
 
 **💡 Uygulamalı Çözüm Rehberlerim (Write-Up’lar)**
-Eğer laboratuvar ortamında takılırsanız veya “Frida ile hooking pratikte nasıl yapılır?” sorusunun cevabını adım adım görmek isterseniz, bu CTF’ler için kendi yazdığım Türkçe çözüm rehberlerime mutlaka göz atın:
-* [Challange001.apk Frida ile Çözümü](https://medium.com/@ocolhak4/challange001-apk-frida-ile-%C3%A7%C3%B6z%C3%BCm%C3%BC-abf03366fea7)
-* [Challange002.apk Frida ile Çözümü](https://medium.com/@ocolhak4/hallange002-frida-ile-%C3%A7%C3%B6z%C3%BCm%C3%BC-6dc5c16255f5)
-* [OWASP UnCrackable Level 1 Çözümü](https://medium.com/@ocolhak4/uncrackable-level1-%C3%A7%C3%B6z%C3%BCm%C3%BC-a723032de5db)
-* [OWASP UnCrackable Level 2 Çözümü](https://medium.com/@ocolhak4/uncrackable-level-2-%C3%A7%C3%B6z%C3%BCm%C3%BC-d3bbba96154d)
-* [OWASP UnCrackable Level 2 — Frida ile Çözümü](https://medium.com/@ocolhak4/uncrackable-l2-frida-ile-%C3%A7%C3%B6z%C3%BCm%C3%BC-b92f20695284)
+Eğer laboratuvar ortamında takılırsanız veya “Frida ile hooking pratikte nasıl yapılır?” sorusunun cevabını adım adım görmek isterseniz, bu CTF’ler için kendi sitemizde yayınladığım Türkçe çözüm rehberlerine göz atabilirsiniz:
+* [Challange001.apk Frida ile Çözümü](https://gallipoli.xyz/blog/challange1)
+* [Challange002.apk Frida ile Çözümü](https://gallipoli.xyz/blog/challange2)
+* [OWASP UnCrackable Level 1 Çözümü](https://gallipoli.xyz/blog/uncrackable)
+* [OWASP UnCrackable Level 2 Çözümü](https://gallipoli.xyz/blog/uncrackable2)
 
 ---
 
