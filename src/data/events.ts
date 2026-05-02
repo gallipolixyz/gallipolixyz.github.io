@@ -379,7 +379,7 @@ Note: We will also have a surprise guest from the Project Discovery team and a s
       'Surprise guest from Project Discovery and special gift',
       'Q&A session with Halil Kirazkaya'
     ]
-  }, 
+  },
   {
     id: '12',
     title: 'Linux Kernel Architecture and Security 102',
@@ -422,69 +422,69 @@ A packed session awaits you – don’t miss it!`,
     ]
   },
   {
-  id: '13',
-  title: 'Man In The Middle & Bettercap Workshop',
-  description: `In this live session, we will explore what a Man-In-The-Middle (MITM) attack is and observe how the Bettercap tool can be used in real-world scenarios.
+    id: '13',
+    title: 'Man In The Middle & Bettercap Workshop',
+    description: `In this live session, we will explore what a Man-In-The-Middle (MITM) attack is and observe how the Bettercap tool can be used in real-world scenarios.
 
 If you’re curious about offensive security techniques and network manipulation tactics, don’t miss this interactive training session!`,
-  date: new Date('2025-10-26'),
-  time: '21:00',
-  duration: '1-2 hours',
-  type: 'training',
-  difficulty: 'beginner',
-  instructor: 'İsa Ergişi – Cyber Security Researcher',
-  location: 'online',
-  meetingLink: 'https://lnkd.in/egHnDrqC',
-  tags: [
-    'mitm',
-    'bettercap',
-    'network-security',
-    'cybersecurity',
-    'youtube-stream',
-    'gallipoli'
-  ],
-  isPast: isEventPast(new Date('2025-10-26')),
-  prerequisites: ['Basic understanding of networking concepts'],
-  agenda: [
-    'Introduction to Man-In-The-Middle attacks',
-    'Overview of Bettercap and its core modules',
-    'Demonstration: intercepting and analyzing traffic',
-    'Real-world scenarios and defense mechanisms',
-    'Q&A session with İsa Ergişi'
-  ]
+    date: new Date('2025-10-26'),
+    time: '21:00',
+    duration: '1-2 hours',
+    type: 'training',
+    difficulty: 'beginner',
+    instructor: 'İsa Ergişi – Cyber Security Researcher',
+    location: 'online',
+    meetingLink: 'https://lnkd.in/egHnDrqC',
+    tags: [
+      'mitm',
+      'bettercap',
+      'network-security',
+      'cybersecurity',
+      'youtube-stream',
+      'gallipoli'
+    ],
+    isPast: isEventPast(new Date('2025-10-26')),
+    prerequisites: ['Basic understanding of networking concepts'],
+    agenda: [
+      'Introduction to Man-In-The-Middle attacks',
+      'Overview of Bettercap and its core modules',
+      'Demonstration: intercepting and analyzing traffic',
+      'Real-world scenarios and defense mechanisms',
+      'Q&A session with İsa Ergişi'
+    ]
   },
   {
-  id: '14',
-  title: 'Cyber Security & Artificial Intelligence',
-  description: `Artificial intelligence is no longer just a productivity tool; it is a game-changer for cyber security. But is AI keeping us safer, or is it opening the door to new risks?
+    id: '14',
+    title: 'Cyber Security & Artificial Intelligence',
+    description: `Artificial intelligence is no longer just a productivity tool; it is a game-changer for cyber security. But is AI keeping us safer, or is it opening the door to new risks?
 
 Systems that detect attacks within seconds and algorithms that uncover threats beyond human recognition have become a part of our lives. In this webinar, we explore how security is being redefined in the age of artificial intelligence.`,
-  date: new Date('2025-12-20'),
-  time: '21:00',
-  duration: '1-2 hours',
-  type: 'webinar',
-  difficulty: 'beginner',
-  instructor: 'Cemal Taner – Network & Security Solutions Architect',
-  location: 'online',
-  meetingLink: 'https://lnkd.in/egHnDrqC',
-  tags: [
-    'artificial-intelligence',
-    'ai-security',
-    'cybersecurity',  
-    'youtube-stream',
-    'gallipoli'
-  ],
-  isPast: isEventPast(new Date('2025-12-20')),
-  prerequisites: ['Interest in AI and basic cybersecurity awareness'],
-  agenda: [
-    'The evolution of AI in the cyber landscape',
-    'AI-powered threat detection and response',
-    'New risks: Adversarial AI and automated attacks',
-    'The future of security architecture with AI',
-    'Q&A session with Cemal Taner'
-  ]
-},
-{
+    date: new Date('2025-12-20'),
+    time: '21:00',
+    duration: '1-2 hours',
+    type: 'webinar',
+    difficulty: 'beginner',
+    instructor: 'Cemal Taner – Network & Security Solutions Architect',
+    location: 'online',
+    meetingLink: 'https://lnkd.in/egHnDrqC',
+    tags: [
+      'artificial-intelligence',
+      'ai-security',
+      'cybersecurity',
+      'youtube-stream',
+      'gallipoli'
+    ],
+    isPast: isEventPast(new Date('2025-12-20')),
+    prerequisites: ['Interest in AI and basic cybersecurity awareness'],
+    agenda: [
+      'The evolution of AI in the cyber landscape',
+      'AI-powered threat detection and response',
+      'New risks: Adversarial AI and automated attacks',
+      'The future of security architecture with AI',
+      'Q&A session with Cemal Taner'
+    ]
+  },
+  {
     id: '15',
     title: 'Blockchain & Blockchain Security',
     description: `"Is Blockchain just about cryptocurrency, or is it the secure internet of the future?"
@@ -732,6 +732,34 @@ As AI accelerates code generation, organizations must rethink their AppSec strat
       'Transitioning from physical hardware to virtualization',
       'Fundamentals of virtualization technologies',
       'Q&A Session'
+    ]
+  },
+  {
+    id: '23',
+    title: 'Penetration Testing Experiences and Career Advice',
+    description: `In this webinar, we will dive into the world of penetration testing through the real-world experiences of a seasoned professional.\n\nWe will discuss the challenges, methodologies, and the mindset required to succeed in offensive security. Furthermore, valuable career advice will be shared for those looking to start or advance their careers in cybersecurity.`,
+    date: new Date('2026-04-03'),
+    time: '21:00',
+    duration: '1 hour',
+    type: 'webinar',
+    difficulty: 'beginner',
+    instructor: 'Kayhan Kayıhan',
+    location: 'online',
+    meetingLink: 'https://www.youtube.com/@gallipolixyz',
+    tags: [
+      'pentesting',
+      'career',
+      'cybersecurity',
+      'youtube-stream',
+      'gallipoli'
+    ],
+    isPast: isEventPast(new Date('2026-04-03')),
+    prerequisites: ['Interest in cybersecurity and penetration testing'],
+    agenda: [
+      'Real-world penetration testing experiences',
+      'Challenges and methodologies in offensive security',
+      'Career advice for aspiring cybersecurity professionals',
+      'Q&A Session with Kayhan Kayıhan'
     ]
   }
 ];
