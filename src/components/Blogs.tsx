@@ -13,6 +13,12 @@ interface Blog {
 
 const blogs: Blog[] = [
   {
+    slug: 'oscp',
+    title: 'Siber Güvenlik Sertifikaları #4: OSCP+ Sınavının Anatomisi',
+    excerpt: 'Siber güvenlik dünyasının onur madalyası olarak kabul edilen OSCP+ sertifikasını, 24 saatlik maratonu ve yeni PEN-200 müfredatıyla masaya yatırıyoruz.',
+    author: 'Ozan İsmail Çolhak',
+  },
+  {
     slug: 'lazarus',
     title: 'Lazarus Group (APT 38) Rapor Analizi',
     excerpt: 'Bu bölümde, kurduğumuz bu devasa yapının içine girip, izlemek istediğimiz cihazları sisteme nasıl bağlayacağımızı göreceğiz.',
