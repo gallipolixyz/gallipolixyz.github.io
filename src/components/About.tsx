@@ -2,6 +2,17 @@ import React from 'react';
 import { Shield, Users, Target, Brain, Heart } from 'lucide-react';
 
 export function About() {
+  const stats = [
+    { label: 'Community Size', value: '7.5K+' },
+    { label: 'Total Views', value: '48K+' },
+    { label: 'Content Hours', value: '1.5K+ hrs' },
+    { label: 'Live Sessions', value: '30+' },
+    { label: 'Video Content', value: '120+' },
+    { label: 'Blog Posts', value: '50+' },
+    { label: 'Educational Content', value: '95+' },
+    { label: 'Guest Speakers', value: '30+' },
+  ];
+
   return (
     <div className="min-h-screen bg-black text-custom-cyan py-20">
       <div className="container mx-auto px-4">
@@ -35,9 +46,6 @@ export function About() {
                 key={id}
                 className="relative w-full rounded-xl overflow-hidden border border-custom-cyan/30"
                 style={{ paddingTop: "56.25%" }}
-                onClick={(e) => {
-                  e.stopPropagation();
-                }}
               >
                 <iframe
                   className="absolute top-0 left-0 w-full h-full"
@@ -46,9 +54,6 @@ export function About() {
                   loading="lazy"
                   allow="accelerometer; autoplay; encrypted-media; picture-in-picture"
                   allowFullScreen
-                  onClick={(e) => {
-                    e.stopPropagation();
-                  }}
                 />
               </div>
             ))}
@@ -65,6 +70,25 @@ export function About() {
             <p className="mb-6">
               Like the soldiers who demonstrated extraordinary resilience at Gallipoli, our community members show unwavering dedication to protecting digital freedoms and fostering innovation through ethical hacking.
             </p>
+          </div>
+        </section>
+
+        {/* NEW Statistics Section */}
+        <section className="mb-20">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
+            {stats.map((stat, index) => (
+              <div 
+                key={index} 
+                className="bg-custom-cyan/5 border border-custom-cyan/20 p-6 rounded-xl backdrop-blur-sm flex flex-col items-center justify-center hover:border-custom-cyan/50 transition-all duration-300"
+              >
+                <span className="text-3xl md:text-4xl font-bold text-custom-cyan mb-2">
+                  {stat.value}
+                </span>
+                <span className="text-custom-cyan/60 text-xs md:text-sm uppercase tracking-widest font-mono text-center">
+                  {stat.label}
+                </span>
+              </div>
+            ))}
           </div>
         </section>
 
