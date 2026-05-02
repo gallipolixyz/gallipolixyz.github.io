@@ -13,6 +13,12 @@ interface Blog {
 
 const blogs: Blog[] = [
   {
+    slug: 'ceh',
+    title: 'Siber Güvenlik Sertifikaları #5: CEH (Certified Ethical Hacker) Sınavının Anatomisi',
+    excerpt: 'Siber güvenlik dünyasının en çok tartışılan ve reklamı yapılan sertifikası CEH’i, yeni v13 AI müfredatı ve sektörel geçerliliğiyle mercek altına alıyoruz.',
+    author: 'Ozan İsmail Çolhak',
+  },
+  {
     slug: 'oscp',
     title: 'Siber Güvenlik Sertifikaları #4: OSCP+ Sınavının Anatomisi',
     excerpt: 'Siber güvenlik dünyasının onur madalyası olarak kabul edilen OSCP+ sertifikasını, 24 saatlik maratonu ve yeni PEN-200 müfredatıyla masaya yatırıyoruz.',
