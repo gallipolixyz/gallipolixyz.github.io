@@ -175,12 +175,12 @@ başından beri şüphelendiğimiz root klasörünün altında yer alan .env i o
 
 ## Conclusion
 
-Freelancer makinesi; açık unutulan test dizinlerinin, parola tekrar kullanımının ve gereksiz verilen sudo ALL yetkisinin bir sistemi nasıl tamamen ele verdiğini gösteren pratik bir örnektir.
+Bu senaryo; açık unutulan test dizinlerinin, parola tekrar kullanımının ve gereksiz verilen sudo ALL yetkisinin bir sistemi nasıl tamamen ele verdiğini gösteren pratik bir örnektir.
 
 ---
 [My Linkedin](https://www.linkedin.com/in/osman-erdem-d-496489283/)
 
-[Scenerio-Freelancer]: /blogs/img/CTF-Solution-Information-Disclosure-and-Privilege-Escalation-on-the-Machine/Scenerio-Freelancer.png
+[Scenerio]: /blogs/img/CTF-Solution-Information-Disclosure-and-Privilege-Escalation-on-the-Machine/Scenerio.png
 [output-of-nmapScanning]: /blogs/img/CTF-Solution-Information-Disclosure-and-Privilege-Escalation-on-the-Machine/output-of-nmapScanning.png
 [search-exploits-from-version]: /blogs/img/CTF-Solution-Information-Disclosure-and-Privilege-Escalation-on-the-Machine/search-exploits-from-version.png
 [Executable-files-with-SUID-permissions]: /blogs/img/CTF-Solution-Information-Disclosure-and-Privilege-Escalation-on-the-Machine/Executable-files-with-SUID-permissions.png
