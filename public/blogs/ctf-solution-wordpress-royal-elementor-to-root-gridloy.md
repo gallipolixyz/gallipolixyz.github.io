@@ -292,11 +292,11 @@ Ayrıca sistemde plaintext olarak bırakılan `my_passwords.txt` dosyası, sızm
 
 [My Linkedin](https://www.linkedin.com/in/osmanerdemdutar/)
 
-[scenerio]: /blogs/img/CTF-Solution-wordpress-royal-elementor-to-root-gridloy/scenerio.png
-[nmap-scanning-results]: /blogs/img/CTF-Solution-wordpress-royal-elementor-to-root-gridloy/nmap-scanning-results.png
-[wpscan-vulnerable-plugins]: /blogs/img/CTF-Solution-wordpress-royal-elementor-to-root-gridloy/wpscan-vulnerable-plugins.png
-[ffuf-results]: /blogs/img/CTF-Solution-wordpress-royal-elementor-to-root-gridloy/ffuf-results.png
-[inside-of-php-ini]: /blogs/img/CTF-Solution-wordpress-royal-elementor-to-root-gridloy/inside-of-php-ini.png
-[wordpress-login-page]: /blogs/img/CTF-Solution-wordpress-royal-elementor-to-root-gridloy/wordpress-login-page.png
-[searchsploit-royal-elementor]: /blogs/img/CTF-Solution-wordpress-royal-elementor-to-root-gridloy/searchsploit-royal-elementor.png
-[cat-my_passwords.txt]: /blogs/img/CTF-Solution-wordpress-royal-elementor-to-root-gridloy/cat-my_passwords.txt.png
+[scenerio]: /blogs/img/ctf-solution-wordpress-royal-elementor-to-root-gridloy/scenerio.png
+[nmap-scanning-results]: /blogs/img/ctf-solution-wordpress-royal-elementor-to-root-gridloy/nmap-scanning-results.png
+[wpscan-vulnerable-plugins]: /blogs/img/ctf-solution-wordpress-royal-elementor-to-root-gridloy/wpscan-vulnerable-plugins.png
+[ffuf-results]: /blogs/img/ctf-solution-wordpress-royal-elementor-to-root-gridloy/ffuf-results.png
+[inside-of-php-ini]: /blogs/img/ctf-solution-wordpress-royal-elementor-to-root-gridloy/inside-of-php-ini.png
+[wordpress-login-page]: /blogs/img/ctf-solution-wordpress-royal-elementor-to-root-gridloy/wordpress-login-page.png
+[searchsploit-royal-elementor]: /blogs/img/ctf-solution-wordpress-royal-elementor-to-root-gridloy/searchsploit-royal-elementor.png
+[cat-my_passwords.txt]: /blogs/img/ctf-solution-wordpress-royal-elementor-to-root-gridloy/cat-my_passwords.txt.png
