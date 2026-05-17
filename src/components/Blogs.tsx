@@ -13,6 +13,18 @@ interface Blog {
 
 const blogs: Blog[] = [
   {
+    slug: 'CTF-Solution-wordpress-royal-elementor-to-root-gridloy',
+    title: 'CTF Çözümü: WordPress Royal Elementor Exploit ile Root’a Erişim',
+    excerpt: 'Örnek bir senaryo üzerinde WordPress servis keşfi, Royal Elementor eklentisindeki zafiyetin istismarı, ilk erişim elde edilmesi ve root yetkisine kadar ilerleyen privilege escalation adımlarının incelendiği bu write-up.',
+    author: 'Osman Erdem Dutar',
+  },
+  {
+    slug: 'CTF-Solution-Information-Disclosure-and-Privilege-Escalation-on-the-Machine',
+    title: 'CTF Çözümü: Information Disclosure ve Privilege Escalation',
+    excerpt: 'Senaryo üzerinde bilgi ifşası, açıkta bırakılan geliştirme dizinleri, parola tekrar kullanımı ve hatalı sudo yetkilendirmesi üzerinden ilerlenen bu write-up\'ta; keşif, ilk erişim, lateral movement ve privilege escalation adımları incelenmektedir.',
+    author: 'Osman Erdem Dutar',
+  },
+  {
     slug: 'ceh',
     title: 'Siber Güvenlik Sertifikaları #5: CEH (Certified Ethical Hacker) Sınavının Anatomisi',
     excerpt: 'Siber güvenlik dünyasının en çok tartışılan ve reklamı yapılan sertifikası CEH’i, yeni v13 AI müfredatı ve sektörel geçerliliğiyle mercek altına alıyoruz.',
