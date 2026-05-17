@@ -180,12 +180,12 @@ Bu senaryo; açık unutulan test dizinlerinin, parola tekrar kullanımının ve 
 ---
 [My Linkedin](https://www.linkedin.com/in/osmanerdemdutar/)
 
-[Scenerio]: /blogs/img/CTF-Solution-Information-Disclosure-and-Privilege-Escalation-on-the-Machine/Scenerio.png
-[output-of-nmapScanning]: /blogs/img/CTF-Solution-Information-Disclosure-and-Privilege-Escalation-on-the-Machine/output-of-nmapScanning.png
-[search-exploits-from-version]: /blogs/img/CTF-Solution-Information-Disclosure-and-Privilege-Escalation-on-the-Machine/search-exploits-from-version.png
-[Executable-files-with-SUID-permissions]: /blogs/img/CTF-Solution-Information-Disclosure-and-Privilege-Escalation-on-the-Machine/Executable-files-with-SUID-permissions.png
-[inside-the-config.php]: /blogs/img/CTF-Solution-Information-Disclosure-and-Privilege-Escalation-on-the-Machine/inside-the-configPhp.png
-[result-of-the-sql-commands]: /blogs/img/CTF-Solution-Information-Disclosure-and-Privilege-Escalation-on-the-Machine/result-of-the-sql-commands.png
-[gitconfig-results]: /blogs/img/CTF-Solution-Information-Disclosure-and-Privilege-Escalation-on-the-Machine/gitconfig-results.png
-[resultsOf-sudo-l]: /blogs/img/CTF-Solution-Information-Disclosure-and-Privilege-Escalation-on-the-Machine/resultsOf-sudo-l.png
-[inside-of-root]: /blogs/img/CTF-Solution-Information-Disclosure-and-Privilege-Escalation-on-the-Machine/inside-of-root.png
+[Scenerio]: /blogs/img/ctf-solution-information-disclosure-and-privilege-escalation-on-the-machine/Scenerio.png
+[output-of-nmapScanning]: /blogs/img/ctf-solution-information-disclosure-and-privilege-escalation-on-the-machine/output-of-nmapScanning.png
+[search-exploits-from-version]: /blogs/img/ctf-solution-information-disclosure-and-privilege-escalation-on-the-machine/search-exploits-from-version.png
+[Executable-files-with-SUID-permissions]: /blogs/img/ctf-solution-information-disclosure-and-privilege-escalation-on-the-machine/Executable-files-with-SUID-permissions.png
+[inside-the-config.php]: /blogs/img/ctf-solution-information-disclosure-and-privilege-escalation-on-the-machine/inside-the-configPhp.png
+[result-of-the-sql-commands]: /blogs/img/ctf-solution-information-disclosure-and-privilege-escalation-on-the-machine/result-of-the-sql-commands.png
+[gitconfig-results]: /blogs/img/ctf-solution-information-disclosure-and-privilege-escalation-on-the-machine/gitconfig-results.png
+[resultsOf-sudo-l]: /blogs/img/ctf-solution-information-disclosure-and-privilege-escalation-on-the-machine/resultsOf-sudo-l.png
+[inside-of-root]: /blogs/img/ctf-solution-information-disclosure-and-privilege-escalation-on-the-machine/inside-of-root.png
