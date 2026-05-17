@@ -5,7 +5,7 @@
 
 Bu makinemiz, karmaşık exploit zincirleri yerine bilgi ifşası ve hatalı yapılandırmalara odaklanan bir CTF senaryosudur. Makinenin çözüm sürecinde spesifik bir zafiyet sömürüsüne (exploitation) ihtiyaç duyulmamış; bunun yerine titiz bir numaralandırma (enumeration) süreci yürütülmüştür. Makine, geliştirme ortamlarının canlı sisteme taşınmasının, parola tekrar kullanımının ve denetimsiz sudo yetkilerinin yaratacağı riskleri pratik bir şekilde göstermektedir.
 
-![Scenerio-Freelancer]
+![scenerio]
 
 
 ## CTF’in çözümü :
@@ -180,7 +180,7 @@ Bu senaryo; açık unutulan test dizinlerinin, parola tekrar kullanımının ve 
 ---
 [My Linkedin](https://www.linkedin.com/in/osmanerdemdutar/)
 
-[Scenerio]: /blogs/img/ctf-solution-information-disclosure-and-privilege-escalation-on-the-machine/Scenerio.png
+[scenerio]: /blogs/img/ctf-solution-information-disclosure-and-privilege-escalation-on-the-machine/scenerio.png
 [output-of-nmapScanning]: /blogs/img/ctf-solution-information-disclosure-and-privilege-escalation-on-the-machine/output-of-nmapScanning.png
 [search-exploits-from-version]: /blogs/img/ctf-solution-information-disclosure-and-privilege-escalation-on-the-machine/search-exploits-from-version.png
 [Executable-files-with-SUID-permissions]: /blogs/img/ctf-solution-information-disclosure-and-privilege-escalation-on-the-machine/Executable-files-with-SUID-permissions.png
