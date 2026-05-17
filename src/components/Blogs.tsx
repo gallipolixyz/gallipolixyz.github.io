@@ -13,12 +13,6 @@ interface Blog {
 
 const blogs: Blog[] = [
   {
-    slug: 'ctf-solution-information-disclosure-and-privilege-escalation-on-the-machine',
-    title: 'CTF Çözümü: Information Disclosure ve Privilege Escalation',
-    excerpt: 'Senaryo üzerinde bilgi ifşası, açıkta bırakılan geliştirme dizinleri, parola tekrar kullanımı ve hatalı sudo yetkilendirmesi üzerinden ilerlenen bu write-up\'ta; keşif, ilk erişim, lateral movement ve privilege escalation adımları incelenmektedir.',
-    author: 'Osman Erdem Dutar',
-  },
-  {
     slug: 'ceh',
     title: 'Siber Güvenlik Sertifikaları #5: CEH (Certified Ethical Hacker) Sınavının Anatomisi',
     excerpt: 'Siber güvenlik dünyasının en çok tartışılan ve reklamı yapılan sertifikası CEH’i, yeni v13 AI müfredatı ve sektörel geçerliliğiyle mercek altına alıyoruz.',
