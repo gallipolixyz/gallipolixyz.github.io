@@ -13,6 +13,12 @@ interface Blog {
 
 const blogs: Blog[] = [
   {
+    slug: 'ctf-solution-exploiting-wordpress-royal-elementor-to-root-gridloy',
+    title: 'CTF Çözümü: WordPress Royal Elementor Exploit ile Root’a Erişim',
+    excerpt: 'Gridloy makinesi üzerinde WordPress servis keşfi, Royal Elementor eklentisindeki zafiyetin istismarı, ilk erişim elde edilmesi ve root yetkisine kadar ilerleyen privilege escalation adımlarının incelendiği bu write-up.',
+    author: 'Osman Erdem Dutar',
+  },
+  {
     slug: 'ctf-solution-information-disclosure-and-privilege-escalation-on-the-machine',
     title: 'CTF Çözümü: Information Disclosure ve Privilege Escalation',
     excerpt: 'Senaryo üzerinde bilgi ifşası, açıkta bırakılan geliştirme dizinleri, parola tekrar kullanımı ve hatalı sudo yetkilendirmesi üzerinden ilerlenen bu write-up\'ta; keşif, ilk erişim, lateral movement ve privilege escalation adımları incelenmektedir.',
