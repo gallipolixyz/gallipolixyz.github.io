@@ -178,7 +178,7 @@ başından beri şüphelendiğimiz root klasörünün altında yer alan .env i o
 Bu senaryo; açık unutulan test dizinlerinin, parola tekrar kullanımının ve gereksiz verilen sudo ALL yetkisinin bir sistemi nasıl tamamen ele verdiğini gösteren pratik bir örnektir.
 
 ---
-[My Linkedin](https://www.linkedin.com/in/osman-erdem-d-496489283/)
+[My Linkedin](https://www.linkedin.com/in/osmanerdemdutar/)
 
 [Scenerio]: /blogs/img/CTF-Solution-Information-Disclosure-and-Privilege-Escalation-on-the-Machine/Scenerio.png
 [output-of-nmapScanning]: /blogs/img/CTF-Solution-Information-Disclosure-and-Privilege-Escalation-on-the-Machine/output-of-nmapScanning.png
