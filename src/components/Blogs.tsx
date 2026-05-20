@@ -39,7 +39,7 @@ const blogs: Blog[] = [
   {
     slug: 'lazarus',
     title: 'Lazarus Group (APT 38) Rapor Analizi',
-    excerpt: 'Bu bölümde, kurduğumuz bu devasa yapının içine girip, izlemek istediğimiz cihazları sisteme nasıl bağlayacağımızı göreceğiz.',
+    excerpt: 'Lazarus Group, APT 38 olarak da bilinen Kuzey Kore hükümeti ile bağlantılı olduğu kabul edilen, devlet destekli bir APT grubudur.',
     author: 'Güven Emre Keskin',
   },
   {

@@ -7,7 +7,7 @@ export interface Event {
   duration: string;
   type: 'training' | 'webinar' | 'ctf' | 'meetup' | 'conference';
   difficulty: 'beginner' | 'intermediate' | 'advanced';
-  instructor?: string;
+  instructor: string; // Etkinliği sunan kişinin ismi
   maxParticipants?: number;
   currentParticipants?: number;
   location: 'online' | 'physical' | 'hybrid';
@@ -18,6 +18,16 @@ export interface Event {
   isPast: boolean;
   prerequisites?: string[];
   agenda?: string[];
+  
+  // Yeni eklenen alanlar (Gallipoli platformu genişletmesi)
+  youtubeUrl?: string; // Geçmiş etkinliklerin YouTube video/embed linki
+  speaker?: {
+    name: string;
+    role: string;
+    bio: string;
+    image: string;     // Profil fotoğrafı yolu veya URL'i
+    linkedin?: string; // Opsiyonel LinkedIn profil linki
+  };
 }
 
 export interface EventFilters {
@@ -29,4 +39,4 @@ export interface EventFilters {
     end: Date;
   };
   tags?: string[];
-} 
+}
