@@ -12,6 +12,12 @@ interface Blog {
 }
 
 const blogs: Blog[] = [
+    {
+    slug: 'androidde-llm',
+    title: 'LLM Modellerini Android Uygulama Güvenliğinde Nasıl Kullanırız?',
+    excerpt: 'LLM modelleri otomasyondan analiz, zafiyet tespiti ve raporlama gibi birçok alanda Android uygulama güvenliğinde devrim yaratıyor. Bu yazıda, LLM modellerinin Android güvenlik testlerinde nasıl etkili bir şekilde kullanılabileceğini keşfediyoruz.',
+    author: 'Simge Yiğit',
+  },
   {
     slug: 'ctf-solution-wordpress-royal-elementor-to-root-gridloy',
     title: 'CTF Çözümü: WordPress Royal Elementor Exploit ile Root’a Erişim',
