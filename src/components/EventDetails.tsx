@@ -1,6 +1,5 @@
-import React from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import { Calendar, Clock, MapPin, Users, ArrowLeft, BookOpen, Shield, Target, Coffee, Globe, ExternalLink, CheckCircle, AlertCircle, Play } from 'lucide-react';
+import { Calendar, Clock, MapPin, Users, ArrowLeft, BookOpen, Shield, Target, Coffee, Globe, ExternalLink, CheckCircle, AlertCircle, Play, Linkedin } from 'lucide-react';
 import { Event } from '../types/event';
 import { getEventById } from '../data/events';
 import { motion } from 'framer-motion';
@@ -62,6 +61,13 @@ const formatDate = (date: Date) => {
   });
 };
 
+const getYouTubeEmbedUrl = (url?: string): string | null => {
+  if (!url) return null;
+  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+  const match = url.match(regExp);
+  return (match && match[2].length === 11) ? `https://www.youtube.com/embed/${match[2]}` : null;
+};
+
 export function EventDetails() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
@@ -106,12 +112,13 @@ export function EventDetails() {
 
   const TypeIcon = getEventTypeIcon(event.type);
   const isUpcoming = !event.isPast;
+  const embedVideoUrl = getYouTubeEmbedUrl(event.youtubeUrl);
+  const instructorName = event.speaker?.name || event.instructor;
 
   return (
     <PageTransition>
       <div className="min-h-screen bg-black text-custom-cyan py-20 overflow-x-hidden">
         <div className="container mx-auto px-2 sm:px-4">
-          {/* Back Button */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -127,16 +134,32 @@ export function EventDetails() {
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-8 min-w-0">
-            {/* Main Content */}
             <div className="lg:col-span-2 space-y-6 sm:space-y-8 min-w-0">
-              {/* Header */}
+              
+              {!isUpcoming && embedVideoUrl && (
+                <motion.section
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="bg-black/40 border border-custom-cyan/30 rounded-lg p-2 sm:p-4 backdrop-blur-sm"
+                >
+                  <div className="relative w-full aspect-video rounded-lg overflow-hidden border border-custom-cyan/20 bg-black">
+                    <iframe
+                      src={embedVideoUrl}
+                      title={event.title}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      className="absolute top-0 left-0 w-full h-full border-0"
+                    ></iframe>
+                  </div>
+                </motion.section>
+              )}
+
               <motion.section
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 className="bg-black/40 border border-custom-cyan/30 rounded-lg p-4 sm:p-8 backdrop-blur-sm min-w-0 overflow-x-auto"
               >
                 <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 mb-6 min-w-0">
-                  {/* Icon + Title + Badges aynı satırda hizalı */}
                   <div className="flex flex-row items-center gap-4 min-w-0 w-full">
                     <div className="p-4 bg-custom-cyan/10 border border-custom-cyan/30 rounded-lg flex-shrink-0 flex items-center justify-center">
                       <TypeIcon className="w-8 h-8 text-custom-cyan" />
@@ -166,7 +189,52 @@ export function EventDetails() {
                 <p className="text-base sm:text-lg font-mono text-custom-cyan/90 break-words min-w-0 ml-0 sm:ml-20">{event.description}</p>
               </motion.section>
 
-              {/* Event Details */}
+              {instructorName && (
+                <motion.section
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.05 }}
+                  className="bg-black/40 border border-custom-cyan/30 rounded-lg p-6 sm:p-8 backdrop-blur-sm"
+                >
+                  <h2 className="text-2xl font-bold text-white mb-6">Speaker Profile_</h2>
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
+                    {event.speaker?.image ? (
+                      <img 
+                        src={event.speaker.image} 
+                        alt={instructorName} 
+                        className="w-20 h-20 rounded-full object-cover border-2 border-custom-cyan/40 bg-custom-cyan/5 flex-shrink-0"
+                      />
+                    ) : (
+                      <div className="w-20 h-20 rounded-full border-2 border-custom-cyan/30 bg-custom-cyan/10 flex items-center justify-center flex-shrink-0">
+                        <Shield className="w-8 h-8 text-custom-cyan/70" />
+                      </div>
+                    )}
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center justify-between gap-4 mb-2">
+                        <div>
+                          <h3 className="text-xl font-bold text-white">{instructorName}</h3>
+                          <p className="text-sm font-mono text-custom-cyan/80">{event.speaker?.role || 'Guest Instructor'}</p>
+                        </div>
+                        {event.speaker?.linkedin && (
+                          <a 
+                            href={event.speaker.linkedin}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="p-2 bg-custom-cyan/10 hover:bg-custom-cyan/20 border border-custom-cyan/30 hover:border-custom-cyan text-custom-cyan hover:text-white rounded transition-all"
+                            title="LinkedIn Profile"
+                          >
+                            <Linkedin className="w-4 h-4" />
+                          </a>
+                        )}
+                      </div>
+                      <p className="text-sm font-mono text-custom-cyan/70 break-words leading-relaxed">
+                        {event.speaker?.bio || 'Experienced professional contributing cyber security knowledge to the Gallipoli ecosystem.'}
+                      </p>
+                    </div>
+                  </div>
+                </motion.section>
+              )}
+
               <motion.section
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -207,19 +275,9 @@ export function EventDetails() {
                       </div>
                     </div>
                   )}
-                  {event.instructor && (
-                    <div className="flex items-center gap-3">
-                      <Shield className="w-5 h-5 text-custom-cyan" />
-                      <div>
-                        <div className="text-sm font-mono text-custom-cyan/70">Instructor</div>
-                        <div className="font-mono text-white">{event.instructor}</div>
-                      </div>
-                    </div>
-                  )}
                 </div>
               </motion.section>
 
-              {/* Prerequisites */}
               {event.prerequisites && event.prerequisites.length > 0 && (
                 <motion.section
                   initial={{ opacity: 0, y: 20 }}
@@ -239,7 +297,6 @@ export function EventDetails() {
                 </motion.section>
               )}
 
-              {/* Agenda */}
               {event.agenda && event.agenda.length > 0 && (
                 <motion.section
                   initial={{ opacity: 0, y: 20 }}
@@ -261,7 +318,6 @@ export function EventDetails() {
                 </motion.section>
               )}
 
-              {/* Tags */}
               <motion.section
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -282,20 +338,17 @@ export function EventDetails() {
               </motion.section>
             </div>
 
-            {/* Sidebar */}
             <div className="space-y-6">
-              {/* Registration Card */}
               <motion.div
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.2 }}
                 className="bg-black/40 border border-custom-cyan/30 rounded-lg p-6 backdrop-blur-sm sticky top-24"
               >
-                <h3 className="text-xl font-bold text-white mb-4">Join_</h3>
+                <h3 className="text-xl font-bold text-white mb-4">Action_</h3>
 
                 {isUpcoming ? (
                   <div className="space-y-4">
-
                     {event.meetingLink && (
                       <a
                         href={event.meetingLink}
@@ -319,16 +372,28 @@ export function EventDetails() {
                     </a>
                   </div>
                 ) : (
-                  <div className="p-4 bg-white/10 border border-white/30 rounded-lg">
-                    <div className="flex items-center gap-2">
-                      <Calendar className="w-5 h-5 text-white/70" />
-                      <span className="font-mono text-white/70">Event Completed</span>
+                  <div className="space-y-4">
+                    <div className="p-4 bg-white/5 border border-white/20 rounded-lg text-center">
+                      <div className="flex items-center justify-center gap-2 mb-1">
+                        <Calendar className="w-5 h-5 text-white/50" />
+                        <span className="font-mono text-white/70 text-sm">Event Completed</span>
+                      </div>
                     </div>
+                    {event.youtubeUrl && (
+                      <a
+                        href={event.youtubeUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="click-ripple interactive-hover w-full inline-flex items-center justify-center px-6 py-3 bg-red-500/10 border border-red-500/40 rounded font-mono text-red-400 hover:bg-red-500/20 hover:border-red-500 hover:text-white transition-all"
+                      >
+                        Watch on YouTube
+                        <Play className="w-4 h-4 ml-2 fill-current" />
+                      </a>
+                    )}
                   </div>
                 )}
               </motion.div>
 
-              {/* Quick Info */}
               <motion.div
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -361,4 +426,4 @@ export function EventDetails() {
       </div>
     </PageTransition>
   );
-} 
+}

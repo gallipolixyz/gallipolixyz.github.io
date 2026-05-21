@@ -1,5 +1,19 @@
 import { Event } from '../types/event';
 
+// 1. Mevcut Event interface'ini projenin kalanını bozmadan genişletiyoruz
+declare module '../types/event' {
+  interface Event {
+    youtubeUrl?: string; // Geçmiş etkinliklerin YouTube video/embed linki
+    speaker?: {
+      name: string;
+      role: string;
+      bio: string;
+      image: string;     // Profil fotoğrafı yolu veya URL'i
+      linkedin?: string; // Opsiyonel LinkedIn profil linki
+    };
+  }
+}
+
 const isEventPast = (eventDate: Date): boolean => {
   const today = new Date();
   const oneDayAfterEvent = new Date(eventDate);
@@ -18,9 +32,17 @@ export const mockEvents: Event[] = [
     duration: '1 hour',
     type: 'webinar',
     difficulty: 'beginner',
-    instructor: 'Utku Sen – Senior Application Security Engineer',
+    instructor: 'Utku Sen',
     location: 'online',
-    meetingLink: 'https://kick.com/gallipolixyz',
+    meetingLink: 'https://www.youtube.com/@gallipolixyz',
+    youtubeUrl: 'https://www.youtube.com/watch?v=zGLbBXJrRSw', // Örnek Gallipoli geçmiş video linki
+    speaker: {
+      name: 'Utku Sen',
+      role: 'Senior Application Security Engineer',
+      bio: 'Application security expert focusing on emerging threats, vulnerability research, and defensive security architectures.',
+      image: '/img/speakers/utku-sen.jpg',
+      linkedin: 'https://www.linkedin.com/in/utkusn/'
+    },
     tags: [
       'ai-in-cybersecurity',
       'future-of-security',
@@ -52,7 +74,15 @@ export const mockEvents: Event[] = [
     difficulty: 'beginner',
     instructor: 'Nur Sena Avcı',
     location: 'online',
-    meetingLink: 'https://kick.com/gallipolixyz',
+    meetingLink: 'https://www.youtube.com/@gallipolixyz',
+    youtubeUrl: 'https://www.youtube.com/watch?v=eXItJWBqNaw&t=1653s',
+    speaker: {
+      name: 'Nur Sena Avcı',
+      role: 'Cyber Security & SOC Analyst',
+      bio: 'Expert in SIEM systems, log analysis, and incident detection mechanisms with extensive practical training experience.',
+      image: '/img/speakers/nur-sena.jpg',
+      linkedin: 'https://www.linkedin.com/in/nur-sena-avci/'
+    },
     tags: [
       'splunk',
       'log-analysis',
@@ -83,7 +113,15 @@ export const mockEvents: Event[] = [
     difficulty: 'beginner',
     instructor: 'Ali Gündoğar',
     location: 'online',
-    meetingLink: 'https://kick.com/gallipolixyz',
+    meetingLink: 'https://www.youtube.com/@gallipolixyz',
+    youtubeUrl: 'https://www.youtube.com/watch?v=8uJBP8BhdU0',
+    speaker: {
+      name: 'Ali Gündoğar',
+      role: 'Security Researcher & Bug Hunter',
+      bio: 'Active bug bounty hunter specializing in advanced reconnaissance, asset discovery, and web application security testing.',
+      image: '/img/speakers/ali-gundogar.png',
+      linkedin: 'https://www.linkedin.com/in/aligundogar/'
+    },
     tags: [
       'bug-bounty',
       'recon',
@@ -112,9 +150,17 @@ export const mockEvents: Event[] = [
     duration: '1-2 hour',
     type: 'training',
     difficulty: 'beginner',
-    instructor: 'Ümmühan Atmaca – Cyber Security Researcher',
+    instructor: 'Ümmühan Atmaca',
     location: 'online',
-    meetingLink: 'https://kick.com/gallipolixyz',
+    meetingLink: 'https://www.youtube.com/@gallipolixyz',
+    youtubeUrl: 'https://www.youtube.com/watch?v=-RXKw-lus08',
+    speaker: {
+      name: 'Ümmühan Atmaca',
+      role: 'Cyber Security Researcher',
+      bio: 'Researcher focused on operating system security, kernel architecture internals, and low-level system defenses.',
+      image: '/img/speakers/ummuhan-atmaca.jpg',
+      linkedin: 'https://www.linkedin.com/in/%C3%BCmm%C3%BChan-atmaca/'
+    },
     tags: [
       'linux',
       'kernel',
@@ -138,20 +184,23 @@ export const mockEvents: Event[] = [
   {
     id: '5',
     title: 'Security Perspectives on Modern Web Applications',
-    description: `We interact with web applications daily—but how do they work and how are they secured? 
-This training will illuminate these questions with a comprehensive approach.
-
-We'll start by examining how HTTP requests are handled and the fundamentals of client-server interactions. Then, we’ll delve into Modern Web Architecture shaped by concepts like microservices, containerization, and service mesh.
-
-Understanding the structure isn’t enough—we must identify weaknesses too. We'll explore how data leaks can occur through cache vulnerabilities and analyze security risks posed by GraphQL’s flexibility with real-world examples.`,
+    description: `We interact with web applications daily—but how do they work and how are they secured? This training will illuminate these questions with a comprehensive approach. We'll start by examining how HTTP requests are handled and the fundamentals of client-server interactions. Then, we’ll delve into Modern Web Architecture shaped by concepts like microservices, containerization, and service mesh. Understanding the structure isn’t enough—we must identify weaknesses too. We'll explore how data leaks can occur through cache vulnerabilities and analyze security risks posed by GraphQL’s flexibility with real-world examples.`,
     date: new Date('2025-07-20'),
     time: '21:00',
     duration: '1-2 hour',
     type: 'training',
     difficulty: 'intermediate',
-    instructor: 'Sarp Dora Yönden – Security Researcher',
+    instructor: 'Sarp Dora Yönden',
     location: 'online',
-    meetingLink: 'https://kick.com/gallipolixyz',
+    meetingLink: 'https://www.youtube.com/@gallipolixyz',
+    youtubeUrl: 'https://www.youtube.com/watch?v=9vuoDtLfZc4',
+    speaker: {
+      name: 'Sarp Dora Yönden',
+      role: 'Security Researcher',
+      bio: 'Application security analyst specializing in modern web architecture, API vulnerabilities, and cloud-native application defense.',
+      image: '/img/speakers/sarp-dora.jpg',
+      linkedin: 'https://www.linkedin.com/in/sarp-dora-yonden-b97b72153/'
+    },
     tags: [
       'web-security',
       'modern-web',
@@ -174,14 +223,7 @@ Understanding the structure isn’t enough—we must identify weaknesses too. We
   {
     id: '6',
     title: 'GRC and Cybersecurity',
-    description: `What makes an attacker's job harder?
-A controlled, well-organized, and awareness-driven cybersecurity environment!
-
-But do you know what kind of structure organizations need to identify their information security risks, comply with legal regulations (KVKK, ISO 27001, etc.), and manage their security policies in a sustainable way?
-
-The answer to all these questions lies in GRC.
-
-If you're curious about GRC (Governance, Risk, Compliance) and want to ask questions, you can find all the answers in this training session!`,
+    description: `What makes an attacker's job harder? A controlled, well-organized, and awareness-driven cybersecurity environment!\n\nBut do you know what kind of structure organizations need to identify their information security risks, comply with legal regulations (KVKK, ISO 27001, etc.), and manage their security policies in a sustainable way? The answer to all these questions lies in GRC.\n\nIf you're curious about GRC (Governance, Risk, Compliance) and want to ask questions, you can find all the answers in this training session!`,
     date: new Date('2025-07-27'),
     time: '21:00',
     duration: '1-2 hours',
@@ -189,7 +231,15 @@ If you're curious about GRC (Governance, Risk, Compliance) and want to ask quest
     difficulty: 'beginner',
     instructor: 'Tansu Uzun',
     location: 'online',
-    meetingLink: 'https://kick.com/gallipolixyz',
+    meetingLink: 'https://www.youtube.com/@gallipolixyz',
+    youtubeUrl: 'https://www.youtube.com/watch?v=7gK30jYU6Mk',
+    speaker: {
+      name: 'Tansu Uzun',
+      role: 'GRC & Information Security Consultant',
+      bio: 'Expert in governance, risk assessment models, and compliance standards such as ISO 27001 and KVKK regulations.',
+      image: '/img/speakers/tansu-uzun.jpg',
+      linkedin: 'https://www.linkedin.com/in/tansu-uzun-sezgin-3939011a0/'
+    },
     tags: [
       'grc',
       'cybersecurity',
@@ -212,17 +262,23 @@ If you're curious about GRC (Governance, Risk, Compliance) and want to ask quest
   {
     id: '7',
     title: 'DevSecOps Webinar',
-    description: `In this session of our Gallipoli Cybersecurity Community webinar series, we’ll explore how security can be integrated earlier and more effectively into the software development lifecycle.
-
-Join us as we dive into the world of DevSecOps and discover how to make secure development a reality from the start.`,
+    description: `In this session of our Gallipoli Cybersecurity Community webinar series, we’ll explore how security can be integrated earlier and more effectively into the software development lifecycle. Join us as we dive into the world of DevSecOps and discover how to make secure development a reality from the start.`,
     date: new Date('2025-07-28'),
     time: '21:00',
     duration: '1-2 hours',
     type: 'webinar',
     difficulty: 'beginner',
-    instructor: 'Ziyahan Albeniz – DevSecOps Engineering Consultant',
+    instructor: 'Ziyahan Albeniz',
     location: 'online',
-    meetingLink: 'https://kick.com/gallipolixyz',
+    meetingLink: 'https://www.youtube.com/@gallipolixyz',
+    //youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+    speaker: {
+      name: 'Ziyahan Albeniz',
+      role: 'DevSecOps Engineering Consultant',
+      bio: 'Consultant dedicated to automated security testing pipelines, shift-left methodologies, and secure coding practices.',
+      image: '/img/speakers/ziyahan-albeniz.jpg',
+      linkedin: 'https://www.linkedin.com/in/ziyahanalbeniz/'
+    },
     tags: [
       'devsecops',
       'secure-development',
@@ -243,21 +299,23 @@ Join us as we dive into the world of DevSecOps and discover how to make secure d
   {
     id: '8',
     title: 'Wi-Fi Hacking!',
-    description: `How secure are our wireless networks, really?
-
-In this hands-on session, we’ll explore the architecture of Wi-Fi networks, common attack techniques, and potential vulnerabilities — all from an ethical hacking perspective.
-
-Our goal is to understand how wireless networks work, identify weaknesses, and learn how to build effective defenses based on this knowledge.
-
-You’ll dive deep into Wi-Fi protocols, WEP/WPA/WPA2 analysis, and much more through practical demonstrations.`,
+    description: `How secure are our wireless networks, really? In this hands-on session, we’ll explore the architecture of Wi-Fi networks, common attack techniques, and potential vulnerabilities — all from an ethical hacking perspective. Our goal is to understand how wireless networks work, identify weaknesses, and learn how to build effective defenses based on this knowledge. You’ll dive deep into Wi-Fi protocols, WEP/WPA/WPA2 analysis, and much more through practical demonstrations.`,
     date: new Date('2025-08-09'),
     time: '21:00',
     duration: '1-2 hours',
     type: 'training',
     difficulty: 'intermediate',
-    instructor: 'İsa Ergişi – Security Researcher',
+    instructor: 'İsa Ergişi',
     location: 'online',
-    meetingLink: 'https://kick.com/gallipolixyz',
+    meetingLink: 'https://www.youtube.com/@gallipolixyz',
+    //youtubeUrl: 'https://www.youtube.com/',
+    speaker: {
+      name: 'İsa Ergişi',
+      role: 'Security Researcher',
+      bio: 'Offensive security researcher focusing on wireless assessments, infrastructure penetration testing, and MITM attacks.',
+      image: '/img/speakers/isa-ergisi.png',
+      linkedin: 'https://www.linkedin.com/in/isa-ergi%C5%9Fi-830a4a32b/'
+    },
     tags: [
       'wifi-security',
       'ethical-hacking',
@@ -279,11 +337,7 @@ You’ll dive deep into Wi-Fi protocols, WEP/WPA/WPA2 analysis, and much more th
   {
     id: '9',
     title: 'Kişisel Gizlilik ve Güvenlik - Trackerlar',
-    description: `In our daily lives, the websites we visit, mobile applications we use, and devices we interact with constantly leave behind digital traces.
-
-Often without realizing it, these traces reveal our identity and habits. Trackers (tracking technologies) collect and process this data — but how exactly do they work, what kind of data do they gather, and what can be done with this information?
-
-In this training, we will explore how we are tracked, what privacy tools exist, and how we can protect ourselves.`,
+    description: `In our daily lives, the websites we visit, mobile applications we use, and devices we interact with constantly leave behind digital traces. Often without realizing it, these traces reveal our identity and habits. Trackers (tracking technologies) collect and process this data — but how exactly do they work, what kind of data do they gather, and what can be done with this information? In this training, we will explore how we are tracked, what privacy tools exist, and how we can protect ourselves.`,
     date: new Date('2025-08-16'),
     time: '21:00',
     duration: '1-2 hours',
@@ -291,7 +345,15 @@ In this training, we will explore how we are tracked, what privacy tools exist, 
     difficulty: 'beginner',
     instructor: 'Ulaş Fırat Özdemir',
     location: 'online',
-    meetingLink: 'https://kick.com/gallipolixyz',
+    meetingLink: 'https://www.youtube.com/@gallipolixyz',
+    youtubeUrl: 'https://www.youtube.com/watch?v=eb1v8ZooRmQ',
+    speaker: {
+      name: 'Ulaş Fırat Özdemir',
+      role: 'Privacy Advocate & Researcher',
+      bio: 'Dedicated to data privacy, digital footprints minimization, and spreading open-source security tool awareness.',
+      image: '/img/speakers/ulas-firat.jpg',
+      linkedin: 'https://www.linkedin.com/in/ulasfo/'
+    },
     tags: [
       'privacy',
       'security',
@@ -313,9 +375,7 @@ In this training, we will explore how we are tracked, what privacy tools exist, 
   {
     id: '10',
     title: 'Cyber Intelligence with N8N',
-    description: `We will discuss the logic of n8n as an automation tool, its use cases, and why it can also be preferred in cyber intelligence.
-
-Let’s take a closer look at the most popular open-source tool that works by connecting to applications via APIs.`,
+    description: `We will discuss the logic of n8n as an automation tool, its use cases, and why it can also be preferred in cyber intelligence. Let’s take a closer look at the most popular open-source tool that works by connecting to applications via APIs.`,
     date: new Date('2025-09-06'),
     time: '21:00',
     duration: '1-2 hours',
@@ -323,7 +383,15 @@ Let’s take a closer look at the most popular open-source tool that works by co
     difficulty: 'beginner',
     instructor: 'Ali Gündoğar',
     location: 'online',
-    meetingLink: 'https://kick.com/gallipolixyz',
+    meetingLink: 'https://www.youtube.com/@gallipolixyz',
+    youtubeUrl: 'https://www.youtube.com/watch?v=KKj7pZt6ydc',
+    speaker: {
+      name: 'Ali Gündoğar',
+      role: 'Security Researcher & Bug Hunter',
+      bio: 'Active bug bounty hunter specializing in advanced reconnaissance, asset discovery, and web application security testing.',
+      image: '/img/speakers/ali-gundogar.png',
+      linkedin: 'https://www.linkedin.com/in/aligundogar/'
+    },
     tags: [
       'automation',
       'cyber-intelligence',
@@ -346,22 +414,23 @@ Let’s take a closer look at the most popular open-source tool that works by co
   {
     id: '11',
     title: 'From PoC to PR: Roadmap for Open Source Security Contributions',
-    description: `Join us for a training that explores how to contribute to open source projects in the context of security.
-
-Topics include:
-- The philosophy of open source
-- Open source and cybersecurity
-- Example projects and how to contribute to them
-
-Note: We will also have a surprise guest from the Project Discovery team and a special gift during the session.`,
+    description: `Join us for a training that explores how to contribute to open source projects in the context of security. Topics include:\n- The philosophy of open source\n- Open source and cybersecurity\n- Example projects and how to contribute to them\n\nNote: We will also have a surprise guest from the Project Discovery team and a special gift during the session.`,
     date: new Date('2025-09-13'),
     time: '21:00',
     duration: '1-2 hours',
     type: 'training',
     difficulty: 'beginner',
-    instructor: 'Halil Kirazkaya – Cyber Security Researcher',
+    instructor: 'Halil Kirazkaya',
     location: 'online',
     meetingLink: 'https://www.youtube.com/@gallipolixyz',
+    youtubeUrl: 'https://www.youtube.com/watch?v=K1Fyjw1P2J4',
+    speaker: {
+      name: 'Halil Kirazkaya',
+      role: 'Cyber Security Researcher',
+      bio: 'Open-source enthusiast, security researcher, and active contributor to automated scanning frameworks.',
+      image: '/img/speakers/halil-kirazkaya.png',
+      linkedin: 'https://www.linkedin.com/in/halilkirazkaya/'
+    },
     tags: [
       'open-source',
       'cybersecurity',
@@ -383,24 +452,23 @@ Note: We will also have a surprise guest from the Project Discovery team and a s
   {
     id: '12',
     title: 'Linux Kernel Architecture and Security 102',
-    description: `In this training, we will dive deeper into the Linux kernel architecture and its security mechanisms.
-
-Topics include:
-- A deeper look into kernel architecture (monolithic design, system calls, kernel modules)
-- Linux Security Modules (LSM) framework and popular solutions (SELinux, AppArmor)
-- Breaking down root privileges with Capabilities
-- Kernel hardening techniques (Stack Canaries, ASLR, Secure Boot, Signed Modules)
-- Real-world vulnerability examples (Dirty COW, Spectre, Meltdown)
-
-A packed session awaits you – don’t miss it!`,
+    description: `In this training, we will dive deeper into the Linux kernel architecture and its security mechanisms. Topics include:\n- A deeper look into kernel architecture (monolithic design, system calls, kernel modules)\n- Linux Security Modules (LSM) framework and popular solutions (SELinux, AppArmor)\n- Breaking down root privileges with Capabilities\n- Kernel hardening techniques (Stack Canaries, ASLR, Secure Boot, Signed Modules)\n- Real-world vulnerability examples (Dirty COW, Spectre, Meltdown)\n\nA packed session awaits you – don’t miss it!`,
     date: new Date('2025-09-21'),
     time: '21:00',
     duration: '1-2 hours',
     type: 'training',
     difficulty: 'intermediate',
-    instructor: 'Ümmühan Atmaca – Cyber Security Researcher',
+    instructor: 'Ümmühan Atmaca',
     location: 'online',
     meetingLink: 'https://www.youtube.com/@gallipolixyz',
+    youtubeUrl: 'https://www.youtube.com/watch?v=Ar0Uo6Zja7M',
+    speaker: {
+      name: 'Ümmühan Atmaca',
+      role: 'Cyber Security Researcher',
+      bio: 'Researcher focused on operating system security, kernel architecture internals, and low-level system defenses.',
+      image: '/img/speakers/ummuhan-atmaca.jpg',
+      linkedin: 'https://www.linkedin.com/in/%C3%BCmm%C3%BChan-atmaca/'
+    },
     tags: [
       'linux',
       'kernel',
@@ -424,17 +492,23 @@ A packed session awaits you – don’t miss it!`,
   {
     id: '13',
     title: 'Man In The Middle & Bettercap Workshop',
-    description: `In this live session, we will explore what a Man-In-The-Middle (MITM) attack is and observe how the Bettercap tool can be used in real-world scenarios.
-
-If you’re curious about offensive security techniques and network manipulation tactics, don’t miss this interactive training session!`,
+    description: `In this live session, we will explore what a Man-In-The-Middle (MITM) attack is and observe how the Bettercap tool can be used in real-world scenarios. If you’re curious about offensive security techniques and network manipulation tactics, don’t miss this interactive training session!`,
     date: new Date('2025-10-26'),
     time: '21:00',
     duration: '1-2 hours',
     type: 'training',
     difficulty: 'beginner',
-    instructor: 'İsa Ergişi – Cyber Security Researcher',
+    instructor: 'İsa Ergişi',
     location: 'online',
-    meetingLink: 'https://lnkd.in/egHnDrqC',
+    meetingLink: 'https://www.youtube.com/@gallipolixyz',
+    youtubeUrl: 'https://www.youtube.com/watch?v=tTDSjzqVAco&t=3030s',
+    speaker: {
+      name: 'İsa Ergişi',
+      role: 'Cyber Security Researcher',
+      bio: 'Offensive security researcher focusing on wireless assessments, infrastructure penetration testing, and MITM attacks.',
+      image: '/img/speakers/isa-ergisi.png',
+      linkedin: 'https://www.linkedin.com/in/isa-ergi%C5%9Fi-830a4a32b/'
+    },
     tags: [
       'mitm',
       'bettercap',
@@ -456,17 +530,23 @@ If you’re curious about offensive security techniques and network manipulation
   {
     id: '14',
     title: 'Cyber Security & Artificial Intelligence',
-    description: `Artificial intelligence is no longer just a productivity tool; it is a game-changer for cyber security. But is AI keeping us safer, or is it opening the door to new risks?
-
-Systems that detect attacks within seconds and algorithms that uncover threats beyond human recognition have become a part of our lives. In this webinar, we explore how security is being redefined in the age of artificial intelligence.`,
+    description: `Artificial intelligence is no longer just a productivity tool; it is a game-changer for cyber security. But is AI keeping us safer, or is it opening the door to new risks? Systems that detect attacks within seconds and algorithms that uncover threats beyond human recognition have become a part of our lives. In this webinar, we explore how security is being redefined in the age of artificial intelligence.`,
     date: new Date('2025-12-20'),
     time: '21:00',
     duration: '1-2 hours',
     type: 'webinar',
     difficulty: 'beginner',
-    instructor: 'Cemal Taner – Network & Security Solutions Architect',
+    instructor: 'Cemal Taner',
     location: 'online',
-    meetingLink: 'https://lnkd.in/egHnDrqC',
+    meetingLink: 'https://www.youtube.com/@gallipolixyz',
+    youtubeUrl: 'https://www.youtube.com/watch?v=zziHu-AFOPM',
+    speaker: {
+      name: 'Cemal Taner',
+      role: 'Network & Security Solutions Architect',
+      bio: 'Seasoned solutions architect, well-known educator, and author in data networks and security paradigms.',
+      image: '/img/speakers/cemal-taner.jpg',
+      linkedin: 'https://www.linkedin.com/in/cemaltaner/'
+    },
     tags: [
       'artificial-intelligence',
       'ai-security',
@@ -487,19 +567,23 @@ Systems that detect attacks within seconds and algorithms that uncover threats b
   {
     id: '15',
     title: 'Blockchain & Blockchain Security',
-    description: `"Is Blockchain just about cryptocurrency, or is it the secure internet of the future?"
-
-In an era where digital assets and decentralization are on the rise, understanding system security has become a necessity.
-
-In this webinar, we will discuss blockchain security layers, smart contract vulnerabilities, and evolving cybersecurity standards.`,
+    description: `"Is Blockchain just about cryptocurrency, or is it the secure internet of the future?" In an era where digital assets and decentralization are on the rise, understanding system security has become a necessity. In this webinar, we will discuss blockchain security layers, smart contract vulnerabilities, and evolving cybersecurity standards.`,
     date: new Date('2026-01-09'),
     time: '21:00',
     duration: '1-2 hours',
     type: 'webinar',
     difficulty: 'beginner',
-    instructor: 'Samet Dökmeci – Chainlink Labs | Türkiye Community Manager',
+    instructor: 'Samet Dökmeci',
     location: 'online',
-    meetingLink: 'https://youtube.com/@gallipolixyz',
+    meetingLink: 'https://www.youtube.com/@gallipolixyz',
+    youtubeUrl: 'https://www.youtube.com/watch?v=o9GL_iZInVU&t=1s',
+    speaker: {
+      name: 'Samet Dökmeci',
+      role: 'Chainlink Labs | Türkiye Community Manager',
+      bio: 'Community manager and developer advocate focusing on Web3 frameworks, secure smart contract interactions, and decentralized oracle networks.',
+      image: '/img/speakers/samet-dokmeci.jpg',
+      linkedin: 'https://www.linkedin.com/in/sametdokmeci/'
+    },
     tags: [
       'blockchain',
       'web3',
@@ -522,19 +606,23 @@ In this webinar, we will discuss blockchain security layers, smart contract vuln
   {
     id: '16',
     title: 'AI Security',
-    description: `"Is Artificial Intelligence merely a technological revolution, or does it represent a new security risk?"
-
-In an era where algorithms govern decision-making processes, understanding the security of AI systems has become a necessity rather than an option.
-
-In this webinar, we will explore model vulnerabilities, data privacy risks, and the next-generation cybersecurity standards evolving alongside artificial intelligence.`,
+    description: `"Is Artificial Intelligence merely a technological revolution, or does it represent a new security risk?" In an era where algorithms govern decision-making processes, understanding the security of AI systems has become a necessity rather than an option. In this webinar, we will explore model vulnerabilities, data privacy risks, and the next-generation cybersecurity standards evolving alongside artificial intelligence.`,
     date: new Date('2026-01-17'),
     time: '21:00',
     duration: '1-2 hours',
     type: 'webinar',
     difficulty: 'beginner',
-    instructor: 'Kadir Arslan - Senior Security Engineer',
+    instructor: 'Kadir Arslan',
     location: 'online',
-    meetingLink: 'https://youtube.com/@gallipolixyz',
+    meetingLink: 'https://www.youtube.com/@gallipolixyz',
+    youtubeUrl: 'https://www.youtube.com/watch?v=n2U-dKL0AG8',
+    speaker: {
+      name: 'Kadir Arslan',
+      role: 'Senior Security Engineer',
+      bio: 'Senior security engineer evaluating machine learning model security, adversarial vulnerability maps, and enterprise LLM integrations.',
+      image: '/img/speakers/kadir-arslan.jpg',
+      linkedin: 'https://www.linkedin.com/in/kadirarslan1/'
+    },
     tags: [
       'ai-security',
       'artificial-intelligence',
@@ -556,9 +644,7 @@ In this webinar, we will explore model vulnerabilities, data privacy risks, and 
   {
     id: '17',
     title: 'AI in Pentesting: The Future of Security Testing',
-    description: `In this session, we will talk about how artificial intelligence is being used in penetration testing and how it is transforming modern security approaches.
-  
-  We will explore AI-powered tools for vulnerability discovery, automation, and attack simulations, along with their advantages, risks, and real-world use cases.`,
+    description: `In this session, we will talk about how artificial intelligence is being used in penetration testing and how it is transforming modern security approaches. We will explore AI-powered tools for vulnerability discovery, automation, and attack simulations, along with their advantages, risks, and real-world use cases.`,
     date: new Date('2026-02-14'),
     time: '21:00',
     duration: '1 hour',
@@ -567,6 +653,14 @@ In this webinar, we will explore model vulnerabilities, data privacy risks, and 
     instructor: 'SQUR',
     location: 'online',
     meetingLink: 'https://www.youtube.com/@gallipolixyz',
+    youtubeUrl: 'https://www.youtube.com/watch?v=PEfhFCzRM2w',
+    speaker: {
+      name: 'SQUR',
+      role: 'Cyber Security Team / Entity',
+      bio: 'Collective offensive security experts specializing in automated attack simulations and smart scanning operations.',
+      image: '/img/speakers/squr.jpg',
+      linkedin: 'https://www.linkedin.com/company/squr/'
+    },
     tags: [
       'ai',
       'pentesting',
@@ -591,17 +685,23 @@ In this webinar, we will explore model vulnerabilities, data privacy risks, and 
   {
     id: '18',
     title: 'Application Security in the Age of AI',
-    description: `In this webinar, we will explore how application security is changing in the age of artificial intelligence.
-
-As AI accelerates code generation, organizations must rethink their AppSec strategies. We will discuss LLM-based attack vectors, how vulnerability management is evolving with AI, and what next-generation secure development processes should look like.`,
+    description: `In this webinar, we will explore how application security is changing in the age of artificial intelligence. As AI accelerates code generation, organizations must rethink their AppSec strategies. We will discuss LLM-based attack vectors, how vulnerability management is evolving with AI, and what next-generation secure development processes should look like.`,
     date: new Date('2026-03-08'),
     time: '21:00',
     duration: '1-2 hours',
     type: 'webinar',
     difficulty: 'beginner',
-    instructor: 'Caner Filibelioğlu – Senior Cybersecurity Expert',
+    instructor: 'Caner Filibelioğlu',
     location: 'online',
-    meetingLink: 'https://youtube.com/@gallipolixyz',
+    meetingLink: 'https://www.youtube.com/@gallipolixyz',
+    youtubeUrl: 'https://www.youtube.com/watch?v=5vCNOQVjpfU',
+    speaker: {
+      name: 'Caner Filibelioğlu',
+      role: 'Senior Cybersecurity Expert',
+      bio: 'Application security leader with multiple years of threat modeling, code auditing, and security compliance oversight.',
+      image: '/img/speakers/caner-filibelioglu.png',
+      linkedin: 'https://www.linkedin.com/in/caner-filibeli/'
+    },
     tags: [
       'application-security',
       'appsec',
@@ -633,6 +733,14 @@ As AI accelerates code generation, organizations must rethink their AppSec strat
     instructor: 'Gökay Gökcan',
     location: 'online',
     meetingLink: 'https://www.youtube.com/@gallipolixyz',
+    youtubeUrl: 'https://www.youtube.com/watch?v=qoGKLsIEIbk',
+    speaker: {
+      name: 'Gökay Gökcan',
+      role: 'Web Application Pentester',
+      bio: 'Expert in dynamic application security assessments, parameter tampering, and interception mechanics with Burp Suite.',
+      image: '/img/speakers/gokay-gokcan.jpg',
+      linkedin: 'https://www.linkedin.com/in/g%C3%B6kay-g%C3%B6kcan-a5b03b33b/'
+    },
     tags: [
       'burp-suite',
       'web-security',
@@ -658,9 +766,17 @@ As AI accelerates code generation, organizations must rethink their AppSec strat
     duration: '1-2 hours',
     type: 'webinar',
     difficulty: 'beginner',
-    instructor: 'Gülay Aydın - Director of People, EMEA',
+    instructor: 'Gülay Aydın',
     location: 'online',
     meetingLink: 'https://www.youtube.com/@gallipolixyz',
+    youtubeUrl: 'https://www.youtube.com/watch?v=q02RHmr8HUo',
+    speaker: {
+      name: 'Gülay Aydın',
+      role: 'Director of People, EMEA',
+      bio: 'Talent management strategist specializing in IT/Cybersecurity corporate placement, career pathways, and team building.',
+      image: '/img/speakers/gulay-aydin.png',
+      linkedin: 'https://www.linkedin.com/in/gulay-aydin/'
+    },
     tags: [
       'career',
       'cybersecurity-career',
@@ -686,9 +802,17 @@ As AI accelerates code generation, organizations must rethink their AppSec strat
     duration: '1 hour',
     type: 'webinar',
     difficulty: 'beginner',
-    instructor: 'Özge Çakır - Global Technical Recruiter',
+    instructor: 'Özge Çakır',
     location: 'online',
     meetingLink: 'https://www.youtube.com/@gallipolixyz',
+    youtubeUrl: 'https://www.youtube.com/watch?v=bI5ZXXnpEbY&t=353s',
+    speaker: {
+      name: 'Özge Çakır',
+      role: 'Global Technical Recruiter',
+      bio: 'Technical talent recruiter focusing on organizational behaviors, security awareness programs, and human-centric security cultures.',
+      image: '/img/speakers/ozge-cakir.jpg',
+      linkedin: 'https://www.linkedin.com/in/%C3%B6zge-%C3%A7ak%C4%B1r-kaya-a9239416/'
+    },
     tags: [
       'security-culture',
       'corporate-security',
@@ -718,6 +842,14 @@ As AI accelerates code generation, organizations must rethink their AppSec strat
     instructor: 'İrem Sıla Alp',
     location: 'online',
     meetingLink: 'https://www.youtube.com/@gallipolixyz',
+    youtubeUrl: 'https://www.youtube.com/watch?v=c8JO2iLiXpw',
+    speaker: {
+      name: 'İrem Sıla Alp',
+      role: 'Cloud Security Systems Specialist',
+      bio: 'IT infrastructure engineer deploying sandboxed architectures, hypervisors setups, and multi-tenant cloud defenses.',
+      image: '/img/speakers/irem-sila.png',
+      linkedin: 'https://www.linkedin.com/in/iremsilalp/'
+    },
     tags: [
       'cloud-computing',
       'virtualization',
@@ -746,6 +878,14 @@ As AI accelerates code generation, organizations must rethink their AppSec strat
     instructor: 'Kayhan Kayıhan',
     location: 'online',
     meetingLink: 'https://www.youtube.com/@gallipolixyz',
+    youtubeUrl: 'https://www.youtube.com/watch?v=rHP9SNMC48g',
+    speaker: {
+      name: 'Kayhan Kayıhan',
+      role: 'Senior Offensive Security Expert',
+      bio: 'Veteran pentester sharing field methodologies, compliance verification tactics, and defensive gap analysis insights.',
+      image: '/img/speakers/kayhan.jpg',
+      linkedin: 'https://www.linkedin.com/in/kayhankayihan/'
+    },
     tags: [
       'pentesting',
       'career',
@@ -765,18 +905,19 @@ As AI accelerates code generation, organizations must rethink their AppSec strat
 ];
 
 // Helper functions
+// Yeni filtre mimarisi için tüm etkinlikleri tarihe göre getiren fonksiyon
 export const getUpcomingEvents = (): Event[] => {
   return mockEvents.filter(event => !event.isPast).sort((a, b) => a.date.getTime() - b.date.getTime());
 };
 
 export const getPastEvents = (): Event[] => {
-  return mockEvents.filter(event => event.isPast).sort((b, a) => a.date.getTime() - b.date.getTime());
+  return mockEvents.filter(event => event.isPast).sort((a, b) => b.date.getTime() - a.date.getTime());
 };
 
-export const getEventsByType = (type: Event['type']): Event[] => {
-  return mockEvents.filter(event => event.type === type);
+export const getAllEvents = (): Event[] => {
+  return [...mockEvents].sort((a, b) => b.date.getTime() - a.date.getTime());
 };
 
 export const getEventById = (id: string): Event | undefined => {
   return mockEvents.find(event => event.id === id);
-}; 
+};
