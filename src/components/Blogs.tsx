@@ -12,6 +12,12 @@ interface Blog {
 }
 
 const blogs: Blog[] = [
+  {
+    slug: 'easypeasy-writeup',
+    title: 'TryHackMe - EasyPeasy CTF Write-up',
+    excerpt: 'TryHackMe platformunda yer alan ve siber güvenlik temellerini pekiştirmek için harika bir senaryoya sahip olan EasyPeasy makinesinin adım adım çözümü.',
+    author: 'Burak Kıraç',
+  },
     {
     slug: 'androidde-llm',
     title: 'LLM Modellerini Android Uygulama Güvenliğinde Nasıl Kullanırız?',
