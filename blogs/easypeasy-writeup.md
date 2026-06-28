@@ -1,4 +1,4 @@
-TryHackMe - EasyPeasy CTF Write-up
+# TryHackMe - EasyPeasy CTF Write-up
 Odanın linki: https://tryhackme.com/room/easypeasyctf
 
 ![](/blogs/img/easypeasy/easy1.webp)
