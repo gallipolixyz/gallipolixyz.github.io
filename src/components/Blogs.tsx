@@ -12,6 +12,12 @@ interface Blog {
 }
 
 const blogs: Blog[] = [
+   {
+    slug: 'network-devices',
+    title: 'Ağ Güvenliği Cihazları',
+    excerpt: 'Ağ güvenliği cihazları, ağ trafiğini izleyip analiz ederek yetkisiz erişimleri ve siber saldırıları farklı katmanlarda tespit eden, engelleyen ve müdahale eden güvenlik teknolojileridir.',
+    author: 'Güven Emre Keskin',
+  },
   {
     slug: 'easypeasy-writeup',
     title: 'TryHackMe - EasyPeasy CTF Write-up',
