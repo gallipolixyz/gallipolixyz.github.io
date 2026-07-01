@@ -13,10 +13,28 @@ interface Blog {
 
 const blogs: Blog[] = [
   {
-    slug: 'ctf-8-tools-beginner-summary',
-    title: 'CTF İçin 8 Temel Araç',
-    excerpt: 'CTF’e yeni başlayanların bilmesi gereken Nmap, ffuf, Burp Suite, sqlmap, CyberChef, Wireshark, ExifTool ve John the Ripper gibi temel araçları kısa ve anlaşılır şekilde tanıtan bir rehberdir.',
-    author: 'Osman Erdem Dutar',
+  slug: 'ctf-8-tools-beginner-summary',
+  title: 'CTF İçin 8 Temel Araç',
+  excerpt: 'CTF’e yeni başlayanların bilmesi gereken Nmap, ffuf, Burp Suite, sqlmap, CyberChef, Wireshark, ExifTool ve John the Ripper gibi temel araçları kısa ve anlaşılır şekilde tanıtan bir rehberdir.',
+  author: 'Osman Erdem Dutar',
+  },
+  {
+    slug: 'network-devices',
+    title: 'Ağ Güvenliği Cihazları',
+    excerpt: 'Ağ güvenliği cihazları, ağ trafiğini izleyip analiz ederek yetkisiz erişimleri ve siber saldırıları farklı katmanlarda tespit eden, engelleyen ve müdahale eden güvenlik teknolojileridir.',
+    author: 'Güven Emre Keskin',
+  },
+  {
+    slug: 'easypeasy-writeup',
+    title: 'TryHackMe - EasyPeasy CTF Write-up',
+    excerpt: 'TryHackMe platformunda yer alan ve siber güvenlik temellerini pekiştirmek için harika bir senaryoya sahip olan EasyPeasy makinesinin adım adım çözümü.',
+    author: 'Burak Kıraç',
+  },
+    {
+    slug: 'androidde-llm',
+    title: 'LLM Modellerini Android Uygulama Güvenliğinde Nasıl Kullanırız?',
+    excerpt: 'LLM modelleri otomasyondan analiz, zafiyet tespiti ve raporlama gibi birçok alanda Android uygulama güvenliğinde devrim yaratıyor. Bu yazıda, LLM modellerinin Android güvenlik testlerinde nasıl etkili bir şekilde kullanılabileceğini keşfediyoruz.',
+    author: 'Simge Yiğit',
   },
   {
     slug: 'ctf-solution-wordpress-royal-elementor-to-root-gridloy',
@@ -45,7 +63,7 @@ const blogs: Blog[] = [
   {
     slug: 'lazarus',
     title: 'Lazarus Group (APT 38) Rapor Analizi',
-    excerpt: 'Bu bölümde, kurduğumuz bu devasa yapının içine girip, izlemek istediğimiz cihazları sisteme nasıl bağlayacağımızı göreceğiz.',
+    excerpt: 'Lazarus Group, APT 38 olarak da bilinen Kuzey Kore hükümeti ile bağlantılı olduğu kabul edilen, devlet destekli bir APT grubudur.',
     author: 'Güven Emre Keskin',
   },
   {
