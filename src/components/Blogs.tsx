@@ -12,7 +12,13 @@ interface Blog {
 }
 
 const blogs: Blog[] = [
-   {
+  {
+  slug: 'ctf-8-tools-beginner-summary',
+  title: 'CTF İçin 8 Temel Araç',
+  excerpt: 'CTF’e yeni başlayanların bilmesi gereken Nmap, ffuf, Burp Suite, sqlmap, CyberChef, Wireshark, ExifTool ve John the Ripper gibi temel araçları kısa ve anlaşılır şekilde tanıtan bir rehberdir.',
+  author: 'Osman Erdem Dutar',
+  },
+  {
     slug: 'network-devices',
     title: 'Ağ Güvenliği Cihazları',
     excerpt: 'Ağ güvenliği cihazları, ağ trafiğini izleyip analiz ederek yetkisiz erişimleri ve siber saldırıları farklı katmanlarda tespit eden, engelleyen ve müdahale eden güvenlik teknolojileridir.',
