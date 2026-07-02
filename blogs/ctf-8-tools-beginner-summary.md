@@ -1,5 +1,4 @@
-
-### Every Beginner Should Know These 8 Tools for CTF
+# Every Beginner Should Know These 8 Tools for CTF
 
 ![opening]
 
