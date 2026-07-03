@@ -13,6 +13,12 @@ interface Blog {
 
 const blogs: Blog[] = [
   {
+  slug: 'frida-labs',
+  title: 'Frida ile Android Uygulama Hooking — Lab 0x1: Method Hooking',
+  excerpt: 'Bu yazıda, Frida ile Android uygulama hooking üzerine bir laboratuvar çalışması gerçekleştiriyoruz. Lab 0x1: Method Hooking adımında, uygulamanın belirli metodlarını hook ederek davranışlarını analiz ediyoruz.',
+  author: 'Simge Yiğit',
+  },
+  {
   slug: 'ctf-8-tools-beginner-summary',
   title: 'CTF İçin 8 Temel Araç',
   excerpt: 'CTF’e yeni başlayanların bilmesi gereken Nmap, ffuf, Burp Suite, sqlmap, CyberChef, Wireshark, ExifTool ve John the Ripper gibi temel araçları kısa ve anlaşılır şekilde tanıtan bir rehberdir.',
