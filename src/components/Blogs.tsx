@@ -13,16 +13,16 @@ interface Blog {
 
 const blogs: Blog[] = [
   {
-  slug: 'frida-labs',
-  title: 'Frida ile Android Uygulama Hooking — Lab 0x1: Method Hooking',
-  excerpt: 'Bu yazıda, Frida ile Android uygulama hooking üzerine bir laboratuvar çalışması gerçekleştiriyoruz. Lab 0x1: Method Hooking adımında, uygulamanın belirli metodlarını hook ederek davranışlarını analiz ediyoruz.',
-  author: 'Simge Yiğit',
+    slug: 'frida-labs',
+    title: 'Frida ile Android Uygulama Hooking — Lab 0x1: Method Hooking',
+    excerpt: 'Bu yazıda, Frida ile Android uygulama hooking üzerine bir laboratuvar çalışması gerçekleştiriyoruz. Lab 0x1: Method Hooking adımında, uygulamanın belirli metodlarını hook ederek davranışlarını analiz ediyoruz.',
+    author: 'Simge Yiğit',
   },
   {
-  slug: 'ctf-8-tools-beginner-summary',
-  title: 'CTF İçin 8 Temel Araç',
-  excerpt: 'CTF’e yeni başlayanların bilmesi gereken Nmap, ffuf, Burp Suite, sqlmap, CyberChef, Wireshark, ExifTool ve John the Ripper gibi temel araçları kısa ve anlaşılır şekilde tanıtan bir rehberdir.',
-  author: 'Osman Erdem Dutar',
+    slug: 'ctf-8-tools-beginner-summary',
+    title: 'CTF İçin 8 Temel Araç',
+    excerpt: 'CTF’e yeni başlayanların bilmesi gereken Nmap, ffuf, Burp Suite, sqlmap, CyberChef, Wireshark, ExifTool ve John the Ripper gibi temel araçları kısa ve anlaşılır şekilde tanıtan bir rehberdir.',
+    author: 'Osman Erdem Dutar',
   },
   {
     slug: 'network-devices',
@@ -36,7 +36,7 @@ const blogs: Blog[] = [
     excerpt: 'TryHackMe platformunda yer alan ve siber güvenlik temellerini pekiştirmek için harika bir senaryoya sahip olan EasyPeasy makinesinin adım adım çözümü.',
     author: 'Burak Kıraç',
   },
-    {
+  {
     slug: 'androidde-llm',
     title: 'LLM Modellerini Android Uygulama Güvenliğinde Nasıl Kullanırız?',
     excerpt: 'LLM modelleri otomasyondan analiz, zafiyet tespiti ve raporlama gibi birçok alanda Android uygulama güvenliğinde devrim yaratıyor. Bu yazıda, LLM modellerinin Android güvenlik testlerinde nasıl etkili bir şekilde kullanılabileceğini keşfediyoruz.',
@@ -240,7 +240,6 @@ const blogs: Blog[] = [
     excerpt: 'Allsafe Lab, içerisinde çeşitli zorluklar barındıran ve farklı güvenlik açığı kategorilerini kapsayan bir APK uygulamasıdır.',
     author: 'Simge Yiğit',
   },
-
   {
     slug: 'android-101',
     title: 'Android Security 101: Analiz Yöntemleri ve Araçları',
