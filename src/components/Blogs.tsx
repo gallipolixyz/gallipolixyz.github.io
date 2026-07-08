@@ -13,6 +13,12 @@ interface Blog {
 
 const blogs: Blog[] = [
   {
+    slug: 'browser-extension-supply-chain-attacks',
+    title: 'Browser Extension Supply Chain Attacks',
+    excerpt: 'Extensions run inside your browser with access to every tab you open — and they auto-update silently. How extension supply chain attacks work, why they’re effective, and what you can do about them.',
+    author: 'Matjaz Madon',
+  },
+  {
     slug: 'frida-labs',
     title: 'Frida ile Android Uygulama Hooking — Lab 0x1: Method Hooking',
     excerpt: 'Bu yazıda, Frida ile Android uygulama hooking üzerine bir laboratuvar çalışması gerçekleştiriyoruz. Lab 0x1: Method Hooking adımında, uygulamanın belirli metodlarını hook ederek davranışlarını analiz ediyoruz.',
