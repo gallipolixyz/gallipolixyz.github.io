@@ -1,6 +1,6 @@
 GELENEKSELDEN MODERNE C2 ALTYAPILARI VE OPNSENSE İLE TRAFİK ANALİZİ
 
-![OPNsense Görsel 1](img/c2_gorseller/1_KDfUZSoULOfT0vFWv06q1g.webp)
+![OPNsense Görsel 1](img/c2_gorseller/1_KDfUZSOuLOFT0vFWv06qlg.webp)
 
 C2 Mantığı ve İşleyişi
 
