@@ -1,7 +1,6 @@
 import React from 'react';
 import { About as AboutComponent } from '../components/About';
 import { PageTransition } from '../components/PageTransition';
-import { StoryTimeline } from '../components/StoryTimeline'; 
 
 export function About() {
   return (
@@ -11,7 +10,6 @@ export function About() {
         <AboutComponent />
         
         {}
-        <StoryTimeline />
       </main>
     </PageTransition>
   );
