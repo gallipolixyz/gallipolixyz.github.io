@@ -343,6 +343,12 @@ const blogs: Blog[] = [
     excerpt: 'Mavi takım, siber güvenlik alanında savunma odaklı bir yaklaşımdır. Bu rehberde, mavi takımın temel ilkelerini ve nasıl etkili bir şekilde çalıştığını keşfedeceğiz.',
     author: 'Nur Sena Avcı',
   },
+  {
+    slug: 'opnsense-trafik-analizi',
+    title: 'Gelenekselden Moderne C2 Altyapıları ve OPNsense ile Trafik Analizi',
+    excerpt: 'OPNsense firewall üzerinde C2 trafiğinin tespiti, Telegram C2 simülasyonu ve Wireshark ile paket analizi adımları.',
+    author: 'Burak Kıraç',
+  },
 ];
 
 export const BlogList: React.FC = () => {
