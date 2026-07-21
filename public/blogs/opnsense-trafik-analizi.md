@@ -1,6 +1,6 @@
-GELENEKSELDEN MODERNE C2 ALTYAPILARI VE OPNSENSE İLE TRAFİK ANALİZİ
+# GELENEKSELDEN MODERNE C2 ALTYAPILARI VE OPNSENSE İLE TRAFİK ANALİZİ
 
-![OPNsense Görsel 1](img/c2_gorseller/1_KDfUZSOuLOFT0vFWv06qlg.webp)
+![command&control ](/blogs/img/c2_gorseller/1_KDfUZSOuLOFT0vFWv06qlg.webp)
 
 C2 Mantığı ve İşleyişi
 
@@ -77,20 +77,20 @@ Adım 1: Telegram Botunun Hazırlanması
 
 Ardından, botun tetiklenebilmesi ve aktif hale gelmesi için /start komutu gönderilmiş, tarayıcı üzerinden getUpdates uç noktası kontrol edilerek chat_id ve iletişim kanalı doğrulanmıştır.
 
-![Resim 2](img/c2_gorseller/Resim2.jpg)
-![Resim 3](img/c2_gorseller/1_xEi62LDRxk9dotrB8iuWrw.webp)
+![telegram_botu](/blogs/img/c2_gorseller/Resim2.jpg)
+![api_yanıt](/blogs/img/c2_gorseller/1_xEi62LDRxk9dotrB8iuWrw.webp)
 
 Adım 2: Python C2 Simülasyon Kodunun Yazılması
 
-![Resim 4](img/c2_gorseller/1_NrKWtVp8v9IArZgbF4OC1Q.png)
+![simülasyon_kodu](/blogs/img/c2_gorseller/1_NrKWtVp8v9IArZgbF4OC1Q.png)
 
 Adım 3: Scriptin Çalıştırılması ve C2 İletişimi
 
 Hazırlanan c2_simulation.py scripti Kali Linux yüklü kurban makinede koşturulduğunda, OPNsense Firewall üzerinden geçerek Telegram sunucularına başarıyla ulaşmış ve saldırganın chat ekranına sızdırılan veriyi anlık olarak düşürmüştür.
 
-![Resim 5](img/c2_gorseller/1_nQkqcD9tjnvEt970_lVZwA.webp)
+![kod](/blogs/img/c2_gorseller/1_nQkqcD9tjnvEt970_lVZwA.webp)
 
-![Resim 6](img/c2_gorseller/Resim3.jpg)
+![gelen_yanıt](/blogs/img/c2_gorseller/Resim3.jpg)
 
 Saldırı başarıyla gerçekleşti. Peki defans tarafında bu sinsi trafiği ağ seviyesinde nasıl yakalayabiliriz? Bu aşamada laboratuvar ortamımızın koruyucusu olan OPNsense devreye giriyor.
 
@@ -100,20 +100,20 @@ OPNsense arayüzünde Interfaces -> Diagnostics -> Packet Capture adımları tak
 
 Script çalıştırıldığı esnada yakalanan trafik durdurulmuş ve analiz edilmek üzere .pcap formatında dışarı aktarılmıştır.
 
-![Resim 7](img/c2_gorseller/Resim4.jpg)
+![packet_capture](/blogs/img/c2_gorseller/Resim4.jpg)
 
-![Resim 8](img/c2_gorseller/image.png)
+![ınterfaces_ayarları](/blogs/img/c2_gorseller/image.png)
 
 Adım 2: Wireshark ile Derinlemesine Trafik Analizi
 
-![Resim 9](img/c2_gorseller/Resim6.jpg)
+![analiz](/blogs/img/c2_gorseller/Resim6.jpg)
 
 A. DNS Sorgularının İncelenmesi
 
 İndirilen pcap dosyası Wireshark ile açılıp filtre çubuğuna dns yazıldığında, iç ağdaki kurban makinenin (10.10.10.11), OPNsense LAN ağ geçidine (10.10.10.1) yoğun bir şekilde Standard query A api.telegram.org sorguları gönderdiği açıkça tespit edilmiştir.
 
 
-![Resim 10](img/c2_gorseller/dns.png)
+![dns_dosyaları](/blogs/img/c2_gorseller/dns.png)
 
 eknik Değerlendirme: Bu durum, iç ağdaki bir sürecin dış dünyadaki meşru Telegram API sunucularıyla bir iletişim kanalı kurmaya çalıştığının ağ seviyesindeki ilk somut kanıtıdır. Trafiğin devamında dönen Standard query response paketleri incelendiğinde, DNS çözümlemesinin başarıyla tamamlandığı ve varsayılan ayarlardaki firewall’un bu sorguyu meşru bir internet trafiği kabul ederek engellemediği görülmüştür.
 
@@ -121,7 +121,7 @@ B. TLS/Şifreli Trafik ve SNI Analizi
 
 Filtre çubuğuna tls yazarak bağlantının şifreli akışını incelediğimizde, Client Hello paketinin içerisinde yer alan SNI (Server Name Indication) alanında açıkça api.telegram.org ibaresi görülmektedir.
 
-![Resim 11](img/c2_gorseller/tls.png)
+![tls_sorguları](/blogs/img/c2_gorseller/tls.png)
 
 Trafik TLS 1.3 ile şifrelendiği için paketlerin içeriği (yani sızdırılan sistem bilgileri veya token değerleri) ağ üzerinden açık metin olarak okunamamaktadır. Ancak bir uç noktanın durup dururken harici bir API sunucusuna Application Data paketleri göndermesi, anomalinin tespit edilmesi adına yeterli bir girdidir.
 
