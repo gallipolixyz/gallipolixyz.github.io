@@ -13,6 +13,12 @@ interface Blog {
 
 const blogs: Blog[] = [
   {
+    slug: 'poisoned-pipeline-execution-ppe',
+    title: 'CI/CD Pipeline Saldırıları: Poisoned Pipeline Execution (PPE)',
+    excerpt: 'Siber güvenlik dünyasında, özellikle DevSecOps süreçlerinde giderek daha fazla karşılaşılan ve sistemleri derinden sarsabilen kritik bir konu bulunmaktadır: Poisoned Pipeline Execution (PPE), yani Zehirlenmiş Pipeline Çalıştırması.',
+    author: 'Efe Kırbaş',
+     },
+  {
     slug: 'modsecurity',
     title: 'Modsecurity Nedir?',
     excerpt: 'Web uygulamalarınızı OWASP Top 10 ve Katman 7 saldırılarına karşı koruyan açık kaynaklı güvenlik duvarı ModSecurity\'nin ne olduğunu ve nasıl çalıştığını keşfedin.',
