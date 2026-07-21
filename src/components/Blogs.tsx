@@ -13,6 +13,12 @@ interface Blog {
 
 const blogs: Blog[] = [
   {
+    slug: 'poisoned-pipeline-execution-ppe',
+    title: 'CI/CD Pipeline Saldırıları: Poisoned Pipeline Execution (PPE)',
+    excerpt: 'Siber güvenlik dünyasında, özellikle DevSecOps süreçlerinde giderek daha fazla karşılaşılan ve sistemleri derinden sarsabilen kritik bir konu bulunmaktadır: Poisoned Pipeline Execution (PPE), yani Zehirlenmiş Pipeline Çalıştırması.',
+    author: 'Efe Kırbaş',
+  },
+  {
     slug: 'browser-extension-supply-chain-attacks',
     title: 'Browser Extension Supply Chain Attacks',
     excerpt: 'Extensions run inside your browser with access to every tab you open — and they auto-update silently. How extension supply chain attacks work, why they’re effective, and what you can do about them.',
