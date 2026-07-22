@@ -13,6 +13,12 @@ interface Blog {
 
 const blogs: Blog[] = [
   {
+    slug: 'opnsense-trafik-analiz',
+    title: "Gelenekselden Modern'e C2 Altyapıları ve OPNsense ile Trafik Analizi",
+    excerpt: 'Geleneksel ve modern C2 altyapılarının çalışma mekanizmaları ile OPNsense firewall kullanarak ağ üzerindeki zararlı trafiğin analizi ve tespiti.',
+    author: 'Burak Kıraç',
+  },
+  {
     slug: 'easypeasy-writeup',
     title: 'TryHackMe - EasyPeasy CTF Write-up',
     excerpt: 'TryHackMe platformunda yer alan ve siber güvenlik temellerini pekiştirmek için harika bir senaryoya sahip olan EasyPeasy makinesinin adım adım çözümü.',
@@ -342,12 +348,6 @@ const blogs: Blog[] = [
     title: 'Mavi Takım Başlangıç Rehberi',
     excerpt: 'Mavi takım, siber güvenlik alanında savunma odaklı bir yaklaşımdır. Bu rehberde, mavi takımın temel ilkelerini ve nasıl etkili bir şekilde çalıştığını keşfedeceğiz.',
     author: 'Nur Sena Avcı',
-  },
-  {
-    slug: 'opnsense-trafik-analizi',
-    title: 'Gelenekselden Moderne C2 Altyapıları ve OPNsense ile Trafik Analizi',
-    excerpt: 'OPNsense firewall üzerinde C2 trafiğinin tespiti, Telegram C2 simülasyonu ve Wireshark ile paket analizi adımları.',
-    author: 'Burak Kıraç',
   },
 ];
 
