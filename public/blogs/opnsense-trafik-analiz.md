@@ -77,7 +77,7 @@ Adım 1: Telegram Botunun Hazırlanması
 
 Ardından, botun tetiklenebilmesi ve aktif hale gelmesi için /start komutu gönderilmiş, tarayıcı üzerinden getUpdates uç noktası kontrol edilerek chat_id ve iletişim kanalı doğrulanmıştır.
 
-![image1](/blogs/img/opnsense-trafik-analiz/image2.jpg)
+![bot](/blogs/img/opnsense-trafik-analiz/image2.jpg)
 ![api_yanıt](/blogs/img/opnsense-trafik-analiz/image3.webp)
 
 ## Adım 2: Python C2 Simülasyon Kodunun Yazılması
