@@ -13,6 +13,12 @@ interface Blog {
 
 const blogs: Blog[] = [
   {
+    slug: 'aws-iam-cloud-security-misconfigurations',
+    title: 'Bulut Güvenliği: AWS IAM Temelleri ve Sık Yapılan Yapılandırma Hataları',
+    excerpt: 'Bulut ortamlarında güvenlik çevre çizgisi (perimeter) kimliktir. AWS IAM mimarisi, en sık yapılan misconfiguration (hatalı yapılandırma) türleri, IAM Privilege Escalation vektörleri ve IMDSv1/v2 zafiyetleri üzerine detaylı bir teknik inceleme.',
+    author: 'Efe Kırbaş',
+  },
+  {
     slug: 'browser-extension-supply-chain-attacks',
     title: 'Browser Extension Supply Chain Attacks',
     excerpt: 'Extensions run inside your browser with access to every tab you open — and they auto-update silently. How extension supply chain attacks work, why they’re effective, and what you can do about them.',
