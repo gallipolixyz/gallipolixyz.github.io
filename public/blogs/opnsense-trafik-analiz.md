@@ -1,6 +1,6 @@
 # GELENEKSELDEN MODERNE C2 ALTYAPILARI VE OPNSENSE İLE TRAFİK ANALİZİ
 
-![command&control ](/blogs/img/opnsense-trafik-analiz/image1.webp)
+![command&control](/blogs/img/opnsense-trafik-analiz/image1.webp)
 
 ## **C2 Mantığı ve İşleyişi**
 
