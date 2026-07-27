@@ -378,6 +378,12 @@ const blogs: Blog[] = [
     excerpt: 'Mavi takım, siber güvenlik alanında savunma odaklı bir yaklaşımdır. Bu rehberde, mavi takımın temel ilkelerini ve nasıl etkili bir şekilde çalıştığını keşfedeceğiz.',
     author: 'Nur Sena Avcı',
   },
+    {
+        slug: 'windows-loglari-ransomware-taramasi',
+        title: 'Windows Güvenlik Logları ile Ransomware Taraması',
+        excerpt: 'Fidye yazılımı vakalarında şifrelenmiş dosyalar yalnızca son sahnedir; asıl hikâye Windows olay günlüklerinde saklıdır. 4625, 4624, 4720, 4732, 7045 ve 1102 ile saldırının izini adım adım sürüyoruz.',
+        author: 'Bağdagül Çağlar',
+    },
 ];
 
 export const BlogList: React.FC = () => {
