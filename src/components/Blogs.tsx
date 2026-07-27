@@ -15,7 +15,7 @@ const blogs: Blog[] = [
   {
     slug: 'opnsense-trafik-analiz',
     title: "Gelenekselden Modern'e C2 Altyapıları ve OPNsense ile Trafik Analizi",
-    excerpt: 'Geleneksel ve modern C2 altyapılarının çalışma mekanizmaları ile OPNsense firewall kullanarak ağ üzerindeki zararlı trafiğin analizi ve tespiti.',
+    excerpt: 'Geleneksel ve modern C2 altyapılarının çalışma mekanizmaları ile OPNsense firewall kullanarak ağ üzerindeki zararlı trafiğin analizi ve tespiti',
     author: 'Burak Kıraç',
   },
   {
