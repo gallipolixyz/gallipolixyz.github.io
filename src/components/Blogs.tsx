@@ -15,8 +15,44 @@ const blogs: Blog[] = [
   {
     slug: 'opnsense-trafik-analiz',
     title: "Gelenekselden Modern'e C2 Altyapıları ve OPNsense ile Trafik Analizi",
-    excerpt: 'Geleneksel ve modern C2 altyapılarının çalışma mekanizmaları ile OPNsense firewall kullanarak ağ üzerindeki zararlı trafiğin analizi ve tespiti',
+    excerpt: 'Geleneksel ve modern C2 altyapılarının çalışma mekanizmaları ile OPNsense firewall kullanarak ağ üzerindeki zararlı trafiğin analizi',
     author: 'Burak Kıraç',
+  },
+  {
+    slug: 'poisoned-pipeline-execution-ppe',
+    title: 'CI/CD Pipeline Saldırıları: Poisoned Pipeline Execution (PPE)',
+    excerpt: 'Siber güvenlik dünyasında, özellikle DevSecOps süreçlerinde giderek daha fazla karşılaşılan ve sistemleri derinden sarsabilen kritik bir konu bulunmaktadır: Poisoned Pipeline Execution (PPE), yani Zehirlenmiş Pipeline Çalıştırması.',
+    author: 'Efe Kırbaş',
+     },
+  {
+    slug: 'modsecurity',
+    title: 'Modsecurity Nedir?',
+    excerpt: 'Web uygulamalarınızı OWASP Top 10 ve Katman 7 saldırılarına karşı koruyan açık kaynaklı güvenlik duvarı ModSecurity\'nin ne olduğunu ve nasıl çalıştığını keşfedin.',
+    author: 'Güven Emre Keskin',
+  },
+  {
+    slug: 'browser-extension-supply-chain-attacks',
+    title: 'Browser Extension Supply Chain Attacks',
+    excerpt: 'Extensions run inside your browser with access to every tab you open — and they auto-update silently. How extension supply chain attacks work, why they’re effective, and what you can do about them.',
+    author: 'Matjaz Madon',
+  },
+  {
+    slug: 'frida-labs',
+    title: 'Frida ile Android Uygulama Hooking — Lab 0x1: Method Hooking',
+    excerpt: 'Bu yazıda, Frida ile Android uygulama hooking üzerine bir laboratuvar çalışması gerçekleştiriyoruz. Lab 0x1: Method Hooking adımında, uygulamanın belirli metodlarını hook ederek davranışlarını analiz ediyoruz.',
+    author: 'Simge Yiğit',
+  },
+  {
+    slug: 'ctf-8-tools-beginner-summary',
+    title: 'CTF İçin 8 Temel Araç',
+    excerpt: 'CTF’e yeni başlayanların bilmesi gereken Nmap, ffuf, Burp Suite, sqlmap, CyberChef, Wireshark, ExifTool ve John the Ripper gibi temel araçları kısa ve anlaşılır şekilde tanıtan bir rehberdir.',
+    author: 'Osman Erdem Dutar',
+  },
+  {
+    slug: 'network-devices',
+    title: 'Ağ Güvenliği Cihazları',
+    excerpt: 'Ağ güvenliği cihazları, ağ trafiğini izleyip analiz ederek yetkisiz erişimleri ve siber saldırıları farklı katmanlarda tespit eden, engelleyen ve müdahale eden güvenlik teknolojileridir.',
+    author: 'Güven Emre Keskin',
   },
   {
     slug: 'easypeasy-writeup',
@@ -24,7 +60,7 @@ const blogs: Blog[] = [
     excerpt: 'TryHackMe platformunda yer alan ve siber güvenlik temellerini pekiştirmek için harika bir senaryoya sahip olan EasyPeasy makinesinin adım adım çözümü.',
     author: 'Burak Kıraç',
   },
-    {
+  {
     slug: 'androidde-llm',
     title: 'LLM Modellerini Android Uygulama Güvenliğinde Nasıl Kullanırız?',
     excerpt: 'LLM modelleri otomasyondan analiz, zafiyet tespiti ve raporlama gibi birçok alanda Android uygulama güvenliğinde devrim yaratıyor. Bu yazıda, LLM modellerinin Android güvenlik testlerinde nasıl etkili bir şekilde kullanılabileceğini keşfediyoruz.',
@@ -228,7 +264,6 @@ const blogs: Blog[] = [
     excerpt: 'Allsafe Lab, içerisinde çeşitli zorluklar barındıran ve farklı güvenlik açığı kategorilerini kapsayan bir APK uygulamasıdır.',
     author: 'Simge Yiğit',
   },
-
   {
     slug: 'android-101',
     title: 'Android Security 101: Analiz Yöntemleri ve Araçları',

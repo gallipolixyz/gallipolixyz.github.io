@@ -6,7 +6,10 @@ export function About() {
   return (
     <PageTransition>
       <main className="pt-16">
+        {}
         <AboutComponent />
+        
+        {}
       </main>
     </PageTransition>
   );
