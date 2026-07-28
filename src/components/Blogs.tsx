@@ -13,6 +13,12 @@ interface Blog {
 
 const blogs: Blog[] = [
   {
+    slug: 'opnsense-trafik-analiz',
+    title: "Gelenekselden Modern'e C2 Altyapıları ve OPNsense ile Trafik Analizi",
+    excerpt: 'Geleneksel ve modern C2 altyapılarının çalışma mekanizmaları ile OPNsense firewall kullanarak ağ üzerindeki zararlı trafiğin analizi',
+    author: 'Burak Kıraç',
+  },
+  {
     slug: 'poisoned-pipeline-execution-ppe',
     title: 'CI/CD Pipeline Saldırıları: Poisoned Pipeline Execution (PPE)',
     excerpt: 'Siber güvenlik dünyasında, özellikle DevSecOps süreçlerinde giderek daha fazla karşılaşılan ve sistemleri derinden sarsabilen kritik bir konu bulunmaktadır: Poisoned Pipeline Execution (PPE), yani Zehirlenmiş Pipeline Çalıştırması.',
