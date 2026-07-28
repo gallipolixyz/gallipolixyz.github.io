@@ -12,23 +12,23 @@ interface Blog {
 }
 
 const blogs: Blog[] = [
-      {
-        slug: 'windows-loglari-ransomware-taramasi',
-        title: 'Windows Güvenlik Logları ile Ransomware Taraması',
-        excerpt: 'Fidye yazılımı vakalarında şifrelenmiş dosyalar yalnızca son sahnedir; asıl hikâye Windows olay günlüklerinde saklıdır. 4625, 4624, 4720, 4732, 7045 ve 1102 ile saldırının izini adım adım sürüyoruz.',
-        author: 'Bağdagül Çağlar',
-    },
-  {
-    slug: 'opnsense-trafik-analiz',
-    title: "Gelenekselden Modern'e C2 Altyapıları ve OPNsense ile Trafik Analizi",
-    excerpt: 'Geleneksel ve modern C2 altyapılarının çalışma mekanizmaları ile OPNsense firewall kullanarak ağ üzerindeki zararlı trafiğin analizi',
-    author: 'Burak Kıraç',
-  },
   {
     slug: 'aws-iam-cloud-security-misconfigurations',
     title: 'Bulut Güvenliği: AWS IAM Temelleri ve Sık Yapılan Yapılandırma Hataları',
     excerpt: 'Bulut ortamlarında güvenlik çevre çizgisi (perimeter) kimliktir. AWS IAM mimarisi, en sık yapılan misconfiguration (hatalı yapılandırma) türleri, IAM Privilege Escalation vektörleri ve IMDSv1/v2 zafiyetleri üzerine detaylı bir teknik inceleme.',
     author: 'Efe Kırbaş',
+  },
+  {
+    slug: 'windows-loglari-ransomware-taramasi',
+    title: 'Windows Güvenlik Logları ile Ransomware Taraması',
+    excerpt: 'Fidye yazılımı vakalarında şifrelenmiş dosyalar yalnızca son sahnedir; asıl hikâye Windows olay günlüklerinde saklıdır. 4625, 4624, 4720, 4732, 7045 ve 1102 ile saldırının izini adım adım sürüyoruz.',
+    author: 'Bağdagül Çağlar',
+  },
+  {
+    slug: 'opnsense-trafik-analiz',
+    title: "Gelenekselden Modern'e C2 Altyapıları ve OPNsense ile Trafik Analizi",
+    excerpt: 'Geleneksel ve modern C2 altyapılarının çalışma mekanizmaları ile OPNsense firewall kullanarak ağ üzerindeki zararlı trafiğin analizi',
+    author: 'Burak Kıraç',
   },
   {
     slug: 'poisoned-pipeline-execution-ppe',
