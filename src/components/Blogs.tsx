@@ -25,11 +25,17 @@ const blogs: Blog[] = [
     author: 'Burak Kıraç',
   },
   {
+    slug: 'aws-iam-cloud-security-misconfigurations',
+    title: 'Bulut Güvenliği: AWS IAM Temelleri ve Sık Yapılan Yapılandırma Hataları',
+    excerpt: 'Bulut ortamlarında güvenlik çevre çizgisi (perimeter) kimliktir. AWS IAM mimarisi, en sık yapılan misconfiguration (hatalı yapılandırma) türleri, IAM Privilege Escalation vektörleri ve IMDSv1/v2 zafiyetleri üzerine detaylı bir teknik inceleme.',
+    author: 'Efe Kırbaş',
+  },
+  {
     slug: 'poisoned-pipeline-execution-ppe',
     title: 'CI/CD Pipeline Saldırıları: Poisoned Pipeline Execution (PPE)',
     excerpt: 'Siber güvenlik dünyasında, özellikle DevSecOps süreçlerinde giderek daha fazla karşılaşılan ve sistemleri derinden sarsabilen kritik bir konu bulunmaktadır: Poisoned Pipeline Execution (PPE), yani Zehirlenmiş Pipeline Çalıştırması.',
     author: 'Efe Kırbaş',
-     },
+  },
   {
     slug: 'modsecurity',
     title: 'Modsecurity Nedir?',
