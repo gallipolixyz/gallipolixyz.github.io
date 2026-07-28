@@ -113,7 +113,7 @@ Script çalıştırıldığı esnada yakalanan trafik durdurulmuş ve analiz edi
 İndirilen pcap dosyası Wireshark ile açılıp filtre çubuğuna dns yazıldığında, iç ağdaki kurban makinenin (10.10.10.11), OPNsense LAN ağ geçidine (10.10.10.1) yoğun bir şekilde Standard query A api.telegram.org sorguları gönderdiği açıkça tespit edilmiştir.
 
 
-![dns_dosyaları](/blogs/img/image10.png)
+![dns_dosyaları](/blogs/img/opnsense-trafik-analiz/image10.png)
 
 eknik Değerlendirme: Bu durum, iç ağdaki bir sürecin dış dünyadaki meşru Telegram API sunucularıyla bir iletişim kanalı kurmaya çalıştığının ağ seviyesindeki ilk somut kanıtıdır. Trafiğin devamında dönen Standard query response paketleri incelendiğinde, DNS çözümlemesinin başarıyla tamamlandığı ve varsayılan ayarlardaki firewall’un bu sorguyu meşru bir internet trafiği kabul ederek engellemediği görülmüştür.
 
