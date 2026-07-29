@@ -1,4 +1,4 @@
-# Understanding SVG XSS Payloads: A Tale of Two CVEs
+# Understanding SVG XSS Payloads
 
 Hi, Let's understand "XSS" payloads from "Bug Bounty Writeup: Reflected XSS via CVE-2025-0133 on PAN-OS" by "Thân Trung Tâm" and "CVE-2025–4406 Writeup: Stored XSS on wpForo Forum" by "Muhan luo"
 
