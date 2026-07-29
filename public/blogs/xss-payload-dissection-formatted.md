@@ -2,14 +2,14 @@ Hi, Let's understand "XSS" payloads from "Bug Bounty Writeup: Reflected XSS via 
 
 We recommend you to be familiar with basics of these topics,
 
-# How Browsers Parse HTML5
-# XML Namespaces & Foreign Content
-# The Document Object Model (DOM) Architecture
-# Basic Cross-Site Scripting (XSS)
+- How Browsers Parse HTML5
+- XML Namespaces & Foreign Content
+- The Document Object Model (DOM) Architecture
+- Basic Cross-Site Scripting (XSS)
 
 Optional: File Upload Vulnerabilities
 
-# Lets begin with "Bug Bounty Writeup: Reflected XSS via CVE-2025-0133 on PAN-OS",
+## Lets begin with "Bug Bounty Writeup: Reflected XSS via CVE-2025-0133 on PAN-OS",
 
 SVG XSS payload (`<svg xmlns="http://www.w3.org/2000/svg"><script>prompt("XSS")</script></svg>`) was used with a URL, For example :"https://vpn.[REDACTED].com/ssl-vpn/........." on an exposed VPN portal.
 
@@ -33,7 +33,7 @@ This "could" result in modification, deletion, or theft of data, including acces
 
 **What this payload cannot do on its own:** If the SVG is loaded via `<img src="...">`, `<embed>`, or CSS `background-image`, the browser disables script execution inside the SVG rendering context — Execution only triggers if the payload is printed inline (bleeding directly into the host page's DOM) or loaded directly as a top-level document (e.g: a user navigates directly to https://example.com)
 
-# Now, Let's move to "CVE-2025–4406 Writeup: Stored XSS on wpForo Forum",
+## Now, Let's move to "CVE-2025–4406 Writeup: Stored XSS on wpForo Forum",
 
 The below payload was used while testing wpForum, which demonstrates that "A user can upload an SVG file containing malicious Javascript because the sanitization was improperly implemented" and let's take a look on the script.
 
@@ -67,6 +67,6 @@ This payload is Stored XSS technique known as a XLink Navigation Attack. Also, T
 
 **What this payload cannot do on its own:** It requires user interaction (a click on the circle). It is **not** a drive-by payload — it will not execute if the SVG is loaded via `<img src="...">` (which sandboxes SVG into a non-scripting context) or if the browser's SVG parser strips `javascript:` URIs. It executes only when the SVG is rendered inline in the DOM, served directly as `image/svg+xml`, or opened as a standalone document, **and** the user clicks the shape.
 
-# Common Principle in both payload
+## Common Principle in both payload
 
 Both payloads use "SVG" to bypass the filter and Both vulnerabilities exist because the underlying software failed to properly clean or sanitize user-supplied data before rendering it in the browser. To prove the vulnerability worked, both researchers used standard, harmless JavaScript popup boxes—prompt("XSS") in the first article and alert('XSS') in the second—to visually demonstrate that the browser executed their injected code.
