@@ -9,7 +9,7 @@ We recommend you to be familiar with basics of these topics,
 
 Optional: File Upload Vulnerabilities
 
-## Lets begin with "Bug Bounty Writeup: Reflected XSS via CVE-2025-0133 on PAN-OS",
+## Let's begin with "Bug Bounty Writeup: Reflected XSS via CVE-2025-0133 on PAN-OS",
 
 SVG XSS payload (`<svg xmlns="http://www.w3.org/2000/svg"><script>prompt("XSS")</script></svg>`) was used with a URL, For example :"https://vpn.[REDACTED].com/ssl-vpn/........." on an exposed VPN portal.
 
@@ -35,7 +35,7 @@ This "could" result in modification, deletion, or theft of data, including acces
 
 ## Now, Let's move to "CVE-2025–4406 Writeup: Stored XSS on wpForo Forum",
 
-The below payload was used while testing wpForum, which demonstrates that "A user can upload an SVG file containing malicious Javascript because the sanitization was improperly implemented" and let's take a look on the script.
+The below payload was used while testing wpForum, which demonstrates that "A user can upload an SVG file containing malicious Javascript because the sanitization was improperly implemented" and let's take a look at the script.
 
 ```xml
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -45,7 +45,7 @@ The below payload was used while testing wpForum, which demonstrates that "A use
 </svg>
 ```
 
-This payload is Stored XSS technique known as a XLink Navigation Attack. Also, This payload contains some elements of "Bug Bounty Writeup: Reflected XSS via CVE-2025-0133 on PAN-OS" such as `<svg>` and `xmlns="http://www.w3.org/2000/svg"`.
+This payload is a Stored XSS technique known as a XLink Navigation Attack. Also, This payload contains some elements of "Bug Bounty Writeup: Reflected XSS via CVE-2025-0133 on PAN-OS" such as `<svg>` and `xmlns="http://www.w3.org/2000/svg"`.
 
 1. First we have `xlink:href` ( The Evasion Strategy ), Many custom filters use basic regular expressions or lookup lists to scan inputs for the string href= "JavaScript....." is dangerous, so they block it and prefix-less href attribute is technically invalid on an anchor (`<a>`) tag. Hence, `xlink:href` is used here. Having a completely different name and identity in the DOM structure, The filter assumes the attribute is benign custom markup and allows it through, while the browser processes it as a valid hyperlink.
 
