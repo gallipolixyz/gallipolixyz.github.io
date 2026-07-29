@@ -9,7 +9,7 @@ We recommend you to be familiar with basics of these topics,
 
 Optional: File Upload Vulnerabilities
 
-## Let's begin with "Bug Bounty Writeup: Reflected XSS via CVE-2025-0133 on PAN-OS",
+## Lets begin with "Bug Bounty Writeup: Reflected XSS via CVE-2025-0133 on PAN-OS",
 
 SVG XSS payload (`<svg xmlns="http://www.w3.org/2000/svg"><script>prompt("XSS")</script></svg>`) was used with a URL, For example :"https://vpn.[REDACTED].com/ssl-vpn/........." on an exposed VPN portal.
 
@@ -21,7 +21,7 @@ Bug URL: https://vpn.[REDACTED].com/
 
 This "could" result in modification, deletion, or theft of data, including accessing or deleting files, or stealing session cookies to hijack a user's session within a user's browser ( Testing with ethical boundaries, such actions are strictly prohibited).
 
-![Diagram showing the CVE-2025-0133 payload flowing from attacker through a Palo Alto GlobalProtect portal to trigger an XSS alert in the victim's browser](images/palo-alto-xss-flow.png)
+![Diagram showing the CVE-2025-0133 payload flowing from attacker through a Palo Alto GlobalProtect portal to trigger an XSS alert in the victim's browser](/blogs/img/xss-payload-dissection-formatted/palo-alto-xss-flow.png)
 
 1. The most important element here is `<svg>` (Scalable Vector Graphics), When a security filter looks at raw user input, it scans for dangerous HTML patterns. However, when they see `<svg>`, they classify the entire block as inert graphical markup rather than active web content. They assume everything inside the graphics block consists of visual vectors (like lines and circles) and skip filtering the nested `<script>` tag. Instead of rendering it as graphic text, the browser treats it as a special "integration point" where the rules pop back to HTML behavior. The script immediately executes as active JavaScript.
 
@@ -35,7 +35,7 @@ This "could" result in modification, deletion, or theft of data, including acces
 
 ## Now, Let's move to "CVE-2025–4406 Writeup: Stored XSS on wpForo Forum",
 
-The below payload was used while testing wpForum, which demonstrates that "A user can upload an SVG file containing malicious Javascript because the sanitization was improperly implemented" and let's take a look at the script.
+The below payload was used while testing wpForum, which demonstrates that "A user can upload an SVG file containing malicious Javascript because the sanitization was improperly implemented" and let's take a look on the script.
 
 ```xml
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -45,11 +45,11 @@ The below payload was used while testing wpForum, which demonstrates that "A use
 </svg>
 ```
 
-This payload is a Stored XSS technique known as a XLink Navigation Attack. Also, This payload contains some elements of "Bug Bounty Writeup: Reflected XSS via CVE-2025-0133 on PAN-OS" such as `<svg>` and `xmlns="http://www.w3.org/2000/svg"`.
+This payload is Stored XSS technique known as a XLink Navigation Attack. Also, This payload contains some elements of "Bug Bounty Writeup: Reflected XSS via CVE-2025-0133 on PAN-OS" such as `<svg>` and `xmlns="http://www.w3.org/2000/svg"`.
 
 1. First we have `xlink:href` ( The Evasion Strategy ), Many custom filters use basic regular expressions or lookup lists to scan inputs for the string href= "JavaScript....." is dangerous, so they block it and prefix-less href attribute is technically invalid on an anchor (`<a>`) tag. Hence, `xlink:href` is used here. Having a completely different name and identity in the DOM structure, The filter assumes the attribute is benign custom markup and allows it through, while the browser processes it as a valid hyperlink.
 
-![Split diagram contrasting how an automated security filter perceives the SVG payload as inert graphics versus how the browser actually parses and renders it as a clickable XSS vector](images/filter-vs-browser-reality.png)
+![Split diagram contrasting how an automated security filter perceives the SVG payload as inert graphics versus how the browser actually parses and renders it as a clickable XSS vector](/blogs/img/xss-payload-dissection-formatted/filter-vs-browser-reality.png)
 
 2. Unlike the previously analyzed inline `<script>` payload, this vector does not execute automatically upon page load. It relies on a chain of distinct browser mechanics to achieve execution:
 
