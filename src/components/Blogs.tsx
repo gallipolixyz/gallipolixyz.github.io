@@ -13,6 +13,12 @@ interface Blog {
 
 const blogs: Blog[] = [
   {
+    slug: 'aws-iam-privilege-escalation-and-cross-account-vulnerability-chains',
+    title: 'AWS Ortamlarında IAM Yetki Yükseltme ve Çapraz Hesap Zafiyet Zincirleri',
+    excerpt: 'AWS ortamlarında IAM yetki yükseltme ve çapraz hesap zafiyet zincirlerini keşfetmek için kapsamlı bir rehber. ',
+    author: 'Meryem Şahin',
+    },
+  {
     slug: 'aws-iam-cloud-security-misconfigurations',
     title: 'Bulut Güvenliği: AWS IAM Temelleri ve Sık Yapılan Yapılandırma Hataları',
     excerpt: 'Bulut ortamlarında güvenlik çevre çizgisi (perimeter) kimliktir. AWS IAM mimarisi, en sık yapılan misconfiguration (hatalı yapılandırma) türleri, IAM Privilege Escalation vektörleri ve IMDSv1/v2 zafiyetleri üzerine detaylı bir teknik inceleme.',
