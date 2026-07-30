@@ -4,12 +4,13 @@ import { motion } from 'framer-motion';
 import { CardAnimation } from '../components/CardAnimation';
 import { ScrollAnimation } from '../components/ScrollAnimation';
 
-interface Blog {
-  slug: string;
-  title: string;
-  excerpt: string;
-  author: string;
-}
+const blogs: Blog[] = [
+  {
+    slug: 'xss-payload-dissection-formatted',
+    title: 'Understanding SVG XSS Payloads: A Tale of Two CVEs',
+    excerpt: 'A deep dive into how SVG XSS payloads bypass security filters, analyzing CVE-2025-0133 on PAN-OS and CVE-2025-4406 on wpForo Forum.',
+    author: 'aymaan-balbale',
+  },
 
 const blogs: Blog[] = [
   {
