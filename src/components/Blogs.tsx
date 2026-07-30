@@ -4,6 +4,13 @@ import { motion } from 'framer-motion';
 import { CardAnimation } from '../components/CardAnimation';
 import { ScrollAnimation } from '../components/ScrollAnimation';
 
+interface Blog {
+  slug: string;
+  title: string;
+  excerpt: string;
+  author: string;
+}
+
 const blogs: Blog[] = [
   {
     slug: 'xss-payload-dissection-formatted',
@@ -11,8 +18,6 @@ const blogs: Blog[] = [
     excerpt: 'A deep dive into how SVG XSS payloads bypass security filters, analyzing CVE-2025-0133 on PAN-OS and CVE-2025-4406 on wpForo Forum.',
     author: 'aymaan-balbale',
   },
-
-const blogs: Blog[] = [
   {
     slug: 'aws-iam-cloud-security-misconfigurations',
     title: 'Bulut Güvenliği: AWS IAM Temelleri ve Sık Yapılan Yapılandırma Hataları',
