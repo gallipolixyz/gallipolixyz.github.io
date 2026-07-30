@@ -179,7 +179,7 @@ Ağ trafiğini `Wireshark` veya `Zeek` gibi NTA araçlarıyla canlı ve paket d�
 
 SOC (Güvenlik Operasyon Merkezi) analistleri ve ağ mühendisleri, şüpheli hareketleri tespit ederken ve olay müdahalesi (Incident Response) yürütürken ağ trafiğini üreten ve işleyen yapıları temel olarak **iki ana kaynak altında** sınıflandırır: **Ağ Kaynakları** ve **Uç Nokta Kaynakları**.
 
-![image.png](image.png)
+![image.png](/blogs/img/ag-trafik-analizi/image.png)
 
 #### **Ara Cihaz Kaynakları (Intermediary Sources)**
 
@@ -206,7 +206,7 @@ Saldırganlar (Tehdit Aktörleri) doğrudan karmaşık güvenlik duvarlarına sa
 
 Bir kurumsal ağdaki trafik akışı; kurumun mimarisine, çalıştırılan kritik servislere (Active Directory, SMB dosya paylaşımları, Veritabanları, Web uygulamaları) ve kullanıcı davranışlarına göre biçimlenir. SOC analistleri, ağdaki trafiği şüpheli hareketler açısından incelerken bu akışları **coğrafi yönüne ve erişim sınırlarına göre** iki ana başlık altında sınıflandırır:
 
-![image.png](image%201.png)
+![image.png](/blogs/img/ag-trafik-analizi/image1.png)
 
 **1. Kuzey-Güney Trafiği (North-South Traffic)**
 
@@ -436,7 +436,7 @@ Plaintext
 
 `tcpdump` filtrelerinin **4 ana tuğladan** oluştuğunu bilmek yeterlidir. Bir filtre yazarken şu sırayı düşünmen yeterli:
 
-![image.png](image%202.png)
+![image.png](/blogs/img/ag-trafik-analizi/image2.png)
 
 - **Soru:** *"192.168.1.10 IP'sinden gelen HTTP paketlerini nasıl görürüm?"*
 - **Mantık:** Kaynak IP (`src host 192.168.1.10`) **VE** Port (`and port 80`)
@@ -665,7 +665,7 @@ Ağ analizi ve canlı paket yakalama süreçlerinde **Yakalama Öncesi Filtrelem
 
 Paket cihaza ulaştıktan sonra yapılan görüntüleme filtrelemesinin (**Display Filter**) aksine; Capture Filter, gelen ham veriyi henüz **işletim sistemi çekirdeği (Kernel) / BPF (Berkeley Packet Filter) seviyesinde** süzer. Filtre kuralıyla eşleşmeyen paketleri tamamen düşürerek **disk üzerine hiç yazmaz ve belleğe almaz.**
 
-![image.png](image%203.png)
+![image.png](/blogs/img/ag-trafik-analizi/image3.png)
 
 ## BPF (Berkeley Packet Filter) Sözdizimi Yapısı
 
