@@ -19,6 +19,11 @@ const blogs: Blog[] = [
     author: 'aymaan-balbale',
   },
   {
+    slug: 'types-of-ai-jailbreaking',
+    title: 'Yapay Zekâ Jailbreaking Türleri',
+    excerpt: 'Yapay zekâ modellerindeki güvenlik sınırlarının nasıl zorlandığını; 16 farklı jailbreak yönteminin çalışma mantığı, araştırma örnekleri ve savunma yaklaşımları üzerinden inceliyoruz.',
+    author: 'Osman Erdem Dutar',  },
+  {
     slug: 'aws-iam-privilege-escalation-and-cross-account-vulnerability-chains',
     title: 'AWS Ortamlarında IAM Yetki Yükseltme ve Çapraz Hesap Zafiyet Zincirleri',
     excerpt: 'AWS ortamlarında IAM yetki yükseltme ve çapraz hesap zafiyet zincirlerini keşfetmek için kapsamlı bir rehber. ',
