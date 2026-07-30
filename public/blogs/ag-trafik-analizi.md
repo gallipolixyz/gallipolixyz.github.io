@@ -5,7 +5,7 @@ Ağ; bilgisayarların, sunucuların, telefonların ve diğer cihazların birbiri
 
 ## Ağ Trafiğini Analiz Etmeye Neden İhtiyaç Duyarız?
 
-Ağda ki trafiği analiz etme ihtiyacını tek bir sebepe indirgeyemeyiz.Bu analiz genel olarak , ağ performansını optimize etmek, güvenlik açıklarını ve tehditleri belirlemek ve ağ kullanım trendlerini anlamak için kullanılır.Aynı zaman da Anormallik tespiti,Uyumluluk Raporlama,Monitörleme,Botnet Aktiviteleri alanlarında da Ağ Trafik Analizi önemlidir biraz bu alanlardan bahsedelim.
+Ağda ki trafiği analiz etme ihtiyacını tek bir sebebe indirgeyemeyiz.Bu analiz genel olarak , ağ performansını optimize etmek, güvenlik açıklarını ve tehditleri belirlemek ve ağ kullanım trendlerini anlamak için kullanılır.Aynı zaman da Anormallik tespiti,Uyumluluk Raporlama,Monitörleme,Botnet Aktiviteleri alanlarında da Ağ Trafik Analizi önemlidir biraz bu alanlardan bahsedelim.
 
 ### Anormallik Tespiti
 
@@ -241,8 +241,7 @@ Doğu-Batı trafiği incelenirken, iç ağda çalışan ve saldırganların isti
     ◦ **Mikroservis & API İletişimi:** İç ağdaki servislerin birbirleriyle konuştuğu REST, gRPC veya SOAP çağrıları.
 • **Yedekleme, Çoğaltma ve Yönetim (Backup, Monitoring & Logs):**
 
-    ◦ **Veri Çoğaltma (Replication):** Veri merkezleri veya veritabanları arası canlı senkronizasyon akışları (MySQL binlog, PostgreSQL streaming vb.).
-    ◦ **İzleme ve Telemetri:** SNMP (cihaz sağlık kontrolü), Syslog (SIEM'e aktarılan ham loglar) ve NetFlow/IPFIX (akış metrikleri).
+.....Trafik akışına bir örnek......
 
 ### **1. TLS İncelemeli HTTPS Akışı (TLS/SSL Inspection Flow)**
 
