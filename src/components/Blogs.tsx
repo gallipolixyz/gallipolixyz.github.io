@@ -7,7 +7,7 @@ import { ScrollAnimation } from '../components/ScrollAnimation';
 interface Blog {
   slug: string;
   title: string;
-  excerpt: string;    .md
+  excerpt: string;    
   author: string;
 }
 
@@ -15,7 +15,7 @@ const blogs: Blog[] = [
     {
     slug: 'code-challenge1-writeup',
     title: 'Code Challenge Write-Up: Broken Object Level Authorization (BOLA)',
-    excerpt: 'Bola Zafiyeti açıklanmış ve code challangeın çözüm write upı ',
+    excerpt: 'BOLA zafiyeti açıklanmış ve Code Challenge çözüm write-upı hazırlanmıştır.',
     author: 'Simge Yiğit',
   },
   {
