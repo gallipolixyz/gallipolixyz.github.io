@@ -13,6 +13,12 @@ interface Blog {
 
 const blogs: Blog[] = [
   {
+    slug: 'ag-trafik-analizi',
+    title: 'Ağ Trafik Analizi',
+    excerpt: 'Ağ trafiği analizi, SOC süreçleri ve BPF filtreleme teknikleri üzerine detaylı inceleme.',
+    author: 'Sebahat Kuşcu',
+  },
+  {
     slug: 'xss-payload-dissection-formatted',
     title: 'Understanding SVG XSS Payloads: A Tale of Two CVEs',
     excerpt: 'A deep dive into how SVG XSS payloads bypass security filters, analyzing CVE-2025-0133 on PAN-OS and CVE-2025-4406 on wpForo Forum.',
