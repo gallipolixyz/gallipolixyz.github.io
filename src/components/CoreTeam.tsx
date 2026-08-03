@@ -95,6 +95,14 @@ const team: TeamMember[] = [
     image: '/img/simi.jpg',
     linkedin: 'https://www.linkedin.com/in/simge-yigit-simiv/',
   },
+      {
+      name: 'bade',
+      role: 'Champions Team Member',
+      bio: '',
+      image: '/img/Bade.jpg',
+      linkedin: 'https://www.linkedin.com/in/bagdagul-caglar-'
+    },
+
 ];
 
 export const CoreTeam: React.FC = () => {
