@@ -100,7 +100,16 @@ const team: TeamMember[] = [
     role: 'Champions Team Member',
     bio: '',
     image: '/img/meryem.png',
-    linkedin: 'https://www.linkedin.com/in/meryem-%C5%9Fahin-027a5a2a6/'},
+    linkedin: 'https://www.linkedin.com/in/meryem-%C5%9Fahin-027a5a2a6/'
+  },
+  {
+    name: 'bade',
+    role: 'Champions Team Member',
+    bio: '',
+    image: '/img/Bade.jpg',
+    linkedin: 'https://www.linkedin.com/in/bagdagul-caglar-'
+  },
+
 ];
 
 export const CoreTeam: React.FC = () => {
