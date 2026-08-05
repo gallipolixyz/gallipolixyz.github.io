@@ -1441,7 +1441,13 @@ En önemlisi ise şu:
 
 **Secure Kubernetes, “hiçbir saldırı gerçekleşmez” demek değildir. Secure Kubernetes, bir saldırı gerçekleştiğinde saldırganın hareket alanının mümkün olduğunca küçük kalmasıdır.**
 
-## Kaynakça ve İleri Okuma
+---
+
+## 🙏 Teşekkürler
+
+Kubernetes güvenliği üzerine bu yazıyı hazırlarken Raconf'da aldığım eğitimden ve araştırıp öğrendiğim bilgilerden faydalandım. Bu süreçte bilgi ve deneyimlerini paylaşarak katkı sağlayan **Kadir Arslan Hocama** teşekkür ederim.
+
+## Kaynakça
 
 * [OWASP Kubernetes Top 10 – 2025](https://owasp.org/www-project-kubernetes-top-ten/?utm_source=chatgpt.com)
 * [OWASP K01 – Insecure Workload Configurations](https://owasp.org/www-project-kubernetes-top-ten/2025/en/src/K01-Insecure-Workload-Configurations?utm_source=chatgpt.com)
