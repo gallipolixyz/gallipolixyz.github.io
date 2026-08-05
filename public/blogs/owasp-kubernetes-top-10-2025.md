@@ -1,5 +1,5 @@
 ---
-title: "OWASP Kubernetes Top 10 (2025): Kubernetes Cluster’larını Gerçekten Güvenli Hale Getirmek"
+title: "OWASP Kubernetes Top 10 (2025): Kubernetes Cluster’larını Güvenli Hale Getirmek"
 description: "OWASP Kubernetes Top 10 (2025) maddelerini pratik örnekler, güvenli yapılandırmalar ve lab yaklaşımıyla inceleyen teknik rehber."
 ---
 
