@@ -68,20 +68,6 @@ const team: TeamMember[] = [
     linkedin: 'https://www.linkedin.com/in/kayra-öksüz-ab061a1ba',
   },
   {
-    name: 'oZZy',
-    role: 'Champions Team Member',
-    bio: '',
-    image: '/img/ozzy.jpg',
-    linkedin: 'https://www.linkedin.com/in/ozan-ismail-çolhak-119003313/',
-  },
-  {
-    name: 'ferhatkrs0',
-    role: 'Champions Team Member',
-    bio: 'Vulnerability Researcher focused on Web Application Vulnerabilities',
-    image: '/img/ferhat_krs0.jpg',
-    linkedin: 'https://www.linkedin.com/in/ferhat-karasu-534882204/',
-  },
-  {
     name: 'ss',
     role: 'Champions Team Member',
     bio: 'Cyber Security Analyst',
@@ -108,6 +94,13 @@ const team: TeamMember[] = [
     bio: '',
     image: '/img/Bade.jpg',
     linkedin: 'https://www.linkedin.com/in/bagdagul-caglar-'
+  },
+  {
+    name: 'Osman',
+    role: 'Champions Team Member',
+    bio: '',
+    image: '/img/Osman.jpg',
+    linkedin: 'https://www.linkedin.com/in/osmanerdemdutar/'
   },
 
 ];
