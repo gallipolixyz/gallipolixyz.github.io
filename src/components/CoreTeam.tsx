@@ -82,6 +82,13 @@ const team: TeamMember[] = [
     linkedin: 'https://www.linkedin.com/in/simge-yigit-simiv/',
   },
   {
+    name: 'Osman',
+    role: 'Champions Team Member',
+    bio: '',
+    image: '/img/Osman.jpg',
+    linkedin: 'https://www.linkedin.com/in/osmanerdemdutar/'
+  },
+  {
     name: 'Meryem',
     role: 'Champions Team Member',
     bio: '',
@@ -94,13 +101,6 @@ const team: TeamMember[] = [
     bio: '',
     image: '/img/Bade.jpg',
     linkedin: 'https://www.linkedin.com/in/bagdagul-caglar-'
-  },
-  {
-    name: 'Osman',
-    role: 'Champions Team Member',
-    bio: '',
-    image: '/img/Osman.jpg',
-    linkedin: 'https://www.linkedin.com/in/osmanerdemdutar/'
   },
 
 ];
