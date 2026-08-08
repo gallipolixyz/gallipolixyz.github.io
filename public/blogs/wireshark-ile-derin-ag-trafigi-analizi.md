@@ -20,7 +20,7 @@ Eğer daha önce kaydedilmiş bir ağ trafiği dosyanız varsa (.pcap veya .pcap
 
 Wireshark'ı açıp elimizdeki PCAP dosyasını içeri aktardığımızda, ekranda beliren binlerce satır ilk bakışta tam bir kaos gibi görünebilir. Ancak bu durum gözünüzü korkutmasın; filtreleme mantığını öğrendiğiniz an o karmaşa yerini tamamen odaklanmış, net bir analiz ortamına bırakacak.
 
-![Wireshark arayüzünün üç ana paneli: paket listesi, paket detayları ve hex dökümü](/blogs/img/wireshark-ile-derin-ag-trafigi-analizi/01-wireshark-arayuz_png.png)
+![Wireshark arayüzünün üç ana paneli: paket listesi, paket detayları ve hex dökümü](/blogs/img/01-wireshark-arayuz_png)
 
 Çalışma alanı, veriyi okumamızı kolaylaştırmak için görsel olarak temelde üç ana panele ayrılır:
 
@@ -65,7 +65,7 @@ Gerçek saldırı trafiklerini incelemek için *malware-traffic-analysis.net* ü
 
 > http filtresi uygulandığında, 153.92.1.49 IP adresine yönelen bir **POST** isteği (No. 24601) görülmektedir. Bu paket, Lumma Stealer zararlısının topladığı verileri komuta kontrol sunucusuna (whitepepper.su) aktardığı bağlantıdır.
 
-![153.92.1.49 IP adresine yapılan şüpheli POST isteği](/blogs/img/wireshark-ile-derin-ag-trafigi-analizi/02-supheli-akis.png)
+![153.92.1.49 IP adresine yapılan şüpheli POST isteği](/blogs/img/02-supheli-akis.png)
 
 **Hypertext Transfer Protocol** detaylarında şu bilgiler öne çıkar:
 
@@ -107,7 +107,7 @@ tls               # TLS/SSL trafiği
 
 **Mantıksal Operatörlerle Karmaşık Filtreler**
 
-![ip.addr == 153.92.1.49 filtresi ile daraltılmış TCP/TLS trafiği](/blogs/img/wireshark-ile-derin-ag-trafigi-analizi/03-filtre-ornekleri.png)
+![ip.addr == 153.92.1.49 filtresi ile daraltılmış TCP/TLS trafiği](/blogs/img/03-filtre-ornekleri.png)
 
 ```
 ip.addr == 192.168.1.100 and tcp.port == 443
@@ -123,7 +123,7 @@ Wireshark, yakalanan ağ trafiği üzerinde kapsamlı istatistikler sunar. Çok 
 
 Analize başlarken ilk adım olarak **Statistics → Capture File Properties** sekmesini inceleyin. Bu ekran, dosyaya ait şu temel bilgileri sunar:
 
-![Capture File Properties penceresi: dosya, süre, arayüz ve istatistik bilgileri](/blogs/img/wireshark-ile-derin-ag-trafigi-analizi/04-capture-file-properties.png)
+![Capture File Properties penceresi: dosya, süre, arayüz ve istatistik bilgileri](/blogs/img/04-capture-file-properties.png)
 
 - Dosya adı ve boyutu
 - Hash değerleri (SHA256, SHA1 - veri bütünlüğünü doğrulamak için kritik)
@@ -157,7 +157,7 @@ Herhangi bir protokol üzerine sağ tıklayıp "Apply as Filter" diyerek, sadece
 
 Veri sızıntısı şüphesi bulunan durumlarda, "Bytes" sütununa göre sıralama yaparak ağdaki en büyük veri transferlerini hızlıca tespit edebilirsiniz.
 
-![Conversations sekmesinde IPv4 uç noktaları arasındaki veri hacmi](/blogs/img/wireshark-ile-derin-ag-trafigi-analizi/05-conversations.png)
+![Conversations sekmesinde IPv4 uç noktaları arasındaki veri hacmi](/blogs/img/05-conversations.png)
 
 Özellikle dış ağa doğru gerçekleşen tek yönlü ve yüksek hacimli veri akışları, bir veri sızıntısının temel göstergelerinden biridir.
 
@@ -191,7 +191,7 @@ Bir TCP akışının (stream) tamamını incelemek için ilgili pakete sağ tık
 
 Lumma Stealer örneğinde, whitepepper.su sunucusuna yapılan POST isteğine ait veri akışının tamamını inceleyebiliriz.
 
-![Follow TCP Stream penceresinde renklendirilmiş istek/yanıt akışı](/blogs/img/wireshark-ile-derin-ag-trafigi-analizi/06-tcp-stream.png)
+![Follow TCP Stream penceresinde renklendirilmiş istek/yanıt akışı](/blogs/img/06-tcp-stream.png)
 
 Wireshark, "Follow TCP Stream" penceresinde bu iletişimi renklendirerek sunar:
 
@@ -211,7 +211,7 @@ Bu işlem için sırasıyla şu adımları izleyebilirsiniz:
 3. Açılan pencerede, dışa aktarmak istediğiniz spesifik dosyayı belirleyin.
 4. **Save** butonuna tıklayarak dosyayı sisteminize kaydedin.
 
-![Export Objects listesinde HTTP üzerinden aktarılan dosyalar](/blogs/img/wireshark-ile-derin-ag-trafigi-analizi/07-export-objects.png)
+![Export Objects listesinde HTTP üzerinden aktarılan dosyalar](/blogs/img/07-export-objects.png)
 
 Bu özellik, özellikle malware analizi yaparken, zararlı yazılımın indirdiği dosyaları incelemek için çok kullanışlıdır.
 
@@ -240,7 +240,7 @@ a) DNS Trafiğini İzlemek:
 dns
 ```
 
-![dns.qry.name contains "whitepepper" filtresi ile şüpheli DNS sorguları](/blogs/img/wireshark-ile-derin-ag-trafigi-analizi/08-supheli-dns.png)
+![dns.qry.name contains "whitepepper" filtresi ile şüpheli DNS sorguları](/blogs/img/08-supheli-dns.png)
 
 b) Şüpheli DNS Yanıtları:
 
