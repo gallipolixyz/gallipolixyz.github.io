@@ -5,9 +5,13 @@ description: "OWASP Kubernetes Top 10 (2025) maddelerini pratik örnekler, güve
 
 # OWASP Kubernetes Top 10 (2025)
 
-> **Kubernetes Cluster’larını Gerçekten Güvenli Hale Getirmek**
+![Kubernetes Security Overview](kubernetes1.png)
 
-Kubernetes güvenliğini yalnızca teorik riskler üzerinden değil, **zayıf yapılandırma → saldırı yüzeyi → saldırı etkisi → güvenli yapılandırma → tekrar test** yaklaşımıyla ele alan pratik bir rehber.
+> **Kubernetes Cluster’larını Güvenli Hale Getirmek**
+
+Bu yazıyı klasik bir “Kubernetes Security checklist”i gibi değil, kendi öğrenme sürecimde dönüp tekrar bakabileceğim bir **Kubernetes güvenlik el defteri** gibi düşünerek hazırladım. Aynı zamanda konuya yeni başlayan birinin de “bu ayar neden var?” sorusunun cevabını bulabilmesini istiyorum.
+
+Bu yüzden Kubernetes güvenliğini yalnızca teorik riskler üzerinden değil, **zayıf yapılandırma → saldırı yüzeyi → saldırı etkisi → güvenli yapılandırma → tekrar test** yaklaşımıyla ele alacağım.
 
 ## 📚 İçindekiler
 
@@ -32,7 +36,14 @@ Kubernetes güvenliğini yalnızca teorik riskler üzerinden değil, **zayıf ya
 - [18. K01 + K02 + K05](#18-k01--k02--k05-birlikte-neden-daha-güçlü)
 - [19. Kubernetes Security Checklist](#19-kubernetes-security-checklist)
 - [Sonuç](#sonuç)
-- [Kaynakça ve İleri Okuma](#kaynakça-ve-ileri-okuma)
+- [Kaynakça](#kaynakça)
+
+### 🗺️ Okuma rehberi
+
+- **Yeni başlıyorsanız:** Önce izolasyon ve K01'i okuyun.
+- **Kubernetes biliyorsanız:** K02–K05 bölümleriyle RBAC, secrets ve network katmanına geçebilirsiniz.
+- **Blue Team / DevSecOps tarafındaysanız:** K04, K07 ve K10 bölümleri özellikle faydalı olacaktır.
+- **Lab kuracaksanız:** 17. bölümdeki repository yapısını doğrudan başlangıç noktası olarak kullanabilirsiniz.
 
 ---
 
@@ -59,15 +70,13 @@ OWASP, Kubernetes ortamlarında bu problemleri daha sistematik ele almak amacıy
 
 Bu yazıda amacım bu maddeleri sadece teorik olarak anlatmak değil. Aynı zamanda bunların Kubernetes üzerinde nasıl ortaya çıktığını ve küçük bir lab ortamında nasıl gözlemleyebileceğimizi göstermek.
 
-Özellikle şu mantığı kullanacağız:
-
-**Vulnerable configuration → saldırı yüzeyi → saldırı etkisi → güvenli configuration → tekrar test**
-
-Böylece “bu ayar neden önemli?” sorusunun cevabı doğrudan cluster üzerinde görülebilecek.
-
 > **Not:** Aşağıdaki örnekler eğitim amaçlıdır. Bilinçli olarak zayıf yapılandırmalar yalnızca lokal Minikube gibi izole ortamlarda denenmelidir.
 
 # 1. Önce Kubernetes'te izolasyonun ne anlama geldiğini anlayalım
+
+> 💡 **Kısa fikir:** Container'ın içinde olmak, otomatik olarak host'tan tamamen izole olmak demek değildir.
+
+![Container vs Host Isolation](kubernetes2.png)
 
 Kubernetes'te bir Pod'un container içinde çalışması, onun otomatik olarak tamamen güvenli olduğu anlamına gelmez.
 
@@ -100,6 +109,11 @@ Burada önemli bir prensip var:
 Bu yaklaşım Kubernetes güvenliğinin temelini oluşturuyor.
 
 # 2. K01 – Insecure Workload Configurations
+
+> 🔴 **Insecure → 🟢 Secure**  
+> Bu bölümde aynı uygulamanın yalnızca Kubernetes güvenlik ayarlarını değiştirerek blast radius'unu nasıl küçültebildiğine bakıyoruz.
+
+![K01 Insecure vs Secure Workload](kubernetes3.png)
 
 K01'i anlamanın en kolay yolu aynı uygulamayı iki farklı Pod konfigürasyonuyla çalıştırmak.
 
@@ -291,6 +305,8 @@ OWASP da resource limit'lerinin eksikliğini K01 kapsamında önemli bir risk ol
 
 # 4. Aynı uygulama, farklı blast radius
 
+![Blast Radius Comparison](kubernetes4.png)
+
 K01'in asıl anlatmak istediği nokta burada ortaya çıkıyor.
 
 Uygulamanın içerisinde command injection gibi bir açık olduğunu düşünelim.
@@ -327,6 +343,8 @@ Amaç şudur:
 Bu, Kubernetes güvenliğinde **defense in depth** yaklaşımının doğrudan karşılığıdır.
 
 # 5. K02 – Overly Permissive Authorization Configurations
+
+![Kubernetes RBAC Flow](kubernetes5.png)
 
 K01'de container'ın Linux seviyesindeki yetkilerini ele aldık.
 
@@ -562,6 +580,8 @@ gibi kurallar merkezi hale getirilebilir.
 
 # 8. K05 – Missing Network Segmentation Controls
 
+![Kubernetes Network Segmentation](kubernetes6.png)
+
 Kubernetes'te varsayılan network davranışı oldukça açıktır.
 
 NetworkPolicy uygulanmayan bir namespace'te Pod'lar arasında trafik kısıtlanmış değildir. Kubernetes dokümantasyonuna göre policy bulunmadığında ingress ve egress trafiği varsayılan olarak izinlidir.
@@ -585,6 +605,8 @@ Database
 Network segmentation yoksa uygulama içerisindeki SSRF, cluster içerisindeki başka servisleri keşfetmek için kullanılabilir.
 
 # 9. Ingress ve Egress neden önemli?
+
+![Ingress vs Egress](kubernetes7.png)
 
 NetworkPolicy'de iki yönü ayrı düşünmek gerekiyor.
 
@@ -806,6 +828,8 @@ gibi kontroller CI/CD sürecine eklenebilir.
 
 # 12. K08 – Cluster To Cloud Lateral Movement
 
+![Cluster to Cloud Lateral Movement](kubernetes8.png)
+
 Kubernetes cloud üzerinde çalışıyorsa saldırı yüzeyi cluster ile bitmiyor.
 
 Örneğin AWS üzerinde:
@@ -923,6 +947,8 @@ kullanmak önemli bir hardening adımıdır.
 
 # 14. K10 – Inadequate Logging And Monitoring
 
+![Kubernetes Security Monitoring](kubernetes9.png)
+
 Son madde biraz farklı.
 
 Çünkü önceki maddelerde:
@@ -1005,6 +1031,11 @@ OWASP K10, Kubernetes API audit logging'in yanı sıra node ve workload logları
 
 # 15. Bütün Top 10'u tek bir saldırı zincirinde düşünmek
 
+> 🧩 **Top 10'u tek tek ezberlemek yerine zincir olarak düşünün.**  
+> Bir kontrol başarısız olduğunda saldırganın bir sonraki katmana geçmesini hangi kontrol engelliyor?
+
+![Kubernetes Attack Chain](kubernetes11.png)
+
 Bu maddeleri birbirinden tamamen bağımsız düşünmek yerine bir saldırı zinciri olarak görmek daha doğru.
 
 Örneğin:
@@ -1053,6 +1084,8 @@ K04 ise bütün bu yapılandırmaların cluster genelinde gerçekten uygulanmas�
 Bu yüzden Kubernetes güvenliği tek bir YAML dosyasına indirgenemez.
 
 # 16. Güvenli bir Deployment için minimum baseline
+
+![Kubernetes Secure Deployment Baseline](kubernetes12.png)
 
 K01 tarafında hazırladığımız örneği biraz daha genel hale getirirsek, production workload'larında başlangıç noktası olarak şu kontrolleri düşünebiliriz:
 
@@ -1296,6 +1329,8 @@ K10 → Olanları izle
 
 # 19. Kubernetes Security Checklist
 
+> ✅ **Bunu sonradan tekrar kullanabilirsiniz:** Aşağıdaki listeyi bir deployment'ı production'a almadan önce hızlı kontrol listesi olarak kullanın.
+
 Bir workload'u production'a almadan önce en azından şu sorular sorulabilir:
 
 ### Workload
@@ -1375,6 +1410,8 @@ Bir workload'u production'a almadan önce en azından şu sorular sorulabilir:
 
 # Sonuç
 
+![Defense in Depth in Kubernetes](kubernetes10.png)
+
 OWASP Kubernetes Top 10'un 2025 versiyonuna baktığımızda maddelerin aslında tek bir ortak noktaya bağlandığını görebiliriz:
 
 **Bir saldırganın ilk erişimden sonra ne kadar ileri gidebileceğini sınırlandırmak.**
@@ -1440,12 +1477,6 @@ Bu yüzden Kubernetes güvenliğini:
 En önemlisi ise şu:
 
 **Secure Kubernetes, “hiçbir saldırı gerçekleşmez” demek değildir. Secure Kubernetes, bir saldırı gerçekleştiğinde saldırganın hareket alanının mümkün olduğunca küçük kalmasıdır.**
-
----
-
-## 🙏 Teşekkürler
-
-Kubernetes güvenliği üzerine bu yazıyı hazırlarken Raconf'da aldığım eğitimden ve araştırıp öğrendiğim bilgilerden faydalandım. Bu süreçte bilgi ve deneyimlerini paylaşarak katkı sağlayan **Kadir Arslan Hocama** teşekkür ederim.
 
 ## Kaynakça
 
