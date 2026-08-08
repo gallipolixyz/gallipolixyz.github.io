@@ -425,6 +425,13 @@ const blogs: Blog[] = [
     excerpt: 'Mavi takım, siber güvenlik alanında savunma odaklı bir yaklaşımdır. Bu rehberde, mavi takımın temel ilkelerini ve nasıl etkili bir şekilde çalıştığını keşfedeceğiz.',
     author: 'Nur Sena Avcı',
   },
+  {
+    slug: 'owasp-kubernetes-top-10-2025',
+    title: 'Kubernetes Top 10 Zafiyetleri',
+    excerpt: 'Hem kubernetes güvenliğini öğrenebileceğiniz hem de size el defteri olabilecek bir rehber.',
+    author: 'Hiranur Gemalmaz',
+  }
+    
     
 ];
 
