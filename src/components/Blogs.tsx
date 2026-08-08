@@ -13,6 +13,12 @@ interface Blog {
 
 const blogs: Blog[] = [
     {
+    slug: 'wireshark-ile-derin-ag-trafigi-analizi',
+    title: 'Wireshark ile Derin Ağ Trafiği Analizi: Paket Paket Güvenlik İncelemesi',
+    excerpt: 'Eğitim amaçlı bir PCAP dosyası üzerinden saldırı trafiğini paket düzeyinde inceliyoruz: DNS ve HTTP filtreleriyle şüpheli aktivite tespiti, Follow TCP Stream ile veri sızıntısı analizi, ARP/DNS spoofing ve port taraması göstergeleri.',
+    author: 'Bağdagül Çağlar',
+  },
+    {
     slug: 'code-challenge1-writeup',
     title: 'Code Challenge Write-Up: Broken Object Level Authorization (BOLA)',
     excerpt: 'BOLA zafiyeti açıklanmış ve Code Challenge çözüm write-upı hazırlanmıştır.',
