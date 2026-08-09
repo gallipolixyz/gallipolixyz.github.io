@@ -12,6 +12,12 @@ interface Blog {
 }
 
 const blogs: Blog[] = [
+  {
+    slug: 'akilli-supurge-hack',
+    title: 'Akıllı Süpürgeniz Hacklenebilir mi?',
+    excerpt: 'Evlerimizdeki akıllı robot süpürgelerin barındırdığı güvenlik açıklarını ve gerçek dünya senaryolarını inceledik.',
+    author: 'Burak Kıraç',
+  },
     {
     slug: 'code-challenge1-writeup',
     title: 'Code Challenge Write-Up: Broken Object Level Authorization (BOLA)',
