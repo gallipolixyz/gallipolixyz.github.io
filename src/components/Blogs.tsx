@@ -13,6 +13,12 @@ interface Blog {
 
 const blogs: Blog[] = [
   {
+  slug: 'fortinet-ngfw-fortios',
+  title: 'Fortinet Odaklı Kurumsal Ağ Güvenliği: Next-Generation Firewall Mimarisi ve FortiOS Teknolojileri',
+  excerpt: 'FortiGate NGFW cihazlarının ASIC mimarisini, FortiOS ekosistemini ve kurumsal ağlarda güvenlik duvarı yapılandırma adımlarını inceledik.',
+  author: 'Meryem Şahin',
+  },
+  {
     slug: 'akilli-supurge-hack',
     title: 'Akıllı Süpürgeniz Hacklenebilir mi?',
     excerpt: 'Evlerimizdeki akıllı robot süpürgelerin barındırdığı güvenlik açıklarını ve gerçek dünya senaryolarını inceledik.',
