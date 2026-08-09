@@ -42,7 +42,7 @@ Now we will do a breakdown of these files.
 
 **Byte Inspection** — Shows patterns by counting values like `0x00`, `0x01`, `0xFF`, etc.
 
-![Raw hex dump showing BLOCK tags inside the save file](https://raw.githubusercontent.com/aymaan-balbale/gallipolixyz.github.io/main/public/blogs/img/Binary_file_RE/block-hex-dump.png)
+![Raw hex dump showing BLOCK tags inside the save file](/blogs/img/gtasa-save-reversing/image2.png)
 
 ---
 
@@ -109,7 +109,7 @@ This section ensures that the script is operating on a correct and verified stru
 - Highlights anomalies
 - Compares the `0xFF` count vs. the actual in-game stat
 
-![Raw strings dump showing cutscene/mission tags embedded in the save file](https://raw.githubusercontent.com/aymaan-balbale/gallipolixyz.github.io/main/public/blogs/img/Binary_file_RE/cutscene-strings-dump.png)
+![Raw strings dump showing cutscene/mission tags embedded in the save file](/blogs/img/gtasa-save-reversing/image3.png)
 
 ---
 
@@ -123,7 +123,7 @@ That's it!
 
 Here's the proof it worked — the in-game Stats menu after loading the patched save:
 
-![In-game Stats screen showing Tags sprayed: 100 out of 100](https://raw.githubusercontent.com/aymaan-balbale/gallipolixyz.github.io/main/public/blogs/img/Binary_file_RE/tags-sprayed-stats.png)
+![In-game Stats screen showing Tags sprayed: 100 out of 100](/blogs/img/gtasa-save-reversing/image1.png)
 
 ---
 
@@ -136,6 +136,3 @@ The concepts discussed so far can be applied to the following topics:
 - Protocol Reversing
 
 Thank you :-)
-
-
-The repo : https://github.com/aymaan-balbale/100_Tags-
