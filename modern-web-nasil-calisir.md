@@ -63,7 +63,7 @@ Açıklayacağımız bu süreç; istemcinin bir isteği başlatmasından sunucun
 
 İletişim sürecinin detaylarına girmeden önce, tüm bu trafiğin üzerinde aktığı mimariyi anlamamız gerekir:
 
-![image.png](/blogs/img/modern_web_nasıl_çalışır/image.png)
+![image.png](/blogs/img/modern-web-nasil-calisir/image.png)
 
 #### A. İstemci (Client)
 
@@ -156,7 +156,7 @@ Dış dünyaya henüz hiçbir ağ paketi fırlatılmadan önce istemci, kendi ye
 
 ### DNS Çözücüye (Resolver) Başvuru
 
-![image.png](/blogs/img/modern_web_nasıl_çalışır/image1.png)
+![image.png](/blogs/img/modern-web-nasil-calisir/image1.png)
 
 Yerel önbelleklerden sonuç alınamazsa, istemci talebi İnternet Servis Sağlayıcısının (İSS: Türk Telekom, Superonline vb.) veya cihazda özel tanımlanmış bir DNS sağlayıcısının (Cloudflare `1.1.1.1`, Google `8.8.8.8` vb.) **DNS Çözücü (Recursive Resolver)** sunucusuna iletir:
 
@@ -308,7 +308,7 @@ HTML ayrıştırma sürecinde bir `<script>` etiketi veya haricî bir medya kayn
 
 Ağ üzerinde gerçekleşen bu iletişim döngüsünde, kodların icra edildiği fiziksel ve mantıksal konuma göre sistem iki temel katmana ayrılır:
 
-![image.png](/blogs/img/modern_web_nasıl_çalışır/image2.png)
+![image.png](/blogs/img/modern-web-nasil-calısir/image2.png)
 
 #### A. Frontend (Ön Yüz / İstemci Tarafı)
 
