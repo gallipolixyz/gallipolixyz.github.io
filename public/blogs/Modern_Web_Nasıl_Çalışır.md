@@ -63,7 +63,7 @@ Açıklayacağımız bu süreç; istemcinin bir isteği başlatmasından sunucun
 
 İletişim sürecinin detaylarına girmeden önce, tüm bu trafiğin üzerinde aktığı mimariyi anlamamız gerekir:
 
-![image.png](image.png)
+![image.png](public/blogs/img/modern_web_nasıl_çalışır/image.png)
 
 #### A. İstemci (Client)
 
