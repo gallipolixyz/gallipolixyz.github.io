@@ -12,6 +12,12 @@ interface Blog {
 }
 
 const blogs: Blog[] = [
+   {
+    slug: 'modern-web-nasil-calisir',
+    title: 'Modern Web Nasıl Çalışır?',
+    excerpt: 'İstemci-sunucu mimarisi,DNS ve HTTP istek süreçlerinin detaylı incelenmesi.',
+    author: 'Sebahat Kuşcu',
+  },
   {
     slug: 'akilli-supurge-hack',
     title: 'Akıllı Süpürgeniz Hacklenebilir mi?',
