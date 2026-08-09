@@ -1,4 +1,4 @@
-# Akıllı Süpürgeniz Hacklenebilir mi? Herkesin Anlayacağı Bir Anlatım
+# Akıllı Süpürgeniz Hacklenebilir mi?
 
 ![kapak](/blogs/img/Akilli-Supurge-Hack/kapak-supurge.svg)
 
