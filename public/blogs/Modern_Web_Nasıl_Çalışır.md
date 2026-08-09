@@ -156,7 +156,7 @@ Dış dünyaya henüz hiçbir ağ paketi fırlatılmadan önce istemci, kendi ye
 
 ### DNS Çözücüye (Resolver) Başvuru
 
-![image.png](image%201.png)
+![image.png](image1.png)
 
 Yerel önbelleklerden sonuç alınamazsa, istemci talebi İnternet Servis Sağlayıcısının (İSS: Türk Telekom, Superonline vb.) veya cihazda özel tanımlanmış bir DNS sağlayıcısının (Cloudflare `1.1.1.1`, Google `8.8.8.8` vb.) **DNS Çözücü (Recursive Resolver)** sunucusuna iletir:
 
@@ -308,7 +308,7 @@ HTML ayrıştırma sürecinde bir `<script>` etiketi veya haricî bir medya kayn
 
 Ağ üzerinde gerçekleşen bu iletişim döngüsünde, kodların icra edildiği fiziksel ve mantıksal konuma göre sistem iki temel katmana ayrılır:
 
-![image.png](image%202.png)
+![image.png](image2.png)
 
 #### A. Frontend (Ön Yüz / İstemci Tarafı)
 
