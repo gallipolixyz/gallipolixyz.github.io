@@ -1,0 +1,42 @@
+<svg viewBox="0 0 900 420" xmlns="http://www.w3.org/2000/svg" font-family="Verdana, Arial, sans-serif">
+  <rect x="0" y="0" width="900" height="420" fill="#060a10"/>
+  <text x="450" y="46" fill="#E8FFFB" font-size="20" font-weight="bold" text-anchor="middle">Sokaktan Bile Bağlanılabiliyor</text>
+
+  <!-- House -->
+  <g transform="translate(140,140)">
+    <polygon points="0,90 100,20 200,90" fill="#0d141c" stroke="#2DE2E6" stroke-width="2"/>
+    <rect x="25" y="90" width="150" height="120" fill="#0d141c" stroke="#2DE2E6" stroke-width="2"/>
+    <rect x="85" y="150" width="30" height="60" fill="#FF4D6D"/>
+    <circle cx="90" cy="180" r="3" fill="#FFD166"/>
+    <rect x="45" y="115" width="30" height="30" fill="#2DE2E6" opacity="0.3"/>
+    <rect x="125" y="115" width="30" height="30" fill="#2DE2E6" opacity="0.3"/>
+    <text x="100" y="240" fill="#7BA6A6" font-size="13" text-anchor="middle">Ev</text>
+  </g>
+
+  <!-- Bluetooth waves -->
+  <g transform="translate(240,90)" stroke="#2DE2E6" fill="none" stroke-width="2.5">
+    <path d="M 0 0 A 60 60 0 0 1 60 60" />
+    <path d="M 0 20 A 90 90 0 0 1 90 110" opacity="0.6"/>
+    <path d="M 0 40 A 130 130 0 0 1 130 170" opacity="0.35"/>
+  </g>
+
+  <!-- Distance marker -->
+  <line x1="240" y1="90" x2="700" y2="270" stroke="#4a5a66" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x="470" y="170" fill="#5c6a74" font-size="12" text-anchor="middle" transform="rotate(21 470 170)">yaklaşık 130 metreye kadar</text>
+
+  <!-- Attacker figure far away -->
+  <g transform="translate(680,240)">
+    <circle cx="0" cy="0" r="16" fill="#1a0d10" stroke="#FF4D6D" stroke-width="2"/>
+    <line x1="0" y1="16" x2="0" y2="55" stroke="#FF4D6D" stroke-width="3"/>
+    <line x1="0" y1="26" x2="-20" y2="42" stroke="#FF4D6D" stroke-width="3"/>
+    <line x1="0" y1="26" x2="20" y2="42" stroke="#FF4D6D" stroke-width="3"/>
+    <line x1="0" y1="55" x2="-16" y2="85" stroke="#FF4D6D" stroke-width="3"/>
+    <line x1="0" y1="55" x2="16" y2="85" stroke="#FF4D6D" stroke-width="3"/>
+    <!-- phone in hand -->
+    <rect x="14" y="34" width="10" height="16" rx="2" fill="#FF9DAE"/>
+    <text x="0" y="115" fill="#FF9DAE" font-size="13" text-anchor="middle">Saldırgan</text>
+    <text x="0" y="132" fill="#5c6a74" font-size="11" text-anchor="middle">(sokakta, arabada, komşu bahçede...)</text>
+  </g>
+
+  <text x="450" y="380" fill="#8fe9ec" font-size="13" text-anchor="middle">Kapıdan içeri girmesine gerek yok — Bluetooth sinyali evin dışına da ulaşıyor</text>
+</svg>
