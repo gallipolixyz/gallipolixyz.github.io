@@ -103,7 +103,7 @@ const team: TeamMember[] = [
     linkedin: 'https://www.linkedin.com/in/bagdagul-caglar-'
   },
   {
-    name: 'Sebü',
+    name: 'sebü',
     role: 'Champions Team Member',
     bio: '',
     image: '/img/Sebu.jpeg',
