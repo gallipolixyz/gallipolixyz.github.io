@@ -308,7 +308,7 @@ HTML ayrıştırma sürecinde bir `<script>` etiketi veya haricî bir medya kayn
 
 Ağ üzerinde gerçekleşen bu iletişim döngüsünde, kodların icra edildiği fiziksel ve mantıksal konuma göre sistem iki temel katmana ayrılır:
 
-![image.png](/blogs/img/modern-web-nasil-calısir/image2.png)
+![image.png](/blogs/img/modern-web-nasil-calisir/image2.png)
 
 #### A. Frontend (Ön Yüz / İstemci Tarafı)
 
