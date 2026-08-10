@@ -12,13 +12,31 @@ interface Blog {
 }
 
 const blogs: Blog[] = [
-    {
+  {
     slug: 'wireshark-ile-derin-ag-trafigi-analizi',
     title: 'Wireshark ile Derin Ağ Trafiği Analizi: Paket Paket Güvenlik İncelemesi',
     excerpt: 'Eğitim amaçlı bir PCAP dosyası üzerinden saldırı trafiğini paket düzeyinde inceliyoruz: DNS ve HTTP filtreleriyle şüpheli aktivite tespiti, Follow TCP Stream ile veri sızıntısı analizi, ARP/DNS spoofing ve port taraması göstergeleri.',
     author: 'Bağdagül Çağlar',
   },
-    {
+  {
+    slug: 'gtasa-save-reversing',
+    title: 'Binary/File Format Reverse Engineering: Editing a GTA San Andreas Save File',
+    excerpt: 'A practical walkthrough of reversing a GTA: San Andreas save file — identifying BLOCK structures, locating tag data, and patching it with proper checksum validation.',
+    author: 'aymaan-balbale',
+  },
+  {
+    slug: 'owasp-kubernetes-top-10-2025',
+    title: 'Kubernetes Top 10 Zafiyetleri',
+    excerpt: 'Hem kubernetes güvenliğini öğrenebileceğiniz hem de size el defteri olabilecek bir rehber.',
+    author: 'Hiranur Gemalmaz',
+  },
+  {
+    slug: 'akilli-supurge-hack',
+    title: 'Akıllı Süpürgeniz Hacklenebilir mi?',
+    excerpt: 'Evlerimizdeki akıllı robot süpürgelerin barındırdığı güvenlik açıklarını ve gerçek dünya senaryolarını inceledik.',
+    author: 'Burak Kıraç',
+  },
+  {
     slug: 'code-challenge1-writeup',
     title: 'Code Challenge Write-Up: Broken Object Level Authorization (BOLA)',
     excerpt: 'BOLA zafiyeti açıklanmış ve Code Challenge çözüm write-upı hazırlanmıştır.',
@@ -431,7 +449,6 @@ const blogs: Blog[] = [
     excerpt: 'Mavi takım, siber güvenlik alanında savunma odaklı bir yaklaşımdır. Bu rehberde, mavi takımın temel ilkelerini ve nasıl etkili bir şekilde çalıştığını keşfedeceğiz.',
     author: 'Nur Sena Avcı',
   },
-    
 ];
 
 export const BlogList: React.FC = () => {
