@@ -56,7 +56,7 @@ const blogs: Blog[] = [
   {
     slug: 'akilli-supurge-hack',
     title: 'Akıllı Süpürgeniz Hacklenebilir mi?',
-    excerpt: 'Evlerimizdeki akıllı robot süpügelerin barındırdığı güvenlik açıklarını ve gerçek dünya senaryolarını inceledik.',
+    excerpt: 'Evlerimizdeki akıllı robot süpürgelerin barındırdığı güvenlik açıklarını ve gerçek dünya senaryolarını inceledik.',
     author: 'Burak Kıraç',
     tags: ['iot', 'hardware', 'pentest'],
     image: '/blogs/img/Akilli-Supurge-Hack/kapak-supurge.svg',
@@ -224,7 +224,7 @@ const blogs: Blog[] = [
   {
     slug: 'lazarus',
     title: 'Lazarus Group (APT 38) Rapor Analizi',
-    excerpt: 'Lazarus Group, APT 38 olarak da biljonal Kuzey Kore hükümeti ile bağlantılı olduğu kabul edilen, devlet destekli bir APT grubudur.',
+    excerpt: 'Lazarus Group, APT 38 olarak da bilinen Kuzey Kore hükümeti ile bağlantılı olduğu kabul edilen, devlet destekli bir APT grubudur.',
     author: 'Güven Emre Keskin',
     tags: ['threat-intel', 'apt', 'malware'],
     image: '/blogs/img/lazarus/lazarus_1.png',
@@ -528,7 +528,7 @@ const blogs: Blog[] = [
   {
     slug: 'web-to-ad-red-teaming',
     title: 'Full Red Teaming Senaryo: Web\'den Active Directory\'ye',
-    excerpt: 'Bu yazıda, Microsoft Azure üzerinde kurduğum ve bir web sunucusundan başlayarak Active Directory içerisinde Domain Admin haklarına eriştiğim, kendi oluşturduğum laboratuvar ortamının çözüm yollarünü ve öğrendiklerimi kendi üslubumla anlatıyor olacağım',
+    excerpt: 'Bu yazıda, Microsoft Azure üzerinde kurduğum ve bir web sunucusundan başlayarak Active Directory içerisinde Domain Admin haklarına eriştiğim, kendi oluşturduğum laboratuvar ortamının çözüm yollarını ve öğrendiklerimi kendi üslubumla anlatıyor olacağım',
     author: 'Nadir Şensoy',
     tags: ['red-teaming', 'active-directory', 'web'],
     image: '/blogs/img/web-to-ad-red-teaming/redteam-1.png',
