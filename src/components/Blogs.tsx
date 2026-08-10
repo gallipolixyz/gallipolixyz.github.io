@@ -13,6 +13,12 @@ interface Blog {
 
 const blogs: Blog[] = [
   {
+    slug: 'gtasa-save-reversing',
+    title: 'Binary/File Format Reverse Engineering: Editing a GTA San Andreas Save File',
+    excerpt: 'A practical walkthrough of reversing a GTA: San Andreas save file — identifying BLOCK structures, locating tag data, and patching it with proper checksum validation.',
+    author: 'aymaan-balbale',
+  },
+  {
     slug: 'owasp-kubernetes-top-10-2025',
     title: 'Kubernetes Top 10 Zafiyetleri',
     excerpt: 'Hem kubernetes güvenliğini öğrenebileceğiniz hem de size el defteri olabilecek bir rehber.',
