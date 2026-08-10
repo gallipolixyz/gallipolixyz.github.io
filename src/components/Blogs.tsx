@@ -7,7 +7,7 @@ import { ScrollAnimation } from '../components/ScrollAnimation';
 interface Blog {
   slug: string;
   title: string;
-  excerpt: string;
+  excerpt: string;    
   author: string;
 }
 
@@ -19,11 +19,40 @@ const blogs: Blog[] = [
     author: 'aymaan-balbale',
   },
   {
+    slug: 'owasp-kubernetes-top-10-2025',
+    title: 'Kubernetes Top 10 Zafiyetleri',
+    excerpt: 'Hem kubernetes güvenliğini öğrenebileceğiniz hem de size el defteri olabilecek bir rehber.',
+    author: 'Hiranur Gemalmaz',
+  },
+  {
+    slug: 'akilli-supurge-hack',
+    title: 'Akıllı Süpürgeniz Hacklenebilir mi?',
+    excerpt: 'Evlerimizdeki akıllı robot süpürgelerin barındırdığı güvenlik açıklarını ve gerçek dünya senaryolarını inceledik.',
+    author: 'Burak Kıraç',
+  },
+  {
+    slug: 'code-challenge1-writeup',
+    title: 'Code Challenge Write-Up: Broken Object Level Authorization (BOLA)',
+    excerpt: 'BOLA zafiyeti açıklanmış ve Code Challenge çözüm write-upı hazırlanmıştır.',
+    author: 'Simge Yiğit',
+  },
+  {
+    slug: 'ag-trafik-analizi',
+    title: 'Ağ Trafik Analizi',
+    excerpt: 'Ağ trafiği analizi, SOC süreçleri ve BPF filtreleme teknikleri üzerine detaylı inceleme.',
+    author: 'Sebahat Kuşcu',
+  },
+  {
     slug: 'xss-payload-dissection-formatted',
     title: 'Understanding SVG XSS Payloads: A Tale of Two CVEs',
     excerpt: 'A deep dive into how SVG XSS payloads bypass security filters, analyzing CVE-2025-0133 on PAN-OS and CVE-2025-4406 on wpForo Forum.',
     author: 'aymaan-balbale',
   },
+  {
+    slug: 'types-of-ai-jailbreaking',
+    title: 'Yapay Zekâ Jailbreaking Türleri',
+    excerpt: 'Yapay zekâ modellerindeki güvenlik sınırlarının nasıl zorlandığını; 16 farklı jailbreak yönteminin çalışma mantığı, araştırma örnekleri ve savunma yaklaşımları üzerinden inceliyoruz.',
+    author: 'Osman Erdem Dutar',  },
   {
     slug: 'aws-iam-privilege-escalation-and-cross-account-vulnerability-chains',
     title: 'AWS Ortamlarında IAM Yetki Yükseltme ve Çapraz Hesap Zafiyet Zincirleri',
@@ -414,7 +443,6 @@ const blogs: Blog[] = [
     excerpt: 'Mavi takım, siber güvenlik alanında savunma odaklı bir yaklaşımdır. Bu rehberde, mavi takımın temel ilkelerini ve nasıl etkili bir şekilde çalıştığını keşfedeceğiz.',
     author: 'Nur Sena Avcı',
   },
-    
 ];
 
 export const BlogList: React.FC = () => {

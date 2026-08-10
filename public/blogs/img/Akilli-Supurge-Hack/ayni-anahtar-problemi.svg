@@ -1,0 +1,45 @@
+<svg viewBox="0 0 900 420" xmlns="http://www.w3.org/2000/svg" font-family="Verdana, Arial, sans-serif">
+  <rect x="0" y="0" width="900" height="420" fill="#060a10"/>
+  <text x="450" y="46" fill="#E8FFFB" font-size="20" font-weight="bold" text-anchor="middle">Aynı Anahtar, Her Kapıyı Açıyor</text>
+
+  <!-- Key icon top -->
+  <g transform="translate(430,80)">
+    <circle cx="0" cy="0" r="16" fill="none" stroke="#FFD166" stroke-width="6"/>
+    <rect x="12" y="-4" width="46" height="8" fill="#FFD166"/>
+    <rect x="46" y="4" width="8" height="14" fill="#FFD166"/>
+    <rect x="34" y="4" width="8" height="10" fill="#FFD166"/>
+  </g>
+  <text x="450" y="150" fill="#FFD166" font-size="13" text-anchor="middle">Üreticinin kullandığı TEK ortak anahtar</text>
+
+  <!-- three houses -->
+  <g transform="translate(120,220)">
+    <polygon points="0,60 60,10 120,60" fill="#0d141c" stroke="#2DE2E6" stroke-width="2"/>
+    <rect x="15" y="60" width="90" height="80" fill="#0d141c" stroke="#2DE2E6" stroke-width="2"/>
+    <rect x="50" y="95" width="20" height="45" fill="#FF4D6D"/>
+    <circle cx="53" cy="118" r="2.5" fill="#FFD166"/>
+    <text x="60" y="165" fill="#7BA6A6" font-size="12" text-anchor="middle">Süpürge #1</text>
+  </g>
+
+  <g transform="translate(390,220)">
+    <polygon points="0,60 60,10 120,60" fill="#0d141c" stroke="#2DE2E6" stroke-width="2"/>
+    <rect x="15" y="60" width="90" height="80" fill="#0d141c" stroke="#2DE2E6" stroke-width="2"/>
+    <rect x="50" y="95" width="20" height="45" fill="#FF4D6D"/>
+    <circle cx="53" cy="118" r="2.5" fill="#FFD166"/>
+    <text x="60" y="165" fill="#7BA6A6" font-size="12" text-anchor="middle">Süpürge #2</text>
+  </g>
+
+  <g transform="translate(660,220)">
+    <polygon points="0,60 60,10 120,60" fill="#0d141c" stroke="#2DE2E6" stroke-width="2"/>
+    <rect x="15" y="60" width="90" height="80" fill="#0d141c" stroke="#2DE2E6" stroke-width="2"/>
+    <rect x="50" y="95" width="20" height="45" fill="#FF4D6D"/>
+    <circle cx="53" cy="118" r="2.5" fill="#FFD166"/>
+    <text x="60" y="165" fill="#7BA6A6" font-size="12" text-anchor="middle">Süpürge #3</text>
+  </g>
+
+  <!-- lines from key to each house -->
+  <line x1="430" y1="95" x2="180" y2="215" stroke="#FFD166" stroke-width="1.4" stroke-dasharray="4,3"/>
+  <line x1="450" y1="100" x2="450" y2="215" stroke="#FFD166" stroke-width="1.4" stroke-dasharray="4,3"/>
+  <line x1="470" y1="95" x2="720" y2="215" stroke="#FFD166" stroke-width="1.4" stroke-dasharray="4,3"/>
+
+  <text x="450" y="400" fill="#FF9DAE" font-size="13" text-anchor="middle">Bu anahtarı bir şekilde ele geçiren biri, aynı modeldeki HER cihazı açabilir</text>
+</svg>
