@@ -13,12 +13,18 @@ interface Blog {
 
 const blogs: Blog[] = [
   {
+    slug: 'owasp-kubernetes-top-10-2025',
+    title: 'Kubernetes Top 10 Zafiyetleri',
+    excerpt: 'Hem kubernetes güvenliğini öğrenebileceğiniz hem de size el defteri olabilecek bir rehber.',
+    author: 'Hiranur Gemalmaz',
+  },
+  {
     slug: 'akilli-supurge-hack',
     title: 'Akıllı Süpürgeniz Hacklenebilir mi?',
     excerpt: 'Evlerimizdeki akıllı robot süpürgelerin barındırdığı güvenlik açıklarını ve gerçek dünya senaryolarını inceledik.',
     author: 'Burak Kıraç',
   },
-    {
+  {
     slug: 'code-challenge1-writeup',
     title: 'Code Challenge Write-Up: Broken Object Level Authorization (BOLA)',
     excerpt: 'BOLA zafiyeti açıklanmış ve Code Challenge çözüm write-upı hazırlanmıştır.',
@@ -431,7 +437,6 @@ const blogs: Blog[] = [
     excerpt: 'Mavi takım, siber güvenlik alanında savunma odaklı bir yaklaşımdır. Bu rehberde, mavi takımın temel ilkelerini ve nasıl etkili bir şekilde çalıştığını keşfedeceğiz.',
     author: 'Nur Sena Avcı',
   },
-    
 ];
 
 export const BlogList: React.FC = () => {
