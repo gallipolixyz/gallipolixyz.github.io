@@ -108,11 +108,7 @@ Bu yaklaşım Kubernetes güvenliğinin temelini oluşturuyor.
 > 🔴 **Insecure → 🟢 Secure**  
 > Bu bölümde aynı uygulamanın yalnızca Kubernetes güvenlik ayarlarını değiştirerek blast radius'unu nasıl küçültebildiğine bakıyoruz.
 
-<<<<<<< Updated upstream
 ![K01 Insecure vs Secure Workload](/blogs/img/kubernetestop10/kubernetes3.png)
-=======
-![K01 Insecure vs Secure Workload](/blogs/img/kubernetestoop10/kubernetes3.png)
->>>>>>> Stashed changes
 
 K01'i anlamanın en kolay yolu aynı uygulamayı iki farklı Pod konfigürasyonuyla çalıştırmak.
 
@@ -304,11 +300,7 @@ OWASP da resource limit'lerinin eksikliğini K01 kapsamında önemli bir risk ol
 
 # 4. Aynı uygulama, farklı blast radius
 
-<<<<<<< Updated upstream
 ![Blast Radius Comparison](/blogs/img/kubernetestop10/kubernetes4.png)
-=======
-![Blast Radius Comparison](/blogs/img/kubernetestoop10/kubernetes4.png)
->>>>>>> Stashed changes
 
 K01'in asıl anlatmak istediği nokta burada ortaya çıkıyor.
 
@@ -347,11 +339,7 @@ Bu, Kubernetes güvenliğinde **defense in depth** yaklaşımının doğrudan ka
 
 # 5. K02 – Overly Permissive Authorization Configurations
 
-<<<<<<< Updated upstream
 ![Kubernetes RBAC Flow](/blogs/img/kubernetestop10/kubernetes5.png)
-=======
-![Kubernetes RBAC Flow](/blogs/img/kubernetestoop10/kubernetes5.png)
->>>>>>> Stashed changes
 
 K01'de container'ın Linux seviyesindeki yetkilerini ele aldık.
 
@@ -587,11 +575,7 @@ gibi kurallar merkezi hale getirilebilir.
 
 # 8. K05 – Missing Network Segmentation Controls
 
-<<<<<<< Updated upstream
 ![Kubernetes Network Segmentation](/blogs/img/kubernetestop10/kubernetes6.png)
-=======
-![Kubernetes Network Segmentation](/blogs/img/kubernetestoop10/kubernetes6.png)
->>>>>>> Stashed changes
 
 Kubernetes'te varsayılan network davranışı oldukça açıktır.
 
@@ -617,11 +601,7 @@ Network segmentation yoksa uygulama içerisindeki SSRF, cluster içerisindeki ba
 
 # 9. Ingress ve Egress neden önemli?
 
-<<<<<<< Updated upstream
 ![Ingress vs Egress](/blogs/img/kubernetestop10/kubernetes7.png)
-=======
-![Ingress vs Egress](/blogs/img/kubernetestoop10/kubernetes7.png)
->>>>>>> Stashed changes
 
 NetworkPolicy'de iki yönü ayrı düşünmek gerekiyor.
 
@@ -843,11 +823,7 @@ gibi kontroller CI/CD sürecine eklenebilir.
 
 # 12. K08 – Cluster To Cloud Lateral Movement
 
-<<<<<<< Updated upstream
 ![Cluster to Cloud Lateral Movement](/blogs/img/kubernetestop10/kubernetes8.png)
-=======
-![Cluster to Cloud Lateral Movement](/blogs/img/kubernetestoop10/kubernetes8.png)
->>>>>>> Stashed changes
 
 Kubernetes cloud üzerinde çalışıyorsa saldırı yüzeyi cluster ile bitmiyor.
 
@@ -966,11 +942,7 @@ kullanmak önemli bir hardening adımıdır.
 
 # 14. K10 – Inadequate Logging And Monitoring
 
-<<<<<<< Updated upstream
 ![Kubernetes Security Monitoring](/blogs/img/kubernetestop10/kubernetes9.png)
-=======
-![Kubernetes Security Monitoring](/blogs/img/kubernetestoop10/kubernetes9.png)
->>>>>>> Stashed changes
 
 Son madde biraz farklı.
 
