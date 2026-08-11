@@ -13,6 +13,14 @@ interface Blog {
 }
 
 const blogs: Blog[] = [
+     {
+    slug: 'native',
+    title: 'Android Native Katmanı: ELF ve Dinamik Linker',
+    excerpt: 'Android uygulamalarının temelini oluşturan native katmanı, ELF dosya formatı ve dinamik linkerın işleyişi üzerine detaylı bir inceleme.',
+    author: 'Simge Yiğit',
+    tags: ['mobile', 'android', 'frida'],
+    image: '/blogs/img/everNote/blog.jpg',
+  },
    {
     slug: 'modern-web-nasil-calisir',
     title: 'Modern Web Nasıl Çalışır?',
