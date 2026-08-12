@@ -13,7 +13,15 @@ interface Blog {
 }
 
 const blogs: Blog[] = [
-     {
+   {
+    slug: 'git-cheat-sheet',
+    title: 'Git Cheat Sheet: Günlük Geliştirmede İhtiyacınız Olan Git Komutları',
+    excerpt: 'Bu yazıda Git komutlarını ezberlemek yerine, hangi durumda hangi Git komutunu kullanmanız gerektiğini anlamaya çalışacağız.',
+    author: 'Güven Emre Keskin',
+    tags: ['git', 'github', 'software-development'],
+    image: '/blogs/img/git-cheat-sheet/git.png',
+  },
+   {
     slug: 'native',
     title: 'Android Native Katmanı: ELF ve Dinamik Linker',
     excerpt: 'Android uygulamalarının temelini oluşturan native katmanı, ELF dosya formatı ve dinamik linkerın işleyişi üzerine detaylı bir inceleme.',
