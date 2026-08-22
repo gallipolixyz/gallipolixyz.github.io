@@ -13,6 +13,14 @@ interface Blog {
 }
 
 const blogs: Blog[] = [
+{
+    slug: 'rag-sistemlerinde-veri-guvenligi',
+    title: 'RAG Sistemlerinde Veri Güvenliği: LLM’e Her Veriyi Vermek Neden Tehlikeli?',
+    excerpt: 'RAG mimarisinde veri güvenliğinin önemi; Data Poisoning, Prompt Injection, Sensitive Data Leakage ve Access Control zafiyetleri ve çözüm yolları.',
+    author: 'Meryem Şahin',
+    tags: ['ai-security', 'rag', 'llm', 'cybersecurity', 'vector-database'],
+    image: '/blogs/img/rag/img1.png',
+  },
    {
     slug: 'git-cheat-sheet',
     title: 'Git Cheat Sheet: Günlük Geliştirmede İhtiyacınız Olan Git Komutları',
