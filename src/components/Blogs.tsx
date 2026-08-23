@@ -13,6 +13,14 @@ interface Blog {
 }
 
 const blogs: Blog[] = [
+    {
+    slug: 'usb-bellek-windows-dijital-izler',
+    title: 'USB Bellek Çıkarıldıktan Sonra Windows’ta Kalan İzler',
+    excerpt: 'USB bellek çıkarıldıktan sonra kimliği USBSTOR’da, ilk tanınma setupapi.dev.log içinde, son takılma ve çıkarılma damgaları Properties altında durur. Disk imajı gerekmez; Windows’un kendi araçları yeterlidir.',
+    author: 'Bağdagül Çağlar',
+    tags: ['soc', 'windows', 'forensics', 'usb'],
+    image: '/blogs/img/usb-bellek-windows-dijital-izler/00-kapak.jpg',
+  },
 {
     slug: 'rag-sistemlerinde-veri-guvenligi',
     title: 'RAG Sistemlerinde Veri Güvenliği: LLM’e Her Veriyi Vermek Neden Tehlikeli?',
