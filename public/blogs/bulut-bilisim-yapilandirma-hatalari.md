@@ -4,16 +4,13 @@ Bulut teknolojilerine geçiş yapan kurumsal yapıların düştüğü en büyük
 * **Bulutun İçindeki Güvenlik (Security IN the Cloud):** Veri, IAM, ağ yapılandırması ve şifreleme gibi alanlardaki sorumluluk; kullanılan AWS servisine ve müşterinin yaptığı yapılandırmalara göre değişir.
 
 Bulut ortamlarındaki güvenlik olaylarının önemli bir bölümü; yanlış yapılandırmalar, aşırı yetkiler ve kimlik bilgilerinin kötü yönetimi gibi müşteri tarafındaki hatalarla ilişkilidir. Bu nedenle bulut güvenliği yalnızca teknik bir konu değil, aynı zamanda finansal ve operasyonel sonuçları olan bir risk yönetimi konusudur.
-
-> **Stratejik Görünürlük Notu:** Altyapı görünürlüğü, güvenliğin alfabesidir. Envanterini çıkaramadığınız, trafiğini izleyemediğiniz ve yapılandırmasını kodla denetleyemediğiniz bir kaynağı koruyamazsınız. Görmediğiniz ve izlemediğiniz bir kaynağı güvenli şekilde yönetmek zordur.
-
 ![Ortak Sorumluluk Modeli](img/bulut-bilisim-yapilandirma-hatalari/aws1.jpeg)
 
 Güvenliğin teorik çerçevesinden, en sık yapılan ve "basit" görünen pratik hatalara geçiş yapıyoruz.
 
 ---
 
-## 2. Başlangıç Seviyesi İçin "Bulut Kazaları" ve Analojiler
+## 2.Bulut Kazaları
 
 Bulut dünyasında en büyük felaketler genellikle karmaşık sıfırıncı gün saldırılarından değil, unutulan küçük bir ayardan kaynaklanır. Teknik olmayan profesyonellerin bile anlaması gereken dört temel risk alanını analiz edelim:
 
@@ -30,7 +27,7 @@ Bulut dünyasında en büyük felaketler genellikle karmaşık sıfırıncı gü
 ### Aşırı Yetkili IAM: Her Kapıyı Açan Maymuncuk
 * **Hata:** Kullanıcılara veya servislere "AdministratorAccess" gibi gereksiz genişlikte yetkiler verilmesi.
 * **Analoji:** Bir stajyere sadece fotokopi odasının anahtarını vermeniz gerekirken, binadaki tüm kapıları, kasaları ve server odasını açan tek bir master anahtar vermeye benzer.
-* **PRO TIP:** "Least Privilege" (En Az Yetki) ilkesini uygulayın. Sadece işin yapılması için gereken minimum yetkiyi tanımlayın.
+* **PRO TIP:** "Least Privilege" ilkesini uygulayın. Sadece işin yapılması için gereken minimum yetkiyi tanımlayın.
 
 ### İnternete Açık Güvenlik Grupları (Security Groups)
 Yönetim portlarının tüm internete (`0.0.0.0/0`) açık olması, saldırganlar için açık bir davetiyedir.
@@ -47,7 +44,7 @@ Temel hataları giderdikten sonra, veri katmanının kalbi olan RDS yapılandır
 
 ---
 
-## 3. İleri Düzey El Defteri: Kritik AWS RDS Yapılandırma Kontrolleri
+## 3. Kritik AWS RDS Yapılandırma Kontrolleri
 
 İlişkisel veritabanı servisi (RDS), verilerinizin kalesidir. Ancak bu kaleyi yanlış inşa etmek, siber felaketlerin ana kaynağıdır. İşte en kritik 15 RDS hatası:
 
