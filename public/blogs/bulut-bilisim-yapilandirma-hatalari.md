@@ -1,4 +1,4 @@
-# Bulut Bilişim Güvenliği: Yapılandırma Hataları ve Güvenli AWS Mimarisi
+# Bulut Bilişim Güvenliği: Yapılandırma Hataları 
 Bulut teknolojilerine geçiş yapan kurumsal yapıların düştüğü en büyük stratejik hata, güvenliği bir "BT problemi" olarak görüp bulut sağlayıcısının (AWS, Azure, GCP) her şeyi otomatik olarak koruyacağını varsaymaktır. Bu yaklaşım, yanlış yapılandırmaların gözden kaçmasına ve doğrudan güvenlik risklerine yol açabilir. Oysa modern bulut güvenliği, sorumluluğun keskin hatlarla ayrıldığı bir doktrin üzerine kuruludur. AWS tarafından tanımlanan Ortak Sorumluluk Modeli (Shared Responsibility Model), bu güvenliğin iki temel direği olduğunu söyler:
 * **Bulutun Güvenliği (Security OF the Cloud):** Fiziksel altyapı, veri merkezleri ve hipervizör katmanının güvenliğinden sağlayıcı sorumludur.
 * **Bulutun İçindeki Güvenlik (Security IN the Cloud):** Veri, IAM, ağ yapılandırması ve şifreleme gibi alanlardaki sorumluluk; kullanılan AWS servisine ve müşterinin yaptığı yapılandırmalara göre değişir.
