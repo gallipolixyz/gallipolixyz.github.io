@@ -6,7 +6,7 @@ Bulut ortamlarındaki güvenlik olaylarının önemli bir bölümü; yanlış ya
 
 > **Stratejik Görünürlük Notu:** Altyapı görünürlüğü, güvenliğin alfabesidir. Envanterini çıkaramadığınız, trafiğini izleyemediğiniz ve yapılandırmasını kodla denetleyemediğiniz bir kaynağı koruyamazsınız. Görmediğiniz ve izlemediğiniz bir kaynağı güvenli şekilde yönetmek zordur.
 
-![Ortak Sorumluluk Modeli](img/bulut-bilisim-yapilandirma-hatalari/awa1.jpeg)
+![Ortak Sorumluluk Modeli](img/bulut-bilisim-yapilandirma-hatalari/aws1.jpeg)
 
 Güvenliğin teorik çerçevesinden, en sık yapılan ve "basit" görünen pratik hatalara geçiş yapıyoruz.
 
