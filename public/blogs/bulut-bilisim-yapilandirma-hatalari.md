@@ -1,167 +1,153 @@
-# Bulut Bilişim Güvenliği: Yapılandırma Hataları 
-Bulut teknolojilerine geçiş yapan kurumsal yapıların düştüğü en büyük stratejik hata, güvenliği bir "BT problemi" olarak görüp bulut sağlayıcısının (AWS, Azure, GCP) her şeyi otomatik olarak koruyacağını varsaymaktır. Bu yaklaşım, yanlış yapılandırmaların gözden kaçmasına ve doğrudan güvenlik risklerine yol açabilir. Oysa modern bulut güvenliği, sorumluluğun keskin hatlarla ayrıldığı bir doktrin üzerine kuruludur. AWS tarafından tanımlanan Ortak Sorumluluk Modeli (Shared Responsibility Model), bu güvenliğin iki temel direği olduğunu söyler:
-* **Bulutun Güvenliği (Security OF the Cloud):** Fiziksel altyapı, veri merkezleri ve hipervizör katmanının güvenliğinden sağlayıcı sorumludur.
-* **Bulutun İçindeki Güvenlik (Security IN the Cloud):** Veri, IAM, ağ yapılandırması ve şifreleme gibi alanlardaki sorumluluk; kullanılan AWS servisine ve müşterinin yaptığı yapılandırmalara göre değişir.
+# Bulut Bilişim Güvenliği: Yapılandırma Hataları ve Kılavuz Notları
 
-Bulut ortamlarındaki güvenlik olaylarının önemli bir bölümü; yanlış yapılandırmalar, aşırı yetkiler ve kimlik bilgilerinin kötü yönetimi gibi müşteri tarafındaki hatalarla ilişkilidir. Bu nedenle bulut güvenliği yalnızca teknik bir konu değil, aynı zamanda finansal ve operasyonel sonuçları olan bir risk yönetimi konusudur.
-![Ortak Sorumluluk Modeli](img/bulut-bilisim-yapilandirma-hatalari/aws1.jpeg)
+Bulut tarafına geçen kurumların çoğu aynı yanılgıya düşüyor: güvenliği bir "BT görevi" sayıp AWS, Azure ya da GCP'nin her şeyi kendiliğinden koruyacağını varsayıyorlar. Gerçek böyle işlemiyor. Bulutta olayların büyük kısmı sağlayıcının bir zafiyetinden değil, müşterinin bıraktığı küçük bir ayardan çıkıyor — açık kalmış bir depolama alanı, MFA'sız bir root hesap, tek bir kutucuğun işaretlenmemiş olması.
 
-Güvenliğin teorik çerçevesinden, en sık yapılan ve "basit" görünen pratik hatalara geçiş yapıyoruz.
+Bu yazı iki amaca birden hizmet etmeyi hedefliyor: konuya yeni başlayan biri baştan sona okuyup neden-sonuç ilişkisini kavrasın, tecrübeli biri de ihtiyaç anında hızlıca bakıp komutu veya kontrol maddesini bulsun. Aradaki köprü de basit: her teknik başlığın altında "bu neden önemli" sorusunun günlük hayattan bir karşılığı var.
 
 ---
 
-## 2.Bulut Kazaları
+## 1. Ortak Sorumluluk Modeli: Sınır Nerede Başlıyor, Nerede Bitiyor?
 
-Bulut dünyasında en büyük felaketler genellikle karmaşık sıfırıncı gün saldırılarından değil, unutulan küçük bir ayardan kaynaklanır. Teknik olmayan profesyonellerin bile anlaması gereken dört temel risk alanını analiz edelim:
+AWS'nin tanımladığı **Ortak Sorumluluk Modeli (Shared Responsibility Model)**, bulut güvenliğinin çatısını oluşturur ve iki ayrı sorumluluk hattına dayanır:
 
-### S3 Kovaları: Yanlışlıkla Açık Bırakılan Depo
-* **Hata:** S3 (Simple Storage Service) gibi depolama alanlarının "Public" bırakılması.
-* **Analoji:** S3 bucket'ını herkese açık bırakmak, şirketin hassas belgelerini içeren bir dolabı sokağa koyup herkesin erişimine izin vermeye benzer.
-* **PRO TIP:** S3 "Block Public Access" ayarını hesap düzeyinde aktif edin. Bu, yanlışlıkla bile olsa bir kovanın internete açılmasını engelleyen bir emniyet kilididir.
+- **Bulutun Güvenliği (Security *of* the Cloud):** Fiziksel veri merkezleri, donanım ve sanallaştırma (hipervizör) katmanı — bunların güvenliği sağlayıcıya aittir.
+- **Bulutun İçindeki Güvenlik (Security *in* the Cloud):** Veri, kimlik ve erişim yönetimi (IAM), ağ yapılandırması, şifreleme — bunlar müşteriye aittir ve kullanılan servise göre kapsamı değişir.
 
-### MFA and Root Hesap: Anahtarın Konumu
-* **Hata:** Root hesabın (en yetkili hesap) MFA ile korunmaması.
-* **Analoji:** MFA kullanmamak, evinizin kapısını kilitleyip anahtarı paspasın altına koymaktır.
-* **PRO TIP:** Root hesabını günlük işler için kullanmayın. MFA'yı etkinleştirin ve mümkünse donanım tabanlı MFA kullanın. Root hesabının erişim bilgilerini yalnızca gerekli durumlarda kullanın.
+![Ortak Sorumluluk Modeli](img/bulut-bilisim-yapilandirma-hatalari/aws1.svg)
+
+Bu ayrım kağıt üzerinde net görünse de pratikte kafa karıştırıyor. Sektör raporları, bugün yaşanan veri ihlallerinin önemli bir kısmının kökeninde yanlış yapılandırma, aşırı geniş yetkilendirme ve kimlik bilgilerinin kötü yönetimi olduğunu gösteriyor. Yani bulut güvenliği yalnızca teknik bir mesele değil; doğrudan finansal ve operasyonel sonuçları olan bir risk yönetimi konusu.
+
+---
+
+## 2. Bulut Kazaları: Küçük Ayarların Büyük Sonuçları
+
+Bulutta en büyük hasarlar genelde karmaşık sıfırıncı gün açıklarından değil, unutulmuş küçük bir ayardan doğar. Aşağıdaki dört alan, teknik olmayan bir yöneticinin bile anlayabileceği ama gözden kaçtığında en çok can yakan noktalar.
+
+### S3 Kovaları: Kapı Kilitli mi, Dolap Sokakta mı?
+
+**Hata:** S3 (Simple Storage Service) gibi depolama alanlarının "Public" bırakılması.
+
+Bunu günlük hayattan bir örnekle düşünmek en kolayı: bir S3 kovasını herkese açık bırakmak, şirketin hassas belgelerinin durduğu dolabı sokağa çıkarıp kilidini de açık bırakmakla aynı şey. İçinden geçen herkes durup bakabilir.
+
+![S3 Kova Analojisi](img/bulut-bilisim-yapilandirma-hatalari/aws2.svg)
+
+> **Not:** Hesap düzeyinde "Block Public Access" ayarını aktif edin. Bu ayar, bir mühendis yanlışlıkla da olsa bir kovayı herkese açık işaretlese bile bunu geçersiz kılan bir emniyet kilididir.
+
+### Root Hesap ve MFA: Anahtarın Konumu
+
+**Hata:** En yetkili hesap olan root'un çok faktörlü kimlik doğrulama (MFA) olmadan bırakılması.
+
+MFA'sız bir root hesap, kapıyı kilitleyip anahtarı paspasın altına bırakmaya benzer — kilit var ama işlevsiz.
+
+> **Not:** Root hesabını günlük işlerde kullanmayın, yalnızca hesap düzeyinde zorunlu işlemler için saklayın. Mümkünse donanım tabanlı MFA (örneğin bir güvenlik anahtarı) tercih edin.
 
 ### Aşırı Yetkili IAM: Her Kapıyı Açan Maymuncuk
-* **Hata:** Kullanıcılara veya servislere "AdministratorAccess" gibi gereksiz genişlikte yetkiler verilmesi.
-* **Analoji:** Bir stajyere sadece fotokopi odasının anahtarını vermeniz gerekirken, binadaki tüm kapıları, kasaları ve server odasını açan tek bir master anahtar vermeye benzer.
-* **PRO TIP:** "Least Privilege" ilkesini uygulayın. Sadece işin yapılması için gereken minimum yetkiyi tanımlayın.
 
-### İnternete Açık Güvenlik Grupları (Security Groups)
-Yönetim portlarının tüm internete (`0.0.0.0/0`) açık olması, saldırganlar için açık bir davetiyedir.
+**Hata:** Kullanıcılara veya servislere gereğinden geniş yetkiler — özellikle `AdministratorAccess` gibi — tanımlamak.
 
-| Port | Servis | Risk | Modern Güvenli Yaklaşım |
+Bir stajyere yalnızca fotokopi odasının anahtarı gerekirken elinize binanın tamamını, kasayı ve sunucu odasını açan tek bir maymuncuk tutuşturmak gibi düşünün.
+
+> **Not:** "Least Privilege" (en az yetki) ilkesini uygulayın: kullanıcıya ya da servise, işini yapması için gereken en dar kapsamlı yetkiyi tanımlayın; genişletme ihtiyacı doğduğunda ekleyin, baştan geniş vermeyin.
+
+### İnternete Açık Güvenlik Grupları
+
+Yönetim portlarının tüm internete (`0.0.0.0/0`) açık bırakılması, saldırganlar için doğrudan bir davetiyedir.
+
+| Port | Servis | Risk | Modern Yaklaşım |
 | :--- | :--- | :--- | :--- |
-| **22** | SSH | Brute-force saldırıları. | AWS Systems Manager Session Manager kullanın. |
-| **3389** | RDP | Uzaktan tam erişim riski. | Sadece VPC Endpoints veya VPN IP'sine izin verin. |
-| **3306/5432** | DB | Yetkisiz veritabanı erişimi, brute-force ve servis istismarı. | İnternete kapatın, yalnızca gerekli uygulama katmanına izin verin. |
-
-![S3 Public Hata Analojisi](img/bulut-bilisim-yapilandirma-hatalari/aws2.png)
-
-Temel hataları giderdikten sonra, veri katmanının kalbi olan RDS yapılandırmalarındaki derin teknik detaylara iniyoruz.
+| 22 | SSH | Brute-force saldırıları | AWS Systems Manager Session Manager kullanın |
+| 3389 | RDP | Uzaktan tam erişim riski | Yalnızca VPC Endpoints veya VPN IP'sine izin verin |
+| 3306 / 5432 | MySQL / PostgreSQL | Yetkisiz veritabanı erişimi, brute-force ve servis istismarı | İnternete tamamen kapatın, yalnızca uygulama katmanına izin verin |
 
 ---
 
-## 3. Kritik AWS RDS Yapılandırma Kontrolleri
+## 3. RDS Kontrol Listesi: Veritabanı Katmanının Referans Defteri
 
-İlişkisel veritabanı servisi (RDS), verilerinizin kalesidir. Ancak bu kaleyi yanlış inşa etmek, siber felaketlerin ana kaynağıdır. İşte en kritik 15 RDS hatası:
+RDS (ilişkisel veritabanı servisi), verilerin kalesidir; ama bu kaleyi yanlış inşa etmek olayların en büyük kaynağıdır. Aşağıdaki liste, bir denetim sırasında elinizin altında bulunması gereken 15 maddelik pratik bir referans:
 
-1. **Kamusal Erişilebilir RDS Örnekleri**
-   * *Risk:* `PubliclyAccessible` bayrağı aktifse veritabanınız internetten doğrudan brute-force saldırısına uğrayabilir.
-   * *Tespit:* `aws rds describe-db-instances --query "DBInstances[?PubliclyAccessible==\`true\`].{ID:DBInstanceIdentifier}"`
-   * *Remediation:* Bayrağı false yapın ve RDS'i sadece private subnet'lerde barındırın.
-
-2. **Kamusal Veritabanı Snapshot'ları**
-   * *Risk:* Snapshot 'public' yapılırsa dünyadaki her AWS hesabı verinizi kopyalayabilir.
-   * *Tespit:* `aws rds describe-db-snapshots --snapshot-type manual --include-public`
-   * *Remediation:* Snapshot özniteliklerinden 'all' değerini kaldırın.
-
-3. **Encryption at Rest Kapalı**
-   * *Risk:* Disk üzerindeki verinin şifrelenmemesi, fiziksel veya mantıksal sızıntılarda verinin okunmasına neden olur.
-   * *Tespit:* `aws rds describe-db-instances --query "DBInstances[?StorageEncrypted==\`false\`].{ID:DBInstanceIdentifier}"`
-   * *Remediation:* Yeni örneklerde mutlaka şifrelemeyi aktif edin (mevcutlarda şifreli snapshot üzerinden taşıma gerekir).
-
-4. **AWS-Managed Keys Kullanımı**
-   * *Risk:* Varsayılan anahtarlar (`aws/rds`) üzerinde kontrolünüz (rotasyon, politika) kısıtlıdır.
-   * *Remediation:* Customer-Managed Keys (CMK) kullanarak anahtar yönetimini elinize alın.
-
-5. **SSL/TLS Zorunluluğunun Olmaması**
-   * *Risk:* Veritabanı trafiğinin ağ üzerinde "cleartext" izlenmesi.
-   * *Tespit:* RDS Parametre grubunda `rds.force_ssl` (PostgreSQL) veya `require_secure_transport` (MySQL) kontrolü.
-   * *Remediation:* Bu parametreleri 1 olarak set ederek şifreli bağlantıyı zorunlu kılın.
-
-6. **IAM Database Authentication Devre Dışı**
-   * *Risk:* Statik şifrelerin çalınma riski.
-   * *Remediation:* IAM rolleriyle geçici token bazlı erişimi aktif edin (`--enable-iam-database-authentication`).
-
-7. **Master Kimlik Bilgilerinin Secrets Manager'da Olmaması**
-   * *Risk:* Master şifrenin kod içinde veya manuel yönetilmesi.
-   * *Remediation:* Şifre yönetimini AWS Secrets Manager'a devredin ve otomatik rotasyonu açın.
-
-8. **Yetersiz Yedekleme (Backup) Süresi**
-   * *Risk:* Ransomware veya yanlışlıkla silme durumlarında geri dönememe.
-   * *Remediation:* Retention period'u en az 7 gün (ideal 14-30) olarak ayarlayın.
-
-9. **Deletion Protection (Silme Koruması) Kapalı**
-   * *Risk:* Tek bir hata veya saldırganın `DeleteDBInstance` komutuyla verinin tamamen yok olması.
-   * *Remediation:* `--deletion-protection` bayrağını aktif edin.
-
-10. **Kontrolsüz Security Group (`0.0.0.0/0`)**
-    * *Risk:* Veritabanı portunun tüm dünyaya açık olması.
-    * *Remediation:* Sadece uygulama sunucularının Security Group ID'lerine izin verin.
-
-11. **Log Export'un Devre Dışı Olması**
-    * *Risk:* Olay anında adli analizin imkansızlaşması.
-    * *Remediation:* Audit, error, slowquery loglarını CloudWatch Logs'a gönderin.
-
-12. **Multi-AZ Yapılandırmasının Olmaması**
-    * *Risk:* Bölgesel kesintilerde (outage) tam veri kaybı ve iş durması.
-    * *Remediation:* Kritik veritabanlarında Multi-AZ kullanarak yüksek kullanılabilirlik sağlayın. Bölgesel felaketlere karşı ayrıca cross-region yedekleme ve felaket kurtarma planı oluşturun.
-
-13. **Auto Minor Version Upgrade Kapalı**
-    * *Risk:* Güvenlik yamalarının alınmaması ve CVE açıklarına maruz kalma.
-    * *Remediation:* `--auto-minor-version-upgrade` özelliğini aktif edin.
-
-14. **RDS'in İnternet Erişimli Subnetlerde Gereksiz Konumlandırılması**
-    * *Risk:* Erişim kapalı olsa bile internet gateway rotası olan bir ağda bulunmak savunma derinliğini azaltır.
-    * *Remediation:* RDS örneklerini Route Table'ında IGW olmayan izole subnet'lere taşıyın.
-
-15. **Event Notifications Yapılandırması Eksikliği**
-    * *Risk:* Bir failover veya saldırı girişimi anında haberdar olamama.
-    * *Remediation:* Kritik RDS olaylarını (security, failover, failure) SNS üzerinden uyarılara bağlayın.
+| # | Hata | Risk | Tespit | Çözüm |
+| :-: | :--- | :--- | :--- | :--- |
+| 1 | Kamuya açık RDS örneği | `PubliclyAccessible` bayrağı aktifse veritabanı internetten doğrudan brute-force'a açılır | `aws rds describe-db-instances --query "DBInstances[?PubliclyAccessible==\`true\`].{ID:DBInstanceIdentifier}"` | Bayrağı `false` yapın, RDS'i yalnızca private subnet'te barındırın |
+| 2 | Kamuya açık snapshot | Snapshot "public" ise herhangi bir AWS hesabı veriyi kopyalayabilir | `aws rds describe-db-snapshots --snapshot-type manual --include-public` | Snapshot özniteliklerinden `all` değerini kaldırın |
+| 3 | Encryption at rest kapalı | Disk üzerindeki veri şifresizse fiziksel/mantıksal sızıntıda doğrudan okunabilir | `aws rds describe-db-instances --query "DBInstances[?StorageEncrypted==\`false\`].{ID:DBInstanceIdentifier}"` | Yeni örneklerde şifrelemeyi baştan aktif edin (mevcut örnekler şifreli snapshot üzerinden taşınmalı) |
+| 4 | AWS-managed anahtar kullanımı | Varsayılan `aws/rds` anahtarında rotasyon ve politika kontrolünüz kısıtlı | — | Customer-Managed Keys (CMK) ile anahtar yönetimini kendiniz üstlenin |
+| 5 | SSL/TLS zorunlu değil | Veritabanı trafiği ağ üzerinde açık metin olarak izlenebilir | Parametre grubunda `rds.force_ssl` (PostgreSQL) veya `require_secure_transport` (MySQL) | Bu parametreleri `1` yaparak şifreli bağlantıyı zorunlu kılın |
+| 6 | IAM veritabanı kimlik doğrulaması kapalı | Statik şifrelerin çalınma riski | — | `--enable-iam-database-authentication` ile geçici token tabanlı erişime geçin |
+| 7 | Master parola Secrets Manager'da değil | Şifrenin kod içinde veya elle yönetilmesi | — | Parola yönetimini Secrets Manager'a devredin, otomatik rotasyonu açın |
+| 8 | Yetersiz yedekleme süresi | Ransomware ya da yanlışlıkla silmede geri dönüş imkânı kalmaz | — | Retention period'u en az 7, ideali 14–30 gün yapın |
+| 9 | Deletion protection kapalı | Tek bir `DeleteDBInstance` komutuyla veri tamamen silinebilir | — | `--deletion-protection` bayrağını aktif edin |
+| 10 | `0.0.0.0/0` security group | Veritabanı portu tüm dünyaya açık | — | Yalnızca uygulama sunucusunun Security Group ID'sine izin verin |
+| 11 | Log export kapalı | Olay anında adli analiz imkânsızlaşır | — | Audit, error ve slow-query loglarını CloudWatch Logs'a gönderin |
+| 12 | Multi-AZ yok | Bölgesel kesintide tam veri kaybı ve iş durması yaşanır | — | Kritik veritabanlarında Multi-AZ kullanın; ayrıca cross-region yedekleme ve felaket kurtarma planı oluşturun |
+| 13 | Auto minor version upgrade kapalı | Güvenlik yamaları alınmaz, bilinen CVE'lere açık kalınır | — | `--auto-minor-version-upgrade` özelliğini aktif edin |
+| 14 | RDS internete açık subnette | Erişim kapalı olsa bile IGW rotası olan ağda bulunmak savunma derinliğini azaltır | — | RDS'i, Internet Gateway rotası olmayan izole subnet'lere taşıyın |
+| 15 | Event notification yok | Failover veya saldırı girişiminden anında haberdar olunamaz | — | Kritik RDS olaylarını (security, failover, failure) SNS üzerinden uyarıya bağlayın |
 
 ---
 
-## 4. İleri Güvenlik Analizi: IAM Yetki Yükseltme (Privilege Escalation)
+## 4. IAM Yetki Yükseltme: Küçük Bir Yetkiden Tam Kontrole
 
-IAM yetki yükseltme, kısıtlı yetkilere sahip bir saldırganın "sıçrama tahtası" kullanarak tam yönetici (Administrator) yetkisine ulaştığı karmaşık bir zincirdir.
+IAM yetki yükseltme (privilege escalation), kısıtlı yetkilere sahip bir saldırganın "sıçrama tahtaları" kullanarak tam yönetici yetkisine ulaştığı zincirdir. Üç yaygın yol:
 
-### Yetki Yükseltme Zinciri Analizi
-* **CreatePolicyVersion:** Kullanıcı, kendi sahip olduğu bir politikaya yeni bir versiyon ekleyip `set-as-default` bayrağıyla kendini sınırsız yetkili yapabilir.
-* **PassRole + RunInstances:** Saldırgan, admin yetkili bir IAM rolünü (role-splitting) yeni bir EC2'ya atar, o EC2'ya sızar ve metadata servisinden admin token'ını çalar.
-* **Lambda Invoke:** Mevcut bir Lambda fonksiyonunun kodunu güncelleyerek (`UpdateFunctionCode`) kendisine admin yetkisi veren bir kod parçasını çalıştırabilir.
+- **CreatePolicyVersion:** Kullanıcı sahip olduğu bir politikaya yeni bir versiyon ekleyip bunu `set-as-default` yaparak kendini fiilen sınırsız yetkili hâle getirebilir.
+- **PassRole + RunInstances:** Saldırgan admin yetkili bir IAM rolünü yeni bir EC2 örneğine atar, o örneğe sızar ve örnek metadata servisinden admin token'ını çeker.
+- **Lambda UpdateFunctionCode:** Mevcut bir Lambda fonksiyonunun kodu güncellenerek fonksiyona kendisine admin yetkisi veren bir kod parçası eklenir.
 
-![IAM Yetki Yükseltme Akış Şeması](img/bulut-bilisim-yapilandirma-hatalari/aws3.jpg)
+![IAM Yetki Yükseltme Akışı](img/bulut-bilisim-yapilandirma-hatalari/aws3.svg)
 
-> **UYARI: KMS Hata Kalıpları** 
-> KMS güvenliğinde **Pending Deletion Window** önemli bir kontrol noktasıdır. Bir KMS anahtarı silinmek üzere planlandığında AWS, yapılandırmaya bağlı olarak 7–30 günlük bir bekleme süresi uygular. Anahtar kalıcı olarak silindiğinde, o anahtara bağımlı şifreli verilerin kurtarılması mümkün olmayabilir. CloudTrail üzerinden KMS API çağrılarını izlemek de önemlidir; başarısız `kms:Decrypt` çağrıları tek başına saldırı kanıtı değildir ancak incelenmesi gereken önemli bir güvenlik sinyalidir. 
-> *Unutmayın:* Key Policy dış kapıdır, IAM Policy iç kapıdır; her ikisi de onay vermeden veri çözülemez.
+Üç yolun da ortak paydası aynı: gereğinden geniş yetki. Least Privilege ilkesi doğru uygulandığında bu üç kapı da kapanır.
 
----
-
-## 5. Ağ Güvenliği ve Modern Bulut Paradigması
-
-Geleneksel veri merkezi yaklaşımındaki tek bir güvenlik sınırına dayalı model, bulut ortamlarında tek başına yeterli değildir. Bulutta ağ artık yazılımdır ve savunma dinamik olmalıdır.
-
-### Eski Nesil Yaklaşım vs. Bulut Yerlisi Yaklaşım
-* **Eski:** "Veri merkezi kafasını" buluta taşıyıp outbound (çıkış) trafiğini tamamen serbest (`0.0.0.0/0`) bırakmak.
-* **Bulut Yerlisi:** Egress Filtering ile çıkış trafiğini sınırlandırmak, VPC Flow Logs ile ağ trafiğini görünür hale getirmek ve gerekli servis erişimlerinde VPC Endpoints/PrivateLink gibi özel bağlantıları kullanmak.
-
-> **PRO TIP:** Veri sızdırma riskini azaltmak için çıkış trafiğini yalnızca gerekli hedeflerle sınırlandırın. İhtiyaca göre AWS Network Firewall, DNS Firewall veya VPC Endpoints/PrivateLink kullanılabilir. Kritik veritabanlarını private subnet'lerde tutmak saldırı yüzeyini azaltır.
+> **KMS hata kalıpları:** KMS güvenliğinde "Pending Deletion Window" kritik bir kontrol noktasıdır. Bir KMS anahtarı silinmek üzere işaretlendiğinde AWS, yapılandırmaya bağlı olarak 7–30 günlük bir bekleme süresi uygular; anahtar kalıcı olarak silindiğinde ona bağımlı şifreli veriler kurtarılamaz hâle gelebilir. CloudTrail üzerinden KMS API çağrılarını izlemek de önemlidir — başarısız `kms:Decrypt` çağrıları tek başına saldırı kanıtı sayılmaz ama incelenmesi gereken bir sinyaldir. Kısacası: Key Policy dış kapı, IAM Policy iç kapıdır; içeri girebilmek için ikisinin de onayı gerekir.
 
 ---
 
-## 6. Remediation ve Otomasyon Yol Haritası
+## 5. Ağ Güvenliği: Bulutta Ağ Artık Yazılımdır
 
-Güvenlik bir "proje" değil, sürekli bir "yaşam döngüsüdür". Bu karmaşıklık ancak otomasyonla yönetilebilir.
+Geleneksel veri merkezi mantığındaki "tek bir dış sınır yeter" yaklaşımı bulutta işlemiyor. Bulutta ağ, statik bir duvar değil; kod ile tanımlanan, sürekli değişen bir yapı.
 
-### Güvenlik Otomasyonu Olgunluk Modeli
+![Ağ Güvenliğinde Eski ve Yeni Yaklaşım](img/bulut-bilisim-yapilandirma-hatalari/aws4.svg)
+
+> **Not:** Veri sızdırma riskini azaltmak için çıkış (egress) trafiğini yalnızca gerekli hedeflerle sınırlandırın. İhtiyaca göre AWS Network Firewall, DNS Firewall veya VPC Endpoints/PrivateLink değerlendirilebilir. Kritik veritabanlarını private subnet'te tutmak saldırı yüzeyini doğrudan küçültür.
+
+---
+
+## 6. Sahada Neler Oluyor: 2026'dan İki Örnek
+
+Teoriyi somutlaştırmak için iki farklı vakaya bakmak faydalı — biri Türkiye'den, biri güncel.
+
+**Cosmolog Kozmetik vakası (Türkiye, 2021):** Yanlış yapılandırılmış bir S3 kovası nedeniyle, çeşitli e-ticaret platformlarında alışveriş yapan yaklaşık 567 bin kullanıcının ad-soyad, adres ve işlem detayı gibi bilgileri açığa çıktı. Ödeme bilgisi sızmasa da olay, "public bucket" hatasının soyut bir risk değil somut bir sonuç doğurduğunu gösteren yerli bir örnek olarak hâlâ öğretici.
+
+**Framework–Metabase olayı (Ağustos 2026):** Dizüstü bilgisayar üreticisi Framework, kullandığı iş analitiği sağlayıcısı Metabase'in bulut altyapısındaki bir güvenlik açığı üzerinden tüm müşterilerini etkileyen bir veri güvenliği olayı yaşadığını duyurdu. Metabase, saldırının daha önce bilinmeyen bir açık (sıfır gün) üzerinden gerçekleştiğini ve saldırganların bu yolla bulut sunucularındaki müşteri veri tabanına eriştiğini açıkladı. Bu vaka, doğrudan bir yapılandırma hatası olmasa da önemli bir noktayı hatırlatıyor: kendi ortamınızı ne kadar sıkı yapılandırırsanız yapılandırın, kullandığınız üçüncü taraf bulut servisleri de saldırı yüzeyinizin bir parçası. Tedarik zinciri güvenliği bu yüzden artık ayrı bir başlık değil, bulut güvenliğinin doğal bir uzantısı.
+
+**KVKK açısından pratik not:** Türkiye'de kişisel veri işleyen kuruluşlar için bir bulut yapılandırma hatası aynı zamanda bir KVKK meselesidir. İhlal tespit edildiğinde makul bir mazeret olmaksızın 72 saat içinde Kişisel Verilerin Korunması Kurumu'na bildirim yapılması gerekir; bu süre ihlalin fark edildiği andan itibaren işler. Denetim ve otomasyon yatırımını yalnızca teknik risk değil, yasal süre baskısını azaltan bir önlem olarak da düşünmek gerekir.
+
+---
+
+## 7. Remediation ve Otomasyon: Güvenlik Bir Proje Değil, Bir Döngü
+
+Bu kadar çok kontrol noktasını elle takip etmek sürdürülebilir değil. Olgunluk aşamaları şöyle ilerliyor:
+
 1. **Görünürlük:** Tüm kaynakların CSPM ile anlık envanterinin çıkarılması.
-2. **Statik Tarama (Shift-Left):** Kodun canlıya çıkmadan IaC tarayıcılarından geçmesi.
-3. **Graph-Based Analysis:** Varlıklar arasındaki ilişkileri analiz ederek gizli saldırı yollarını bulmak.
-4. **Auto-Remediation:** Hatalı bir ayar algılandığında sistemin bunu otomatik geri çekmesi.
+2. **Statik tarama (shift-left):** Kodun canlıya çıkmadan IaC tarayıcılarından geçmesi.
+3. **Graph tabanlı analiz:** Varlıklar arası ilişkileri inceleyerek gizli saldırı yollarının bulunması.
+4. **Otomatik düzeltme:** Hatalı bir ayar algılandığında sistemin bunu kendiliğinden geri çevirmesi.
 
-
-### IaC ve Güvenlik Otomasyon Araçları
-
-| Araç Adı | Odak Noktası | Faydası |
+| Araç | Odak | Faydası |
 | :--- | :--- | :--- |
-| **Checkov / tfsec** | IaC (Terraform, K8s) | Kod yazılırken `0.0.0.0/0` gibi kuralları engeller. |
-| **AWS Security Hub** | Uyumluluk Denetimi | CIS Benchmarks uyumunu anlık raporlar. |
-| **Wiz / Cloudanix** | CSPM / Graph Analysis | Saldırı yollarını (Attack Paths) görselleştirir ve risk önceliklendirir. |
+| Checkov / tfsec | IaC (Terraform, Kubernetes) | Kod yazılırken `0.0.0.0/0` gibi riskli kuralları daha canlıya çıkmadan engeller |
+| AWS Security Hub | Uyumluluk denetimi | CIS Benchmark uyumunu anlık raporlar |
+| Wiz / Cloudanix | CSPM / graph analizi | Saldırı yollarını görselleştirir, riskleri önceliklendirir |
 
-**Sonuç:** Bulut güvenliği statik bir liste değil; sürekli denetim, otomasyon ve iyileştirme döngüsüdür. Altyapınızı kodla (IaC) yönetin, güvenliği bu kodun içine gömün ve manuel hataları sistemin kendisiyle engelleyin.
+---
 
+## Kapanış
 
+Bulut güvenliği tek seferlik bir kontrol listesi değil; sürekli denetim, otomasyon ve iyileştirmeden oluşan bir döngü. Altyapıyı kodla yönetmek (IaC), güvenliği bu kodun içine baştan gömmek ve manuel hataları sistemin kendisiyle engellemek — bu yazıdaki tüm maddeler aslında tek bir cümleye çıkıyor: en pahalı güvenlik açığı, çoğu zaman en basit olanıdır.
+
+---
+
+### Kaynaklar ve ileri okuma
+- AWS, [Shared Responsibility Model](https://aws.amazon.com/compliance/shared-responsibility-model/)
+- Siber Bülten, [Bulut hesabında yapılandırma hatası: Türkiye'den binlerce kişinin verisi risk altında](https://siberbulten.com/teknik/bulut-hesabinda-yapilandirma-hatasi-binlerce-kisinin-verisi-risk-altinda/) (2021)
+- Zamin.uz, [Framework veri sızıntısı haberi](https://zamin.uz/tr/teknoloji/216759-moduler-bilgisayar-ureticisi-veri-sizintisini-duyurdu.html) (Ağustos 2026)
+- Bilal Alyar Hukuk, [KVKK Veri İhlali Bildirimi — 72 Saat Kuralı ve Süreç 2026](https://bilalalyar.av.tr/kvkk-veri-ihlali-bildirimi-72-saat-2026/)
