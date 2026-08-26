@@ -144,10 +144,5 @@ Bu kadar çok kontrol noktasını elle takip etmek sürdürülebilir değil. Olg
 
 Bulut güvenliği tek seferlik bir kontrol listesi değil; sürekli denetim, otomasyon ve iyileştirmeden oluşan bir döngü. Altyapıyı kodla yönetmek (IaC), güvenliği bu kodun içine baştan gömmek ve manuel hataları sistemin kendisiyle engellemek — bu yazıdaki tüm maddeler aslında tek bir cümleye çıkıyor: en pahalı güvenlik açığı, çoğu zaman en basit olanıdır.
 
----
 
-### Kaynaklar ve ileri okuma
-- AWS, [Shared Responsibility Model](https://aws.amazon.com/compliance/shared-responsibility-model/)
-- Siber Bülten, [Bulut hesabında yapılandırma hatası: Türkiye'den binlerce kişinin verisi risk altında](https://siberbulten.com/teknik/bulut-hesabinda-yapilandirma-hatasi-binlerce-kisinin-verisi-risk-altinda/) (2021)
-- Zamin.uz, [Framework veri sızıntısı haberi](https://zamin.uz/tr/teknoloji/216759-moduler-bilgisayar-ureticisi-veri-sizintisini-duyurdu.html) (Ağustos 2026)
-- Bilal Alyar Hukuk, [KVKK Veri İhlali Bildirimi — 72 Saat Kuralı ve Süreç 2026](https://bilalalyar.av.tr/kvkk-veri-ihlali-bildirimi-72-saat-2026/)
+
