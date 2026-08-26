@@ -2,8 +2,6 @@
 
 Bulut tarafına geçen kurumların çoğu aynı yanılgıya düşüyor: güvenliği bir "BT görevi" sayıp AWS, Azure ya da GCP'nin her şeyi kendiliğinden koruyacağını varsayıyorlar. Gerçek böyle işlemiyor. Bulutta olayların büyük kısmı sağlayıcının bir zafiyetinden değil, müşterinin bıraktığı küçük bir ayardan çıkıyor — açık kalmış bir depolama alanı, MFA'sız bir root hesap, tek bir kutucuğun işaretlenmemiş olması.
 
-Bu yazı iki amaca birden hizmet etmeyi hedefliyor: konuya yeni başlayan biri baştan sona okuyup neden-sonuç ilişkisini kavrasın, tecrübeli biri de ihtiyaç anında hızlıca bakıp komutu veya kontrol maddesini bulsun. Aradaki köprü de basit: her teknik başlığın altında "bu neden önemli" sorusunun günlük hayattan bir karşılığı var.
-
 ---
 
 ## 1. Ortak Sorumluluk Modeli: Sınır Nerede Başlıyor, Nerede Bitiyor?
