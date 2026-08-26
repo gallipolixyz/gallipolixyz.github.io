@@ -12,6 +12,12 @@ interface Blog {
 }
 
 const blogs: Blog[] = [
+   {
+    slug: 'bulut-bilisim-yapilandirma-hatalari',
+    title: 'Bulut Bilişim Güvenliği: Yapılandırma Hataları',
+    excerpt: 'Buluttaki en büyük güvenlik ihlalleri, karmaşık saldırılardan değil, gözden kaçan basit yapılandırma hatalarından kaynaklanır.',
+    author: 'Hiranur Gemalmaz',
+  },
   {
     slug: 'owasp-kubernetes-top-10-2025',
     title: 'Kubernetes Top 10 Zafiyetleri',
