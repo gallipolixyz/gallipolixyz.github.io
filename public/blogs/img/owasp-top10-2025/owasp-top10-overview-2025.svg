@@ -1,0 +1,54 @@
+<svg viewBox="0 0 800 460" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="460" fill="#0f172a"/>
+  <text x="400" y="40" text-anchor="middle" fill="#f8fafc" font-family="Arial, sans-serif" font-size="22" font-weight="bold">OWASP Top 10 (2025)</text>
+
+  <g font-family="Arial, sans-serif" font-size="13" fill="#e2e8f0">
+    <g transform="translate(20,60)">
+      <text x="0" y="14">A01 – Broken Access Control</text>
+      <rect x="290" y="2" width="480" height="16" rx="3" fill="#ef4444"/>
+    </g>
+    <g transform="translate(20,92)">
+      <text x="0" y="14">A02 – Security Misconfiguration</text>
+      <rect x="290" y="2" width="440" height="16" rx="3" fill="#f97316"/>
+    </g>
+    <g transform="translate(20,124)">
+      <text x="0" y="14">A03 – Software Supply Chain Failures</text>
+      <rect x="290" y="2" width="410" height="16" rx="3" fill="#f97316"/>
+    </g>
+    <g transform="translate(20,156)">
+      <text x="0" y="14">A04 – Cryptographic Failures</text>
+      <rect x="290" y="2" width="370" height="16" rx="3" fill="#eab308"/>
+    </g>
+    <g transform="translate(20,188)">
+      <text x="0" y="14">A05 – Injection</text>
+      <rect x="290" y="2" width="340" height="16" rx="3" fill="#eab308"/>
+    </g>
+    <g transform="translate(20,220)">
+      <text x="0" y="14">A06 – Insecure Design</text>
+      <rect x="290" y="2" width="300" height="16" rx="3" fill="#84cc16"/>
+    </g>
+    <g transform="translate(20,252)">
+      <text x="0" y="14">A07 – Authentication Failures</text>
+      <rect x="290" y="2" width="280" height="16" rx="3" fill="#84cc16"/>
+    </g>
+    <g transform="translate(20,284)">
+      <text x="0" y="14">A08 – Software or Data Integrity Failures</text>
+      <rect x="290" y="2" width="250" height="16" rx="3" fill="#22c55e"/>
+    </g>
+    <g transform="translate(20,316)">
+      <text x="0" y="14">A09 – Security Logging and Alerting Failures</text>
+      <rect x="290" y="2" width="220" height="16" rx="3" fill="#22c55e"/>
+    </g>
+    <g transform="translate(20,348)">
+      <text x="0" y="14">A10 – Mishandling of Exceptional Conditions</text>
+      <rect x="290" y="2" width="200" height="16" rx="3" fill="#38bdf8"/>
+    </g>
+  </g>
+
+  <text x="400" y="420" text-anchor="middle" fill="#94a3b8" font-family="Arial, sans-serif" font-size="12">
+    Bar uzunlukları temsili önem/etki sıralamasını gösterir — resmi istatistiksel veri değildir.
+  </text>
+  <text x="400" y="440" text-anchor="middle" fill="#64748b" font-family="Arial, sans-serif" font-size="11">
+    Kaynak: owasp.org/Top10/2025
+  </text>
+</svg>
