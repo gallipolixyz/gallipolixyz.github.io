@@ -1,1 +1,0 @@
-wgel writeup images
