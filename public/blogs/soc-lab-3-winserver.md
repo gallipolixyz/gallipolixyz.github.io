@@ -1,4 +1,4 @@
-# SOC Lab Rehberi Bölüm 2: Windows Server
+# SOC Lab Rehberi Bölüm 3: Windows Server
 
 Bu bölümde, pfSense’in koruması altındaki iç ağımızda (LAN) konumlanacak olan laboratuvarın merkezi yönetim otoritesini, yani Windows Server 2022'yi kuruyoruz. Windows 11 makinemizin de dahil olacağı bu yapı, bize gerçekçi bir kurumsal ağ ortamında saldırı analizi ve güvenlik denetimi yapma imkanı sağlayacak.
 

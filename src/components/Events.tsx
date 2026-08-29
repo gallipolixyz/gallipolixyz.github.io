@@ -12,10 +12,14 @@ export function Events() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedType, setSelectedType] = useState<Event['type'] | 'all'>('all');
   const [selectedDifficulty, setSelectedDifficulty] = useState<Event['difficulty'] | 'all'>('all');
+  const [selectedTag, setSelectedTag] = useState('All Tags');
 
   const upcomingEvents = getUpcomingEvents();
   const pastEvents = getPastEvents();
   const allEvents = getAllEvents();
+
+  // Tüm etkinliklerden benzersiz etiketleri (tags) topluyoruz
+  const tags = ['All Tags', ...Array.from(new Set(allEvents.flatMap((e) => e.tags || [])))];
 
   const currentEvents = useMemo(() => {
     if (activeTab === 'upcoming') return upcomingEvents;
@@ -31,14 +35,15 @@ export function Events() {
 
       const matchesType = selectedType === 'all' || event.type === selectedType;
       const matchesDifficulty = selectedDifficulty === 'all' || event.difficulty === selectedDifficulty;
+      const matchesTag = selectedTag === 'All Tags' || (event.tags && event.tags.includes(selectedTag));
 
-      return matchesSearch && matchesType && matchesDifficulty;
+      return matchesSearch && matchesType && matchesDifficulty && matchesTag;
     });
-  }, [currentEvents, searchTerm, selectedType, selectedDifficulty]);
+  }, [currentEvents, searchTerm, selectedType, selectedDifficulty, selectedTag]);
 
   return (
     <div className="min-h-screen bg-black text-custom-cyan py-12">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 max-w-6xl">
         
         {/* İstatistik Paneli */}
         <motion.div 
@@ -99,8 +104,9 @@ export function Events() {
           </div>
         </div>
 
-        {/* Filtreler */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+        {/* Filtreler (Search, Tag, Type, Level) */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-10">
+          {/* Arama Çubuğu */}
           <div className="relative">
             <Search className="absolute left-3 top-3.5 w-4 h-4 text-custom-cyan/50" />
             <input
@@ -112,12 +118,29 @@ export function Events() {
             />
           </div>
 
+          {/* Tag Filtresi */}
+          <div className="relative">
+            <Filter className="absolute left-3 top-3.5 w-4 h-4 text-custom-cyan/50" />
+            <select
+              value={selectedTag}
+              onChange={(e) => setSelectedTag(e.target.value)}
+              className="w-full pl-10 pr-6 py-2.5 bg-black/40 border border-custom-cyan/30 rounded font-mono text-sm text-white focus:outline-none focus:border-custom-cyan transition-colors appearance-none cursor-pointer truncate"
+            >
+              {tags.map((tag, index) => (
+                <option key={index} value={tag} className="bg-black text-custom-cyan">
+                  {tag === 'All Tags' ? tag : `#${tag}`}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* Tür Filtresi */}
           <div className="relative">
             <Filter className="absolute left-3 top-3.5 w-4 h-4 text-custom-cyan/50" />
             <select
               value={selectedType}
               onChange={(e) => setSelectedType(e.target.value as Event['type'] | 'all')}
-              className="w-full pl-10 pr-4 py-2.5 bg-black/40 border border-custom-cyan/30 rounded font-mono text-sm text-white focus:outline-none focus:border-custom-cyan transition-colors appearance-none cursor-pointer"
+              className="w-full pl-10 pr-6 py-2.5 bg-black/40 border border-custom-cyan/30 rounded font-mono text-sm text-white focus:outline-none focus:border-custom-cyan transition-colors appearance-none cursor-pointer truncate"
             >
               <option value="all">All Types</option>
               <option value="training">Training</option>
@@ -128,12 +151,13 @@ export function Events() {
             </select>
           </div>
 
+          {/* Zorluk / Seviye Filtresi */}
           <div className="relative">
             <Filter className="absolute left-3 top-3.5 w-4 h-4 text-custom-cyan/50" />
             <select
               value={selectedDifficulty}
               onChange={(e) => setSelectedDifficulty(e.target.value as Event['difficulty'] | 'all')}
-              className="w-full pl-10 pr-4 py-2.5 bg-black/40 border border-custom-cyan/30 rounded font-mono text-sm text-white focus:outline-none focus:border-custom-cyan transition-colors appearance-none cursor-pointer"
+              className="w-full pl-10 pr-6 py-2.5 bg-black/40 border border-custom-cyan/30 rounded font-mono text-sm text-white focus:outline-none focus:border-custom-cyan transition-colors appearance-none cursor-pointer truncate"
             >
               <option value="all">All Levels</option>
               <option value="beginner">Beginner</option>

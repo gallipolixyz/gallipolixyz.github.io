@@ -102,6 +102,14 @@ const team: TeamMember[] = [
     image: '/img/Bade.jpg',
     linkedin: 'https://www.linkedin.com/in/bagdagul-caglar-'
   },
+  {
+    name: 'sebü',
+    role: 'Champions Team Member',
+    bio: '',
+    image: '/img/Sebu.jpeg',
+    linkedin: 'https://www.linkedin.com/in/sebahat-k-929b45375'
+  },
+  
 
 ];
 
