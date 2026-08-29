@@ -13,16 +13,15 @@ interface Blog {
 }
 
 const blogs: Blog[] = [
-{
+  {
     slug: 'understanding-vulnerable-python-code',
     title: 'Understanding Vulnerable Python Code',
-    excerpt: 'A walkthrough of five common vulnerable code patterns — IDOR, SQL injection, SSRF, insecure deserialization, and path traversal — plus a deep dive into TOCTOU race conditions, how they're exploited, detected, and mitigated.',
+    excerpt: 'A walkthrough of five common vulnerable code patterns — IDOR, SQL injection, SSRF, insecure deserialization, and path traversal — plus a deep dive into TOCTOU race conditions, how they\'re exploited, detected, and mitigated.',
     author: 'aymaan-balbale',
     tags: ['web-security', 'vulnerable-code', 'race-conditions'],
-    diagram: 'toctou-race-flowchart',
+    image: 'toctou-race-flowchart',
   },
-  
-{
+  {
     slug: 'usb-bellek-windows-dijital-izler',
     title: 'USB Bellek Çıkarıldıktan Sonra Windows’ta Kalan İzler',
     excerpt: 'USB bellek çıkarıldıktan sonra kimliği USBSTOR’da, ilk tanınma setupapi.dev.log içinde, son takılma ve çıkarılma damgaları Properties altında durur. Disk imajı gerekmez; Windows’un kendi araçları yeterlidir.',
@@ -30,7 +29,7 @@ const blogs: Blog[] = [
     tags: ['soc', 'windows', 'forensics', 'usb'],
     image: '/blogs/img/usb-bellek-windows-dijital-izler/00-kapak.jpg',
   },
-{
+  {
     slug: 'rag-sistemlerinde-veri-guvenligi',
     title: 'RAG Sistemlerinde Veri Güvenliği: LLM’e Her Veriyi Vermek Neden Tehlikeli?',
     excerpt: 'RAG mimarisinde veri güvenliğinin önemi; Data Poisoning, Prompt Injection, Sensitive Data Leakage ve Access Control zafiyetleri ve çözüm yolları.',
