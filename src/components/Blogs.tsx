@@ -13,6 +13,12 @@ interface Blog {
 
 const blogs: Blog[] = [
     {
+    slug: 'owasp-top10-makalesi-2025',
+    title: 'OWASP Top 10:2025 — Web Uygulamalarındaki En Kritik 10 Güvenlik Riski',
+    excerpt: 'OWASP Top 10:2025 sürümündeki 10 kritik güvenlik riskine teknik bir bakış: erişim kontrolü, tedarik zinciri, enjeksiyon ve daha fazlası.',
+    author: 'Burak Kıraç',
+  },
+    {
     slug: 'code-challenge1-writeup',
     title: 'Code Challenge Write-Up: Broken Object Level Authorization (BOLA)',
     excerpt: 'BOLA zafiyeti açıklanmış ve Code Challenge çözüm write-upı hazırlanmıştır.',
