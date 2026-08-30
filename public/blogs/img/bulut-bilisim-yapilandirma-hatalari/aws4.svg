@@ -1,0 +1,36 @@
+<svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <rect width="800" height="400" fill="#ffffff"/>
+  <text x="400" y="32" text-anchor="middle" font-size="20" font-weight="700" fill="#0f172a">Ağ Güvenliğinde Paradigma Değişimi</text>
+
+  <!-- Sol: eski -->
+  <rect x="60" y="60" width="320" height="300" rx="10" fill="#f8fafc" stroke="#64748b" stroke-width="1.5"/>
+  <text x="220" y="90" text-anchor="middle" font-size="14" font-weight="700" fill="#334155">Eski Nesil (Veri Merkezi Kafası)</text>
+  <circle cx="90" cy="120" r="4" fill="#64748b"/>
+  <text x="105" y="125" font-size="12.5" fill="#334155">Tek bir dış çevre (perimeter) sınırı</text>
+  <circle cx="90" cy="155" r="4" fill="#64748b"/>
+  <text x="105" y="160" font-size="12.5" fill="#334155">İçeri girildiğinde geniş hareket alanı</text>
+  <circle cx="90" cy="190" r="4" fill="#64748b"/>
+  <text x="105" y="195" font-size="12.5" fill="#334155">Çıkış (egress) trafiği serbest: 0.0.0.0/0</text>
+  <circle cx="90" cy="225" r="4" fill="#64748b"/>
+  <text x="105" y="230" font-size="12.5" fill="#334155">Ağ trafiği görünürlüğü sınırlı</text>
+  <circle cx="90" cy="260" r="4" fill="#64748b"/>
+  <text x="105" y="265" font-size="12.5" fill="#334155">Statik güvenlik duvarı kuralları</text>
+  <rect x="90" y="295" width="260" height="45" rx="6" fill="#fef2f2" stroke="#dc2626" stroke-width="1.2"/>
+  <text x="220" y="322" text-anchor="middle" font-size="12" fill="#b91c1c">Bir kez içeri girilirse her yere ulaşılır</text>
+
+  <!-- Sağ: yeni -->
+  <rect x="420" y="60" width="320" height="300" rx="10" fill="#f0f9ff" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="580" y="90" text-anchor="middle" font-size="14" font-weight="700" fill="#1d4ed8">Bulut Yerlisi Yaklaşım</text>
+  <circle cx="450" cy="120" r="4" fill="#2563eb"/>
+  <text x="465" y="125" font-size="12.5" fill="#334155">Katmanlı, mikro-segmentli sınırlar</text>
+  <circle cx="450" cy="155" r="4" fill="#2563eb"/>
+  <text x="465" y="160" font-size="12.5" fill="#334155">Egress Filtering ile çıkış kısıtlı</text>
+  <circle cx="450" cy="190" r="4" fill="#2563eb"/>
+  <text x="465" y="195" font-size="12.5" fill="#334155">VPC Flow Logs ile tam görünürlük</text>
+  <circle cx="450" cy="225" r="4" fill="#2563eb"/>
+  <text x="465" y="230" font-size="12.5" fill="#334155">VPC Endpoints / PrivateLink</text>
+  <circle cx="450" cy="260" r="4" fill="#2563eb"/>
+  <text x="465" y="265" font-size="12.5" fill="#334155">Kritik veri private subnet'te izole</text>
+  <rect x="450" y="295" width="260" height="45" rx="6" fill="#ecfdf5" stroke="#059669" stroke-width="1.2"/>
+  <text x="580" y="322" text-anchor="middle" font-size="12" fill="#047857">Her segment kendi sınırını savunur</text>
+</svg>
