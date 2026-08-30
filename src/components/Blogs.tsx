@@ -30,6 +30,22 @@ interface Blog {
     image: '/blogs/img/off-path-saldirilarda-sequence-numberin-onemi/off-path-tcp-sequence-diagram.png',
   },
   {
+  slug: 'tryhackme-wgel',
+  title: 'TryHackMe — Wgel Writeup',
+  excerpt: 'Dizin taraması, gizli bir SSH anahtarı ve NOPASSWD wget yetkisi kullanılarak root yetkisine ulaşılan Wgel makinesinin çözümü.',
+  author: 'Burak Kıraç',
+  tags: ['tryhackme', 'ctf', 'privilege-escalation', 'ssh'],
+  image: '/blogs/img/tryhackme-wgel/image1.png',
+},
+  {
+    slug: 'owasp-top10-makalesi-2025',
+    title: 'OWASP Top 10:2025 — Web Uygulamalarındaki En Kritik 10 Güvenlik Riski',
+    excerpt: 'OWASP Top 10:2025 sürümündeki 10 kritik güvenlik riskine teknik bir bakış: erişim kontrolü, tedarik zinciri, enjeksiyon ve daha fazlası.',
+    author: 'Burak Kıraç',
+    tags: ['owasp', 'web-security', 'top10'],
+    image: '/blogs/img/owasp-top10-2025/owasp-top10-overview-2025.svg',
+  },
+  {
     slug: 'understanding-vulnerable-python-code',
     title: 'Understanding Vulnerable Python Code',
     excerpt: 'A walkthrough of five common vulnerable code patterns — IDOR, SQL injection, SSRF, insecure deserialization, and path traversal — plus a deep dive into TOCTOU race conditions, how they are exploited, detected, and mitigated.',
@@ -107,7 +123,7 @@ interface Blog {
     excerpt: 'Hem kubernetes güvenliğini öğrenebileceğiniz hem de size el defteri olabilecek bir rehber.',
     author: 'Hiranur Gemalmaz',
     tags: ['kubernetes', 'cloud', 'devsecops'],
-    image: 'blogs/img/kubernetestop10/kubernetes1.png',
+    image: '/blogs/img/kubernetestop10/kubernetes1.png',
   },
   {
     slug: 'akilli-supurge-hack',

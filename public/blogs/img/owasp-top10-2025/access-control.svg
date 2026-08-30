@@ -1,0 +1,35 @@
+<svg viewBox="0 0 800 260" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="260" fill="#0f172a"/>
+  <text x="400" y="32" text-anchor="middle" fill="#f8fafc" font-family="Arial, sans-serif" font-size="18" font-weight="bold">Broken Access Control (A01) Örneği</text>
+
+  <!-- normal user -->
+  <circle cx="130" cy="130" r="30" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+  <text x="130" y="135" text-anchor="middle" fill="#e2e8f0" font-family="Arial, sans-serif" font-size="12">Kullanıcı A</text>
+  <text x="130" y="185" text-anchor="middle" fill="#94a3b8" font-family="Arial, sans-serif" font-size="11">/hesap/101</text>
+
+  <line x1="160" y1="130" x2="330" y2="130" stroke="#22c55e" stroke-width="2" marker-end="url(#arrowg)"/>
+
+  <rect x="340" y="95" width="140" height="70" rx="8" fill="#1e293b" stroke="#94a3b8" stroke-width="2"/>
+  <text x="410" y="135" text-anchor="middle" fill="#e2e8f0" font-family="Arial, sans-serif" font-size="13">Sunucu</text>
+
+  <!-- malicious user -->
+  <circle cx="130" cy="220" r="0" fill="none"/>
+  <circle cx="650" cy="220" r="30" fill="#1e293b" stroke="#ef4444" stroke-width="2"/>
+  <text x="650" y="225" text-anchor="middle" fill="#e2e8f0" font-family="Arial, sans-serif" font-size="12">Saldırgan</text>
+
+  <line x1="480" y1="140" x2="620" y2="205" stroke="#ef4444" stroke-width="2" marker-end="url(#arrowr)"/>
+  <text x="620" y="185" text-anchor="middle" fill="#f87171" font-family="Arial, sans-serif" font-size="11">/hesap/102 (izinsiz)</text>
+
+  <text x="400" y="235" text-anchor="middle" fill="#94a3b8" font-family="Arial, sans-serif" font-size="12">
+    Yetki kontrolü eksikse, ID değiştirilerek başkasının verisine erişilebilir (IDOR).
+  </text>
+
+  <defs>
+    <marker id="arrowg" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#22c55e"/>
+    </marker>
+    <marker id="arrowr" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#ef4444"/>
+    </marker>
+  </defs>
+</svg>
