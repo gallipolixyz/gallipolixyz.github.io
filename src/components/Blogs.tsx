@@ -23,6 +23,14 @@ interface Blog {
   },
 
   {
+  slug: 'letter-thm-osint-writeup',
+  title: 'Letter - TryHackMe Writeup',
+  excerpt: 'Bir zarftaki posta barkodundan başlayıp gazete küpürü ve tarihi arşiv kayıtlarına uzanan, beginner-friendly bir OSINT meydan okumasının adım adım çözümü.',
+  author: 'Meryem şahin',
+  tags: ['osint', 'tryhackme'],
+  image: '/blogs/img/letter-thm-osint-writeup/image7.jpeg',
+},
+  {
     slug: 'understanding-vulnerable-python-code',
     title: 'Understanding Vulnerable Python Code',
     excerpt: 'A walkthrough of five common vulnerable code patterns — IDOR, SQL injection, SSRF, insecure deserialization, and path traversal — plus a deep dive into TOCTOU race conditions, how they are exploited, detected, and mitigated.',
