@@ -19,7 +19,7 @@ const blogs: Blog[] = [
     excerpt: 'A walkthrough of five common vulnerable code patterns — IDOR, SQL injection, SSRF, insecure deserialization, and path traversal — plus a deep dive into TOCTOU race conditions, how they are exploited, detected, and mitigated.',
     author: 'aymaan-balbale',
     tags: ['web-security', 'vulnerable-code', 'race-conditions'],
-    image: '/blogs/img/understanding-vulnerable-python-code/image1.png.png',
+    image: '/blogs/img/understanding-vulnerable-python-code/image1.png',
   },
   {
     slug: 'usb-bellek-windows-dijital-izler',
