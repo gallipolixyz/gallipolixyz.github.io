@@ -1,11 +1,6 @@
----
-title: "OWASP Kubernetes Top 10 (2025): Kubernetes Cluster’larını Güvenli Hale Getirmek"
-description: "OWASP Kubernetes Top 10 (2025) maddelerini pratik örnekler, güvenli yapılandırmalar ve lab yaklaşımıyla inceleyen teknik rehber."
----
-
 # OWASP Kubernetes Top 10 (2025)
 
-![Kubernetes Security Overview](img/kubernetestop10/kubernetes1.png)
+![Kubernetes Security Overview](/blogs/img/kubernetestop10/kubernetes1.png)
 
 > **Kubernetes Cluster’larını Güvenli Hale Getirmek**
 
@@ -76,7 +71,7 @@ Bu yazıda amacım bu maddeleri sadece teorik olarak anlatmak değil. Aynı zama
 
 > 💡 **Kısa fikir:** Container'ın içinde olmak, otomatik olarak host'tan tamamen izole olmak demek değildir.
 
-![Container vs Host Isolation](img/kubernetestop10/kubernetes2.png)
+![Container vs Host Isolation](/blogs/img/kubernetestop10/kubernetes2.png)
 
 Kubernetes'te bir Pod'un container içinde çalışması, onun otomatik olarak tamamen güvenli olduğu anlamına gelmez.
 
@@ -113,7 +108,7 @@ Bu yaklaşım Kubernetes güvenliğinin temelini oluşturuyor.
 > 🔴 **Insecure → 🟢 Secure**  
 > Bu bölümde aynı uygulamanın yalnızca Kubernetes güvenlik ayarlarını değiştirerek blast radius'unu nasıl küçültebildiğine bakıyoruz.
 
-![K01 Insecure vs Secure Workload](img/kubernetestoop10/kubernetes3.png)
+![K01 Insecure vs Secure Workload](/blogs/img/kubernetestop10/kubernetes3.png)
 
 K01'i anlamanın en kolay yolu aynı uygulamayı iki farklı Pod konfigürasyonuyla çalıştırmak.
 
@@ -305,7 +300,7 @@ OWASP da resource limit'lerinin eksikliğini K01 kapsamında önemli bir risk ol
 
 # 4. Aynı uygulama, farklı blast radius
 
-![Blast Radius Comparison](img/kubernetestoop10/kubernetes4.png)
+![Blast Radius Comparison](/blogs/img/kubernetestop10/kubernetes4.png)
 
 K01'in asıl anlatmak istediği nokta burada ortaya çıkıyor.
 
@@ -344,7 +339,7 @@ Bu, Kubernetes güvenliğinde **defense in depth** yaklaşımının doğrudan ka
 
 # 5. K02 – Overly Permissive Authorization Configurations
 
-![Kubernetes RBAC Flow](img/kubernetestoop10/kubernetes5.png)
+![Kubernetes RBAC Flow](/blogs/img/kubernetestop10/kubernetes5.png)
 
 K01'de container'ın Linux seviyesindeki yetkilerini ele aldık.
 
@@ -580,7 +575,7 @@ gibi kurallar merkezi hale getirilebilir.
 
 # 8. K05 – Missing Network Segmentation Controls
 
-![Kubernetes Network Segmentation](img/kubernetestoop10/kubernetes6.png)
+![Kubernetes Network Segmentation](/blogs/img/kubernetestop10/kubernetes6.png)
 
 Kubernetes'te varsayılan network davranışı oldukça açıktır.
 
@@ -606,7 +601,7 @@ Network segmentation yoksa uygulama içerisindeki SSRF, cluster içerisindeki ba
 
 # 9. Ingress ve Egress neden önemli?
 
-![Ingress vs Egress](img/kubernetestoop10/kubernetes7.png)
+![Ingress vs Egress](/blogs/img/kubernetestop10/kubernetes7.png)
 
 NetworkPolicy'de iki yönü ayrı düşünmek gerekiyor.
 
@@ -828,7 +823,7 @@ gibi kontroller CI/CD sürecine eklenebilir.
 
 # 12. K08 – Cluster To Cloud Lateral Movement
 
-![Cluster to Cloud Lateral Movement](img/kubernetestoop10/kubernetes8.png)
+![Cluster to Cloud Lateral Movement](/blogs/img/kubernetestop10/kubernetes8.png)
 
 Kubernetes cloud üzerinde çalışıyorsa saldırı yüzeyi cluster ile bitmiyor.
 
@@ -947,7 +942,7 @@ kullanmak önemli bir hardening adımıdır.
 
 # 14. K10 – Inadequate Logging And Monitoring
 
-![Kubernetes Security Monitoring](img/kubernetestoop10/kubernetes9.png)
+![Kubernetes Security Monitoring](/blogs/img/kubernetestop10/kubernetes9.png)
 
 Son madde biraz farklı.
 
@@ -1034,7 +1029,7 @@ OWASP K10, Kubernetes API audit logging'in yanı sıra node ve workload logları
 > 🧩 **Top 10'u tek tek ezberlemek yerine zincir olarak düşünün.**  
 > Bir kontrol başarısız olduğunda saldırganın bir sonraki katmana geçmesini hangi kontrol engelliyor?
 
-![Kubernetes Attack Chain](img/kubernetestop10/kubernetes11.png)
+![Kubernetes Attack Chain](/blogs/img/kubernetestop10/kubernetes11.png)
 
 Bu maddeleri birbirinden tamamen bağımsız düşünmek yerine bir saldırı zinciri olarak görmek daha doğru.
 
@@ -1085,7 +1080,7 @@ Bu yüzden Kubernetes güvenliği tek bir YAML dosyasına indirgenemez.
 
 # 16. Güvenli bir Deployment için minimum baseline
 
-![Kubernetes Secure Deployment Baseline](img/kubernetestop10/kubernetes12.png)
+![Kubernetes Secure Deployment Baseline](/blogs/img/kubernetestop10/kubernetes12.png)
 
 K01 tarafında hazırladığımız örneği biraz daha genel hale getirirsek, production workload'larında başlangıç noktası olarak şu kontrolleri düşünebiliriz:
 
@@ -1410,7 +1405,7 @@ Bir workload'u production'a almadan önce en azından şu sorular sorulabilir:
 
 # Sonuç
 
-![Defense in Depth in Kubernetes](img/kubernetestop10/kubernetes10.png)
+![Defense in Depth in Kubernetes](/blogs/img/kubernetestop10/kubernetes10.png)
 
 OWASP Kubernetes Top 10'un 2025 versiyonuna baktığımızda maddelerin aslında tek bir ortak noktaya bağlandığını görebiliriz:
 
