@@ -1,0 +1,123 @@
+<svg viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg" font-family="'Helvetica Neue', Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0%" stop-color="#0A1120"/>
+      <stop offset="100%" stop-color="#121F3B"/>
+    </linearGradient>
+
+    <linearGradient id="cloudFill" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#16233F"/>
+      <stop offset="100%" stop-color="#1C2C4E"/>
+    </linearGradient>
+
+    <linearGradient id="crackGlow" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FBBF24"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0 L0 0 0 40" fill="none" stroke="#2A3B63" stroke-width="1" opacity="0.35"/>
+    </pattern>
+
+    <radialGradient id="vignette" cx="50%" cy="35%" r="75%">
+      <stop offset="0%" stop-color="#000000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.45"/>
+    </radialGradient>
+
+    <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <clipPath id="cloudClip">
+      <g>
+        <rect x="560" y="280" width="430" height="150" rx="75"/>
+        <circle cx="620" cy="310" r="95"/>
+        <circle cx="730" cy="265" r="115"/>
+        <circle cx="850" cy="295" r="100"/>
+        <circle cx="945" cy="335" r="85"/>
+      </g>
+    </clipPath>
+  </defs>
+
+  <!-- zemin -->
+  <rect width="1600" height="900" fill="url(#bg)"/>
+
+  <!-- arka plan blueprint ızgarası -->
+  <rect width="1600" height="900" fill="url(#grid)"/>
+
+  <!-- sağ üstte hafif ışık lekesi -->
+  <circle cx="1180" cy="260" r="420" fill="#1E3A8A" opacity="0.18"/>
+
+  <!-- bulut silueti (sunucu blokları hissi veren düz ikon) -->
+  <g>
+    <rect x="560" y="280" width="430" height="150" rx="75" fill="url(#cloudFill)" stroke="#2E4270" stroke-width="2"/>
+    <circle cx="620" cy="310" r="95" fill="url(#cloudFill)" stroke="#2E4270" stroke-width="2"/>
+    <circle cx="730" cy="265" r="115" fill="url(#cloudFill)" stroke="#2E4270" stroke-width="2"/>
+    <circle cx="850" cy="295" r="100" fill="url(#cloudFill)" stroke="#2E4270" stroke-width="2"/>
+    <circle cx="945" cy="335" r="85" fill="url(#cloudFill)" stroke="#2E4270" stroke-width="2"/>
+  </g>
+
+  <!-- bulutun içinde ince bir devre / ızgara dokusu -->
+  <g clip-path="url(#cloudClip)" opacity="0.5">
+    <rect x="560" y="230" width="430" height="220" fill="url(#grid)"/>
+  </g>
+
+  <!-- açık kalmış asma kilit: gövde -->
+  <g filter="url(#glow)">
+    <rect x="722" y="342" width="96" height="76" rx="14" fill="#0B1220" stroke="url(#crackGlow)" stroke-width="3"/>
+    <!-- açık kalmış kelepçe (bir ucu kopmuş) -->
+    <path d="M742,342 v-30 a28,28 0 0 1 56,0" fill="none" stroke="url(#crackGlow)" stroke-width="7" stroke-linecap="round"/>
+    <!-- anahtar deliği -->
+    <circle cx="770" cy="372" r="9" fill="url(#crackGlow)"/>
+    <path d="M770,378 l-6,20 h12 z" fill="url(#crackGlow)"/>
+  </g>
+
+  <!-- kilitten sızan çatlak / veri sızıntısı çizgisi (başlığın üstünden geçip sağa kıvrılır) -->
+  <g filter="url(#glow)" stroke="url(#crackGlow)" stroke-width="2.5" fill="none" stroke-linecap="round">
+    <path d="M818,380 L878,405 L858,432 L960,470 L1010,430 L1120,460"/>
+  </g>
+
+  <!-- sızan veri noktaları: başlığın sağından, metne değmeden aşağı süzülür -->
+  <g fill="url(#crackGlow)" filter="url(#glow)">
+    <circle cx="1150" cy="500" r="4.5"/>
+    <circle cx="1185" cy="545" r="3.5"/>
+    <circle cx="1140" cy="585" r="5"/>
+    <circle cx="1200" cy="610" r="3"/>
+    <circle cx="1165" cy="655" r="4"/>
+  </g>
+
+  <!-- üst köşe: eyebrow etiketi -->
+  <text x="90" y="120" font-family="'Courier New', monospace" font-size="22" letter-spacing="1" fill="#60A5FA"># bulut-guvenligi-notlari</text>
+
+  <!-- başlık -->
+  <text x="88" y="600" font-size="76" font-weight="800" fill="#F1F5FB" letter-spacing="-1">BULUT YAPILANDIRMA</text>
+  <text x="88" y="682" font-size="76" font-weight="800" fill="#F1F5FB" letter-spacing="-1">HATALARI</text>
+
+  <!-- ince ayraç -->
+  <rect x="90" y="712" width="120" height="6" rx="3" fill="url(#crackGlow)"/>
+
+  <!-- alt başlık -->
+  <text x="90" y="760" font-size="26" fill="#93A3C4">Küçük bir ayar, büyük bir sızıntı.</text>
+
+  <!-- alt etiketler -->
+  <g font-family="'Courier New', monospace" font-size="18" fill="#60A5FA">
+    <rect x="90" y="800" width="90" height="34" rx="17" fill="none" stroke="#2E4270" stroke-width="1.5"/>
+    <text x="112" y="823">AWS</text>
+
+    <rect x="196" y="800" width="80" height="34" rx="17" fill="none" stroke="#2E4270" stroke-width="1.5"/>
+    <text x="216" y="823">IAM</text>
+
+    <rect x="292" y="800" width="70" height="34" rx="17" fill="none" stroke="#2E4270" stroke-width="1.5"/>
+    <text x="311" y="823">S3</text>
+
+    <rect x="378" y="800" width="80" height="34" rx="17" fill="none" stroke="#2E4270" stroke-width="1.5"/>
+    <text x="398" y="823">RDS</text>
+  </g>
+
+  <!-- vinyet -->
+  <rect width="1600" height="900" fill="url(#vignette)"/>
+</svg>
