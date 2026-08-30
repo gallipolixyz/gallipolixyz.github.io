@@ -6,11 +6,11 @@ Selamlar! Bugün sizlerle birlikte TryHackMe platformunda yer alan, hem dizin ta
 
 Her zaman olduğu gibi makinemizi başlatıp IP adresimizi aldıktan sonra, karşımızda ne olduğunu anlamak için tarayıcı üzerinden siteyi ziyaret ederek işe başlıyoruz.
 
-![Apache2 Ubuntu Default Page](img/tryhackme-wgel/image1.png)
+![Apache2 Ubuntu Default Page](/blogs/img/tryhackme-wgel/image1.png)
 
 Karşımıza standart bir **Apache2 Ubuntu Default Page** çıkıyor. Genelde bu sayfalar boştur ama CTF dünyasında her taşın altına bakmak gerekir. Sayfanın kaynak kodlarını (Ctrl + U) incelediğimde geliştiricinin bıraktığı küçük bir notla karşılaşıyorum:
 
-![Kaynak kodda bulunan not](img/tryhackme-wgel/image2.png)
+![Kaynak kodda bulunan not](/blogs/img/tryhackme-wgel/image2.png)
 
 Burada geçen **Jessie** ismini not alıyorum. Belli ki bu arkadaş içerideki kullanıcılardan biri.
 
@@ -18,7 +18,7 @@ Burada geçen **Jessie** ismini not alıyorum. Belli ki bu arkadaş içerideki k
 
 Sistemin röntgenini çekmek, hangi kapıların açık olduğunu görmek için Nmap taramamızı başlatalım.
 
-![Nmap tarama sonucu](img/tryhackme-wgel/image3.png)
+![Nmap tarama sonucu](/blogs/img/tryhackme-wgel/image3.png)
 
 ```bash
 sudo nmap -sS -sV -sC -T4 -Pn <IP>
@@ -35,7 +35,7 @@ Dışarıdan bakıldığında pek bir açık görünmüyor. O zaman biz de gör�
 
 Dizin taraması için **ffuf** aracını kullanıyorum. Gizli kalmış dosyaları veya dizinleri bulmak bize her zaman yeni yollar açar.
 
-![ffuf tarama sonucu](img/tryhackme-wgel/image4.png)
+![ffuf tarama sonucu](/blogs/img/tryhackme-wgel/image4.png)
 
 ```bash
 ffuf -u http://<IP>/FUZZ -w /usr/share/wordlists/dirbuster/directory-list-lowercase-2.3-medium.txt
@@ -43,19 +43,19 @@ ffuf -u http://<IP>/FUZZ -w /usr/share/wordlists/dirbuster/directory-list-lowerc
 
 Tarama sonucunda `/sitemap` adında bir dizin buluyoruz. Buraya gittiğimizde bizi bir web sitesi karşılıyor ancak burada da işimize yarar bir şey bulamayınca taramayı `/sitemap` dizini altında derinleştiriyorum.
 
-![Sitemap altında derinleştirilmiş tarama](img/tryhackme-wgel/image5.png)
+![Sitemap altında derinleştirilmiş tarama](/blogs/img/tryhackme-wgel/image5.png)
 
 Ve `.ssh` dizinini buluyorum.
 
 Burada bir **id_rsa** dosyası buluyoruz. Bu bir "Private Key", yani Jessie kullanıcısının anahtarı! Bu anahtarı hemen makineme indiriyorum.
 
-![id_rsa dosyasının bulunması](img/tryhackme-wgel/image6.png)
+![id_rsa dosyasının bulunması](/blogs/img/tryhackme-wgel/image6.png)
 
 ## 4. Sisteme Erişim (Initial Access)
 
 Anahtarı bulduk ama doğrudan kullanamayız. SSH anahtarlarının çalışması için güvenli (sadece sahibi tarafından okunabilir) olması gerekir.
 
-![Dosya izinleri hatası](img/tryhackme-wgel/image7.png)
+![Dosya izinleri hatası](/blogs/img/tryhackme-wgel/image7.png)
 
 ```bash
 chmod 600 id_rsa
@@ -67,7 +67,7 @@ ile gerekli yetkileri veriyorum.
 
 Artık içeri girmeye hazırız. Kaynak kodda bulduğumuz kullanıcı adını ve indirdiğimiz anahtarı kullanarak bağlanıyoruz:
 
-![SSH bağlantısı](img/tryhackme-wgel/image8.png)
+![SSH bağlantısı](/blogs/img/tryhackme-wgel/image8.png)
 
 ```bash
 ssh -i id_rsa jessie@<IP>
@@ -77,7 +77,7 @@ Ve içerideyiz!
 
 `/home/jessie/Documents` dizinine giderek ilk bayrağımızı alıyoruz:
 
-![User flag](img/tryhackme-wgel/image9.png)
+![User flag](/blogs/img/tryhackme-wgel/image9.png)
 
 ```
 User Flag: 057c67131c3d5e42dd5cd3075b198ff6
@@ -87,7 +87,7 @@ User Flag: 057c67131c3d5e42dd5cd3075b198ff6
 
 Şimdi hedefimiz en tepeye çıkmak, yani **Root** olmak. İlk kontrol ettiğim şey her zaman `sudo -l` komutu olur. Bakalım Jessie'nin ne gibi yetkileri var?
 
-![sudo -l çıktısı](img/tryhackme-wgel/image10.png)
+![sudo -l çıktısı](/blogs/img/tryhackme-wgel/image10.png)
 
 Gördüğümüz üzere Jessie, **wget** komutunu şifre sormadan root yetkisiyle çalıştırabiliyor:
 
@@ -97,11 +97,11 @@ Gördüğümüz üzere Jessie, **wget** komutunu şifre sormadan root yetkisiyle
 
 Hemen **GTFOBins**'e gidip wget ile nasıl yetki yükseltebileceğimize bakıyoruz.
 
-![GTFOBins wget](img/tryhackme-wgel/image11.png)
+![GTFOBins wget](/blogs/img/tryhackme-wgel/image11.png)
 
 **wget -i** parametresi ile dosya okuma özelliğini kullanarak root flag'ini çekebiliriz. Mantık şu: wget, dosyayı bir URL listesi sanıp okumaya çalışacak, okuyamayınca da hatanın içine dosyanın içeriğini basacak.
 
-![Root flag çekilmesi](img/tryhackme-wgel/image12.png)
+![Root flag çekilmesi](/blogs/img/tryhackme-wgel/image12.png)
 
 ```bash
 sudo wget -i /root/root_flag.txt
