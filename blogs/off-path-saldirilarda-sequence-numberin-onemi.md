@@ -1,5 +1,3 @@
-
-
 # Off-Path Saldırılarda Sequence Number Neden Kritik?
 
 Bir TCP paketinde kaynak IP, hedef IP ve portlar doğruysa paket otomatik olarak kabul edilir mi?
