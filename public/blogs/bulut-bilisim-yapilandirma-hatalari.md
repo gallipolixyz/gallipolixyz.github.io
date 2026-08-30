@@ -11,7 +11,7 @@ AWS'nin tanımladığı **Ortak Sorumluluk Modeli (Shared Responsibility Model)*
 - **Bulutun Güvenliği (Security *of* the Cloud):** Fiziksel veri merkezleri, donanım ve sanallaştırma (hipervizör) katmanı — bunların güvenliği sağlayıcıya aittir.
 - **Bulutun İçindeki Güvenlik (Security *in* the Cloud):** Veri, kimlik ve erişim yönetimi (IAM), ağ yapılandırması, şifreleme — bunlar müşteriye aittir ve kullanılan servise göre kapsamı değişir.
 
-![Ortak Sorumluluk Modeli](img/bulut-bilisim-yapilandirma-hatalari/aws1.svg)
+![Ortak Sorumluluk Modeli](/blogs/img/bulut-bilisim-yapilandirma-hatalari/aws1.svg)
 
 Bu ayrım kağıt üzerinde net görünse de pratikte kafa karıştırıyor. Sektör raporları, bugün yaşanan veri ihlallerinin önemli bir kısmının kökeninde yanlış yapılandırma, aşırı geniş yetkilendirme ve kimlik bilgilerinin kötü yönetimi olduğunu gösteriyor. Yani bulut güvenliği yalnızca teknik bir mesele değil; doğrudan finansal ve operasyonel sonuçları olan bir risk yönetimi konusu.
 
@@ -27,7 +27,7 @@ Bulutta en büyük hasarlar genelde karmaşık sıfırıncı gün açıklarında
 
 Bunu günlük hayattan bir örnekle düşünmek en kolayı: bir S3 kovasını herkese açık bırakmak, şirketin hassas belgelerinin durduğu dolabı sokağa çıkarıp kilidini de açık bırakmakla aynı şey. İçinden geçen herkes durup bakabilir.
 
-![S3 Kova Analojisi](img/bulut-bilisim-yapilandirma-hatalari/aws2.svg)
+![S3 Kova Analojisi](/blogs/img/bulut-bilisim-yapilandirma-hatalari/aws2.svg)
 
 > **Not:** Hesap düzeyinde "Block Public Access" ayarını aktif edin. Bu ayar, bir mühendis yanlışlıkla da olsa bir kovayı herkese açık işaretlese bile bunu geçersiz kılan bir emniyet kilididir.
 
@@ -91,7 +91,7 @@ IAM yetki yükseltme (privilege escalation), kısıtlı yetkilere sahip bir sald
 - **PassRole + RunInstances:** Saldırgan admin yetkili bir IAM rolünü yeni bir EC2 örneğine atar, o örneğe sızar ve örnek metadata servisinden admin token'ını çeker.
 - **Lambda UpdateFunctionCode:** Mevcut bir Lambda fonksiyonunun kodu güncellenerek fonksiyona kendisine admin yetkisi veren bir kod parçası eklenir.
 
-![IAM Yetki Yükseltme Akışı](img/bulut-bilisim-yapilandirma-hatalari/aws3.svg)
+![IAM Yetki Yükseltme Akışı](/blogs/img/bulut-bilisim-yapilandirma-hatalari/aws3.svg)
 
 Üç yolun da ortak paydası aynı: gereğinden geniş yetki. Least Privilege ilkesi doğru uygulandığında bu üç kapı da kapanır.
 
@@ -103,7 +103,7 @@ IAM yetki yükseltme (privilege escalation), kısıtlı yetkilere sahip bir sald
 
 Geleneksel veri merkezi mantığındaki "tek bir dış sınır yeter" yaklaşımı bulutta işlemiyor. Bulutta ağ, statik bir duvar değil; kod ile tanımlanan, sürekli değişen bir yapı.
 
-![Ağ Güvenliğinde Eski ve Yeni Yaklaşım](img/bulut-bilisim-yapilandirma-hatalari/aws4.svg)
+![Ağ Güvenliğinde Eski ve Yeni Yaklaşım](/blogs/img/bulut-bilisim-yapilandirma-hatalari/aws4.svg)
 
 > **Not:** Veri sızdırma riskini azaltmak için çıkış (egress) trafiğini yalnızca gerekli hedeflerle sınırlandırın. İhtiyaca göre AWS Network Firewall, DNS Firewall veya VPC Endpoints/PrivateLink değerlendirilebilir. Kritik veritabanlarını private subnet'te tutmak saldırı yüzeyini doğrudan küçültür.
 
