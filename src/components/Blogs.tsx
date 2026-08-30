@@ -13,7 +13,15 @@ interface Blog {
 }
 
   const blogs: Blog[] = [
-  {
+    {
+    slug: 'bulut-bilisim-yapilandirma-hatalari',
+    title: 'Bulut Bilişim Güvenliği: Yapılandırma Hataları ',
+    excerpt: 'Bulut ortamlarındaki en kritik yapılandırma hatalarını ve bunlardan korunma yolları.',
+    author: 'Hiranur Gemalmaz',
+    tags: ['bulut bilişim', 'AWS'],
+    image: '/blogs/img/bulut-bilisim-yapilandirma-hatalari/aws0.svg',
+  },
+    {
     slug: 'letter-thm-osint-writeup',
     title: 'Letter - TryHackMe Writeup',
     excerpt: 'Bir zarftaki posta barkodundan başlayıp gazete küpürü ve tarihi arşiv kayıtlarına uzanan, beginner-friendly bir OSINT meydan okumasının adım adım çözümü.',
