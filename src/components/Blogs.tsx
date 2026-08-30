@@ -12,7 +12,13 @@ interface Blog {
   image: string;
 }
 
-  const blogs: Blog[] = [
+const blogs: Blog[] = [
+  {
+    slug: 'bulut-bilisim-yapilandirma-hatalari',
+    title: 'Bulut Bilişim Güvenliği: Yapılandırma Hataları',
+    excerpt: 'Buluttaki en büyük güvenlik ihlalleri, karmaşık saldırılardan değil, gözden kaçan basit yapılandırma hatalarından kaynaklanır.',
+    author: 'Hiranur Gemalmaz',
+  },
   {
     slug: 'letter-thm-osint-writeup',
     title: 'Letter - TryHackMe Writeup',

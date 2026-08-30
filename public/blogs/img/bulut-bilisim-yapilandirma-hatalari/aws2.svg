@@ -1,0 +1,32 @@
+<svg viewBox="0 0 800 380" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <rect width="800" height="380" fill="#ffffff"/>
+  <text x="400" y="34" text-anchor="middle" font-size="20" font-weight="700" fill="#0f172a">S3 Kovası: Kapalı Dolap mı, Sokağa Çıkmış Dolap mı?</text>
+
+  <!-- Sol: kapalı dolap (private) -->
+  <g>
+    <rect x="70" y="80" width="280" height="230" rx="10" fill="#ecfdf5" stroke="#059669" stroke-width="1.5"/>
+    <text x="210" y="110" text-anchor="middle" font-size="14" font-weight="700" fill="#047857">Private (doğru yapılandırma)</text>
+    <!-- kilit ikonu -->
+    <rect x="180" y="150" width="60" height="45" rx="6" fill="#059669"/>
+    <path d="M190,150 v-18 a20,20 0 0 1 40,0 v18" fill="none" stroke="#059669" stroke-width="8"/>
+    <circle cx="210" cy="172" r="6" fill="#ffffff"/>
+    <text x="210" y="225" text-anchor="middle" font-size="12.5" fill="#334155">Bucket kapalı bir dolap gibi</text>
+    <text x="210" y="244" text-anchor="middle" font-size="12.5" fill="#334155">Yalnızca yetkili kişi anahtarla açar</text>
+    <text x="210" y="272" text-anchor="middle" font-size="12" fill="#047857" font-weight="600">Block Public Access: Açık</text>
+  </g>
+
+  <!-- Sağ: açık dolap (public) -->
+  <g>
+    <rect x="450" y="80" width="280" height="230" rx="10" fill="#fef2f2" stroke="#dc2626" stroke-width="1.5"/>
+    <text x="590" y="110" text-anchor="middle" font-size="14" font-weight="700" fill="#b91c1c">Public (yanlış yapılandırma)</text>
+    <!-- açık kilit ikonu -->
+    <rect x="560" y="150" width="60" height="45" rx="6" fill="#dc2626"/>
+    <path d="M570,150 v-18 a20,20 0 0 1 40,0 v6" fill="none" stroke="#dc2626" stroke-width="8"/>
+    <circle cx="590" cy="172" r="6" fill="#ffffff"/>
+    <text x="590" y="225" text-anchor="middle" font-size="12.5" fill="#334155">Dolap sokağa konmuş gibi</text>
+    <text x="590" y="244" text-anchor="middle" font-size="12.5" fill="#334155">İsteyen herkes içeriği görebilir</text>
+    <text x="590" y="272" text-anchor="middle" font-size="12" fill="#b91c1c" font-weight="600">Block Public Access: Kapalı</text>
+  </g>
+
+  <text x="400" y="355" text-anchor="middle" font-size="12.5" fill="#64748b">Tek fark bir onay kutusu — ama sonucu tüm verinin internete açılması olabilir.</text>
+</svg>
