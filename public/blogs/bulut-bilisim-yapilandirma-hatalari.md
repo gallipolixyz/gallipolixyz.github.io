@@ -1,4 +1,4 @@
-# Bulut Bilişim Güvenliği: Yapılandırma Hataları ve Kılavuz Notları
+# Bulut Bilişim Güvenliği: Yapılandırma Hataları 
 
 Bulut tarafına geçen kurumların çoğu aynı yanılgıya düşüyor: güvenliği bir "BT görevi" sayıp AWS, Azure ya da GCP'nin her şeyi kendiliğinden koruyacağını varsayıyorlar. Gerçek böyle işlemiyor. Bulutta olayların büyük kısmı sağlayıcının bir zafiyetinden değil, müşterinin bıraktığı küçük bir ayardan çıkıyor — açık kalmış bir depolama alanı, MFA'sız bir root hesap, tek bir kutucuğun işaretlenmemiş olması.
 
