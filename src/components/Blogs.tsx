@@ -12,7 +12,16 @@ interface Blog {
   image: string;
 }
 
-const blogs: Blog[] = [
+  const blogs: Blog[] = [
+  {
+    slug: 'off-path-saldirilarda-sequence-numberin-onemi',
+    title: 'Off-Path Saldırılarda Sequence Number Neden Kritik?',
+    excerpt: 'TCP sequence number’larının off-path saldırılardaki rolünü, kör paket sahteciliğini ve savunma yöntemlerini giriş seviyesinde açıklayan bir rehber.',
+    author: 'Toprak Yavuz',
+    tags: ['tcp', 'network-security', 'sequence-number', 'off-path'],
+    image: '/blogs/img/off-path-saldirilarda-sequence-numberin-onemi/off-path-tcp-sequence-diagram.png',
+  },
+
   {
     slug: 'understanding-vulnerable-python-code',
     title: 'Understanding Vulnerable Python Code',
