@@ -149,7 +149,7 @@ res.sendFile(resolvedPath);
 
 ## 3. Race Conditions in Web Applications
 
-![Race Conditions — two threads incrementing a shared resource](/blogs/img/understanding-vulnerable-python-code/image1.png.png)
+![Race Conditions — two threads incrementing a shared resource](/blogs/img/understanding-vulnerable-python-code/image1.png)
 
 ### 3.1 Why They Happen: Hidden States in Business Logic
 
@@ -168,7 +168,7 @@ If you sketch this as a state diagram, what looks like a simple two-state flow (
 
 If nothing locks the resource during that window, the same check can pass multiple times in parallel before any of the writes land. This is a **race condition** — specifically a **Time-Of-Check-To-Time-Of-Use (TOCTOU)** issue.
 
-![Race Condition Vulnerability — TOCTOU window between access() and open()](/blogs/img/understanding-vulnerable-python-code/image2.png.png)
+![Race Condition Vulnerability — TOCTOU window between access() and open()](/blogs/img/understanding-vulnerable-python-code/image2.png)
 
 **Common examples:**
 

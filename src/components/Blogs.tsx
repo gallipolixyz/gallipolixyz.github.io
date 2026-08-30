@@ -18,6 +18,22 @@ const blogs: Blog[] = [
     title: 'Bulut Bilişim Güvenliği: Yapılandırma Hataları',
     excerpt: 'Buluttaki en büyük güvenlik ihlalleri, karmaşık saldırılardan değil, gözden kaçan basit yapılandırma hatalarından kaynaklanır.',
     author: 'Hiranur Gemalmaz',
+  const blogs: Blog[] = [
+  {
+    slug: 'letter-thm-osint-writeup',
+    title: 'Letter - TryHackMe Writeup',
+    excerpt: 'Bir zarftaki posta barkodundan başlayıp gazete küpürü ve tarihi arşiv kayıtlarına uzanan, beginner-friendly bir OSINT meydan okumasının adım adım çözümü.',
+    author: 'Meryem şahin',
+    tags: ['osint', 'tryhackme'],
+    image: '/blogs/img/letter-thm-osint-writeup/image7.jpeg',
+  },
+  {
+    slug: 'off-path-saldirilarda-sequence-numberin-onemi',
+    title: 'Off-Path Saldırılarda Sequence Number Neden Kritik?',
+    excerpt: 'TCP sequence number’larının off-path saldırılardaki rolünü, kör paket sahteciliğini ve savunma yöntemlerini giriş seviyesinde açıklayan bir rehber.',
+    author: 'Toprak Yavuz',
+    tags: ['tcp', 'network-security', 'sequence-number', 'off-path'],
+    image: '/blogs/img/off-path-saldirilarda-sequence-numberin-onemi/off-path-tcp-sequence-diagram.png',
   },
   {
     slug: 'understanding-vulnerable-python-code',
@@ -25,7 +41,7 @@ const blogs: Blog[] = [
     excerpt: 'A walkthrough of five common vulnerable code patterns — IDOR, SQL injection, SSRF, insecure deserialization, and path traversal — plus a deep dive into TOCTOU race conditions, how they are exploited, detected, and mitigated.',
     author: 'aymaan-balbale',
     tags: ['web-security', 'vulnerable-code', 'race-conditions'],
-    image: '/blogs/img/understanding-vulnerable-python-code/image1.png.png',
+    image: '/blogs/img/understanding-vulnerable-python-code/image1.png',
   },
   {
     slug: 'usb-bellek-windows-dijital-izler',
