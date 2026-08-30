@@ -14,6 +14,14 @@ interface Blog {
 
   const blogs: Blog[] = [
   {
+    slug: 'letter-thm-osint-writeup',
+    title: 'Letter - TryHackMe Writeup',
+    excerpt: 'Bir zarftaki posta barkodundan başlayıp gazete küpürü ve tarihi arşiv kayıtlarına uzanan, beginner-friendly bir OSINT meydan okumasının adım adım çözümü.',
+    author: 'Meryem şahin',
+    tags: ['osint', 'tryhackme'],
+    image: '/blogs/img/letter-thm-osint-writeup/image7.jpeg',
+  },
+  {
     slug: 'off-path-saldirilarda-sequence-numberin-onemi',
     title: 'Off-Path Saldırılarda Sequence Number Neden Kritik?',
     excerpt: 'TCP sequence number’larının off-path saldırılardaki rolünü, kör paket sahteciliğini ve savunma yöntemlerini giriş seviyesinde açıklayan bir rehber.',
@@ -21,15 +29,14 @@ interface Blog {
     tags: ['tcp', 'network-security', 'sequence-number', 'off-path'],
     image: '/blogs/img/off-path-saldirilarda-sequence-numberin-onemi/off-path-tcp-sequence-diagram.png',
   },
-
   {
-  slug: 'letter-thm-osint-writeup',
-  title: 'Letter - TryHackMe Writeup',
-  excerpt: 'Bir zarftaki posta barkodundan başlayıp gazete küpürü ve tarihi arşiv kayıtlarına uzanan, beginner-friendly bir OSINT meydan okumasının adım adım çözümü.',
-  author: 'Meryem şahin',
-  tags: ['osint', 'tryhackme'],
-  image: '/blogs/img/letter-thm-osint-writeup/image7.jpeg',
-},
+    slug: 'letter-thm-osint-writeup',
+    title: 'Letter - TryHackMe Writeup',
+    excerpt: 'Bir zarftaki posta barkodundan başlayıp gazete küpürü ve tarihi arşiv kayıtlarına uzanan, beginner-friendly bir OSINT meydan okumasının adım adım çözümü.',
+    author: 'Meryem şahin',
+    tags: ['osint', 'tryhackme'],
+    image: '/blogs/img/letter-thm-osint-writeup/image7.jpeg',
+  },
   {
     slug: 'understanding-vulnerable-python-code',
     title: 'Understanding Vulnerable Python Code',
