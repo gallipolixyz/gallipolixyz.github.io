@@ -4,13 +4,13 @@ Web uygulamaları günümüzde neredeyse her sektörün omurgasını oluşturuyo
 
 2021'den sonraki ilk büyük güncelleme olan **2025 sürümü**, 175.000'den fazla CVE kaydı ve yüzlerce CWE üzerinden yapılan analizle hazırlandı; iki yeni kategori eklendi ve sıralama önemli ölçüde değişti. Bu yazıda güncel 10 kategoriye teknik açıdan kısa bir bakış atacağız.
 
-![OWASP Top 10 2025 genel bakış](img/owasp-top10-2025/owasp-top10-overview-2025.svg)
+![OWASP Top 10 2025 genel bakış](/blogs/img/owasp-top10-2025/owasp-top10-overview-2025.svg)
 
 ## 1. A01 – Broken Access Control (Bozuk Erişim Kontrolü)
 
 2021'de olduğu gibi listenin zirvesinde. Bir kullanıcının, yetkisi olmayan kaynaklara veya işlemlere erişebilmesi durumudur. En klasik örneği **IDOR/BOLA** (Insecure Direct Object / Broken Object Level Authorization): bir isteğin içindeki `id=101` parametresini `id=102` olarak değiştirdiğinizde sunucu yetki kontrolü yapmadan başkasının verisini döndürüyorsa açık buradadır. 2025 sürümünde bu kategori, eskiden ayrı bir madde olan **SSRF**'yi (Server-Side Request Forgery) de kapsıyor.
 
-![Broken Access Control örneği](img/owasp-top10-2025/access-control.svg)
+![Broken Access Control örneği](/blogs/img/owasp-top10-2025/access-control.svg)
 
 **Önlem:** Her istekte sunucu tarafında rol/yetki doğrulaması yapmak, "varsayılan olarak reddet" (deny by default) prensibini uygulamak.
 
@@ -36,7 +36,7 @@ Hassas verilerin (şifreler, kredi kartı bilgileri, kimlik verileri) zayıf alg
 
 2021'de 3. sıradaydı, 2025'te 5. sıraya geriledi — ama hâlâ kritik. Kullanıcıdan alınan verinin doğrulanmadan bir yorumlayıcıya (SQL, komut satırı, LDAP vb.) gönderilmesiyle oluşur. SQL Injection en bilinen türüdür, ancak Command Injection ve NoSQL Injection da bu ailededir.
 
-![Injection saldırı akışı](img/owasp-top10-2025/injection-flow.svg)
+![Injection saldırı akışı](/blogs/img/owasp-top10-2025/injection-flow.svg)
 
 **Önlem:** Parametreli sorgular (prepared statements), ORM kullanımı, girdi doğrulama ve en az yetki prensibi.
 
