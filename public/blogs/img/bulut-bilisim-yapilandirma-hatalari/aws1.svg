@@ -1,0 +1,31 @@
+<svg viewBox="0 0 800 420" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <rect width="800" height="420" fill="#ffffff"/>
+
+  <text x="400" y="34" text-anchor="middle" font-size="20" font-weight="700" fill="#0f172a">Ortak Sorumluluk Modeli (Shared Responsibility Model)</text>
+
+  <!-- Sağlayıcı katmanı -->
+  <rect x="60" y="70" width="680" height="130" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="90" y="100" font-size="15" font-weight="700" fill="#1d4ed8">Bulutun Güvenliği — AWS / Azure / GCP sorumluluğu</text>
+  <text x="90" y="126" font-size="13" fill="#334155">• Fiziksel veri merkezleri ve donanım</text>
+  <text x="90" y="148" font-size="13" fill="#334155">• Sunucu, depolama ve ağ altyapısının fiziksel güvenliği</text>
+  <text x="90" y="170" font-size="13" fill="#334155">• Hipervizör (sanallaştırma) katmanı</text>
+
+  <!-- Ok -->
+  <line x1="400" y1="200" x2="400" y2="222" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Müşteri katmanı -->
+  <rect x="60" y="230" width="680" height="150" rx="10" fill="#fff7ed" stroke="#f97316" stroke-width="1.5"/>
+  <text x="90" y="260" font-size="15" font-weight="700" fill="#c2410c">Bulutun İçindeki Güvenlik — Müşteri sorumluluğu</text>
+  <text x="90" y="286" font-size="13" fill="#334155">• Veri sınıflandırma ve şifreleme</text>
+  <text x="90" y="308" font-size="13" fill="#334155">• IAM: kimlik, yetkilendirme, erişim politikaları</text>
+  <text x="90" y="330" font-size="13" fill="#334155">• Ağ yapılandırması: Security Group, VPC, Firewall kuralları</text>
+  <text x="90" y="352" font-size="13" fill="#334155">• Uygulama düzeyi güvenlik ve işletim sistemi yamaları</text>
+
+  <text x="400" y="405" text-anchor="middle" font-size="12.5" fill="#64748b">Kullanılan hizmete göre sınır kayar; ama veri ve erişim yönetimi her zaman müşteridedir.</text>
+
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+</svg>
