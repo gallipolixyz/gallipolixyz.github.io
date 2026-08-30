@@ -149,6 +149,8 @@ res.sendFile(resolvedPath);
 
 ## 3. Race Conditions in Web Applications
 
+![Race Conditions — two threads incrementing a shared resource](/blogs/img/understanding-vulnerable-python-code/image1.png.png)
+
 ### 3.1 Why They Happen: Hidden States in Business Logic
 
 Every meaningful action in a web app — approving a transfer, redeeming a coupon, casting a vote — isn't really a single instant. It's a sequence of steps:
@@ -165,6 +167,8 @@ If you sketch this as a state diagram, what looks like a simple two-state flow (
 > **That gap is the whole vulnerability.**
 
 If nothing locks the resource during that window, the same check can pass multiple times in parallel before any of the writes land. This is a **race condition** — specifically a **Time-Of-Check-To-Time-Of-Use (TOCTOU)** issue.
+
+![Race Condition Vulnerability — TOCTOU window between access() and open()](/blogs/img/understanding-vulnerable-python-code/image2.png.png)
 
 **Common examples:**
 
@@ -213,6 +217,36 @@ sequenceDiagram
 ```
 
 Both requests read the same starting balance before either commits — so both get approved, and the second write silently overwrites the first instead of stacking on top of it. The account ends at $0, but $200 left the building.
+
+The flowchart below lays the same race out as two parallel threads converging on the same unlocked resource:
+
+```mermaid
+graph TD
+    classDef standard fill:#a3e635,stroke:#333,stroke-width:1px,color:#000;
+    classDef decision fill:#a3e635,stroke:#333,stroke-width:1px,color:#000,shape:diamond;
+    classDef exploit fill:#ef4444,stroke:#333,stroke-width:2px,color:#fff;
+    subgraph Thread 1
+        A1[User clicks 'Confirm transfer' $100]:::standard --> B1[Application queries database]:::standard
+        B1 --> C1[Database responds: Balance is $100]:::standard
+        C1 --> D1{Amount within limits?}:::decision
+        D1 -- Yes --> E1[Approve Transaction 1]:::standard
+    end
+    subgraph Thread 2 - Parallel
+        A2[User clicks 'Confirm transfer' $100]:::standard --> B2[Application queries database]:::standard
+        B2 --> C2[Database responds: Balance is $100]:::standard
+        C2 --> D2{Amount within limits?}:::decision
+        D2 -- Yes --> E2[Approve Transaction 2]:::standard
+    end
+    E1 --> F[CRITICAL GAP: No Resource Lock]:::exploit
+    E2 --> F
+    F --> G1[Conduct transaction 1]:::standard
+    F --> G2[Conduct transaction 2]:::standard
+
+    G1 --> H[Result: $200 transferred out of $100 balance]:::standard
+    G2 --> H
+```
+
+Both threads pass their own independent balance check, and neither one knows about the other — the "CRITICAL GAP" node is exactly the unlocked window described above. Whether it's framed as a sequence diagram or a flowchart, the underlying failure is the same: two reads of the same stale state, with no lock between them.
 
 ---
 
