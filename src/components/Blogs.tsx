@@ -11,7 +11,13 @@ interface Blog {
   author: string;
 }
 
-const blogs: Blog[] = [
+const blogs: Blog[] = [ 
+  {
+    slug: 'llm\'ler-nasil-calisir',
+    title: 'LLM Nasıl Çalışır?',
+    excerpt: 'Büyük Dil Modellerinin (LLM) arkasındaki temel mekanizmalar ve somut senaryolar.',
+    author: 'Sebahat Kuşcu',
+  },
   {
     slug: 'akilli-supurge-hack',
     title: 'Akıllı Süpürgeniz Hacklenebilir mi?',
