@@ -226,5 +226,3 @@ daha düşük olasılıklı kelimelerin seçilmesi, modelin çıktısını çok 
 Özetle, modelin bazen daha düşük olasılıklı kelimeleri rastgele seçmesine izin vermek, cevabın çok daha ilginç ve çeşitli olmasını sağlar.
 
 END… umarım faydalı olmuştur
-
-\

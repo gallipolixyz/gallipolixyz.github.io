@@ -13,14 +13,14 @@ interface Blog {
 }
 
   const blogs: Blog[] = [
-    {
+  {
     slug: 'llm-nasil-calisir',
     title: 'LLM Nasıl Çalışır?',
     excerpt: 'Büyük Dil Modellerinin (LLM) çalışma mantığı, mimarisi ve temel bileşenleri.',
     author: 'Sebahat Kuşcu',
     tags: ['Yapay Zeka', 'LLM', 'Machine Learning'],
     image: '/blogs/img/llm-nasil-calisir/image.jpeg',
-},
+  },
   {
     slug: 'bulut-bilisim-yapilandirma-hatalari',
     title: 'Bulut Bilişim Güvenliği: Yapılandırma Hataları ',
