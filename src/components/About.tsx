@@ -26,11 +26,17 @@ export function About() {
         <section className="mb-20">
           <h1 className="text-4xl md:text-5xl font-bold mb-8 text-center">What is Gallipoli_</h1>
           <div className="max-w-3xl mx-auto text-lg font-mono">
-            <p className="mb-6">
-              Gallipoli is more than a cybersecurity community—it's a movement. We are hackers, defenders, and innovators united by our passion for technology and our commitment to making the digital world safer for everyone.
+                     <p className="mb-6">
+              Gallipoli is a volunteer cybersecurity community. We see digital security not as content to be shared, but as something people learn together.
             </p>
             <p className="mb-6">
-              We blend the innovative spirit of hacker culture with the historical legacy of strategic thinking and resilience. Just as the historical Gallipoli campaign demonstrated the power of determination and tactical innovation, our community stands at the forefront of cybersecurity evolution.
+              We are not a malicious hacker group. Rather than causing harm, our purpose is to empower individuals with the knowledge, vision, and tools they need to protect themselves in the complexity of the digital world. Everything we do is built on volunteer effort.
+            </p>
+            <p className="mb-6">
+              Driven by the curiosity of hacker culture and an unconventional perspective, we focus on creating real solutions to real problems. Inspired by our name, our philosophy draws from the resilience and strategic spirit of the historical defense of Gallipoli.
+            </p>
+            <p className="mb-6">
+              On this path, we push our own boundaries while sharing our experiences with anyone interested in this field. Our goal is to take a leading role in cybersecurity and bring this awareness to a wider audience.
             </p>
           </div>
         </section>
@@ -70,11 +76,14 @@ export function About() {
         <section className="mb-20 bg-custom-cyan/5 rounded-xl p-8 backdrop-blur-sm">
           <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">Our Story_</h2>
           <div className="max-w-3xl mx-auto text-lg font-mono">
-            <p className="mb-6">
-              Born from a group of ethical hackers who believed in the power of community, Gallipoli emerged as a response to the growing need for collaborative cybersecurity education and practice. Our name draws inspiration from the historic Gallipoli campaign—a testament to courage, strategy, and the power of determined individuals working together.
+                        <p className="mb-6">
+              The foundations of Gallipoli were laid with the belief that cybersecurity grows stronger when people learn and practice together. As a group of ethical hackers, we came together to create an environment where we could share knowledge, gain experience, and improve as a community.
             </p>
             <p className="mb-6">
-              Like the soldiers who demonstrated extraordinary resilience at Gallipoli, our community members show unwavering dedication to protecting digital freedoms and fostering innovation through ethical hacking.
+              When choosing our name, we drew inspiration from Gallipoli, one of the greatest examples of solidarity in history. Like that defense, our journey relies not on individual acts of heroism, but on the strength of a united community acting with strategy and purpose.
+            </p>
+            <p className="mb-6">
+              Today, we continue with the same dedication to protect digital freedoms and support the culture of ethical hacking. Our story is not merely about writing code or testing systems; it is about contributing to a safer, freer, and more accessible digital world for everyone.
             </p>
           </div>
         </section>
@@ -186,22 +195,22 @@ export function About() {
               {
                 icon: Shield,
                 title: "Ethical Hacking",
-                description: "We believe in using our skills for good, protecting systems and people through responsible disclosure and ethical practices."
+                description: "We use our skills for good. We aim to protect not only systems, but the people behind them."
               },
               {
                 icon: Brain,
                 title: "Open Knowledge",
-                description: "Knowledge should be free and accessible. We share, learn, and grow together as a community."
+                description: "Knowledge is everyone's right. We do not keep our experiences to ourselves; we share them, learn together, and grow together."
               },
               {
                 icon: Target,
                 title: "Real Impact",
-                description: "We focus on making tangible improvements to cybersecurity through practical action and collaboration."
+                description: "We do not just stay in theory; we take action. By joining forces, we make a tangible difference in the field of cybersecurity."
               },
               {
                 icon: Heart,
                 title: "Community First",
-                description: "'A hacker saved my life' isn't just our motto—it's a testament to how technology and community can transform lives."
+                description: '"A hacker saved my life" is not just an empty phrase for us. It is the clearest proof of how technology and solidarity touch people\'s lives.'
               }
             ].map((principle, index) => (
               <div key={index} className="bg-custom-cyan/5 p-6 rounded-lg backdrop-blur-sm hover:bg-custom-cyan/10 transition-all duration-300 click-ripple interactive-hover">
@@ -218,10 +227,10 @@ export function About() {
           <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">Our Mission_</h2>
           <div className="max-w-3xl mx-auto text-lg font-mono">
             <p className="mb-6">
-              To empower individuals with the knowledge, tools, and community support needed to become effective defenders of digital security. We believe that cybersecurity is not just about technical skills—it's about fostering a mindset of continuous learning, ethical behavior, and community contribution.
+              Our goal is to provide the knowledge, resources, and community support that individuals need to become strong and effective defenders. We understand that cybersecurity is not merely about technical skills. For us, the core objective is to turn continuous learning, ethical values, and contributing to society into a lasting mindset.
             </p>
             <p className="mb-6">
-              Our motto, "A hacker saved my life," embodies our belief in the transformative power of ethical hacking and community support. It's a reminder that our skills and knowledge can make a real difference in people's lives.
+              Our motto, "A hacker saved my life," reflects our belief in the transformative power of ethical hacking. Ultimately, our technical skills achieve their true purpose only when they protect real people and real lives.
             </p>
           </div>
         </section>
@@ -231,7 +240,7 @@ export function About() {
           <h2 className="text-3xl md:text-4xl font-bold mb-8">Join Us_</h2>
           <div className="max-w-3xl mx-auto text-lg font-mono text-center">
             <p className="mb-6">
-              Gallipoli is built and maintained by passionate individuals who believe in the power of community-driven cybersecurity education and practice.
+              Gallipoli is run by volunteers who think this field is taught better in a community than alone. If that is how you see it too, come in.
             </p>
             <div className="flex justify-center">
               <a
