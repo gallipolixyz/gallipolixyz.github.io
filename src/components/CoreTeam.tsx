@@ -109,8 +109,14 @@ const team: TeamMember[] = [
     image: '/img/Sebu.jpeg',
     linkedin: 'https://www.linkedin.com/in/sebahat-k-929b45375'
   },
-  
-
+  {
+    name: 'hinula',
+    role: 'Champions Team Member',
+    bio: '',
+    image: '/img/hinula.jpg',
+    linkedin: 'https://www.linkedin.com/in/hiranurgemalmaz',
+  },
+       
 ];
 
 export const CoreTeam: React.FC = () => {
