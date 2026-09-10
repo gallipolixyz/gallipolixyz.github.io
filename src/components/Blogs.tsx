@@ -14,6 +14,14 @@ interface Blog {
 
   const blogs: Blog[] = [
   {
+    slug: 'qr-kodlar-ve-quishing',
+    title: 'QR Kodun Arkasında Ne Var? Quishing Saldırıları Nasıl Çalışır?',
+    excerpt: 'QR kodların görünmeyen bağlantıları nasıl taşıdığını, quishing saldırılarının neden ikna edici olduğunu ve taramadan önce yapılabilecek basit kontrolleri anlatan başlangıç rehberi.',
+    author: 'Toprak Yavuz',
+    tags: ['phishing', 'quishing', 'social-engineering', 'beginner'],
+    image: '/blogs/img/qr-kodlar-ve-quishing/quishing-flow.svg',
+  },
+  {
     slug: 'llm-nasil-calisir',
     title: 'LLM Nasıl Çalışır?',
     excerpt: 'Büyük Dil Modellerinin (LLM) çalışma mantığı, mimarisi ve temel bileşenleri.',
