@@ -15,7 +15,7 @@ export function About() {
 
   const productionStats = [
     { label: 'Video Content', value: '120+' },
-    { label: 'Blog Posts', value: '50+' },
+    { label: 'Blog Posts', value: '90+' },
     { label: 'Educational Content', value: '95+' },
   ];
 
