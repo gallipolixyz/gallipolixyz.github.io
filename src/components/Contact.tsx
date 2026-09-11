@@ -110,24 +110,24 @@ export function Contact() {
                 onClick={() => setActiveTab(tab.id)}
                 className={`flex flex-col items-center justify-center py-4 px-3 sm:px-6 rounded-xl font-mono text-sm sm:text-base transition-all duration-300 relative group border ${
                   isActive
-                    ? 'border-custom-cyan bg-custom-cyan/15 text-white shadow-[0_0_25px_rgba(0,255,255,0.3)] ring-1 ring-custom-cyan/50'
-                    : 'border-custom-cyan/35 bg-[#03141b]/80 text-custom-cyan/85 hover:text-white hover:border-custom-cyan/60 hover:bg-custom-cyan/10 hover:shadow-[0_0_15px_rgba(0,255,255,0.15)]'
+                    ? 'border-custom-cyan bg-custom-cyan/10 text-custom-cyan shadow-[0_0_20px_rgba(0,255,255,0.2)]'
+                    : 'border-custom-cyan/25 bg-[#030d11]/80 text-custom-cyan/70 hover:text-custom-cyan hover:border-custom-cyan/50 hover:bg-custom-cyan/5'
                 }`}
               >
                 <Icon
                   size={20}
                   className={`mb-2 transition-transform duration-300 group-hover:scale-110 ${
-                    isActive ? 'text-custom-cyan drop-shadow-[0_0_8px_rgba(0,255,255,0.8)]' : 'text-custom-cyan/75 group-hover:text-custom-cyan'
+                    isActive ? 'text-custom-cyan' : 'text-custom-cyan/70'
                   }`}
                 />
-                <span className="font-semibold tracking-wide">{tab.label}</span>
+                <span className="font-medium tracking-wide">{tab.label}</span>
               </button>
             );
           })}
         </div>
 
         {/* Main Content Card */}
-        <div className="rounded-2xl border border-custom-cyan/35 bg-[radial-gradient(ellipse_at_top,rgba(0,255,255,0.1),rgba(2,16,22,0.95)_55%,rgba(0,0,0,0.98)_100%)] backdrop-blur-md p-6 sm:p-10 shadow-[0_0_40px_rgba(0,255,255,0.12)] relative overflow-hidden">
+        <div className="rounded-2xl border border-custom-cyan/30 bg-[radial-gradient(ellipse_at_top,rgba(0,255,255,0.1),rgba(2,16,22,0.95)_55%,rgba(0,0,0,0.98)_100%)] backdrop-blur-md p-6 sm:p-10 shadow-[0_0_40px_rgba(0,255,255,0.1)] relative overflow-hidden">
           {/* Subtle Ambient Background Glow */}
           <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-96 h-48 bg-custom-cyan/15 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute -bottom-32 -left-32 w-64 h-64 bg-custom-cyan/5 rounded-full blur-3xl pointer-events-none" />
@@ -144,26 +144,26 @@ export function Contact() {
                 className="space-y-6"
               >
                 <div>
-                  <h2 className="text-2xl sm:text-3xl font-bold font-mono text-white mb-2 drop-shadow-[0_0_10px_rgba(0,255,255,0.3)]">
-                    Email Us Directly<span className="text-custom-cyan">_</span>
+                  <h2 className="text-2xl sm:text-3xl font-bold font-mono text-custom-cyan mb-2">
+                    Email Us Directly_
                   </h2>
-                  <p className="text-white/80 font-mono text-sm sm:text-base leading-relaxed">
+                  <p className="text-custom-cyan/75 font-mono text-sm sm:text-base leading-relaxed">
                     Have a question, sponsorship inquiry, partnership proposal, or feedback? Reach out
                     directly and we'll get back to you promptly.
                   </p>
                 </div>
 
                 {/* Email Box Card */}
-                <div className="rounded-2xl border border-custom-cyan/40 bg-[radial-gradient(circle_at_top,rgba(0,255,255,0.14),rgba(2,20,27,0.85)_50%,rgba(1,10,14,0.95)_100%)] p-8 sm:p-10 text-center relative overflow-hidden group hover:border-custom-cyan/60 hover:shadow-[0_0_30px_rgba(0,255,255,0.18)] transition-all duration-300">
-                  <div className="w-14 h-14 rounded-full border border-custom-cyan/60 bg-custom-cyan/15 flex items-center justify-center mx-auto mb-4 text-custom-cyan shadow-[0_0_20px_rgba(0,255,255,0.4)] group-hover:scale-110 group-hover:shadow-[0_0_25px_rgba(0,255,255,0.6)] transition-all duration-300">
-                    <Mail size={24} className="text-custom-cyan drop-shadow-[0_0_6px_rgba(0,255,255,0.6)]" />
+                <div className="rounded-2xl border border-custom-cyan/35 bg-[radial-gradient(circle_at_top,rgba(0,255,255,0.12),rgba(2,19,25,0.85)_50%,rgba(1,10,14,0.95)_100%)] p-8 sm:p-10 text-center relative overflow-hidden group hover:border-custom-cyan/55 hover:shadow-[0_0_30px_rgba(0,255,255,0.15)] transition-all duration-300">
+                  <div className="w-14 h-14 rounded-full border border-custom-cyan/50 bg-custom-cyan/10 flex items-center justify-center mx-auto mb-4 text-custom-cyan shadow-[0_0_15px_rgba(0,255,255,0.25)] group-hover:scale-105 transition-transform duration-300">
+                    <Mail size={24} className="text-custom-cyan" />
                   </div>
 
-                  <span className="block text-xs font-mono tracking-widest text-custom-cyan font-bold uppercase mb-2 drop-shadow-[0_0_8px_rgba(0,255,255,0.4)]">
+                  <span className="block text-xs font-mono tracking-widest text-custom-cyan/70 uppercase mb-2">
                     EMAIL ADDRESS
                   </span>
 
-                  <div className="text-xl sm:text-2xl md:text-3xl font-mono font-bold text-white tracking-wider mb-6 drop-shadow-[0_0_12px_rgba(0,255,255,0.35)] selection:bg-custom-cyan selection:text-black">
+                  <div className="text-xl sm:text-2xl md:text-3xl font-mono font-semibold text-custom-cyan tracking-wider mb-6 selection:bg-custom-cyan selection:text-black">
                     {emailAddress}
                   </div>
 
@@ -171,7 +171,7 @@ export function Contact() {
                     <a
                       href={`mailto:${emailAddress}`}
                       onClick={handleGeneralEmail}
-                      className="px-7 py-3.5 rounded-lg border border-custom-cyan bg-custom-cyan/25 text-white hover:border-white hover:bg-custom-cyan/35 hover:shadow-[0_0_25px_rgba(0,255,255,0.5)] font-mono text-sm sm:text-base font-semibold flex items-center gap-2.5 transition-all duration-300 shadow-[0_0_18px_rgba(0,255,255,0.25)]"
+                      className="px-7 py-3.5 rounded-lg border border-custom-cyan bg-custom-cyan/20 text-white hover:border-white hover:bg-custom-cyan/35 hover:shadow-[0_0_25px_rgba(0,255,255,0.5)] font-mono text-sm sm:text-base font-semibold flex items-center gap-2.5 transition-all duration-300 shadow-[0_0_15px_rgba(0,255,255,0.25)]"
                     >
                       <Send size={18} />
                       <span>Send Email</span>
@@ -179,7 +179,7 @@ export function Contact() {
 
                     <button
                       onClick={handleCopyEmail}
-                      className="px-7 py-3.5 rounded-lg border border-custom-cyan/40 bg-[#03141b]/90 text-custom-cyan hover:border-custom-cyan hover:bg-custom-cyan/15 hover:text-white font-mono text-sm sm:text-base font-medium flex items-center gap-2.5 transition-all duration-300 hover:shadow-[0_0_15px_rgba(0,255,255,0.25)]"
+                      className="px-7 py-3.5 rounded-lg border border-custom-cyan/30 bg-black/40 text-custom-cyan/90 hover:border-custom-cyan hover:bg-custom-cyan/10 hover:text-custom-cyan font-mono text-sm sm:text-base font-medium flex items-center gap-2.5 transition-all duration-300 hover:shadow-[0_0_12px_rgba(0,255,255,0.25)]"
                     >
                       {copied ? (
                         <>
@@ -198,32 +198,32 @@ export function Contact() {
 
                 {/* Sub Cards Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
-                  <div className="rounded-xl border border-custom-cyan/30 bg-[#021820]/65 p-5 hover:border-custom-cyan/50 hover:bg-custom-cyan/10 transition-all shadow-[0_0_15px_rgba(0,255,255,0.05)]">
-                    <div className="flex items-center gap-2 mb-2 text-white font-mono font-bold text-base">
-                      <Sparkles size={18} className="text-custom-cyan drop-shadow-[0_0_6px_rgba(0,255,255,0.5)]" />
+                  <div className="rounded-xl border border-custom-cyan/20 bg-[#021820]/60 p-5 hover:border-custom-cyan/40 transition-colors">
+                    <div className="flex items-center gap-2 mb-2 text-custom-cyan font-mono font-semibold text-base">
+                      <Sparkles size={18} className="text-custom-cyan" />
                       <span>Partnerships & Events</span>
                     </div>
-                    <p className="text-white/75 font-mono text-sm leading-relaxed">
+                    <p className="text-custom-cyan/70 font-mono text-sm leading-relaxed">
                       For community sponsorships, hackathon collaborations, or joint workshops.
                     </p>
                   </div>
 
-                  <div className="rounded-xl border border-custom-cyan/30 bg-[#021820]/65 p-5 hover:border-custom-cyan/50 hover:bg-custom-cyan/10 transition-all shadow-[0_0_15px_rgba(0,255,255,0.05)]">
-                    <div className="flex items-center gap-2 mb-2 text-white font-mono font-bold text-base">
-                      <MessageSquare size={18} className="text-custom-cyan drop-shadow-[0_0_6px_rgba(0,255,255,0.5)]" />
+                  <div className="rounded-xl border border-custom-cyan/20 bg-[#021820]/60 p-5 hover:border-custom-cyan/40 transition-colors">
+                    <div className="flex items-center gap-2 mb-2 text-custom-cyan font-mono font-semibold text-base">
+                      <MessageSquare size={18} className="text-custom-cyan" />
                       <span>General Questions</span>
                     </div>
-                    <p className="text-white/75 font-mono text-sm leading-relaxed">
+                    <p className="text-custom-cyan/70 font-mono text-sm leading-relaxed">
                       Feedback, community participation, or questions regarding our open resources.
                     </p>
                   </div>
                 </div>
 
                 {/* Response Time Alert */}
-                <div className="rounded-xl border border-custom-cyan/25 bg-[#021820]/45 p-4 text-center">
-                  <p className="text-white/80 font-mono text-xs sm:text-sm">
+                <div className="rounded-xl border border-custom-cyan/20 bg-[#021820]/40 p-4 text-center">
+                  <p className="text-custom-cyan/70 font-mono text-xs sm:text-sm">
                     We typically respond within{' '}
-                    <span className="text-custom-cyan font-bold drop-shadow-[0_0_6px_rgba(0,255,255,0.4)]">24–48 hours</span>. For urgent
+                    <span className="text-custom-cyan font-bold">24–48 hours</span>. For urgent
                     matters, please indicate it in your subject line.
                   </p>
                 </div>
@@ -241,10 +241,10 @@ export function Contact() {
                 className="space-y-6"
               >
                 <div>
-                  <h2 className="text-2xl sm:text-3xl font-bold font-mono text-white mb-2 drop-shadow-[0_0_10px_rgba(0,255,255,0.3)]">
-                    Career Matching Program<span className="text-custom-cyan">_</span>
+                  <h2 className="text-2xl sm:text-3xl font-bold font-mono text-custom-cyan mb-2">
+                    Career Matching Program_
                   </h2>
-                  <p className="text-white/80 font-mono text-sm sm:text-base leading-relaxed">
+                  <p className="text-custom-cyan/75 font-mono text-sm sm:text-base leading-relaxed">
                     Join the Gallipoli Career Matching Program to connect with top cybersecurity
                     companies looking for talent like you.
                   </p>
@@ -252,21 +252,21 @@ export function Contact() {
 
                 {/* Candidate & Companies Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="rounded-xl border border-custom-cyan/30 bg-[#021820]/65 p-5 hover:border-custom-cyan/50 hover:bg-custom-cyan/10 transition-all shadow-[0_0_15px_rgba(0,255,255,0.05)]">
-                    <h3 className="text-white font-mono font-bold text-base mb-2">
+                  <div className="rounded-xl border border-custom-cyan/20 bg-[#021820]/60 p-5 hover:border-custom-cyan/40 transition-colors">
+                    <h3 className="text-custom-cyan font-mono font-bold text-base mb-2">
                       For Candidates
                     </h3>
-                    <p className="text-white/75 font-mono text-sm leading-relaxed">
+                    <p className="text-custom-cyan/70 font-mono text-sm leading-relaxed">
                       Submit your profile and get matched with vetted cybersecurity companies
                       seeking your specific skill set.
                     </p>
                   </div>
 
-                  <div className="rounded-xl border border-custom-cyan/30 bg-[#021820]/65 p-5 hover:border-custom-cyan/50 hover:bg-custom-cyan/10 transition-all shadow-[0_0_15px_rgba(0,255,255,0.05)]">
-                    <h3 className="text-white font-mono font-bold text-base mb-2">
+                  <div className="rounded-xl border border-custom-cyan/20 bg-[#021820]/60 p-5 hover:border-custom-cyan/40 transition-colors">
+                    <h3 className="text-custom-cyan font-mono font-bold text-base mb-2">
                       For Companies
                     </h3>
-                    <p className="text-white/75 font-mono text-sm leading-relaxed">
+                    <p className="text-custom-cyan/70 font-mono text-sm leading-relaxed">
                       Access a curated pool of passionate cybersecurity professionals and students
                       ready for their next role.
                     </p>
@@ -274,35 +274,35 @@ export function Contact() {
                 </div>
 
                 {/* How It Works Container */}
-                <div className="rounded-xl border border-custom-cyan/35 bg-[radial-gradient(ellipse_at_top_left,rgba(0,255,255,0.08),rgba(2,20,26,0.75)_60%)] p-6 sm:p-7 shadow-[0_0_20px_rgba(0,255,255,0.05)]">
-                  <span className="block text-xs font-mono tracking-widest text-custom-cyan font-bold uppercase mb-4 drop-shadow-[0_0_8px_rgba(0,255,255,0.3)]">
+                <div className="rounded-xl border border-custom-cyan/25 bg-[radial-gradient(ellipse_at_top_left,rgba(0,255,255,0.06),rgba(2,19,25,0.7)_60%)] p-6 sm:p-7">
+                  <span className="block text-xs font-mono tracking-widest text-custom-cyan/60 uppercase mb-4">
                     HOW IT WORKS
                   </span>
 
-                  <div className="space-y-3 font-mono text-sm text-white/90">
+                  <div className="space-y-3 font-mono text-sm text-custom-cyan/85">
                     <div className="flex items-start gap-3">
-                      <span className="w-5 h-5 rounded-full border border-custom-cyan bg-custom-cyan/15 text-custom-cyan font-bold text-xs flex items-center justify-center shrink-0 mt-0.5 shadow-[0_0_8px_rgba(0,255,255,0.3)]">
+                      <span className="w-5 h-5 rounded-full border border-custom-cyan/40 text-custom-cyan text-xs flex items-center justify-center shrink-0 mt-0.5">
                         1
                       </span>
                       <span>Fill out the official Career application form</span>
                     </div>
 
                     <div className="flex items-start gap-3">
-                      <span className="w-5 h-5 rounded-full border border-custom-cyan bg-custom-cyan/15 text-custom-cyan font-bold text-xs flex items-center justify-center shrink-0 mt-0.5 shadow-[0_0_8px_rgba(0,255,255,0.3)]">
+                      <span className="w-5 h-5 rounded-full border border-custom-cyan/40 text-custom-cyan text-xs flex items-center justify-center shrink-0 mt-0.5">
                         2
                       </span>
                       <span>Our team reviews your profile, technical focus, and interests</span>
                     </div>
 
                     <div className="flex items-start gap-3">
-                      <span className="w-5 h-5 rounded-full border border-custom-cyan bg-custom-cyan/15 text-custom-cyan font-bold text-xs flex items-center justify-center shrink-0 mt-0.5 shadow-[0_0_8px_rgba(0,255,255,0.3)]">
+                      <span className="w-5 h-5 rounded-full border border-custom-cyan/40 text-custom-cyan text-xs flex items-center justify-center shrink-0 mt-0.5">
                         3
                       </span>
                       <span>Profiles are aligned with partner company opportunities</span>
                     </div>
 
                     <div className="flex items-start gap-3">
-                      <span className="w-5 h-5 rounded-full border border-custom-cyan bg-custom-cyan/15 text-custom-cyan font-bold text-xs flex items-center justify-center shrink-0 mt-0.5 shadow-[0_0_8px_rgba(0,255,255,0.3)]">
+                      <span className="w-5 h-5 rounded-full border border-custom-cyan/40 text-custom-cyan text-xs flex items-center justify-center shrink-0 mt-0.5">
                         4
                       </span>
                       <span>You get directly contacted when a suitable match is identified</span>
@@ -316,7 +316,7 @@ export function Contact() {
                     href={careerGoogleFormUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-7 py-3.5 rounded-lg border border-custom-cyan bg-custom-cyan/25 text-white hover:border-white hover:bg-custom-cyan/35 hover:shadow-[0_0_25px_rgba(0,255,255,0.5)] font-mono text-sm sm:text-base font-semibold flex items-center gap-2.5 transition-all duration-300 shadow-[0_0_18px_rgba(0,255,255,0.25)]"
+                    className="px-7 py-3.5 rounded-lg border border-custom-cyan bg-custom-cyan/20 text-white hover:border-white hover:bg-custom-cyan/35 hover:shadow-[0_0_25px_rgba(0,255,255,0.5)] font-mono text-sm sm:text-base font-semibold flex items-center gap-2.5 transition-all duration-300 shadow-[0_0_15px_rgba(0,255,255,0.25)]"
                   >
                     <ExternalLink size={18} />
                     <span>Apply via Google Form</span>
@@ -324,7 +324,7 @@ export function Contact() {
 
                   <Link
                     to="/career"
-                    className="px-7 py-3.5 rounded-lg border border-custom-cyan/40 bg-[#03141b]/90 text-custom-cyan hover:border-custom-cyan hover:bg-custom-cyan/15 hover:text-white font-mono text-sm sm:text-base font-medium flex items-center gap-1.5 transition-all duration-300 hover:shadow-[0_0_15px_rgba(0,255,255,0.25)]"
+                    className="px-7 py-3.5 rounded-lg border border-custom-cyan/30 bg-black/40 text-custom-cyan/90 hover:border-custom-cyan hover:bg-custom-cyan/10 hover:text-custom-cyan font-mono text-sm sm:text-base font-medium flex items-center gap-1.5 transition-all duration-300 hover:shadow-[0_0_12px_rgba(0,255,255,0.25)]"
                   >
                     <span>Learn More</span>
                     <ChevronRight size={18} />
@@ -344,10 +344,10 @@ export function Contact() {
                 className="space-y-6"
               >
                 <div>
-                  <h2 className="text-2xl sm:text-3xl font-bold font-mono text-white mb-2 drop-shadow-[0_0_10px_rgba(0,255,255,0.3)]">
-                    Be a Guest Speaker<span className="text-custom-cyan">_</span>
+                  <h2 className="text-2xl sm:text-3xl font-bold font-mono text-custom-cyan mb-2">
+                    Be a Guest Speaker_
                   </h2>
-                  <p className="text-white/80 font-mono text-sm sm:text-base leading-relaxed">
+                  <p className="text-custom-cyan/75 font-mono text-sm sm:text-base leading-relaxed">
                     Want to share your knowledge with our cybersecurity community? Apply to be a guest on
                     our broadcasts, workshops, or live CTF walkthroughs.
                   </p>
@@ -355,23 +355,23 @@ export function Contact() {
 
                 {/* Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="rounded-xl border border-custom-cyan/30 bg-[#021820]/65 p-5 hover:border-custom-cyan/50 hover:bg-custom-cyan/10 transition-all shadow-[0_0_15px_rgba(0,255,255,0.05)]">
-                    <div className="flex items-center gap-2 mb-2 text-white font-mono font-bold text-base">
-                      <Radio size={18} className="text-custom-cyan drop-shadow-[0_0_6px_rgba(0,255,255,0.5)]" />
+                  <div className="rounded-xl border border-custom-cyan/20 bg-[#021820]/60 p-5 hover:border-custom-cyan/40 transition-colors">
+                    <div className="flex items-center gap-2 mb-2 text-custom-cyan font-mono font-bold text-base">
+                      <Radio size={18} className="text-custom-cyan" />
                       <span>Share Your Expertise</span>
                     </div>
-                    <p className="text-white/75 font-mono text-sm leading-relaxed">
+                    <p className="text-custom-cyan/70 font-mono text-sm leading-relaxed">
                       Present on penetration testing, cloud security, OSINT, reverse engineering,
                       or your personal research.
                     </p>
                   </div>
 
-                  <div className="rounded-xl border border-custom-cyan/30 bg-[#021820]/65 p-5 hover:border-custom-cyan/50 hover:bg-custom-cyan/10 transition-all shadow-[0_0_15px_rgba(0,255,255,0.05)]">
-                    <div className="flex items-center gap-2 mb-2 text-white font-mono font-bold text-base">
-                      <Mic size={18} className="text-custom-cyan drop-shadow-[0_0_6px_rgba(0,255,255,0.5)]" />
+                  <div className="rounded-xl border border-custom-cyan/20 bg-[#021820]/60 p-5 hover:border-custom-cyan/40 transition-colors">
+                    <div className="flex items-center gap-2 mb-2 text-custom-cyan font-mono font-bold text-base">
+                      <Mic size={18} className="text-custom-cyan" />
                       <span>Reach the Community</span>
                     </div>
-                    <p className="text-white/75 font-mono text-sm leading-relaxed">
+                    <p className="text-custom-cyan/70 font-mono text-sm leading-relaxed">
                       Engage directly with hundreds of active cybersecurity researchers, students, and
                       industry professionals.
                     </p>
@@ -379,35 +379,35 @@ export function Contact() {
                 </div>
 
                 {/* How It Works Container */}
-                <div className="rounded-xl border border-custom-cyan/35 bg-[radial-gradient(ellipse_at_top_left,rgba(0,255,255,0.08),rgba(2,20,26,0.75)_60%)] p-6 sm:p-7 shadow-[0_0_20px_rgba(0,255,255,0.05)]">
-                  <span className="block text-xs font-mono tracking-widest text-custom-cyan font-bold uppercase mb-4 drop-shadow-[0_0_8px_rgba(0,255,255,0.3)]">
+                <div className="rounded-xl border border-custom-cyan/25 bg-[radial-gradient(ellipse_at_top_left,rgba(0,255,255,0.06),rgba(2,19,25,0.7)_60%)] p-6 sm:p-7">
+                  <span className="block text-xs font-mono tracking-widest text-custom-cyan/60 uppercase mb-4">
                     HOW IT WORKS
                   </span>
 
-                  <div className="space-y-3 font-mono text-sm text-white/90">
+                  <div className="space-y-3 font-mono text-sm text-custom-cyan/85">
                     <div className="flex items-start gap-3">
-                      <span className="w-5 h-5 rounded-full border border-custom-cyan bg-custom-cyan/15 text-custom-cyan font-bold text-xs flex items-center justify-center shrink-0 mt-0.5 shadow-[0_0_8px_rgba(0,255,255,0.3)]">
+                      <span className="w-5 h-5 rounded-full border border-custom-cyan/40 text-custom-cyan text-xs flex items-center justify-center shrink-0 mt-0.5">
                         1
                       </span>
                       <span>Fill out the Speaker application form with your topic and background</span>
                     </div>
 
                     <div className="flex items-start gap-3">
-                      <span className="w-5 h-5 rounded-full border border-custom-cyan bg-custom-cyan/15 text-custom-cyan font-bold text-xs flex items-center justify-center shrink-0 mt-0.5 shadow-[0_0_8px_rgba(0,255,255,0.3)]">
+                      <span className="w-5 h-5 rounded-full border border-custom-cyan/40 text-custom-cyan text-xs flex items-center justify-center shrink-0 mt-0.5">
                         2
                       </span>
                       <span>Our content team reviews your proposal and checks topic relevance</span>
                     </div>
 
                     <div className="flex items-start gap-3">
-                      <span className="w-5 h-5 rounded-full border border-custom-cyan bg-custom-cyan/15 text-custom-cyan font-bold text-xs flex items-center justify-center shrink-0 mt-0.5 shadow-[0_0_8px_rgba(0,255,255,0.3)]">
+                      <span className="w-5 h-5 rounded-full border border-custom-cyan/40 text-custom-cyan text-xs flex items-center justify-center shrink-0 mt-0.5">
                         3
                       </span>
                       <span>We coordinate date, broadcast platform, and a brief tech check</span>
                     </div>
 
                     <div className="flex items-start gap-3">
-                      <span className="w-5 h-5 rounded-full border border-custom-cyan bg-custom-cyan/15 text-custom-cyan font-bold text-xs flex items-center justify-center shrink-0 mt-0.5 shadow-[0_0_8px_rgba(0,255,255,0.3)]">
+                      <span className="w-5 h-5 rounded-full border border-custom-cyan/40 text-custom-cyan text-xs flex items-center justify-center shrink-0 mt-0.5">
                         4
                       </span>
                       <span>Go live and deliver your session to the Gallipoli audience</span>
@@ -421,7 +421,7 @@ export function Contact() {
                     href={guestGoogleFormUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-7 py-3.5 rounded-lg border border-custom-cyan bg-custom-cyan/25 text-white hover:border-white hover:bg-custom-cyan/35 hover:shadow-[0_0_25px_rgba(0,255,255,0.5)] font-mono text-sm sm:text-base font-semibold flex items-center gap-2.5 transition-all duration-300 shadow-[0_0_18px_rgba(0,255,255,0.25)]"
+                    className="px-7 py-3.5 rounded-lg border border-custom-cyan bg-custom-cyan/20 text-white hover:border-white hover:bg-custom-cyan/35 hover:shadow-[0_0_25px_rgba(0,255,255,0.5)] font-mono text-sm sm:text-base font-semibold flex items-center gap-2.5 transition-all duration-300 shadow-[0_0_15px_rgba(0,255,255,0.25)]"
                   >
                     <ExternalLink size={18} />
                     <span>Apply via Google Form</span>
@@ -430,7 +430,7 @@ export function Contact() {
                   <a
                     href={`mailto:${emailAddress}?subject=${encodeURIComponent('[Speaker Proposal] Guest Session Submission')}`}
                     onClick={handleSpeakerPitchEmail}
-                    className="px-7 py-3.5 rounded-lg border border-custom-cyan/40 bg-[#03141b]/90 text-custom-cyan hover:border-custom-cyan hover:bg-custom-cyan/15 hover:text-white font-mono text-sm sm:text-base font-medium flex items-center gap-2.5 transition-all duration-300 hover:shadow-[0_0_15px_rgba(0,255,255,0.25)]"
+                    className="px-7 py-3.5 rounded-lg border border-custom-cyan/30 bg-black/40 text-custom-cyan/90 hover:border-custom-cyan hover:bg-custom-cyan/10 hover:text-custom-cyan font-mono text-sm sm:text-base font-medium flex items-center gap-2.5 transition-all duration-300 hover:shadow-[0_0_12px_rgba(0,255,255,0.25)]"
                   >
                     <Mail size={18} />
                     <span>Pitch via Email</span>
