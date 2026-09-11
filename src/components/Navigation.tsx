@@ -17,6 +17,7 @@ export function Navigation() {
     { path: '/blog', label: 'Blogs_' },
     { path: '/teams', label: 'Teams_' },
     { path: '/social', label: 'Social_' },
+    { path: '/contact', label: 'Contact_' },
   ];
 
   const logoVariants = {

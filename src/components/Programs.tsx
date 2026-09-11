@@ -112,7 +112,7 @@ export function Programs() {
           <ScrollAnimation delay={0.1}>
             <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">Learning Tracks_</h2>
           </ScrollAnimation>
-          <div className="grid gap-8">
+          <div className="grid gap-8 overflow-hidden">
             {learningTracks.map((track, index) => (
               <TrackCard key={index} track={track} index={index} />
             ))}
