@@ -4,6 +4,7 @@
 
 Server-Side Request Forgery (SSRF), bir web uygulamasının kullanıcıdan gelen girdilerle harici veya dahili kaynaklara HTTP isteği göndermesini sağlayan kritik bir güvenlik açığıdır. Geleneksel mimarilerde SSRF genellikle dahili ağdaki port taramaları veya servis keşifleriyle sınırlıyken, bulut (cloud) ortamlarında bu açık doğrudan tüm altyapının ele geçirilmesine kapı aralar. Bulut sağlayıcılarının sanal makinelerle (VM/EC2) haberleşmek için kullandığı özel yönetim servisleri, SSRF zafiyetlerinin etki alanını üstel düzeyde artırır.
 
+![AWS](/blogs/img/ssrf/1.jpg)
 ## AWS Instance Metadata Service (IMDS) Mimarisi
 
 Amazon Web Services (AWS) üzerinde koşan her EC2 örneği, kendi yapılandırma verilerine, ağ ayarlarına ve güvenlik kimlik bilgilerine erişmek için 169.254.169.254 IP adresine sahip dahili bir meta veri servisine (IMDS) sahiptir. Bu adres yalnızca ilgili sanal makinenin içinden erişilebilen link-local bir IP'dir. Uygulama katmanında çalışan bir SSRF zafiyeti, dış dünyadan erişilemeyen bu IP adresine istek atılmasını sağlayarak hassas verilerin sızdırılmasına yol açar.
