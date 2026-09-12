@@ -6,7 +6,8 @@ Amazon Web Services (AWS) ekosisteminde erişim denetiminin kalbi olan **IAM (Id
 
 Bu yazıda, AWS IAM mimarisini, en sık karşılaşılan kritik IAM misconfiguration türlerini, IAM Privilege Escalation (Yetki Yükseltme) tekniklerini ve bu zafiyetlerin önüne geçmek için uygulanması gereken sıkılaştırma (hardening) yöntemlerini teknik ayrıntılarıyla inceleyeceğiz.
 
-![AWS IAM Cloud Security](/blogs/img/aws-iam-cloud-security-misconfigurations/banner.png)---
+![AWS IAM Cloud Security](/blogs/img/aws-iam-cloud-security-misconfigurations/banner.png)
+---
 
 ## 1. AWS IAM Temel Mimarisi ve Çalışma Prensipleri
 
