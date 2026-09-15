@@ -13,6 +13,14 @@ interface Blog {
 }
 
   const blogs: Blog[] = [
+    {
+    slug: 'ssrf-bulut-guvenligi',
+    title: 'SSRF Bulutta Neden Bu Kadar Tehlikeli?',
+    excerpt: 'Bulut ortamlarında SSRF zafiyetlerinin anatomisi, IMDS servisleri, credential sızdırma senaryoları ve savunma yöntemleri.',
+    author: 'Meryem Şahin',
+    tags: ['Siber Güvenlik', 'Cloud Security', 'SSRF', 'AWS'],
+    image: '/blogs/img/ssrf/1.jpg',
+  },
   {
     slug: 'qr-kodlar-ve-quishing',
     title: 'QR Kodun Arkasında Ne Var? Quishing Saldırıları Nasıl Çalışır?',
