@@ -14,7 +14,7 @@ interface Blog {
 
   const blogs: Blog[] = [
     {
-    slug: 'ssrf-bulut-guvenligi',
+    slug: 'cloud-ssrf-metadata-risks',
     title: 'SSRF Bulutta Neden Bu Kadar Tehlikeli?',
     excerpt: 'Bulut ortamlarında SSRF zafiyetlerinin anatomisi, IMDS servisleri, credential sızdırma senaryoları ve savunma yöntemleri.',
     author: 'Meryem Şahin',
