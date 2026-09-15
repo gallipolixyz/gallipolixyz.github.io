@@ -1,4 +1,4 @@
-# SSRF Bulutta Neden Bu Kadar Tehlikeli? — Metadata Servislerinin Anatomisi ve Bulut Ele Geçirme Senaryoları
+# SSRF Bulutta Neden Bu Kadar Tehlikeli? Metadata Servislerinin Anatomisi ve Bulut Ele Geçirme Senaryoları
 
 ## SSRF Mantığı ve Bulut Ekosistemindeki Yeri
 
