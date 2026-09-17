@@ -1,6 +1,6 @@
 # SS7 Açığı Nedir? Telefonlarımız Bizi Nasıl Ele Veriyor?
 
-![kapak](/blogs/img/SS7-Acigi/kapak.png)
+![kapak](/blogs/img/ss7-acigi/kapak.png)
 
 ## Giriş
 
@@ -42,7 +42,7 @@ Bugün internetin gelişmesi ve SIGTRAN teknolojisinin ortaya çıkmasıyla birl
 
 ## Saldırganlar SS7 Açığı ile Neler Yapabilir?
 
-![phone-attack](/blogs/img/SS7-Acigi/phone-attack.jpg)
+![phone-attack](/blogs/img/ss7-acigi/phone-attack.jpg)
 
 Saldırganlar, SS7 açığını kullanarak telefon görüşmelerini ve mesajlarını dinleyebilir. Ayrıca, konum bilgisine erişebilirler. Banka şifreleri gibi önemli bilgileri ele geçirebilirler. Kısacası, bu açık sayesinde telefon kullanıcılarının gizliliği tehlikeye girer.
 

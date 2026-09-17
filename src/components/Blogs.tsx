@@ -19,7 +19,7 @@ interface Blog {
     excerpt: 'Bu yazıda ss7 açığını ve hackerlerin bu açığı istismar ederek nasıl telefonlarımızı dinlediğini öğreneceğiz.',
     author: 'Abdulkadir Kayacan',
     tags: ['ss7', 'ss7-attack', 'vulnerability'],
-    image: '/blogs/img/SS7-Acigi/kapak.png',
+    image: '/blogs/img/ss7-acigi/kapak.png',
   },
   {
     slug: 'cloud-ssrf-metadata-risks',
