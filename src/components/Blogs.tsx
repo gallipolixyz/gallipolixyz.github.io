@@ -13,7 +13,7 @@ interface Blog {
 }
 
   const blogs: Blog[] = [
-    {
+  {
     slug: 'ssrf-sunucuyu-silahlandirmak',
     title: 'SSRF: Sunucuyu Kendi Silahına Çevirmek',
     excerpt: 'Server-Side Request Forgery (SSRF) nedir, nasıl çalışır ve nasıl önlenir — örneklerle.',
@@ -21,7 +21,15 @@ interface Blog {
     tags: ['SSRF', 'Web Security', 'OWASP', 'Cloud Security'],
     image: '/blogs/img/ssrf-sunucuyu-silahlandirmak/ssrf-basic-flow.svg',
   },
-    {
+  {
+    slug: 'ss7-acigi',
+    title: 'SS7 Açığı Nedir? Telefonlarımız Bizi Nasıl Ele Veriyor?',
+    excerpt: 'Bu yazıda ss7 açığını ve hackerlerin bu açığı istismar ederek nasıl telefonlarımızı dinlediğini öğreneceğiz.',
+    author: 'Abdulkadir Kayacan',
+    tags: ['ss7', 'ss7-attack', 'vulnerability'],
+    image: '/blogs/img/ss7-acigi/kapak.png',
+  },
+  {
     slug: 'cloud-ssrf-metadata-risks',
     title: 'SSRF Bulutta Neden Bu Kadar Tehlikeli?',
     excerpt: 'Bulut ortamlarında SSRF zafiyetlerinin anatomisi, IMDS servisleri, credential sızdırma senaryoları ve savunma yöntemleri.',
