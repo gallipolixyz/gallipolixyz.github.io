@@ -14,6 +14,14 @@ interface Blog {
 
   const blogs: Blog[] = [
   {
+    slug: 'htb-reactor-writeup',
+    title: 'Reactor: Sıfır Tıklamalı Bir RCE\'den Root Shell\'e',
+    excerpt: 'HTB Reactor makinesini CVE-2025-55182 ve Node.js debug portu ile root etme süreci.',
+    author: 'Burak Kıraç',
+    tags: ['HTB', 'CTF', 'RCE', 'Node.js', 'Linux'],
+    image: '/blogs/img/htb-reactor-writeup/01-nmap-scan.png',
+  },
+  {
     slug: 'ssrf-sunucuyu-silahlandirmak',
     title: 'SSRF: Sunucuyu Kendi Silahına Çevirmek',
     excerpt: 'Server-Side Request Forgery (SSRF) nedir, nasıl çalışır ve nasıl önlenir — örneklerle.',
