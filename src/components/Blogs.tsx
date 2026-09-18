@@ -13,15 +13,39 @@ interface Blog {
 }
 
   const blogs: Blog[] = [ 
-    {
+  {
     slug: 'bir-sqli-saldirisini-access-logda-nasil-okursunuz',
     title: 'Bir SQLi Saldırısını Access Log\'da Nasıl Okursunuz?',
     excerpt: 'Bir SQL injection saldırısı access log\'a nasıl yansır? DVWA üzerinde adım adım SQLi denemeleri, log analizi, URL decode tuzakları ve Wireshark ile kör noktaların nasıl doldurulduğunu anlatan bir yazı.',
     author: 'Onur Kütük',
     tags: ['Siber Güvenlik', 'SQLi', 'Web Security', 'Log Analysis'],
     image: '/blogs/img/sqli-analiz/00-kapak.png',
-    },
-    {
+  },
+  {
+    slug: 'htb-reactor-writeup',
+    title: 'Reactor: Sıfır Tıklamalı Bir RCE\'den Root Shell\'e',
+    excerpt: 'HTB Reactor makinesini CVE-2025-55182 ve Node.js debug portu ile root etme süreci.',
+    author: 'Burak Kıraç',
+    tags: ['HTB', 'CTF', 'RCE', 'Node.js', 'Linux'],
+    image: '/blogs/img/htb-reactor-writeup/01-nmap-scan.png',
+  },
+  {
+    slug: 'ssrf-sunucuyu-silahlandirmak',
+    title: 'SSRF: Sunucuyu Kendi Silahına Çevirmek',
+    excerpt: 'Server-Side Request Forgery (SSRF) nedir, nasıl çalışır ve nasıl önlenir — örneklerle.',
+    author: 'Burak Kıraç',
+    tags: ['SSRF', 'Web Security', 'OWASP', 'Cloud Security'],
+    image: '/blogs/img/ssrf-sunucuyu-silahlandirmak/ssrf-basic-flow.svg',
+  },
+  {
+    slug: 'ss7-acigi',
+    title: 'SS7 Açığı Nedir? Telefonlarımız Bizi Nasıl Ele Veriyor?',
+    excerpt: 'Bu yazıda ss7 açığını ve hackerlerin bu açığı istismar ederek nasıl telefonlarımızı dinlediğini öğreneceğiz.',
+    author: 'Abdulkadir Kayacan',
+    tags: ['ss7', 'ss7-attack', 'vulnerability'],
+    image: '/blogs/img/ss7-acigi/kapak.png',
+  },
+  {
     slug: 'cloud-ssrf-metadata-risks',
     title: 'SSRF Bulutta Neden Bu Kadar Tehlikeli?',
     excerpt: 'Bulut ortamlarında SSRF zafiyetlerinin anatomisi, IMDS servisleri, credential sızdırma senaryoları ve savunma yöntemleri.',
