@@ -19,30 +19,21 @@ export function ScrollAnimation({
   isText = false
 }: ScrollAnimationProps) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, amount: 0.1 });
   const controls = useAnimation();
 
   const getInitialPosition = () => {
     switch (direction) {
-      case 'up': return { opacity: 0, y: 50 };
-      case 'down': return { opacity: 0, y: -50 };
-      case 'left': return { opacity: 0, x: 50 };
-      case 'right': return { opacity: 0, x: -50 };
-      default: return { opacity: 0, y: 50 };
+      case 'up': return { opacity: 0, y: 30 };
+      case 'down': return { opacity: 0, y: -30 };
+      case 'left': return { opacity: 0, x: 20 };
+      case 'right': return { opacity: 0, x: -20 };
+      default: return { opacity: 0, y: 30 };
     }
   };
 
   const getFinalPosition = () => {
-    switch (direction) {
-      case 'up':
-      case 'down':
-        return { opacity: 1, y: 0 };
-      case 'left':
-      case 'right':
-        return { opacity: 1, x: 0 };
-      default:
-        return { opacity: 1, y: 0 };
-    }
+    return { opacity: 1, x: 0, y: 0 };
   };
 
   useEffect(() => {

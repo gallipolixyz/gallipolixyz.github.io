@@ -117,7 +117,7 @@ export function EventDetails() {
 
   return (
     <PageTransition>
-      <div className="min-h-screen bg-black text-custom-cyan py-20 overflow-x-hidden">
+      <div className="min-h-screen bg-black text-custom-cyan py-20">
         <div className="container mx-auto px-2 sm:px-4">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
