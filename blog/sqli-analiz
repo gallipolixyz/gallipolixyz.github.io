@@ -1,4 +1,4 @@
-![Bir SQLi Saldırısını Access Log'da Nasıl Okursunuz?](/sqli-analiz/00-kapak.png)
+![Bir SQLi Saldırısını Access Log'da Nasıl Okursunuz?](/blogs/img/sqli-analiz/00-kapak.png)
 
 # Bir SQLi Saldırısını Access Log'da Nasıl Okursunuz?
 
@@ -16,7 +16,7 @@ Aşağıda bu süreci uçtan uca anlatıyorum. İlk olarak test ortamını nası
 
 Test için Docker üzerinde, güvenlik seviyesi **low** olarak yapılandırılmış bir DVWA (Damn Vulnerable Web Application) ortamı hazırladım. DVWA, siber güvenlik pratikleri yapabilmek adına kasıtlı olarak zafiyetli bırakılmış bir PHP uygulaması. "Low" seviyesinde çalışırken, kullanıcıdan aldığı girdiyi hiçbir filtreleme işleminden geçirmeden doğrudan arka plandaki SQL sorgusuna dahil ediyor.
 
-![DVWA güvenlik seviyesi low](/sqli-analiz/01-dvwa-low.png)
+![DVWA güvenlik seviyesi low](/blogs/img/sqli-analiz/01-dvwa-low.png)
 
 Simülasyon boyunca inceleyeceğim tüm sunucu kayıtları `/var/log/apache2/access.log` dosyasında tutuluyor.
 
@@ -38,7 +38,7 @@ Sistemi test etmek için beş adım uyguladım ve bu adımların sırası kesinl
 1'
 ```
 
-![User ID alanına 1' payload'ı](/sqli-analiz/02-sqli-quote.png)
+![User ID alanına 1' payload'ı](/blogs/img/sqli-analiz/02-sqli-quote.png)
 
 Uygulamadaki User ID alanına `1'` değerini girdim. Sistem bu girdiyi hiçbir filtreden geçirmediği için, kapatılmamış tırnak işareti doğrudan arka plandaki SQL sözdizimini (syntax) bozdu ve sunucu ekrana şu hata mesajını yansıttı:
 
@@ -62,7 +62,7 @@ Sıradaki adımda mantıksal bir kontrol yapmak için User ID alanına şu girdi
 
 Bu, SQL için her zaman doğru (`true`) kabul edilen bir koşuldur. Gönderdiğim bu payload sonucunda uygulama bana `admin` kullanıcısına ait bilgileri (First name: admin, Surname: admin) normal bir şekilde döndürdü. Sonucun bu şekilde dönmesi, sorgunun mantığına başarıyla müdahale edebildiğimi gösteriyor.
 
-![AND 1=1 ve AND 1=2 karşılaştırması](/sqli-analiz/03-and.png)
+![AND 1=1 ve AND 1=2 karşılaştırması](/blogs/img/sqli-analiz/03-and.png)
 
 Hemen ardından durumu doğrulamak için her zaman yanlış (`false`) olan payload'ı yolladım:
 
@@ -82,7 +82,7 @@ Bir sonraki adımda hedef sistemin veritabanı sürümünü öğrenmek için `ex
 1' AND extractvalue(1, concat(0x7e, version()))-- -
 ```
 
-![extractvalue ile XPATH hatası](/sqli-analiz/04-extractvalue.png)
+![extractvalue ile XPATH hatası](/blogs/img/sqli-analiz/04-extractvalue.png)
 
 Bu payload'ın arka planda nasıl çalıştığını ve neden bu yolu seçtiğimi adım adım açalım:
 
@@ -110,7 +110,7 @@ Veritabanındaki kullanıcı adlarını ve parola hash'lerini çekmek için şu 
 
 Bu sayede `UNION` komutunu kullanarak kendi sorgumu orijinal uygulamanın sonuçlarına eklemiş oldum. Sorgudaki `SELECT` kısmı hedef tablodan istediğim iki sütunu çekerken, sondaki `-- -` ifadesi orijinal sorgunun geri kalanını yorum satırı yaparak devre dışı bıraktı.
 
-![UNION SELECT ile users dökümü](/sqli-analiz/05-union-dump.png)
+![UNION SELECT ile users dökümü](/blogs/img/sqli-analiz/05-union-dump.png)
 
 Sonuç olarak orijinal sorgunun çıktısına `users` tablosu doğrudan eklendi. Ekranda `admin`, `gordonb`, `1337`, `pablo` ve `smithy` kullanıcı adları ile bunlara ait MD5 formatındaki parola hash'leri listelendi. Veri sızıntısı bu noktada tam anlamıyla gerçekleşmiş oldu.
 
@@ -126,7 +126,7 @@ Ekranda hiçbir sonuç veya veritabanı hatası görünmediği durumlarda, enjek
 
 Sayfa beş saniye gecikmeli yüklenirse, bu enjeksiyonun başarılı olduğu anlamına geliyor.
 
-![sleep(5) zaman tabanlı test](/sqli-analiz/06-sleep.png)
+![sleep(5) zaman tabanlı test](/blogs/img/sqli-analiz/06-sleep.png)
 
 Karşılaştırma yapabilmek ve durumu doğrulamak için aynı isteği bir de hiç bekletmeyen `sleep(0)` sürümüyle yolladım:
 
@@ -166,7 +166,7 @@ Binlerce satırlık bir log dosyasında payload'ı tespit etmek için basit bir 
 docker exec sqli-dvwa cat /var/log/apache2/access.log | grep "UNION"
 ```
 
-![grep UNION access.log çıktısı](/sqli-analiz/07-log-raw.png)
+![grep UNION access.log çıktısı](/blogs/img/sqli-analiz/07-log-raw.png)
 
 Çıkan sonuçlara baktığımızda çok kritik bir detay göze çarpıyor: log'daki üç satırdan **yalnızca ilki** gerçek `UNION` isteğidir. Çünkü saldırı payload'ı olan `UNION` ifadesi, sadece ilk kayıtta doğrudan istek satırında (`GET` ile başlayan kısımda) yer alıyor.
 
@@ -184,7 +184,7 @@ id=1'+UNION+SELECT+user,+password...
 
 Oysa log dosyasındaki URL kodlamasında artı işareti boşluk anlamına gelir.
 
-![unquote ve unquote_plus](/sqli-analiz/08-unquote.png)
+![unquote ve unquote_plus](/blogs/img/sqli-analiz/08-unquote.png)
 
 Bu sorunu çözmek için `unquote_plus` fonksiyonunu kullanmak gerekiyor. Bu fonksiyon artı işaretlerini boşluğa çevirerek SQL sorgusunu tamamen okunabilir hale getiriyor:
 
@@ -246,13 +246,13 @@ Access log'un göremediği bu kör noktaları, ağ trafiğini kaydeden araçlar 
 
 Aynı `UNION SELECT` payload'ını POST metoduyla gönderdiğimde, access log'da yalnızca `POST /vulnerabilities/sqli/` satırı yer alırken, PCAP kaydında isteğin gövdesi açıkça okunabiliyor.
 
-![Wireshark HTTP POST](/sqli-analiz/09-wireshark-post.png)
+![Wireshark HTTP POST](/blogs/img/sqli-analiz/09-wireshark-post.png)
 
 Görselde de görüldüğü gibi Wireshark, HTTP POST isteğinin tüm detaylarını yakalıyor. Access log'un göremediği form gövdesi burada net bir şekilde ortada.
 
 Wireshark'ta **Follow HTTP Stream** özelliğini kullandığımda ise hem gönderilen isteği hem de sunucunun verdiği yanıtı bir bütün olarak görebiliyorum.
 
-![Wireshark Follow HTTP Stream](/sqli-analiz/10-wireshark-stream.png)
+![Wireshark Follow HTTP Stream](/blogs/img/sqli-analiz/10-wireshark-stream.png)
 
 Access log sadece isteği kaydederken, PCAP kaydında sunucunun döndürdüğü `HTTP/1.1 302 Found` yönlendirmesi, `Set-Cookie` ile atanan oturum bilgileri ve `Location` başlığı açıkça okunabiliyor. PCAP, saldırının sonucunu da doğrudan gösteriyor.
 
