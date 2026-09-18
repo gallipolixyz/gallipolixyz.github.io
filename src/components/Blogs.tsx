@@ -14,6 +14,14 @@ interface Blog {
 
   const blogs: Blog[] = [
     {
+    slug: 'ssrf-sunucuyu-silahlandirmak',
+    title: 'SSRF: Sunucuyu Kendi Silahına Çevirmek',
+    excerpt: 'Server-Side Request Forgery (SSRF) nedir, nasıl çalışır ve nasıl önlenir — örneklerle.',
+    author: 'Burak Kıraç',
+    tags: ['SSRF', 'Web Security', 'OWASP', 'Cloud Security'],
+    image: '/blogs/img/ssrf-sunucuyu-silahlandirmak/ssrf-basic-flow.svg',
+  },
+    {
     slug: 'cloud-ssrf-metadata-risks',
     title: 'SSRF Bulutta Neden Bu Kadar Tehlikeli?',
     excerpt: 'Bulut ortamlarında SSRF zafiyetlerinin anatomisi, IMDS servisleri, credential sızdırma senaryoları ve savunma yöntemleri.',
