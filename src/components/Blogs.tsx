@@ -14,6 +14,14 @@ interface Blog {
 
   const blogs: Blog[] = [ 
   {
+  slug: "prompt-injection-rag-agents",
+  title: "Prompt Injection: RAG Applications and AI Agents",
+  excerpt: "How attacker-controlled content in RAG pipelines and tool-using agents crosses the trust boundary — from indirect injection through retrieved documents to tool abuse and data exfiltration.",
+  author: "aymaan-balbale",
+  tags: ["prompt-injection", "rag", "ai-agents", "llm-security", "appsec"],
+  image: "https://raw.githubusercontent.com/<your-org>/<repo>/main/images/prompt-injection-rag-agents/attack-chain.jpg",
+  },  
+  {
     slug: 'bir-sqli-saldirisini-access-logda-nasil-okursunuz',
     title: 'Bir SQLi Saldırısını Access Log\'da Nasıl Okursunuz?',
     excerpt: 'Bir SQL injection saldırısı access log\'a nasıl yansır? DVWA üzerinde adım adım SQLi denemeleri, log analizi, URL decode tuzakları ve Wireshark ile kör noktaların nasıl doldurulduğunu anlatan bir yazı.',
