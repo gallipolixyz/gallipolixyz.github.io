@@ -12,7 +12,15 @@ interface Blog {
   image: string;
 }
 
-  const blogs: Blog[] = [
+  const blogs: Blog[] = [ 
+    {
+    slug: 'bir-sqli-saldirisini-access-logda-nasil-okursunuz',
+    title: 'Bir SQLi Saldırısını Access Log\'da Nasıl Okursunuz?',
+    excerpt: 'Bir SQL injection saldırısı access log\'a nasıl yansır? DVWA üzerinde adım adım SQLi denemeleri, log analizi, URL decode tuzakları ve Wireshark ile kör noktaların nasıl doldurulduğunu anlatan bir yazı.',
+    author: 'Onur Kütük',
+    tags: ['Siber Güvenlik', 'SQLi', 'Web Security', 'Log Analysis'],
+    image: '/sqli-analiz/00-kapak.png',
+    },
     {
     slug: 'cloud-ssrf-metadata-risks',
     title: 'SSRF Bulutta Neden Bu Kadar Tehlikeli?',
