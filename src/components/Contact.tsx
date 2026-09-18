@@ -8,9 +8,8 @@ import {
   ExternalLink,
 } from 'lucide-react';
 
-const CAREER_FORM_URL = '#';
-const CONTACT_FORM_URL = '#';
-const GUEST_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLScobBPi-s6uG5f2KZGH_9dLlxrKCESxYqzy4G4gr1xXlvq58w/viewform?usp=header';
+const GUEST_FORM_URL =
+  'https://docs.google.com/forms/d/e/1FAIpQLScobBPi-s6uG5f2KZGH_9dLlxrKCESxYqzy4G4gr1xXlvq58w/viewform?usp=header';
 
 export function Contact() {
   return (
@@ -49,25 +48,15 @@ export function Contact() {
                 Join Our Team_
               </h2>
 
-              <p className="font-mono text-custom-cyan/80 mb-6">
+              <p className="font-mono text-custom-cyan/80">
                 Want to contribute to Gallipoli and become part of the
                 team? If you are interested in cybersecurity, content
                 creation, community management, design, development, or
                 other areas, we would be happy to hear from you.
               </p>
-
-              <a
-                href={CAREER_FORM_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-3 bg-custom-cyan/10 border border-custom-cyan/50 rounded-lg font-mono text-custom-cyan hover:bg-custom-cyan/20 hover:border-white hover:text-white transition-all"
-              >
-                Career Form
-                <ExternalLink className="w-4 h-4" />
-              </a>
             </div>
 
-            {/* Contact Form */}
+            {/* Get in Touch */}
             <div className="bg-custom-cyan/5 p-8 rounded-xl border border-custom-cyan/20 backdrop-blur-sm hover:bg-custom-cyan/10 hover:border-custom-cyan/40 transition-all duration-300">
               <MessageSquare className="w-12 h-12 mb-6 text-custom-cyan" />
 
@@ -75,21 +64,11 @@ export function Contact() {
                 Get in Touch_
               </h2>
 
-              <p className="font-mono text-custom-cyan/80 mb-6">
+              <p className="font-mono text-custom-cyan/80">
                 Have a question, collaboration idea, or something you
                 would like to discuss with us? Feel free to reach out
                 through our contact form.
               </p>
-
-              <a
-                href={CONTACT_FORM_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-3 bg-custom-cyan/10 border border-custom-cyan/50 rounded-lg font-mono text-custom-cyan hover:bg-custom-cyan/20 hover:border-white hover:text-white transition-all"
-              >
-                Contact Form
-                <ExternalLink className="w-4 h-4" />
-              </a>
             </div>
 
           </div>
@@ -199,4 +178,4 @@ export function Contact() {
       </div>
     </div>
   );
-},
+}
