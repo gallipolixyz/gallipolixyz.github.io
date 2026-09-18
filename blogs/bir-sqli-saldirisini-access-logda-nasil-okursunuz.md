@@ -1,5 +1,3 @@
-![Bir SQLi Saldırısını Access Log'da Nasıl Okursunuz?](/blogs/img/sqli-analiz/00-kapak.png)
-
 # Bir SQLi Saldırısını Access Log'da Nasıl Okursunuz?
 
 Bir SQL injection (SQLi) saldırısı sunucunun access (erişim) log'una tam olarak nasıl yansır? Saldırıyı gerçekleştiren kişi ile olayı sonradan inceleyen analist aynı tabloyu mu görür?
