@@ -19,7 +19,7 @@ interface Blog {
     excerpt: 'Bir SQL injection saldırısı access log\'a nasıl yansır? DVWA üzerinde adım adım SQLi denemeleri, log analizi, URL decode tuzakları ve Wireshark ile kör noktaların nasıl doldurulduğunu anlatan bir yazı.',
     author: 'Onur Kütük',
     tags: ['Siber Güvenlik', 'SQLi', 'Web Security', 'Log Analysis'],
-    image: '/sqli-analiz/00-kapak.png',
+    image: '/blogs/img/sqli-analiz/00-kapak.png',
     },
     {
     slug: 'cloud-ssrf-metadata-risks',
