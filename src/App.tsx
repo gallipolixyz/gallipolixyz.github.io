@@ -7,6 +7,7 @@ import { Home } from './pages/Home';
 import { Programs } from './pages/Programs';
 import { About } from './pages/About';
 import { Career } from './pages/Career';
+import { Contact } from './pages/Contact';
 import { Timeline } from './pages/Timeline';
 import { Social } from './pages/Social';
 import { Events } from './pages/Events';
@@ -33,6 +34,7 @@ function App() {
           <Route path="/programs" element={<Programs />} />
           <Route path="/about" element={<About />} />
           <Route path="/career" element={<Career />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="/timeline" element={<Timeline />} />
           <Route path="/social" element={<Social />} />
           <Route path="/events" element={<Events />} />
