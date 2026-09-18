@@ -1,0 +1,279 @@
+![Bir SQLi Saldırısını Access Log'da Nasıl Okursunuz?](sqli-analiz/00-kapak.png)
+
+# Bir SQLi Saldırısını Access Log'da Nasıl Okursunuz?
+
+Bir SQL injection (SQLi) saldırısı sunucunun access (erişim) log'una tam olarak nasıl yansır? Saldırıyı gerçekleştiren kişi ile olayı sonradan inceleyen analist aynı tabloyu mu görür?
+
+Bu soruların yanıtlarını pratikte görebilmek adına kendi laboratuvar ortamımda bir simülasyon gerçekleştirdim. Kasıtlı olarak zafiyet barındıran bir web uygulaması üzerinde temel bir SQL injection vektörü çalıştırdım. Ardından gerçekleşen bu aktiviteyi iki farklı perspektiften analiz ettim: önce sunucunun log dosyasını, sonrasında ise ağ trafiğini inceledim.
+
+Aşağıda bu süreci uçtan uca anlatıyorum. İlk olarak test ortamını nasıl kurduğumdan bahsedeceğim, ardından sırasıyla saldırı adımlarını uygulayacak ve son aşamada tüm bu işlemlerin loglarda nasıl göründüğünü ele alacağım.
+
+> **Uyarı:** Kendi makinenizde denemek isterseniz, bu testleri yalnızca size ait olan ya da üzerinde test yapmak için açıkça izin verilmiş sistemlerde gerçekleştirin.
+
+---
+
+## Test Ortamı
+
+Test için Docker üzerinde, güvenlik seviyesi **low** olarak yapılandırılmış bir DVWA (Damn Vulnerable Web Application) ortamı hazırladım. DVWA, siber güvenlik pratikleri yapabilmek adına kasıtlı olarak zafiyetli bırakılmış bir PHP uygulaması. "Low" seviyesinde çalışırken, kullanıcıdan aldığı girdiyi hiçbir filtreleme işleminden geçirmeden doğrudan arka plandaki SQL sorgusuna dahil ediyor.
+
+![DVWA güvenlik seviyesi low](sqli-analiz/01-dvwa-low.png)
+
+Simülasyon boyunca inceleyeceğim tüm sunucu kayıtları `/var/log/apache2/access.log` dosyasında tutuluyor.
+
+Log dosyasında görünen `172.18.0.1` adresi Docker'ın köprü (bridge) ağ geçidini, yani doğrudan kendi makinemi işaret ediyor. Buradaki dokuz isteğin tamamını tarayıcı (Firefox 155) üzerinden manuel olarak ben gönderdim. Bunun gerçek bir saldırı olmadığını logun kendisinden de net bir şekilde okuyabiliyoruz: tek bir IP adresi, tek bir gerçek tarayıcı kullanılmış ve istekler arasında 13 ila 75 saniye gibi insani bekleme süreleri var.
+
+Oysa otomatik bir zafiyet tarama aracı aynı işlemi milisaniye aralıklarla ve yüzlerce istekle gerçekleştirirdi. Bu yüzden bir log dosyasında sadece SQLi payload'ı görmek tek başına ortada kritik bir saldırı olduğu anlamına gelmez; bu istekleri **kimin**, **nereden** ve **hangi hızla** gönderdiğini de analiz etmek gerekir.
+
+---
+
+## Ne Denedim?
+
+Sistemi test etmek için beş adım uyguladım ve bu adımların sırası kesinlikle tesadüf değil. Süreç, öncelikle sistemde bir SQL zafiyeti olup olmadığını yoklamakla başlıyor; ardından tespit edilen bu açık üzerinden kademeli olarak daha fazla veri çekmek amacıyla kullanılıyor.
+
+### 1. Tek Tırnak ile Sözdizimi Kontrolü
+
+İlk hamlem, gönderilen girdinin arka plandaki SQL sorgusunun yapısını bozup bozmadığını görmek amacıyla tek bir tırnak işareti denemek oldu:
+
+```text
+1'
+```
+
+![User ID alanına 1' payload'ı](sqli-analiz/02-sqli-quote.png)
+
+Uygulamadaki User ID alanına `1'` değerini girdim. Sistem bu girdiyi hiçbir filtreden geçirmediği için, kapatılmamış tırnak işareti doğrudan arka plandaki SQL sözdizimini (syntax) bozdu ve sunucu ekrana şu hata mesajını yansıttı:
+
+```text
+You have an error in your SQL syntax; check the manual that corresponds
+to your MariaDB server version for the right syntax to use near ''1''' at line 1
+```
+
+Bu hata mesajı bana bir saldırganın ilk etapta aradığı iki kritik bilgiyi vermiş oldu:
+
+- Uygulamada doğrudan müdahale edebildiğim bir SQL zafiyeti bulunuyor.
+- Arka planda veritabanı olarak **MariaDB** çalışıyor.
+
+### 2. Mantıksal Kontrol (`AND 1=1` ve `AND 1=2`)
+
+Sıradaki adımda mantıksal bir kontrol yapmak için User ID alanına şu girdiyi denedim:
+
+```sql
+1' AND 1=1-- -
+```
+
+Bu, SQL için her zaman doğru (`true`) kabul edilen bir koşuldur. Gönderdiğim bu payload sonucunda uygulama bana `admin` kullanıcısına ait bilgileri (First name: admin, Surname: admin) normal bir şekilde döndürdü. Sonucun bu şekilde dönmesi, sorgunun mantığına başarıyla müdahale edebildiğimi gösteriyor.
+
+![AND 1=1 ve AND 1=2 karşılaştırması](sqli-analiz/03-and.png)
+
+Hemen ardından durumu doğrulamak için her zaman yanlış (`false`) olan payload'ı yolladım:
+
+```sql
+1' AND 1=2-- -
+```
+
+Bu kez uygulama herhangi bir kullanıcı verisi getirmeden tamamen boş bir sayfa döndürdü. (Görselde sağ tarafta yer alan "Sonuç boş - koşul her zaman yanlış." metni DVWA'nın orijinal çıktısı değildir; iki durum arasındaki bu zıtlığı daha net vurgulamak amacıyla sonradan eklenmiştir.)
+
+İki koşulun birbirinden bu kadar farklı davranması, arka plandaki sorgunun kontrolünün artık tamamen bende olduğunu kanıtlıyor. SQL injection'ın temel mantığı da tam olarak budur: doğru ve yanlış koşulların farklı davranmasını sağlayarak uygulamanın verdiği tepkileri ölçmek.
+
+### 3. Error-Based SQLi: `extractvalue` ile Sürüm Bilgisi Çekmek
+
+Bir sonraki adımda hedef sistemin veritabanı sürümünü öğrenmek için `extractvalue` fonksiyonuna başvurdum:
+
+```sql
+1' AND extractvalue(1, concat(0x7e, version()))-- -
+```
+
+![extractvalue ile XPATH hatası](sqli-analiz/04-extractvalue.png)
+
+Bu payload'ın arka planda nasıl çalıştığını ve neden bu yolu seçtiğimi adım adım açalım:
+
+**Neden `extractvalue`?**  
+Bu fonksiyon aslında veritabanında XML verilerini çözümlemek için kullanılır. Eğer kendisine parametre olarak geçerli bir XML formatı verilmezse, sistem doğal olarak bir XPATH hatası üretir.
+
+**Kasıtlı hata üretimi:**  
+Sorgunun içine eklediğim `concat(0x7e, version())` komutuyla tilde (`~` / hex karşılığı `0x7e`) işareti ile veritabanının `version()` bilgisini birleştirdim. Bu birleşim geçerli bir XML formatı olmadığı için kasıtlı olarak geçersiz bir XPATH syntax oluşturdu.
+
+MariaDB bu geçersiz sorguyu okuduğunda beklediğim gibi hata verdi. Ancak hatayı ekrana yansıtırken sorgunun içindeki `version()` fonksiyonunu da çalıştırdı ve sonucu hata mesajının içine gömdü. Ekranda tam olarak şu çıktıyı gördüm:
+
+```text
+XPATH syntax error: '~10.1.26-MariaDB-0+deb9u1'
+```
+
+İşte Error-Based SQLi'nin (hataya dayalı SQL enjeksiyonu) özü tam olarak budur. Normal şartlarda uygulamanın çöküş nedenini söyleyen standart bir hata mesajı, bir anda bizim için doğrudan veri taşıyıcısına dönüştü. Bu adımla birlikte arka planda çalışan sistemin **10.1.26-MariaDB** olduğunu hata mesajı üzerinden başarılı bir şekilde sızdırmış oldum.
+
+### 4. `UNION SELECT` ile Veri Dökümü
+
+Veritabanındaki kullanıcı adlarını ve parola hash'lerini çekmek için şu payload'ı gönderdim:
+
+```sql
+1' UNION SELECT user, password FROM users-- -
+```
+
+Bu sayede `UNION` komutunu kullanarak kendi sorgumu orijinal uygulamanın sonuçlarına eklemiş oldum. Sorgudaki `SELECT` kısmı hedef tablodan istediğim iki sütunu çekerken, sondaki `-- -` ifadesi orijinal sorgunun geri kalanını yorum satırı yaparak devre dışı bıraktı.
+
+![UNION SELECT ile users dökümü](sqli-analiz/05-union-dump.png)
+
+Sonuç olarak orijinal sorgunun çıktısına `users` tablosu doğrudan eklendi. Ekranda `admin`, `gordonb`, `1337`, `pablo` ve `smithy` kullanıcı adları ile bunlara ait MD5 formatındaki parola hash'leri listelendi. Veri sızıntısı bu noktada tam anlamıyla gerçekleşmiş oldu.
+
+İstediğim verinin doğrudan aynı HTTP yanıtı içinde bana geri dönmesi, bu adımı klasik bir **In-Band (Union-Based)** SQL injection örneği yapıyor.
+
+### 5. `sleep` ile Zaman Tabanlı (Time-Based) Test
+
+Ekranda hiçbir sonuç veya veritabanı hatası görünmediği durumlarda, enjekte edilen sorgunun çalışıp çalışmadığını sunucunun yanıt verme süresinden anlayabiliyoruz. Bunu test etmek için şu payload'ı gönderdim:
+
+```sql
+1' AND sleep(5)-- -
+```
+
+Sayfa beş saniye gecikmeli yüklenirse, bu enjeksiyonun başarılı olduğu anlamına geliyor.
+
+![sleep(5) zaman tabanlı test](sqli-analiz/06-sleep.png)
+
+Karşılaştırma yapabilmek ve durumu doğrulamak için aynı isteği bir de hiç bekletmeyen `sleep(0)` sürümüyle yolladım:
+
+```sql
+1' AND sleep(0)-- -
+```
+
+`sleep(5)` sorgusu sunucuyu tam 5 saniye bekletirken, `sleep(0)` isteği anında döndü. Sayfanın yüklenme süreleri arasındaki bu bariz fark, enjekte ettiğim sorgunun arka planda kesinlikle çalıştığını kanıtlıyor.
+
+Kör (blind) SQL injection'ın temeli tamamen buna dayanır: ekranda hiçbir veri veya sonuç görünmese bile, sadece bu zaman farkını ölçerek sistemde zafiyet olduğunu kesin olarak anlayabilirsiniz.
+
+---
+
+## Logda Payload'ı Bulmak
+
+`UNION SELECT` isteği access log dosyasına tam olarak şu şekilde düştü:
+
+```text
+172.18.0.1 - - [17/Sep/2026:18:19:42 +0000] "GET /vulnerabilities/sqli/?id=1%27+UNION+SELECT+user%2C+password+FROM+users--+-&Submit=Submit HTTP/1.1" 200 1988 "http://localhost:8080/vulnerabilities/sqli/" "Mozilla/5.0 ... Firefox/155.0"
+```
+
+Payload doğrudan istek satırının içinde yer alıyor ancak URL-kodlu (URL-encoded) durumda:
+
+| Kod | Anlamı |
+| --- | --- |
+| `%27` | `'` (tırnak) |
+| `%2C` | `,` (virgül) |
+| `+` | boşluk |
+
+Satırın sonuna doğru yer alan ikinci URL, **Referer** alanıdır. Referer her zaman bir önceki isteği gösterdiği için, sadece bu alanı takip ederek saldırı adımlarının sırasını logdan net bir şekilde çıkarabiliyorum.
+
+### Filtrelemek
+
+Binlerce satırlık bir log dosyasında payload'ı tespit etmek için basit bir anahtar kelime araması yeterli. Bunun için şu komutu çalıştırdım:
+
+```bash
+docker exec sqli-dvwa cat /var/log/apache2/access.log | grep "UNION"
+```
+
+![grep UNION access.log çıktısı](sqli-analiz/07-log-raw.png)
+
+Çıkan sonuçlara baktığımızda çok kritik bir detay göze çarpıyor: log'daki üç satırdan **yalnızca ilki** gerçek `UNION` isteğidir. Çünkü saldırı payload'ı olan `UNION` ifadesi, sadece ilk kayıtta doğrudan istek satırında (`GET` ile başlayan kısımda) yer alıyor.
+
+Diğer iki satırda ise `UNION` kelimesi Referer başlığında (satır sonundaki URL) geçiyor. Referer, tarayıcının bir önceki sayfadan geldiğini bildirir; yani bu satırlar sisteme gönderilen yeni saldırı payload'ları değildir. Bu yüzden sadece `grep "UNION"` komutuyla loglara bakmak yanıltıcıdır.
+
+Buna rağmen bu arama, URL-encoded haldeki (`%27` tırnak, `%2C` virgül, `+` boşluk) payload'u görmemi ve Referer alanındaki izleri takip ederek saldırı adımlarının sırasını çıkarmamı sağladı. Aynı filtreleme mantığı `sleep`, `extractvalue` veya `SELECT` için de geçerlidir.
+
+### URL Decode ve "Artı" Tuzağı
+
+Logdaki payload'ı okunur hale getirmek için URL-decode işlemi yapmak gerekiyor, ancak burada küçük bir tuzak var. Python'un standart `unquote` fonksiyonu, URL'deki artı (`+`) işaretlerini olduğu gibi bırakarak şu tür bir çıktı üretir:
+
+```text
+id=1'+UNION+SELECT+user,+password...
+```
+
+Oysa log dosyasındaki URL kodlamasında artı işareti boşluk anlamına gelir.
+
+![unquote ve unquote_plus](sqli-analiz/08-unquote.png)
+
+Bu sorunu çözmek için `unquote_plus` fonksiyonunu kullanmak gerekiyor. Bu fonksiyon artı işaretlerini boşluğa çevirerek SQL sorgusunu tamamen okunabilir hale getiriyor:
+
+```python
+from urllib.parse import unquote, unquote_plus
+
+raw = "id=1%27+UNION+SELECT+user%2C+password+FROM+users--+-&Submit=Submit"
+
+print(unquote(raw))
+# id=1'+UNION+SELECT+user,+password+FROM+users--+-&Submit=Submit
+
+print(unquote_plus(raw))
+# id=1' UNION SELECT user, password FROM users-- -&Submit=Submit
+```
+
+`unquote_plus` kullandığımda sonuç doğrudan tarayıcıya yazdığım orijinal hâline döndü:
+
+```text
+id=1' UNION SELECT user, password FROM users-- -
+```
+
+Bu küçük detay, log analizinde payload'ı doğru okuyabilmenin en önemli anahtarıdır.
+
+---
+
+## Logun Göremedikleri (Kör Noktalar)
+
+Payload'ı logda bulmak kolay olsa da, log bize sadece yapılan **"denemeyi"** gösterir; o denemenin amacına ulaşıp ulaşmadığını söylemez. Access log analizinin üç temel kör noktası bulunuyor.
+
+### Yanıt gövdesi
+
+Log sadece isteğin URL'ini kaydeder, sunucunun ne döndürdüğünü tutmaz. Satırda `UNION SELECT` payload'ını görseniz bile, parola hash'lerinin gerçekten sızıp sızmadığını logdan anlayamazsınız. "Bu istek denendi" ile "bu istek veriyi getirdi" arasındaki fark logda yoktur.
+
+### Yanıt süresi
+
+Apache'nin varsayılan log formatında yanıt süresi alanı bulunmaz. Bu yüzden sunucuyu 5 saniye bekletiren `sleep(5)` isteği ile anında dönen `sleep(0)` isteği loga tamamen aynı şekilde yansır:
+
+```text
+200 1772
+```
+
+Kör (blind) SQLi'nin mantığı süre farkına dayandığı için, saldırının çalışıp çalışmadığı logdan anlaşılamaz.
+
+### POST gövdesi
+
+Bu örneklerde payload URL'de (GET) olduğu için logda göründü. Eğer aynı payload form gövdesiyle (POST) gönderilseydi, access log'da yalnızca şunu görecektiniz:
+
+```text
+POST /vulnerabilities/sqli/
+```
+
+Payload isteğin gövdesinde kalacağı için access logu tamamen körleştirecekti.
+
+---
+
+## Wireshark Boşluğu Nasıl Dolduruyor?
+
+Access log'un göremediği bu kör noktaları, ağ trafiğini kaydeden araçlar dolduruyor. Wireshark veya tcpdump ile alınan bir PCAP dosyası; giden ve dönen paketlerin tamamını, yani sadece URL'yi değil, isteğin form gövdesini ve sunucunun verdiği yanıtı da kaydeder.
+
+Aynı `UNION SELECT` payload'ını POST metoduyla gönderdiğimde, access log'da yalnızca `POST /vulnerabilities/sqli/` satırı yer alırken, PCAP kaydında isteğin gövdesi açıkça okunabiliyor.
+
+![Wireshark HTTP POST](sqli-analiz/09-wireshark-post.png)
+
+Görselde de görüldüğü gibi Wireshark, HTTP POST isteğinin tüm detaylarını yakalıyor. Access log'un göremediği form gövdesi burada net bir şekilde ortada.
+
+Wireshark'ta **Follow HTTP Stream** özelliğini kullandığımda ise hem gönderilen isteği hem de sunucunun verdiği yanıtı bir bütün olarak görebiliyorum.
+
+![Wireshark Follow HTTP Stream](sqli-analiz/10-wireshark-stream.png)
+
+Access log sadece isteği kaydederken, PCAP kaydında sunucunun döndürdüğü `HTTP/1.1 302 Found` yönlendirmesi, `Set-Cookie` ile atanan oturum bilgileri ve `Location` başlığı açıkça okunabiliyor. PCAP, saldırının sonucunu da doğrudan gösteriyor.
+
+> **Gerçekçilik notu:** Bu test şifresiz bir protokol olan HTTP üzerinden yapıldı. Gerçek bir senaryoda trafik HTTPS olsaydı, Wireshark bu paketleri şifreli görecek ve POST gövdesini veya sunucu yanıtını bu kadar açık okuyamayacaktık. O durumda oluşan analiz boşluğunu ancak uygulama ve veritabanı logları doldurabilirdi.
+
+### Access Log vs PCAP
+
+| Ne bakıyoruz? | Access Log | PCAP |
+| --- | --- | --- |
+| GET parametresi | Görür (decode gerekir) | Görür |
+| POST gövdesi | Görmez | Görür |
+| Yanıt gövdesi | Görmez | Görür |
+| Yanıt süresi | Yalnızca format zenginleştirilirse | Görür |
+| Durum kodu | Görür | Görür |
+
+---
+
+## Sonuç
+
+Access loglar her zaman elinizin altındadır ve hızlıdır. Bir SQLi denemesini tespit etmeye, gönderilen payload'ı `grep` komutuyla çıkarmaya fazlasıyla yeter. Ancak gördüğü yerde durur; yanıtı, yanıt süresini ve POST gövdesini tutmadığı için saldırının başarılı olup olmadığını kesin olarak söyleyemez.
+
+PCAP bu boşluğu doldurarak isteğin gövdesini ve sonucunu net şekilde gösterir. Fakat ağ trafiği her zaman elinizde bulunmayabilir ve gerçek trafikte çoğu zaman şifrelidir.
+
+Baştaki soruya dönersek: **saldırıyı yapan kişiyle logu açan kişi kesinlikle aynı olayı görmüyor.** Loglar sadece bırakılan ize bakarken, PCAP doğrudan olayın içeriğine odaklanır. Bir SQLi alarmında sağlıklı bir analiz yapabilmek ve olayın nereye kadar gittiğini anlamak için bu iki kaynağı birlikte okumak en pratik yoldur.
