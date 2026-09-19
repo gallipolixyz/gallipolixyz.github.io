@@ -14,6 +14,14 @@ interface Blog {
 
   const blogs: Blog[] = [ 
   {
+  slug: "owasp-top-10-llm-applications-2025",
+  title: "OWASP Top 10 for LLM Applications 2025",
+  excerpt: "A technical deep dive into the OWASP Top 10 for LLM Applications 2025, with a focus on LLM08 (Vector & Embedding Weaknesses) and LLM10 (Unbounded Consumption).",
+  author: "aymaan-balbale",
+  tags: ["OWASP", "LLM Security", "AI Security", "RAG", "Prompt Injection", "AppSec"],
+  image: "Image1.png"
+  },  
+  {
   slug: "prompt-injection-rag-agents",
   title: "Prompt Injection: RAG Applications and AI Agents",
   excerpt: "How attacker-controlled content in RAG pipelines and tool-using agents crosses the trust boundary — from indirect injection through retrieved documents to tool abuse and data exfiltration.",
