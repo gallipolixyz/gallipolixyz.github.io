@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeSanitize, { defaultSchema } from 'rehype-sanitize';
+import rehypeSlug from 'rehype-slug';
 import { ScrollAnimation } from './ScrollAnimation';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { Copy, Check } from 'lucide-react';
@@ -44,6 +45,21 @@ const sanitizedSchema: Parameters<typeof rehypeSanitize>[0] = {
     code: [ ...(defaultSchema.attributes?.code || []), ['className'] ],
     img: [ ...(defaultSchema.attributes?.img || []), ['src'], ['alt'], ['title'], ['loading'], ['decoding'] ],
   },
+};
+
+// Hash'e (#başlık-id) güvenli şekilde kaydırır
+const scrollToHash = (hash: string, behavior: ScrollBehavior = 'smooth') => {
+  if (!hash || hash === '#') return false;
+  let id = hash.replace(/^#/, '');
+  try {
+    id = decodeURIComponent(id);
+  } catch {
+    // geçersiz encoding ise olduğu gibi kullan
+  }
+  const el = document.getElementById(id);
+  if (!el) return false;
+  el.scrollIntoView({ behavior, block: 'start' });
+  return true;
 };
 
 export const BlogDetails: React.FC = () => {
@@ -103,6 +119,14 @@ export const BlogDetails: React.FC = () => {
     fetchBlog();
   }, [safeSlug]);
 
+  // Yazı fetch ile sonradan yüklendiği için, sayfa /blog/xxx#baslik şeklinde
+  // açıldıysa içerik render olduktan sonra ilgili başlığa kaydır.
+  useEffect(() => {
+    if (loading || error || !window.location.hash) return;
+    const t = window.setTimeout(() => scrollToHash(window.location.hash, 'auto'), 100);
+    return () => window.clearTimeout(t);
+  }, [loading, error, content]);
+
   const urlTransform = (url: string, key: string) => {
     if (key === 'href') return isSafeHttpUrl(url) ? url : '#';
     if (key === 'src') return isAllowedImageSrc(url) ? url : '';
@@ -122,18 +146,59 @@ export const BlogDetails: React.FC = () => {
           </h1>
         </ScrollAnimation>
 
-        <ScrollAnimation direction="up" delay={0.2}>
-          <article className="prose prose-invert mx-auto w-full max-w-full sm:max-w-2xl md:max-w-3xl lg:max-w-4xl xl:max-w-5xl bg-white/5 border border-cyan-300/10 rounded-xl sm:rounded-3xl px-2 sm:px-4 md:px-6 lg:px-10 py-4 sm:py-8 md:py-12 shadow-xl prose-p:max-w-none prose-headings:max-w-none" style={{ lineHeight: '1.9', fontFamily: "'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif", wordBreak: 'break-word', boxShadow: '0 8px 32px 0 rgba(14, 116, 144, 0.5)', color: '#e2e8f0', transition: 'all 0.3s ease', fontSize: '1.15rem', backdropFilter: 'none' }}>
+        {/* Makale çok uzun olduğu için ScrollAnimation ile sarmalanmıyor:
+            görünürlük gözlemcisi tetiklenmeyip içeriği görünmez bırakabiliyor (özellikle yeni sekmede açılınca) */}
+        <div>
+          <article className="prose prose-invert mx-auto w-full max-w-full sm:max-w-2xl md:max-w-3xl lg:max-w-4xl xl:max-w-5xl bg-white/5 border border-cyan-300/10 rounded-xl sm:rounded-3xl px-2 sm:px-4 md:px-6 lg:px-10 py-4 sm:py-8 md:py-12 shadow-xl prose-p:max-w-none prose-headings:max-w-none prose-headings:scroll-mt-24 prose-code:before:content-none prose-code:after:content-none" style={{ lineHeight: '1.9', fontFamily: "'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif", wordBreak: 'break-word', boxShadow: '0 8px 32px 0 rgba(14, 116, 144, 0.5)', color: '#e2e8f0', transition: 'all 0.3s ease', fontSize: '1.15rem', backdropFilter: 'none' }}>
             {loading && (<p className="text-center font-mono text-cyan-300/70">Loading blog content...</p>)}
             {error && (<p className="text-center font-mono text-red-500">{error}</p>)}
             {!loading && !error && (
               <ReactMarkdown
                 remarkPlugins={[remarkGfm]}
-                rehypePlugins={[[rehypeSanitize, sanitizedSchema]]}
+                // rehypeSlug, sanitize'dan SONRA çalışmalı; aksi halde id'lere "user-content-" öneki eklenir
+                rehypePlugins={[[rehypeSanitize, sanitizedSchema], rehypeSlug]}
                 urlTransform={urlTransform}
                 components={{
-                  a: ({node, href, children, ...props}) => (
-                    <a href={isSafeHttpUrl(href as string) ? href : '#'} target="_blank" rel="noopener noreferrer" className="text-sky-300 hover:text-sky-200 underline underline-offset-2" {...props}>{children}</a>
+                  a: ({ node, href, children, ...props }) => {
+                    const linkClass = 'text-sky-300 hover:text-sky-200 underline underline-offset-2';
+
+                    // Sayfa içi linkler (Table of Contents): yeni sekme açma, yavaşça kaydır
+                    if (href?.startsWith('#')) {
+                      return (
+                        <a
+                          {...props}
+                          href={href}
+                          className={linkClass}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            if (scrollToHash(href)) {
+                              window.history.replaceState(null, '', href);
+                            }
+                          }}
+                        >
+                          {children}
+                        </a>
+                      );
+                    }
+
+                    // Dış linkler: eskisi gibi yeni sekmede açılır
+                    return (
+                      <a
+                        href={isSafeHttpUrl(href as string) ? href : '#'}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={linkClass}
+                        {...props}
+                      >
+                        {children}
+                      </a>
+                    );
+                  },
+                  // Tablolar: mobilde sütunlar daralıp kelimeleri bölmesin, gerekirse yatay kaydırılsın
+                  table: ({ node, ...props }) => (
+                    <div className="my-6 w-full overflow-x-auto rounded-lg [&_th]:whitespace-nowrap [&_th:first-child]:whitespace-nowrap [&_td:first-child]:whitespace-nowrap">
+                      <table {...props} className="my-0 w-full" style={{ wordBreak: 'normal', overflowWrap: 'normal' }} />
+                    </div>
                   ),
                   code({ node, className, children, ...props }) {
                     const match = /language-(\w+)/.exec(className || '');
@@ -164,7 +229,7 @@ export const BlogDetails: React.FC = () => {
               </ReactMarkdown>
             )}
           </article>
-        </ScrollAnimation>
+        </div>
 
         <ScrollAnimation direction="up" delay={0.3}>
           <div className="mt-8 sm:mt-12 md:mt-16 text-center">
