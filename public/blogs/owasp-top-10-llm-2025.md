@@ -445,4 +445,4 @@ The most sophisticated AI application in the world still depends on boring, reli
 
 ---
 
-*Published September 2025 · OWASP Top 10 for LLM Applications 2025*
+*Published September 2026 · OWASP Top 10 for LLM Applications 2025*
