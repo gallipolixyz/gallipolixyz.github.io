@@ -14,6 +14,14 @@ interface Blog {
 
   const blogs: Blog[] = [ 
     {
+    slug: 'rootme-writeup',
+    title: 'TryHackme RootMe Write-up',
+    excerpt: 'TryHackMe RootMe odasında yer alan makine üzerinden Linux sistemlerinde yetki yükseltme (privilege escalation) sürecini adım adım anlatan bir write-up.',
+    author: 'Abdulkadir Kayacan',
+    tags: ['CyberSecurity', 'Linux', 'PenetrationTesting', 'CTF'],
+    image: '/blogs/img/rootme-writeup/1.jpeg',
+  },
+    {
     slug: 'adli-delil-butunlugu',
     title: 'Adli Bilişimde Dijital Delil Bütünlüğü Nasıl Sağlanır?',
     excerpt: 'Bu yazıda adli bilişimde dijital delil bütünlüğünün sağlanması için kullanılan hash algoritmaları, hash değerlerinin doğrulanması ve delil zinciri kavramları detaylı bir şekilde ele alınmaktadır.',
