@@ -13,6 +13,14 @@ interface Blog {
 }
 
   const blogs: Blog[] = [ 
+    {
+    slug: 'adli-delil-butunlugu',
+    title: 'Adli Bilişimde Dijital Delil Bütünlüğü Nasıl Sağlanır?',
+    excerpt: 'Bu yazıda adli bilişimde dijital delil bütünlüğünün sağlanması için kullanılan hash algoritmaları, hash değerlerinin doğrulanması ve delil zinciri kavramları detaylı bir şekilde ele alınmaktadır.',
+    author: 'Abdulkadir Kayacan',
+    tags: ['DigitalForensics', 'Hash Algorithms', 'AdliBilişim', 'Delil Zinciri'],
+    image: '/blogs/img/adli-delil-butunlugu/1.jpeg',
+  },
       {
     slug: 'edr-atlatan-keylogger-bellek-analizi',
     title: 'EDR Alarm Vermediğinde Keylogger\'ı Bellek Dökümünde Aramak',
