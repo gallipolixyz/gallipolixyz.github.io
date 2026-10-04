@@ -13,6 +13,14 @@ interface Blog {
 }
 
   const blogs: Blog[] = [ 
+      {
+    slug: 'edr-atlatan-keylogger-bellek-analizi',
+    title: 'EDR Alarm Vermediğinde Keylogger\'ı Bellek Dökümünde Aramak',
+    excerpt: 'EDR alarm üretmediğinde bir keylogger bellek dökümünde nasıl bulunur? İnternete kapalı bir Windows 11 VM\'de Volatility 3 ile pstree, netstat, malfind ve string analizi yaparak dört kanıtı aynı PID\'de birleştiren bir laboratuvar çalışması.',
+    author: 'Bağdagül Çağlar',
+    tags: ['Siber Güvenlik', 'Memory Forensics', 'Volatility', 'EDR', 'Keylogger'],
+    image: '/blogs/img/edr-atlatan-keylogger-bellek-analizi/00-kapak.png',
+  },
   {
     slug: 'bir-sqli-saldirisini-access-logda-nasil-okursunuz',
     title: 'Bir SQLi Saldırısını Access Log\'da Nasıl Okursunuz?',
