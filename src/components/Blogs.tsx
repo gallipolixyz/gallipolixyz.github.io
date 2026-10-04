@@ -14,13 +14,13 @@ interface Blog {
 
   const blogs: Blog[] = [ 
   {
-  slug: "owasp-top-10-llm-applications-2025",
-  title: "OWASP Top 10 for LLM Applications 2025",
-  excerpt: "A technical deep dive into the OWASP Top 10 for LLM Applications 2025, with a focus on LLM08 (Vector & Embedding Weaknesses) and LLM10 (Unbounded Consumption).",
+  slug: "direct-indirect-prompt-injection-real-world-cases",
+  title: "Direct & Indirect Prompt Injection: Real-World Cases",
+  excerpt: "A look at three real-world prompt injection cases: the Bing Chat \"Sydney\" prompt leak, academic peer review manipulation, and SMB RAG poisoning via PDF.",
   author: "aymaan-balbale",
-  tags: ["OWASP", "LLM Security", "AI Security", "RAG", "Prompt Injection", "AppSec"],
-  image: "/blogs/img/owasp-top-10-llm-2025/Image1.png"
-  },  
+  tags: ["Prompt Injection", "LLM Security", "AI Security", "RAG", "RAG Poisoning", "AppSec"],
+  image: "/blogs/img/Prompt-Injection/Image1.png"
+  },
   {
   slug: "prompt-injection-rag-agents",
   title: "Prompt Injection: RAG Applications and AI Agents",
