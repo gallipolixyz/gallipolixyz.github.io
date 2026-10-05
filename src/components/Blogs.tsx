@@ -16,7 +16,7 @@ interface Blog {
     {
     slug: 'cohort-htb-writeup',
     title: 'Cohort HTB Writeup: Nmap, SSRF ve Yetki Yükseltme',
-    excerpt: 'Cohort HTB makinesinin çözüm süreci; Nmap taraması, SSRF zafiyeti ile iç ağa sızma ve paket yöneticisi üzerinden root olma adımları[cite: 9].',
+    excerpt: 'Cohort HTB makinesinin çözüm süreci; Nmap taraması, SSRF zafiyeti ile iç ağa sızma ve paket yöneticisi üzerinden root olma adımları.',
     author: 'Burak Kıraç',
     tags: ['Siber Güvenlik', 'HTB', 'SSRF', 'Writeup'],
     image: '/blogs/img/cohort-htb-writeup/01-nmap.jpeg',
