@@ -14,6 +14,14 @@ interface Blog {
 
   const blogs: Blog[] = [ 
   {
+  slug: "mcp-vulnerabilities",
+  title: "mcp-vulnerabilities",
+  excerpt: "A look at two real-world MCP vulnerabilities: the unauthenticated /mcp_message endpoint in Nginx-UI (CVE-2026-33032) and OS command injection in mcp-remote (CVE-2025-6514).",
+  author: "aymaan-balbale",
+  tags: ["MCP", "LLM Security", "AI Security", "CVE", "Command Injection", "AppSec"],
+  image: "/blogs/img/%20Mcp_vulnerabilities/image1.png"
+  },  
+  {
   slug: "direct-indirect-prompt-injection-real-world-cases",
   title: "Prompt Injection",
   excerpt: "A look at three real-world prompt injection cases: the Bing Chat \"Sydney\" prompt leak, academic peer review manipulation, and SMB RAG poisoning via PDF.",
