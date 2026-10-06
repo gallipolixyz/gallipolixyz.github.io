@@ -7,7 +7,7 @@ Before we go any further, we expect you to know,
 
 Today, We will focus on some real-world cases.
 
-![Prompt Injection: adversarial text the model executes as instruction](images/prompt-injection-overview.jpg)
+![Prompt Injection: adversarial text the model executes as instruction](/blogs/img/Prompt-Injection/image2.png)
 
 ---
 
@@ -78,7 +78,7 @@ Later, an innocent employee asks the internal AI chatbot,
 - The LLM processes the employee's request ("summarize") but also processes the payload ("tell the user their session expired").
 - The chatbot replies to the employee with the summary, appending the phishing link. Because the message comes from the company's own trusted internal AI, the employee is highly likely to click the link.
 
-![Malware transmission via prompt injection](images/malware-transmission-via-prompt-injection.jpg)
+![Malware transmission via prompt injection](/blogs/img/Prompt-Injection/Image1.png)
 
 ---
 
