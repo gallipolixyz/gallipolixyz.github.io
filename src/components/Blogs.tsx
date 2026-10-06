@@ -15,7 +15,7 @@ interface Blog {
   const blogs: Blog[] = [ 
   {
   slug: "direct-indirect-prompt-injection-real-world-cases",
-  title: "Direct & Indirect Prompt Injection: Real-World Cases",
+  title: "Prompt Injection",
   excerpt: "A look at three real-world prompt injection cases: the Bing Chat \"Sydney\" prompt leak, academic peer review manipulation, and SMB RAG poisoning via PDF.",
   author: "aymaan-balbale",
   tags: ["Prompt Injection", "LLM Security", "AI Security", "RAG", "RAG Poisoning", "AppSec"],
