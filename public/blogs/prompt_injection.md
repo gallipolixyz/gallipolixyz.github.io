@@ -1,4 +1,4 @@
-# Direct & Indirect Prompt Injection: Examples
+# Direct & Indirect Prompt Injection
 
 Hi, let's talk about **Direct & Indirect Prompt Injection**. Prompt injection is a vulnerability where an attacker manipulates a Large Language Model's (LLM) output by feeding it malicious instructions masked as standard input. Unlike traditional software exploits that target memory or code execution flaws, prompt injection targets the **semantic logic** of the model itself.
 
