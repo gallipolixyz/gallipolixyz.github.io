@@ -14,6 +14,14 @@ interface Blog {
 
   const blogs: Blog[] = [
     {
+  slug: 'oauth-101',
+  title: 'OAuth 101',
+  excerpt: 'Parolanı paylaşmadan erişim izni vermek',
+  author: 'Onur Kütük',
+  tags: ['Siber Güvenlik', 'OAuth', 'Web Güvenliği'],
+  image: '/blogs/img/oauth-101/00-kapak.png',
+ },
+    {
     slug: 'cohort-htb-writeup',
     title: 'Cohort HTB Writeup: Nmap, SSRF ve Yetki Yükseltme',
     excerpt: 'Cohort HTB makinesinin çözüm süreci; Nmap taraması, SSRF zafiyeti ile iç ağa sızma ve paket yöneticisi üzerinden root olma adımları.',
