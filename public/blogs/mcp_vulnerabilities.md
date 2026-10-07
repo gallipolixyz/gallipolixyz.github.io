@@ -2,7 +2,7 @@ The Model Context Protocol (MCP) is an open specification designed to standardiz
 
 MCP acts as a universal translator. Instead of the AI needing to learn the "language" of every software tool, MCP makes all tools talk to the AI using one shared, standard language.
 
-![Model Context Protocol Architecture](/blogs/img/mcp_vulnerabilities/image1.png)
+![Model Context Protocol Architecture](public/blogs/img/mcp_vulnerabilities/image1.png)
 
 ---
 
@@ -61,7 +61,7 @@ Developers often think about security mainly at the point where an MCP client be
 
 The consequence is particularly serious because the vulnerable component runs on the user's machine, not on the remote MCP server. A malicious MCP server does not need to compromise itself. It can provide specially crafted input to a vulnerable client and potentially cause the client machine to execute commands with the privileges of the affected process.
 
-![mcp-remote OS Command Injection (CVE-2025-6514)](/blogs/img/mcp_vulnerabilities/image2.png)
+![mcp-remote OS Command Injection (CVE-2025-6514)](public/blogs/img/mcp_vulnerabilities/image2.png)
 
 ---
 
