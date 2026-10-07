@@ -1,3 +1,5 @@
+MCP Vulnerabilities 
+
 The Model Context Protocol (MCP) is an open specification designed to standardize how Large Language Models (LLMs) and AI agents connect to tools and data sources, whether they are enterprise databases or external APIs. MCP has simplified agentic workflows. Before it, integrating a model required function-calling schemas, fragmented API wrappers, and ad-hoc client configurations.
 
 MCP acts as a universal translator. Instead of the AI needing to learn the "language" of every software tool, MCP makes all tools talk to the AI using one shared, standard language.
