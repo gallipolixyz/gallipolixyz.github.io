@@ -14,20 +14,20 @@ interface Blog {
 
   const blogs: Blog[] = [ 
   {
-  slug: "mcp-vulnerabilities",
-  title: "mcp-vulnerabilities",
+  slug: "mcp_vulnerabilities",
+  title: "mcp_vulnerabilities",
   excerpt: "A look at two real-world MCP vulnerabilities: the unauthenticated /mcp_message endpoint in Nginx-UI (CVE-2026-33032) and OS command injection in mcp-remote (CVE-2025-6514).",
   author: "aymaan-balbale",
   tags: ["MCP", "LLM Security", "AI Security", "CVE", "Command Injection", "AppSec"],
-  image: "/blogs/img/%20Mcp_vulnerabilities/image1.png"
+  image: "/blogs/img/mcp_vulnerabilities/image1.png"
   },  
   {
-  slug: "direct-indirect-prompt-injection-real-world-cases",
-  title: "Prompt Injection",
+  slug: "prompt_injection",
+  title: "prompt_injection",
   excerpt: "A look at three real-world prompt injection cases: the Bing Chat \"Sydney\" prompt leak, academic peer review manipulation, and SMB RAG poisoning via PDF.",
   author: "aymaan-balbale",
   tags: ["Prompt Injection", "LLM Security", "AI Security", "RAG", "RAG Poisoning", "AppSec"],
-  image: "/blogs/img/Prompt-Injection/Image1.png"
+  image: "/blogs/img/prompt_injection/image1.png"
   },
   {
     slug: 'bir-sqli-saldirisini-access-logda-nasil-okursunuz',
