@@ -34,11 +34,11 @@ Authentication is supposed to establish the identity of the party making a reque
 
 Traditional web applications already have this problem, but MCP makes it particularly interesting because the interface is explicitly designed to expose tools. Authentication on one endpoint does not automatically protect every other component of an application.
 
-The problem in Nginx-UI was that the MCP handshake endpoint and the endpoint that processes MCP messages did not enforce the same security requirements. The initial `/mcp` endpoint was protected by authentication, but `/mcp_message` lacked the corresponding authentication middleware.
+The problem in Nginx-UI was that the MCP handshake endpoint and the endpoint that processes MCP messages did not enforce the same security requirements. The initial /mcp endpoint was protected by authentication, but /mcp_message lacked the corresponding authentication middleware.
 
 The vulnerability can also be understood as a confused deputy problem. Nginx-UI holds administrative authority over the Nginx service, while an unauthenticated remote user should hold none of that authority. When the application accepts an unauthenticated MCP request and performs an administrative operation on the requester's behalf, Nginx-UI becomes a privileged deputy acting for an untrusted party. The attacker does not need direct operating-system access to Nginx. They use the application's existing authority to perform actions that should only be available to an administrator.
 
-The vulnerability demonstrates a fundamental principle of secure protocol design: session establishment and authorization are separate security properties. Creating or recognizing an MCP session does not prove that the party using a later endpoint is authorized to perform administrative operations. A secure implementation must maintain the relationship between a session, its authenticated identity, and the permissions tied to that identity throughout the entire interaction. Nginx-UI failed to maintain that relationship at the `/mcp_message` execution boundary.
+The vulnerability demonstrates a fundamental principle of secure protocol design: session establishment and authorization are separate security properties. Creating or recognizing an MCP session does not prove that the party using a later endpoint is authorized to perform administrative operations. A secure implementation must maintain the relationship between a session, its authenticated identity, and the permissions tied to that identity throughout the entire interaction. Nginx-UI failed to maintain that relationship at the /mcp_message execution boundary.
 
 ---
 
