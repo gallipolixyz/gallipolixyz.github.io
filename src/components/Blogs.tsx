@@ -38,16 +38,16 @@ interface Blog {
     image: '/blogs/img/edr-atlatan-keylogger-bellek-analizi/00-kapak.png',
   },
   {
-  slug: "mcp_vulnerabilities",
-  title: "mcp_vulnerabilities",
+  slug: "mcp-vulnerabilities",
+  title: "Mcp Vulnerabilities",
   excerpt: "A look at two real-world MCP vulnerabilities: the unauthenticated /mcp_message endpoint in Nginx-UI (CVE-2026-33032) and OS command injection in mcp-remote (CVE-2025-6514).",
   author: "aymaan-balbale",
   tags: ["MCP", "LLM Security", "AI Security", "CVE", "Command Injection", "AppSec"],
   image: "/blogs/img/mcp_vulnerabilities/image1.png"
   },  
   {
-  slug: "prompt_injection",
-  title: "prompt_injection",
+  slug: "prompt-injection",
+  title: "Prompt İnjection",
   excerpt: "A look at three real-world prompt injection cases: the Bing Chat \"Sydney\" prompt leak, academic peer review manipulation, and SMB RAG poisoning via PDF.",
   author: "aymaan-balbale",
   tags: ["Prompt Injection", "LLM Security", "AI Security", "RAG", "RAG Poisoning", "AppSec"],
