@@ -38,6 +38,22 @@ interface Blog {
     image: '/blogs/img/edr-atlatan-keylogger-bellek-analizi/00-kapak.png',
   },
   {
+  slug: "mcp_vulnerabilities",
+  title: "mcp_vulnerabilities",
+  excerpt: "A look at two real-world MCP vulnerabilities: the unauthenticated /mcp_message endpoint in Nginx-UI (CVE-2026-33032) and OS command injection in mcp-remote (CVE-2025-6514).",
+  author: "aymaan-balbale",
+  tags: ["MCP", "LLM Security", "AI Security", "CVE", "Command Injection", "AppSec"],
+  image: "/blogs/img/mcp_vulnerabilities/image1.png"
+  },  
+  {
+  slug: "prompt_injection",
+  title: "prompt_injection",
+  excerpt: "A look at three real-world prompt injection cases: the Bing Chat \"Sydney\" prompt leak, academic peer review manipulation, and SMB RAG poisoning via PDF.",
+  author: "aymaan-balbale",
+  tags: ["Prompt Injection", "LLM Security", "AI Security", "RAG", "RAG Poisoning", "AppSec"],
+  image: "/blogs/img/prompt_injection/image1.png"
+  },
+  {
     slug: 'bir-sqli-saldirisini-access-logda-nasil-okursunuz',
     title: 'Bir SQLi Saldırısını Access Log\'da Nasıl Okursunuz?',
     excerpt: 'Bir SQL injection saldırısı access log\'a nasıl yansır? DVWA üzerinde adım adım SQLi denemeleri, log analizi, URL decode tuzakları ve Wireshark ile kör noktaların nasıl doldurulduğunu anlatan bir yazı.',
