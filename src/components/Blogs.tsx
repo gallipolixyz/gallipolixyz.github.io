@@ -14,12 +14,12 @@ interface Blog {
 
   const blogs: Blog[] = [
     {
-  slug: 'oauth-101',
-  title: 'OAuth 101',
-  excerpt: 'Parolanı paylaşmadan erişim izni vermek',
-  author: 'Onur Kütük',
-  tags: ['Siber Güvenlik', 'OAuth', 'Web Güvenliği'],
-  image: '/blogs/img/oauth-101/00-kapak.png',
+    slug: 'csrf-ve-ssrf-farklari',
+    title: 'Web Güvenliğinde İsim Benzerliği Kurbanları: CSRF ve SSRF Arasındaki Farklar',
+    excerpt: 'CSRF ve SSRF zafiyetlerinin anatomisi, çalışma mekanizmaları ve korunma yöntemleri.',
+    author: 'Halil İbrahim Eroğlu',
+    tags: ['web security', 'csrf', 'ssrf', 'owasp'],
+    image: '/blogs/img/everNote/blog.jpg',
  },
     {
     slug: 'cohort-htb-writeup',
