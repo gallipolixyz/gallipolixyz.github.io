@@ -127,7 +127,7 @@ const team: TeamMember[] = [
     name: 'burak',
     role: 'Champions Team Member',
     bio: '',
-    image: '/img/burak-kırac.jpg',
+    image: '/img/burak.jpg',
     linkedin: 'https://www.linkedin.com/in/burak-kira%C3%A7-51b80a386',
   },
     {
