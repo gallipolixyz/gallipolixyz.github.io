@@ -25,9 +25,9 @@ interface Blog {
     slug: 'oauth-101',
     title: 'OAuth 2.0 ve OpenID Connect 101',
     excerpt: 'OAuth 2.0 ve OpenID Connect protokollerinin temelleri ve güvenlik mekanizmaları.',
-    author: 'Simge Yiğit',
+    author: 'Onur Kütük',
     tags: ['oauth', 'web security'],
-    image: '/blogs/img/everNote/blog.jpg',
+    image: '/blogs/img/oauth-101/00-kapak.png',
   },
     {
     slug: 'cohort-htb-writeup',
