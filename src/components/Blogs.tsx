@@ -13,14 +13,22 @@ interface Blog {
 }
 
   const blogs: Blog[] = [
-    {
+  {
     slug: 'csrf-ve-ssrf-farklari',
     title: 'Web Güvenliğinde İsim Benzerliği Kurbanları: CSRF ve SSRF Arasındaki Farklar',
-    excerpt: 'CSRF ve SSRF zafiyetlerinin anatomisi, çalışma mekanizmaları ve korunma yöntemleri.',
+    excerpt: 'CSRF ve SSRF zafiyetlerinin anatomisi, Same-Origin Policy ilişkisi, DNS Rebinding, alternatif protokoller ve korunma yöntemleri.',
     author: 'Halil İbrahim Eroğlu',
     tags: ['web security', 'csrf', 'ssrf', 'owasp'],
     image: '/blogs/img/everNote/blog.jpg',
- },
+  },
+  {
+    slug: 'oauth-101',
+    title: 'OAuth 2.0 ve OpenID Connect 101',
+    excerpt: 'OAuth 2.0 ve OpenID Connect protokollerinin temelleri ve güvenlik mekanizmaları.',
+    author: 'Simge Yiğit',
+    tags: ['oauth', 'web security'],
+    image: '/blogs/img/everNote/blog.jpg',
+  },
     {
     slug: 'cohort-htb-writeup',
     title: 'Cohort HTB Writeup: Nmap, SSRF ve Yetki Yükseltme',
