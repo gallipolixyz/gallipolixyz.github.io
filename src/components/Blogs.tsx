@@ -19,7 +19,7 @@ interface Blog {
     excerpt: 'CSRF ve SSRF zafiyetlerinin anatomisi, Same-Origin Policy ilişkisi, DNS Rebinding, alternatif protokoller ve korunma yöntemleri.',
     author: 'Halil İbrahim Eroğlu',
     tags: ['web security', 'csrf', 'ssrf', 'owasp'],
-    image: '/blogs/img/everNote/blog.jpg',
+    image: '/blogs/img/ssrf-csrf-101/gorsel1.png',
   },
   {
     slug: 'oauth-101',
