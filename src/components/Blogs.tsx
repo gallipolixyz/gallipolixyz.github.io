@@ -13,14 +13,22 @@ interface Blog {
 }
 
   const blogs: Blog[] = [
-    {
-  slug: 'oauth-101',
-  title: 'OAuth 101',
-  excerpt: 'Parolanı paylaşmadan erişim izni vermek',
-  author: 'Onur Kütük',
-  tags: ['Siber Güvenlik', 'OAuth', 'Web Güvenliği'],
-  image: '/blogs/img/oauth-101/00-kapak.png',
- },
+  {
+    slug: 'csrf-ve-ssrf-farklari',
+    title: 'Web Güvenliğinde İsim Benzerliği Kurbanları: CSRF ve SSRF Arasındaki Farklar',
+    excerpt: 'CSRF ve SSRF zafiyetlerinin anatomisi, Same-Origin Policy ilişkisi, DNS Rebinding, alternatif protokoller ve korunma yöntemleri.',
+    author: 'Halil İbrahim Eroğlu',
+    tags: ['web security', 'csrf', 'ssrf', 'owasp'],
+    image: '/blogs/img/ssrf-csrf-101/gorsel1.png',
+  },
+  {
+    slug: 'oauth-101',
+    title: 'OAuth 2.0 ve OpenID Connect 101',
+    excerpt: 'OAuth 2.0 ve OpenID Connect protokollerinin temelleri ve güvenlik mekanizmaları.',
+    author: 'Simge Yiğit',
+    tags: ['oauth', 'web security'],
+    image: '/blogs/img/everNote/blog.jpg',
+  },
     {
     slug: 'cohort-htb-writeup',
     title: 'Cohort HTB Writeup: Nmap, SSRF ve Yetki Yükseltme',
