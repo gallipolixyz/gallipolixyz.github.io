@@ -1,4 +1,5 @@
 # Web Güvenliğinde İsim Benzerliği Kurbanları: CSRF ve SSRF Arasındaki Farklar
+![](/blogs/img/ssrf-csrf-101/gorsel1.png)
 
 Siber güvenlik dünyasında bulunan kısaltmalar arasında, en tecrübeli mühendislerin bile zaman zaman duraksayıp birbirine karıştırdığı iki terim vardır: **CSRF (Cross-Site Request Forgery)** ve **SSRF (Server-Side Request Forgery)**.
 
@@ -90,7 +91,7 @@ Uygulamanızda, kullanıcının verdiği bir URL'den profil fotoğrafı çeken b
 
 Uygulama kontrol yapmadan bu adrese istek atarsa, bulut altyapısının geçici erişim anahtarlarını okur ve saldırgana sızdırabilir. Aynı yöntemle http://localhost:8080/admin gibi iç panellere de erişilebilir.
 
-##DNS Rebinding İle Filtreleri Aşmak
+## DNS Rebinding İle Filtreleri Aşmak
 
 Geliştiriciler genellikle girilen IP adresinin 127.0.0.1 veya 192.168.x.x olup olmadığını kontrol eden IP blacklist mekanizmaları kurarlar. Ancak saldırganlar DNS Rebinding tekniğiyle bu korumayı aşabilir:
 
