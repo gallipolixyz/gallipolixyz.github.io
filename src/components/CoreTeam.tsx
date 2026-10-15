@@ -109,7 +109,35 @@ const team: TeamMember[] = [
     image: '/img/hinula.jpg',
     linkedin: 'https://www.linkedin.com/in/hiranurgemalmaz',
   },
-       
+    {
+    name: 'Griffin',
+    role: 'Champions Team Member',
+    bio: '',
+    image: '/img/ayman-balbale.jpg',
+    linkedin: 'https://www.linkedin.com/in/aymaan-balbale-4468b2336',
+  },
+    {
+    name: 'lambert',
+    role: 'Champions Team Member',
+    bio: '',
+    image: '/img/kadir-kayacan.jpg',
+    linkedin: 'https://www.linkedin.com/in/kadirkayacan',
+  },
+    {
+    name: 'burak',
+    role: 'Champions Team Member',
+    bio: '',
+    image: '/img/burak-kırac.jpg',
+    linkedin: 'https://www.linkedin.com/in/burak-kira%C3%A7-51b80a386',
+  },
+    {
+    name: 'onur',
+    role: 'Champions Team Member',
+    bio: '',
+    image: '/img/onur.jpg',
+    linkedin: 'https://www.linkedin.com/in/onurkutuk',
+  }
+  
 ];
 
 export const CoreTeam: React.FC = () => {
