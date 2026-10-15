@@ -6,6 +6,7 @@ Siber güvenlik dünyasında bulunan kısaltmalar arasında, en tecrübeli mühe
 
 Kısaca özetlemek gerekirse; biri uygulamanın kullanıcı tarayıcısına duyduğu güveni istismar ederken, diğeri iç ağdaki sistemlerin web sunucusuna duyduğu güveni istismar eder.
 
+
 Gelin bu iki zafiyetin anatomisini, nasıl çalıştıklarını ve en önemlisi sistemlerimizi bu saldırılardan nasıl koruyacağımızı derinlemesine inceleyelim.
 
 ---
@@ -15,7 +16,11 @@ Gelin bu iki zafiyetin anatomisini, nasıl çalıştıklarını ve en önemlisi 
 ### CSRF Nedir?
 CSRF, saldırganın, kimliği doğrulanmış (oturum açmış) bir kullanıcıyı, kendi isteği dışında web uygulamasında istenmeyen işlemler yapmaya zorladığı istemci taraflı (client-side) bir saldırıdır.
 
-Bu zafiyetin kalbinde, web tarayıcılarının tembelliği ve "körü körüne itaati" yatar. Bir siteye giriş yaptığınızda (örneğin `banka.com`), tarayıcınız size bir oturum çerezi (session cookie) atar. Tarayıcının varsayılan davranışı, o siteye giden her isteğin (request) yanına bu çerezi otomatik olarak iliştirmektir. İsteğin nereden geldiğinin (hangi sekmeden veya siteden tetiklendiğinin) tarayıcı için bir önemi yoktur.
+### Same-Origin Policy (SOP) ve CSRF İlişkisi
+Web güvenlik mimarisinin temelini oluşturan **Same-Origin Policy (SOP - Aynı Köken Politikası)**, bir kaynaktan (origin) yüklenen betiklerin veya dokümanların başka bir kaynaktaki verileri **okumasını** engeller. Ancak SOP, cross-site durumunda durum değiştiren (state-changing) bir HTTP isteğinin karşı tarafa **gönderilmesini** varsayılan olarak tamamen engellemez. İşte CSRF tam olarak bu boşluktan beslenir: Saldırgan gelen yanıtı okuyamaz ama isteği sunucuya tetikletmeyi başarır.
+
+### Çerez Yönetimi ve Otomatik Gönderim Şartları
+Tarayıcılar çerezleri her isteğe körü körüne eklemezler. Bir çerezin cross-site bir istekte gönderilip gönderilmeyeceği; çerezin `SameSite` özniteliğine (`Strict`, `Lax`, `None`), `Domain`/`Path` kapsamına ve HTTPS/`Secure` şartlarına bağlıdır. Ancak yapılandırılmamış veya esnek bırakılmış oturum çerezleri, kullanıcının haberi olmadan isteklerle birlikte karşı sunucuya iletilebilir.
 
 ### Saldırı Senaryosu: Görünmez Para Transferi
 Bankanızın web sitesine giriş yaptığınızı ve oturumunuzun açık kaldığını varsayalım. Aynı tarayıcıda yeni bir sekme açtınız ve size e-posta ile gelen "Şirin Kedi Videoları" linkine tıkladınız (saldırganın sitesi).
@@ -32,69 +37,87 @@ Saldırganın sitesinin kaynak kodunda şöyle gizli bir form vardır:
     document.getElementById('csrfForm').submit();
 </script>
 ```
+Siz kedi videosunu izlerken, arka planda tarayıcınız bankanıza bir POST isteği gönderir. Şartlar uygunsa çerezler de isteğe eklenir. Bankanın sunucusu isteği alır ve işlemi gerçekleştirir. Saldırgan şifrenizi çalmamıştır, ancak sizin oturumunuzun yetkisini (ambient authority) kullanmıştır.
 
-Siz kedi videosunu izlerken, arka planda tarayıcınız bankanıza bir POST isteği gönderir. Bankanın sunucusu isteği alır, "Oturum çerezi geçerli mi? Evet, bu bizim kullanıcı. Transferi onayla" der ve işlemi gerçekleştirir. Saldırgan şifrenizi çalmamıştır, ancak sizin oturumunuzun yetkisini (ambient authority) kullanmıştır.
+## CSRF'ten Nasıl Korunuruz?
 
-### CSRF'ten Nasıl Korunuruz?
-- **Anti-CSRF Token'ları (Synchronizer Token Pattern):** Kullanıcının oturumuna özel, tahmin edilemez ve tek kullanımlık kriptografik bir token (jeton) üretilir. Bu token her form gönderiminde sunucuya iletilmeli ve doğrulanmalıdır. Saldırgan başka bir siteden istek yapsa bile bu rastgele token'ı bilemeyeceği için istek reddedilir.
-- **SameSite Çerez Özelliği (Cookie Attribute):** Çerezleri oluştururken `SameSite=Strict` veya `SameSite=Lax` bayraklarını (flags) kullanmak, modern tarayıcılara "Bu çerezi başka sitelerden (cross-site) gelen isteklere ekleme" talimatı verir.
-- **Kritik İşlemlerde Yeniden Doğrulama:** Şifre değiştirme veya para transferi gibi kritik işlemlerde kullanıcıdan tekrar şifre, OTP veya 2FA kodu istemek CSRF'i tamamen öldürür.
+Anti-CSRF Token'ları: Kullanıcının oturumuna bağlanan (per-session) veya her istekte yenilenen (per-request) tahmin edilemez kriptografik token'lar kullanılır.
 
----
+SameSite Çerez Yapılandırması: Çerezlere SameSite=Strict veya SameSite=Lax öznitelikleri verilerek cross-site isteklerde iletilmesi engellenir.
+
+Origin ve Referer Header Kontrolü: Sunucu tarafında isteğin kaynağının güvenilir domain olup olmadığı Origin ve Referer başlıkları kontrol edilerek doğrulanır.
+
+Özel HTTP Başlıkları (Custom Headers): AJAX/Fetch isteklerine X-Requested-With gibi özel başlıklar eklemek, SOP gereği preflight (OPTIONS) isteğini zorunlu kıldığı için CSRF'i engeller.
+
+Double Submit Cookie Pattern: İstemci tarafında hem çerezde hem de istek gövdesinde/başlığında aynı rastgele değerin gönderilip sunucuda eşleştirilmesi yöntemidir.
+
+Kritik İşlemlerde Re-Authentication: Şifre değiştirme veya para transferi gibi işlemlerde kullanıcıdan tekrar parola, OTP veya 2FA istenmelidir.
 
 ## 2. Server-Side Request Forgery (SSRF): Sunucuyu Kendi Silahıyla Vurmak
+SSRF Nedir?
 
-### SSRF Nedir?
-Eğer CSRF tarayıcıyı kandırmaksa, SSRF doğrudan web sunucusunu kandırmaktır. SSRF, saldırganın, zafiyetli bir web uygulamasını, kendi adına arka planda (server-side) HTTP istekleri yapmaya zorlamasıdır.
+Eğer CSRF tarayıcıyı kandırmaksa, SSRF doğrudan web sunucusunu kandırmaktır. SSRF, saldırganın, zafiyetli bir web uygulamasını, kendi adına arka planda (server-side) HTTP veya diğer protokoller üzerinden istekler yapmaya zorlamasıdır.
+Basic (In-band) vs. Blind (Out-of-band) SSRF
 
-Normal şartlarda dışarıdan erişime kapalı olan veritabanları, iç ağ (internal network) sistemleri veya bulut altyapı servisleri, güvenlik duvarının (firewall) arkasında güvendedir. Ancak bu sistemler, web sunucusundan gelen isteklere güvenirler. SSRF zafiyetine sahip bir web sunucusu, saldırgan için dışarıdan içeriye sızmasını sağlayan bir "köprü" (proxy) görevi görür.
+SSRF iki ana şekilde karşımıza çıkar:
 
-### Saldırı Senaryosu: Bulutun Kalbine Sızmak
-Uygulamanızda, kullanıcının verdiği bir URL'den profil fotoğrafı çeken veya bir web sayfasının PDF önizlemesini oluşturan bir özellik olduğunu düşünelim.
+ Basic (In-band) SSRF: Sunucunun iç ağdan veya hedef adresten çektiği veri (örneğin bir HTML içeriği, resim verisi veya JSON yanıtı) doğrudan saldırgana dönen yanıtın içinde görüntülenir.
 
-Kullanıcının gönderdiği masum istek şöyledir:
+ Blind (Out-of-band) SSRF: Sunucu isteği gerçekleştirir ancak dönen yanıtı kullanıcı arayüzünde göstermez. Saldırgan zafiyeti doğrulamak için kendi kontrolündeki bir DNS/HTTP sunucusuna (Burp Collaborator, Interactionsrv vb.) istek düşmesini bekler veya zaman tabanlı (timing attack) analizler yapar.
 
-```http
-POST /api/resim-yukle
-{
-    "url": "[https://normal-site.com/profil.jpg](https://normal-site.com/profil.jpg)"
-}
+Yalnızca HTTP Değil: Tehlikeli Diğer Protokoller
 
-Sunucu bu URL'e gider, resmi indirir ve kaydeder. Her şey harika.
+SSRF sadece HTTP/HTTPS ile sınırlı değildir. Uygulamanın kullandığı kütüphanelere bağlı olarak saldırganlar farklı URI şemalarını kullanabilir:
 
-Peki ya saldırgan dışarıdaki bir URL yerine, uygulamanın kurulu olduğu sunucunun kendi iç ağına veya bulut meta-veri (metadata) adresine bir istek gönderirse?
+file://: Sunucunun yerel dosya sistemindeki hassas dosyaları (ör. /etc/passwd) okumak için.
 
-```http
-POST /api/resim-yukle
+gopher://: İç ağdaki Redis, Memcached, SMTP gibi servislerle ham soket iletişimi kurup komut çalıştırmak (RCE) için.
+
+dict:// veya ftp://: İç ağdaki portları taramak ve bilgi toplamak için.
+
+## Saldırı Senaryosu: Bulutun Kalbine Sızmak
+
+Uygulamanızda, kullanıcının verdiği bir URL'den profil fotoğrafı çeken bir özellik olduğunu düşünelim:
+
+```
+    POST /api/resim-yukle
 {
     "url": "[http://169.254.169.254/latest/meta-data/iam/security-credentials/](http://169.254.169.254/latest/meta-data/iam/security-credentials/)"
 }
 ```
 
-(Not: 169.254.169.254, AWS ve diğer bulut sağlayıcılarında sunucunun hassas bilgilerini barındıran özel bir yerel adrestir.)
+(Not: 169.254.169.254, AWS ve diğer bulut sağlayıcılarında sunucunun geçici IAM rol anahtarlarını barındıran özel bir yerel adres/Link-Local adrestir.)
 
-Uygulama, verilen URL'in nereye gittiğini kontrol etmeden bu adrese istek yapar. Dışarıdan birisi bu adrese asla ulaşamazken, sunucunun kendi içinden yaptığı bu istek başarılı olur. Sunucu, bulut altyapısının geçici erişim anahtarlarını (Access Keys) okur ve sonucu (resimmiş gibi) saldırgana geri döndürür. Sonuç? Tüm bulut altyapısı saldırganın eline geçer. (2019'daki meşhur Capital One veri ihlali tam olarak bu yöntemle yapılmıştı.)
+Uygulama kontrol yapmadan bu adrese istek atarsa, bulut altyapısının geçici erişim anahtarlarını okur ve saldırgana sızdırabilir. Aynı yöntemle http://localhost:8080/admin gibi iç panellere de erişilebilir.
 
-Aynı yöntemle saldırgan, http://localhost:8080/admin gibi sadece sunucu içinden erişilebilen yönetim panellerine de ulaşabilir.
+##DNS Rebinding İle Filtreleri Aşmak
+
+Geliştiriciler genellikle girilen IP adresinin 127.0.0.1 veya 192.168.x.x olup olmadığını kontrol eden IP blacklist mekanizmaları kurarlar. Ancak saldırganlar DNS Rebinding tekniğiyle bu korumayı aşabilir:
+
+Saldırgan evil.com adında bir domain tanımlar ve TTL değerini 0 yapar.
+
+   İlk DNS sorgusunda domain masum bir dış IP'ye (1.2.3.4) çözümlenir ve uygulama kontrolü geçer.
+
+   Sunucu bağlantıyı kuracağı tam o anda yapılan ikinci DNS sorgusunda domain iç IP'ye (127.0.0.1) çözümlenir ve sunucu kendi içine istek atar.
+
 ## SSRF'ten Nasıl Korunuruz?
 
-  Sıkı Beyaz Liste (Whitelist) Kullanımı: Kullanıcılardan gelen URL'leri asla doğrudan kabul etmeyin. Sadece izin verilen güvenli domainlere veya IP bloklarına istek atılmasına izin verin.
+   Sıkı Beyaz Liste (Whitelist) Kullanımı: Sadece izin verilen güvenli domainlere/IP'lere istek atılmasına izin verilmelidir.
 
-  İç Ağ İsteklerini Bloklama: Uygulamanızın URL fetch (getirme) mantığına, yerel ağ IP'lerine (127.0.0.1, 192.168.x.x, 10.x.x.x veya 169.254.169.254) istek yapılmasını engelleyen sıkı kontroller ekleyin.
+   IP ve Ağ Seviyesinde Engelleme: İç ağ IP bloklarına (127.0.0.0/8, 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16, 169.254.169.254) yapılan istekler DNS çözümlemesinden sonra da kontrol edilmelidir (DNS Rebinding önlemi).
 
-  Ağ Segmentasyonu (Network Segmentation): Web sunucunuzun her yere erişimi olmamalıdır. Sunucunun sadece ihtiyacı olan veritabanlarına veya servislere erişebilmesi için Zero Trust mimarisi ve güvenlik duvarı kuralları (egress filtering) uygulayın.
+   Unused Protocols'ün Devre Dışı Bırakılması: İhtiyaç duyulmayan file://, gopher://, dict:// gibi URL şemaları iptal edilmelidir.
 
-  HTTP Yönlendirmelerine (Redirects) Dikkat: Saldırgan kendi sunucusuna masum bir istek attırıp, sunucusunu 302 Redirect ile iç ağınıza yönlendirebilir. URL doğrulama mantığınız yönlendirmeleri de takip edip denetlemelidir.
-## Özetle Fark Nedir?
+   Ağ Segmentasyonu (Zero Trust): Web sunucusunun iç ağdaki diğer hassas servislere erişimi kısıtlanmalıdır (Egress Filtering).
 
-Karışıklığı sonsuza dek gidermek için şu tabloyu aklınızda tutabilirsiniz:
+   HTTP Redirects Denetimi: 302 Redirect ile gelen yönlendirmeler körü körüne takip edilmemeli, yönlendirilen yeni adres de güvenlik kontrolünden geçirilmelidir.
 
-  CSRF'te kurban Kullanıcıdır (Tarayıcı). Saldırgan sizin kimliğinizi kullanarak sisteme istek atar. Çözüm, isteklerin gerçekten kullanıcının isteğiyle yapıldığını doğrulamaktır (Token'lar).
+Özetle Fark Nedir?
 
-  SSRF'te kurban Sunucudur. Saldırgan sunucuyu bir maşa gibi kullanarak iç sistemlere saldırır. Çözüm, sunucunun nereye istek yapabileceğini sıkı bir şekilde kısıtlamaktır.
+   CSRF'te kurban Kullanıcıdır (Tarayıcı). Saldırgan kullanıcının yetkisini kullanarak sisteme istek atar. Çözüm: İstek kaynağını ve doğruluk jetonlarını kontrol etmek.
+
+   SSRF'te kurban Sunucudur. Saldırgan sunucuyu ve onun ağ yetkilerini kullanarak iç/dış sistemlere istek atar. Çözüm: Sunucunun nereye ve hangi protokolle istek yapacağını sıkı denetlemek.
 
 ## Sonuç
 
-Web uygulamalarının giderek dış kaynaklarla daha fazla entegre olduğu (API'ler, Webhook'lar, URL fetch işlemleri) günümüzde, zafiyetlerin doğası da değişiyor. CSRF, modern tarayıcıların aldığı önlemlerle (SameSite cookies vb.) eski popülerliğini yavaş yavaş yitirse de, SSRF özellikle bulut mimarilerinin yaygınlaşmasıyla OWASP Top 10 listesinin zirvelerinde kendine kalıcı bir yer bulmuştur.
-
-Unutmayın; güvenlik, kime (Authentication) ve nereye (Access Control) güvendiğinizi sorgulamakla başlar. İster tarayıcıdan gelen bir istek olsun, ister kendi sunucunuzun dışarıya yapacağı bir istek; "Güven, ama doğrula" (Trust, but verify) ilkesi her zaman hayat kurtarır.
+Web uygulamalarının API'ler ve mikroservislerle büyüdüğü günümüzde, zafiyetlerin doğası da değişiyor. CSRF, modern tarayıcı önlemleriyle güçleşirken; SSRF, bulut mimarilerinin yaygınlaşmasıyla kritik bir tehdit haline gelmiştir. "Güven, ama doğrula" (Trust, but verify) ilkesi hem istemci hem de sunucu tarafında uygulanmalıdır.
