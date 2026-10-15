@@ -82,13 +82,6 @@ const team: TeamMember[] = [
     linkedin: 'https://www.linkedin.com/in/simge-yigit-simiv/',
   },
   {
-    name: 'Efe',
-    role: 'Champions Team Member',
-    bio: '',
-    image: '/img/Efe.jpg',
-    linkedin: 'https://www.linkedin.com/in/efekrbs/'
-  },
-  {
     name: 'Meryem',
     role: 'Champions Team Member',
     bio: '',
