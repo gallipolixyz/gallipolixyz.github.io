@@ -14,6 +14,14 @@ interface Blog {
 
   const blogs: Blog[] = [
   {
+    slug: 'mülakat-sorulari-ve-cevaplari',
+    title: 'Mülakat Soruları ve Cevapları: Siber Güvenlik, Yazılım ve Ağ Alanında Hazırlık Rehberi',
+    excerpt: 'Siber güvenlik, yazılım ve ağ alanında mülakatlara hazırlık için sorular ve cevaplar. Temel kavramlar, teknik sorular ve pratik ipuçları.',
+    author: 'Meryem Şahin',
+    tags: ['siber güvenlik', 'yazılım', 'ağ', 'mülakat'],
+    image: '/blogs/img/teknik/teknik.jpeg',
+  },
+  {
     slug: 'csrf-ve-ssrf-farklari',
     title: 'Web Güvenliğinde İsim Benzerliği Kurbanları: CSRF ve SSRF Arasındaki Farklar',
     excerpt: 'CSRF ve SSRF zafiyetlerinin anatomisi, Same-Origin Policy ilişkisi, DNS Rebinding, alternatif protokoller ve korunma yöntemleri.',
