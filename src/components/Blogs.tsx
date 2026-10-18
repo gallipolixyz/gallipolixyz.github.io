@@ -14,6 +14,14 @@ interface Blog {
 
   const blogs: Blog[] = [
   {
+    slug: 'toolsuzsizma',
+    title: 'Her Zaman Tool Kullanmak Zorunda Değilsin',
+    excerpt: 'Bir pentest aracı açmadan sadece mantık, OSINT, web zafiyetleri ve temel sistem komutlarıyla sızma testi yaklaşımı.',
+    author: 'Yusuf Eren Koçak',
+    tags: ['cybersecurity', 'pentest', 'osint', 'web'],
+    image: '/blogs/img/default/cover.jpg',
+  },
+  {
     slug: 'csrf-ve-ssrf-farklari',
     title: 'Web Güvenliğinde İsim Benzerliği Kurbanları: CSRF ve SSRF Arasındaki Farklar',
     excerpt: 'CSRF ve SSRF zafiyetlerinin anatomisi, Same-Origin Policy ilişkisi, DNS Rebinding, alternatif protokoller ve korunma yöntemleri.',
