@@ -14,6 +14,23 @@ interface Blog {
 
   const blogs: Blog[] = [
   {
+    slug: 'devops',
+    title: 'DevOps',
+    excerpt: 'Geliştirme ve operasyon ekiplerini bir araya getiren DevOps kültürü: yaşam döngüsü, CI/CD, bulut altyapısı, otomasyon, DevSecOps ve popüler araçlar.',
+    author: 'Meryem Şahin',
+    tags: ['devops', 'ci/cd', 'bulut', 'otomasyon', 'docker', 'kubernetes'],
+    image: '/blogs/img/devops/D_1.jpeg',
+  },
+
+  {
+    slug: 'teknik-mulakat-sorulari',
+    title: 'Mülakat Soruları ve Cevapları: Siber Güvenlik, Yazılım ve Ağ Alanında Hazırlık Rehberi',
+    excerpt: 'Siber güvenlik, yazılım ve ağ alanında mülakatlara hazırlık için sorular ve cevaplar. Temel kavramlar, teknik sorular ve pratik ipuçları.',
+    author: 'Meryem Şahin',
+    tags: ['siber güvenlik', 'yazılım', 'ağ', 'mülakat'],
+    image: '/blogs/img/devops/teknik-mulakat-sorulari.jpeg',
+  },
+  {
     slug: 'csrf-ve-ssrf-farklari',
     title: 'Web Güvenliğinde İsim Benzerliği Kurbanları: CSRF ve SSRF Arasındaki Farklar',
     excerpt: 'CSRF ve SSRF zafiyetlerinin anatomisi, Same-Origin Policy ilişkisi, DNS Rebinding, alternatif protokoller ve korunma yöntemleri.',
