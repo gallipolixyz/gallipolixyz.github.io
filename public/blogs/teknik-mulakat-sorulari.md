@@ -2,7 +2,9 @@
 
 Yazılım mühendisliği mülakatlarında hem junior hem de senior pozisyonlarda en sık karşımıza çıkan, temel bilgisayar bilimi, web teknolojileri ve sistem tasarımı sorularını bu rehberde detaylı ve net açıklamalarıyla ele alıyoruz.
 
+
 ---
+![](/blogs/img/devops/teknik-mulakat-sorulari.jpeg)
 
 ## 1. HTTP ve HTTPS Arasındaki Fark Nedir?
 
