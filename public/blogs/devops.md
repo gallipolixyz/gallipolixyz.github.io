@@ -253,5 +253,3 @@ DevOps başarısı **DORA metrikleri** ile ölçülür:
 > Amaç; yazılımı daha hızlı, daha güvenli ve daha güvenilir biçimde sürekli olarak teslim etmek ve bu süreci geri bildirimle durmadan iyileştirmektir.
 
 ---
-
-*Not: Görseller `images/` klasöründedir; `devops.md` ile aynı dizinde tutulduğunda Markdown görüntüleyicilerde (GitHub, VS Code, Typora vb.) doğru şekilde görünür.*
