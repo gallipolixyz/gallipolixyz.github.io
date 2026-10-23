@@ -14,6 +14,14 @@ interface Blog {
 
   const blogs: Blog[] = [
   {
+    slug: 'toolsuzsizma',
+    title: 'Her Zaman Tool Kullanmak Zorunda Değilsin',
+    excerpt: 'Bir pentest aracı açmadan sadece mantık, OSINT, web zafiyetleri ve temel sistem komutlarıyla sızma testi yaklaşımı.',
+    author: 'Yusuf Eren Koçak',
+    tags: ['cybersecurity', 'pentest', 'osint', 'web'],
+    image: '/blogs/img/default/cover.jpg',
+    },
+    {
     slug: 'devops',
     title: 'DevOps',
     excerpt: 'Geliştirme ve operasyon ekiplerini bir araya getiren DevOps kültürü: yaşam döngüsü, CI/CD, bulut altyapısı, otomasyon, DevSecOps ve popüler araçlar.',
@@ -21,7 +29,6 @@ interface Blog {
     tags: ['devops', 'ci/cd', 'bulut', 'otomasyon', 'docker', 'kubernetes'],
     image: '/blogs/img/devops/D_1.jpeg',
   },
-
   {
     slug: 'teknik-mulakat-sorulari',
     title: 'Mülakat Soruları ve Cevapları: Siber Güvenlik, Yazılım ve Ağ Alanında Hazırlık Rehberi',
