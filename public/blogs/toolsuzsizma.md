@@ -1,328 +1,451 @@
+# Her Zaman Tool Kullanmak Zorunda Değilsin: Araçsız Sızma Testi Mantığı
 
-# Her Zaman Tool Kullanmak Zorunda Değilsin
+![Araçsız Sızma Testi — Siber güvenlik ve terminal analizi](/blogs/img/toolsuzsizma/kapak.png)
 
-Bir pentest aracı açmadan önce şunu düşün: güvenlik açığı kodda değil, insanın zihnindedir.
+> **Bir güvenlik açığını keşfetmek için her zaman gelişmiş bir araç kullanman gerekmez.** Bazen en önemli bulgu; sistemin nasıl tasarlandığını anlamak, uygulamanın iş mantığını sorgulamak ve insan davranışlarını doğru analiz etmektir.
 
-2011'de Kevin Mitnick — dünyanın en ünlü hackerı — yıllarca sadece telefon ve dil kullanarak FBI’ı, telekom şirketlerini, savunma firmalarını sızdı. Tek bir exploit çalıştırmadan.
+Sızma testlerinde otomatik araçlar keşif ve analiz süreçlerini hızlandırır. Ancak bir aracın sunduğu çıktıları yorumlamakla bir sistemin neden savunmasız olduğunu anlamak aynı şey değildir.
 
-Buna Social Engineering denir. Ve hâlâ en etkili vektördür.
+Sosyal mühendislik, yetkilendirme hataları, yanlış yapılandırmalar ve iş mantığı zafiyetleri; çoğu zaman yalnızca teknik araçlara değil, araştırmacının düşünme biçimine de bağlıdır.
 
-Nasıl çalışır?
+Bu yazıda, **araçsız sızma testi yaklaşımını (tool-less penetration testing)** ve temel sistem araçlarından yararlanarak güvenlik açıklarının nasıl analiz edilebileceğini inceleyeceğiz.
 
-Senaryo: Bir şirkete sızmak istiyorsun.
+---
 
-Önce OSINT — açık kaynak istihbarat. Araç lazım mı? Hayır. Sadece Google:
+## İçindekiler
+
+- [1. Sosyal Mühendislik ve OSINT](#1-sosyal-mühendislik-ve-osint)
+- [2. Web Uygulamalarında Mantık Hataları](#2-web-uygulamalarında-mantık-hataları)
+  - [SQL Injection (SQLi)](#sql-injection-sqli)
+  - [IDOR ve BOLA](#idor-ve-bola)
+  - [Cross-Site Scripting (XSS)](#cross-site-scripting-xss)
+- [3. Yapılandırma Hataları ve Unutulan Kapılar](#3-yapılandırma-hataları-ve-unutulan-kapılar)
+- [4. Temel Sistem Araçları: curl ve netcat](#4-temel-sistem-araçları-curl-ve-netcat)
+- [5. Zafiyet Zincirleme (Attack Chain)](#5-zafiyet-zincirleme-attack-chain)
+- [6. Savunma Perspektifi](#6-savunma-perspektifi)
+- [Sonuç](#sonuç)
+
+---
+
+## 1. Sosyal Mühendislik ve OSINT
+
+![OSINT ve dijital ayak izi analizi](/blogs/img/toolsuzsizma/osint-network.jpg)
+
+*Şekil 1 — Açık kaynaklardan elde edilen bilgilerin ilişkilendirilmesi ve dijital ayak izi analizi.*
+
+**OSINT (Open Source Intelligence)**, açık kaynaklarda bulunan bilgilerin sistematik biçimde toplanması ve analiz edilmesidir.
+
+Bir hedef hakkında bilgi edinmek için her zaman özel bir keşif aracı kullanmak gerekmez. Arama motorları, herkese açık belgeler, şirket web siteleri ve kod depoları bile önemli ipuçları sağlayabilir.
+
+### Örnek: Açık kaynak araştırması
+
+Yetkili bir güvenlik değerlendirmesi kapsamında, bir şirketin herkese açık dijital ayak izini incelediğimizi düşünelim.
 
 ```text
 site:linkedin.com "AcmeCorp" "IT Manager"
-site:github.com "acmecorp" password
-filetype:pdf "acmecorp" "internal"
-
+site:github.com "acmecorp"
+filetype:pdf "AcmeCorp"
 ```
 
-LinkedIn’den çalışan isimlerini çekiyorsun. GitHub’da yanlışlıkla commit’lenmiş .env dosyası arıyorsun. Şirketin PDF raporlarında metadata’dan yazılım sürümlerini okuyorsun.
+Bu sorguların kullanım amaçları:
 
-Henüz tek bir araç kullanmadın.
+- **LinkedIn:** Şirketin organizasyon yapısı ve kamuya açık mesleki roller hakkında bilgi edinmek.
+- **GitHub:** Herkese açık depolarda yanlışlıkla paylaşılmış yapılandırma dosyalarını veya hassas bilgi izlerini araştırmak.
+- **PDF belgeleri:** Belgelerdeki metadata alanlarını ve kamuya açık teknik dokümantasyonu incelemek.
 
-## Sosyal Mühendislik Anatomisi
+> **Önemli:** Bir dosyanın arama sonuçlarında bulunması, tek başına güvenlik açığı olduğu anlamına gelmez. Bulgular doğrulanmalı ve yalnızca yetkili kapsamda değerlendirilmelidir.
 
-`[Hedef Araştırma]` -> `[Senaryo Kur]` -> `[Güven İnşa Et]` -> `[Bilgi Al / Erişim Kazan]`
-
-Klasik senaryo:
-
-> "Merhaba, IT’den Murat arıyor. Sisteminizde anormal trafik gördük, sizi korumak için şifrenizi doğrulamamız gerekiyor."
-
-Kurban %60 ihtimalle verir. Çünkü aciliyet ve otorite birleşince ne olur ? = bypass.
+OSINT sürecinin asıl değeri, çok sayıda bilgi toplamak değil, bu bilgiler arasındaki anlamlı ilişkileri ortaya çıkarmaktır.
 
 ---
 
-## Web Uygulamalarında Mantık Hataları
+## 2. Web Uygulamalarında Mantık Hataları
 
-Bir web uygulamasına bak. Gördüğün her input kutusu potansiyel bir kapıdır.
+![Web uygulamalarında güvenlik açıkları](/blogs/img/toolsuzsizma/web-vulnerabilities.png)
 
-### SQLi — Veritabanını Kandırmak
+*Şekil 2 — SQL Injection, IDOR ve XSS gibi web uygulaması güvenlik açıklarının genel görünümü.*
 
-Login sayfasında kullanıcı adı alanına şunu yaz:
+Web uygulamalarında her girdi alanı, URL parametresi ve HTTP isteği bir güven sınırını temsil edebilir.
+
+Bir uygulamayı analiz ederken şu sorular sorulmalıdır:
+
+- Kullanıcı girdileri sunucu tarafında nasıl işleniyor?
+- Yetkilendirme kontrolleri gerçekten uygulanıyor mu?
+- İstemciden gelen verilere gereğinden fazla güveniliyor mu?
+- Uygulamanın hata mesajları hassas bilgi açığa çıkarıyor mu?
+- Farklı kullanıcıların verileri birbirinden doğru şekilde ayrılıyor mu?
+
+Bu sorular, otomatik tarayıcıların tek başına açıklayamayabileceği mantık hatalarını anlamaya yardımcı olur.
+
+### SQL Injection (SQLi)
+
+SQL Injection, kullanıcı girdisinin SQL sorgusunun yapısını değiştirebilecek şekilde işlenmesiyle ortaya çıkan bir güvenlik açığıdır.
+
+Güvensiz biçimde oluşturulan bir sorgu şu yapıda olabilir:
 
 ```sql
-' OR '1'='1
-
+-- Güvensiz sorgu oluşturma örneği
+SELECT *
+FROM users
+WHERE username = '<user_input>'
+  AND password = '<password_input>';
 ```
 
-Arka planda ne oluyor?
+Buradaki sorun, kullanıcı girdisinin SQL sorgusuna doğrudan metin olarak eklenmesidir.
 
-```sql
--- Normal sorgu:
-SELECT * FROM users WHERE username='yusuf' AND password='1234'
+Girdi, sorgunun veri bölümü yerine SQL sözdiziminin bir parçası hâline gelebilirse uygulamanın mantığı değişebilir. Bunun sonucunda yetkisiz veri erişimi veya kimlik doğrulama mekanizmasının atlanması gibi etkiler ortaya çıkabilir.
 
--- Senin girdinle:
-SELECT * FROM users WHERE username='' OR '1'='1' -- ' AND password=''
+#### Güvenli yaklaşım: Parametreli sorgular
 
+Python ve SQLite ile hazırlanmış güvenli bir örnek:
+
+```python
+import sqlite3
+
+connection = sqlite3.connect("app.db")
+cursor = connection.cursor()
+
+username = input("Kullanıcı adı: ")
+password = input("Parola: ")
+
+cursor.execute(
+    """
+    SELECT id, username
+    FROM users
+    WHERE username = ?
+      AND password_hash = ?
+    """,
+    (username, password),
+)
+
+user = cursor.fetchone()
 ```
 
-`1=1` her zaman doğrudur. Veritabanı "tamam, bu kullanıcı var" der. Şifresiz giriş.
+Bu örnek, SQL sorgusunun yapısını kullanıcı girdisinden ayırmak için parametreli sorgu kullanır.
 
-Araç kullandın mı? Hayır. Sadece mantık.
+**Not:** Gerçek bir uygulamada parola doğrulaması, parolanın uygun bir parola hash algoritmasıyla saklanan özeti üzerinden yapılmalıdır. Üretim ortamında bu işlem güvenli bir kimlik doğrulama kütüphanesiyle gerçekleştirilmelidir.
 
-### IDOR — Numarayı Bir Arttır
+### IDOR ve BOLA
 
-URL’ye bak:
+**IDOR (Insecure Direct Object Reference)**, bir uygulamanın nesnelere doğrudan referans vermesi ve erişim kontrolünü doğru uygulamamasıyla ilişkili bir zafiyet örüntüsüdür.
 
-`https://site.com/invoice/1042`
+**BOLA (Broken Object Level Authorization)** ise API güvenliğinde, kullanıcının belirli bir nesneye erişme yetkisinin doğru kontrol edilmemesini ifade eder.
 
-`1042` yerine `1041` yaz. Başkasının faturası açılıyorsa — Insecure Direct Object Reference.
+Örneğin, bir uygulama faturaları aşağıdaki URL yapısıyla sunuyor olsun:
 
-Sistem sana güveniyor, yetki kontrolü yapmıyor. Sen sadece tahminde bulundun.
+```http
+GET /api/invoices/1042 HTTP/1.1
+Host: example.com
+Authorization: Bearer <ACCESS_TOKEN>
+```
 
-### XSS — Sayfaya Kod Gömmek
+Buradaki `1042` değeri, talep edilen faturanın kimliğini temsil eder.
 
-Yorum kutusuna yaz:
+Yetkili bir test sırasında farklı bir nesne kimliği kullanıldığında uygulamanın başka bir kullanıcıya ait faturayı döndürdüğü görülürse, nesne düzeyinde yetkilendirme kontrolü incelenmelidir.
+
+#### Temel sorun nedir?
+
+Sunucunun yalnızca kullanıcının oturum açmış olmasına güvenmesi yeterli değildir.
+
+Her istekte şu koşullar değerlendirilmelidir:
+
+1. Kullanıcının kimliği doğrulanmış mı?
+2. Kullanıcı, istenen nesneye erişme yetkisine sahip mi?
+3. Nesnenin ait olduğu hesap veya tenant doğru mu?
+4. İstek, başka bir kullanıcının verilerine erişim sağlamadan sonuçlandırılıyor mu?
+
+#### Güvenli uygulama yaklaşımı
+
+```python
+def get_invoice(current_user, invoice_id, repository):
+    invoice = repository.find_by_id(invoice_id)
+
+    if invoice is None:
+        return None
+
+    if invoice.owner_id != current_user.id:
+        raise PermissionError(
+            "Bu faturaya erişim yetkiniz yok."
+        )
+
+    return invoice
+```
+
+Bu örnek, faturanın sahibinin kimliği ile isteği yapan kullanıcının kimliğini karşılaştırır.
+
+Gerçek uygulamalarda erişim kontrolü; rol, tenant, paylaşım izinleri ve diğer iş kurallarını da kapsayabilir. Yetkilendirme, yalnızca istemci tarafında değil, sunucuda uygulanmalıdır.
+
+### Cross-Site Scripting (XSS)
+
+Cross-Site Scripting (XSS), güvenilmeyen verilerin bir web sayfasında uygun bağlamsal korumalar olmadan işlenmesi sonucunda saldırgan tarafından kontrol edilen JavaScript kodunun başka bir kullanıcının tarayıcısında çalışmasına yol açabilen bir zafiyettir.
+
+Örneğin, test ortamında kullanılabilecek bir XSS kontrol girdisi:
 
 ```html
-<script>alert(document.cookie)</script>
-
+<script>alert("XSS test")</script>
 ```
 
-Eğer sayfa bunu filtrelemediyse — script çalışır, cookie’ler ekrana gelir. Başka birinin oturumunu çalabilirsin.
+Bu girdinin sayfada çalışması, uygulamanın girdi işleme ve çıktı üretme süreçlerinin incelenmesini gerektirir. Test yalnızca izin verilen bir ortamda yapılmalıdır.
 
-**Ortak Nokta:**
-Input -> Filtre Yok -> Sistem İnanıyor -> Sen Kazandın
+#### XSS neden oluşur?
 
-Bu üç saldırının ortak mantığı: sistem girdiye körü körüne güveniyor.
+- Kullanıcı girdisinin HTML içine doğrudan eklenmesi.
+- HTML, JavaScript veya URL bağlamına uygun çıktı kodlamasının yapılmaması.
+- Güvenilmeyen içeriğin tehlikeli DOM işlemleriyle işlenmesi.
+- Uygun olmayan HTML temizleme yöntemlerinin kullanılması.
+
+#### Çerezler her zaman çalınabilir mi?
+
+Hayır. Bir XSS açığının etkisi, uygulamanın yapılandırmasına ve tarayıcı korumalarına bağlıdır.
+
+- `HttpOnly`, çerezlere JavaScript üzerinden erişimi engeller.
+- `Secure`, çerezlerin HTTPS üzerinden gönderilmesini sınırlar.
+- `SameSite`, çerezlerin siteler arası isteklerde gönderilme davranışını sınırlar.
+- **Content Security Policy (CSP)**, belirli kod çalıştırma senaryolarını kısıtlamaya yardımcı olabilir.
+
+Bu mekanizmalar XSS riskini azaltabilir; ancak tek başlarına bütün XSS türlerini ortadan kaldırmaz.
+
+En önemli savunma yaklaşımı, güvenilmeyen verileri kullanıldıkları bağlama uygun biçimde kodlamak ve tehlikeli DOM işlemlerinden kaçınmaktır.
 
 ---
 
-## Yapılandırma Hataları ve Açık Unutulan Kapılar
+## 3. Yapılandırma Hataları ve Unutulan Kapılar
 
-Bazen sızmak için açık bulmak gerekmez. Çünkü kapı hiç kapanmamış.
+![Siber güvenlik ve sistem yapılandırması](/blogs/img/toolsuzsizma/configuration-security.png)
 
-### Default Credentials — Fabrika Ayarları
+*Şekil 3 — Sistem yapılandırması, erişim kontrolleri ve güvenlik önlemleri.*
 
-Bir router, kamera, ya da sunucu kurulduğunda üreticinin belirlediği varsayılan şifresi vardır. Çoğu sistem yöneticisi bunu değiştirmez.
+Her güvenlik açığı karmaşık bir yazılım hatasından kaynaklanmaz. Yanlış yapılandırılmış servisler, gereksiz açık yönetim panelleri ve depolarda bırakılan gizli bilgiler de ciddi riskler oluşturabilir.
 
-* `admin : admin`
-* `admin : password`
-* `root : root`
-* `admin : 1234`
+### Varsayılan kimlik bilgileri
 
-Bu bir teori değil. Shodan — internete açık cihazları tarayan bir arama motoru — sadece tarayıcıda açılır ve şunu yazarsın:
+Bazı cihazlar ve yazılımlar kurulum sırasında varsayılan hesaplarla gelir. Bu hesapların parolaları değiştirilmediğinde yetkisiz erişim riski oluşabilir.
 
-`default password camera country:TR`
-
-Binlerce cihaz. Kullanıcı adı ve şifre zaten belgelenmiş, üreticinin sitesinde yazıyor.
-
-Araç? Yok. Sadece Google + mantık.
-
-### Config Leak — Yanlışlıkla Açık Bırakılan Sırlar
-
-Geliştirici bir projeyi GitHub’a atıyor. Acele ediyor. `.env` dosyasını `.gitignore`’a eklemeyi unutuyor.
-
-```bash
-# .env dosyası — production sunucusunda
-DB_HOST=192.168.1.10
-DB_USER=root
-DB_PASS=SuperSecret123
-AWS_KEY=AKIAIOSFODNN7EXAMPLE
-AWS_SECRET=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
-
-```
-
-Bu dosya şu an GitHub’da herkese açık. GitHub’ın kendi arama çubuğuyla bulunabilir:
-
-`"DB_PASSWORD" "AWS_SECRET" filename:.env`
-
-Gerçek vaka: 2019'da Capital One, bir AWS misconfiguration yüzünden 100 milyon kullanıcı verisini sızdırdı. İçeriden biri — eski AWS çalışanı — sadece yanlış yapılandırılmış bir metadata endpoint’i kullandı.
-
-### Robots.txt — Gizlemeye Çalışırken İşaret Etmek
-
-`https://site.com/robots.txt`
-
-Bu dosya arama motorlarına "şu dizinleri tarama" der. Ama aynı zamanda neyin gizlendiğini söyler:
+Örnek zayıf kimlik bilgisi kombinasyonları:
 
 ```text
-Disallow: /admin
-Disallow: /backup
-Disallow: /internal-api
-
+admin : admin
+admin : password
+root  : root
 ```
 
-Geliştirici gizlemek istedi. Sen de tam oraya baktın.
+Bunlar yapılandırma denetimlerinde karşılaşılabilecek zayıf parola örnekleridir.
 
-**Özet Mantık:**
+Yetkili bir değerlendirmede şu kontroller yapılabilir:
 
-* Fabrika şifresi değişmemiş -> Giriş
-* Config dosyası commit'lenmiş -> Anahtar senin
-* Robots.txt yanlış yazılmış -> Harita elinde
+- Varsayılan hesaplar devre dışı bırakılmış mı?
+- İlk kurulum sırasında parola değişikliği zorunlu tutuluyor mu?
+- Yönetim arayüzleri internetten erişilebilir durumda mı?
+- Başarısız giriş denemeleri sınırlandırılıyor mu?
+- Çok faktörlü kimlik doğrulama uygulanıyor mu?
+
+Shodan gibi internet üzerindeki servisleri indeksleyen platformlar, dışarıdan erişilebilen sistemler hakkında bilgi sağlayabilir. Ancak bir servisin indekslenmiş olması, tek başına savunmasız olduğu anlamına gelmez.
+
+### Hassas dosya sızıntıları: Config Leak
+
+Geliştiricilerin yapılandırma dosyalarını yanlışlıkla herkese açık kod depolarına yüklemesi, kimlik bilgileri ve API anahtarlarının ifşa olmasına neden olabilir.
+
+Örnek bir `.env` dosyası:
+
+```dotenv
+# Örnek yapılandırma — gerçek kimlik bilgisi içermez
+DB_HOST=database.internal
+DB_USER=app_user
+DB_PASSWORD=<REDACTED>
+AWS_ACCESS_KEY_ID=<REDACTED>
+AWS_SECRET_ACCESS_KEY=<REDACTED>
+```
+
+Bu dosyanın yanlışlıkla paylaşılması şu riskleri doğurabilir:
+
+- Veritabanına yetkisiz erişim.
+- Bulut kaynaklarının kötüye kullanılması.
+- Uygulama servislerinin taklit edilmesi.
+- Diğer sistemlerde yeniden kullanılan kimlik bilgilerinin ele geçirilmesi.
+
+#### Korunma yöntemleri
+
+1. Gizli bilgileri kaynak kodundan ayrı tut.
+2. `.env` gibi yerel yapılandırma dosyalarını `.gitignore` içerisine ekle.
+3. Git depolarında gizli bilgi taraması kullan.
+4. Anahtarları mümkün olduğunda secret manager sistemlerinde sakla.
+5. İfşa edilen anahtarları iptal et veya yenile.
+6. En az ayrıcalık ilkesini uygula.
+
+Örnek `.gitignore`:
+
+```gitignore
+.env
+.env.*
+!.env.example
+
+secrets/
+*.pem
+```
+
+`!.env.example` kuralı, örnek yapılandırma dosyasının depoda tutulmasına izin verir. Bu dosyada gerçek parola veya anahtar bulunmamalıdır.
+
+> **Kritik nokta:** Bir gizli bilginin Git geçmişinden silinmesi, daha önce kopyalanmış olabileceği gerçeğini değiştirmez. İfşa edilen anahtarların yenilenmesi gerekir.
 
 ---
 
-## Temel Araçlar: curl ve netcat
+## 4. Temel Sistem Araçları: curl ve netcat
 
-`curl` ve `netcat` — bunlar hacking aracı değil, ağın temel taşları. Her Linux/Mac sisteminde kurulu gelir. Windows’ta bile artık varsayılan.
+`curl` ve `netcat`, ağ iletişimini incelemek için kullanılabilen temel araçlardır. Özellikle HTTP isteklerini anlamak, servis bağlantılarını doğrulamak ve sorunları izole etmek için faydalıdırlar.
 
-Yani hedef sisteme özel bir şey yükleme. Zaten orada.
+Buradaki amaç, bir aracı saldırı amacıyla kullanmaktan ziyade protokolün nasıl çalıştığını anlamaktır.
 
-### curl — HTTP’yi Elle Sürmek
+### curl ile HTTP iletişimi
 
-Tarayıcı bir isteği otomatik gönderir. `curl` ise o isteği sen yazarsın, sen kontrol edersin.
+`curl`, HTTP isteklerini komut satırından göndermeye ve sunucu yanıtlarını incelemeye olanak tanır.
 
-Normal login isteği tarayıcıdan:
+Örneğin, bir uç noktaya GET isteği göndermek:
+
+```bash
+curl -i https://example.com/
+```
+
+`-i` parametresi, yanıt gövdesiyle birlikte HTTP başlıklarını da gösterir.
+
+JSON içeren bir POST isteği göndermek için:
+
+```bash
+curl -i \
+  -X POST \
+  https://example.com/api/test \
+  -H "Content-Type: application/json" \
+  -d '{"message":"security test"}'
+```
+
+Bu yöntemle şu bilgiler incelenebilir:
+
+- HTTP durum kodu.
+- Yanıt başlıkları.
+- İçerik türü.
+- Yönlendirme davranışı.
+- Uygulamanın hata mesajları.
+
+### HTTP başlıklarını analiz etmek
+
+Bazı uygulamalar istemci tarafından gönderilen başlıkları yanlış biçimde güvenilir kabul edebilir.
+
+Örneğin `X-Forwarded-For`, ters proxy altyapılarında istemcinin IP adresini iletmek için kullanılan bir başlıktır.
 
 ```http
-POST /login
-username=yusuf&password=1234
-
+X-Forwarded-For: 192.0.2.10
 ```
 
-Aynısını `curl` ile:
+Ancak bu başlık tek başına güvenilir bir kimlik doğrulama mekanizması değildir. İstemciler kendi HTTP başlıklarını gönderebilir veya değiştirebilir.
+
+Bir uygulama yalnızca bu başlığa bakarak kullanıcının yönetici olduğunu ya da isteğin iç ağdan geldiğini kabul ediyorsa önemli bir güven sınırı hatası söz konusu olabilir.
+
+#### Güvenli yapılandırma
+
+- Proxy başlıklarını yalnızca güvenilen proxy katmanlarından kabul et.
+- İstemciden gelen başlıkları doğrudan kimlik doğrulama amacıyla kullanma.
+- Erişim kontrolünü sunucu tarafında uygula.
+- Yönetim panellerini ağ düzeyinde de sınırlandır.
+- İstemci tarafından kontrol edilebilen verilere dayalı güven kararlarından kaçın.
+
+### Netcat ile bağlantı kontrolü
+
+`nc` veya `netcat`, TCP ve bazı uygulamalarda UDP bağlantılarını test etmek için kullanılabilir.
+
+Yetkili bir laboratuvar ortamında yerel bir servisin TCP portunu kontrol etmek için:
 
 ```bash
-curl -X POST "[http://hedef.com/login](http://hedef.com/login)" \
-  -d "username=admin'--&password=x"
-
+nc -vz 127.0.0.1 8080
 ```
 
-Fark şu: tarayıcı seni kısıtlar, `curl` kısıtlamaz.
+Bu komut, yerel makinedeki `8080` portuna bağlantı kurulup kurulamadığını kontrol eder.
 
-**Header Manipülasyonu:**
-
-Bazı sistemler sana IP’ne göre davranır:
-
-```bash
-curl -H "X-Forwarded-For: 127.0.0.1" [http://hedef.com/admin](http://hedef.com/admin)
-
-```
-
-Sistem "bu istek localhost’tan geliyor" sanır. İç ağdan geliyormuş gibi görünürsün.
-
-### netcat — Ham Soket
-
-`netcat` — `nc` — iki nokta arasında ham TCP bağlantısı açar. Protokol yok, şifreleme yok, sadece veri.
-
-Bir porta bağlanmak:
-
-```bash
-nc hedef.com 80
-
-```
-
-Bağlandıktan sonra elle HTTP yazıyorsun:
-
-```http
-GET / HTTP/1.0
-Host: hedef.com
-
-```
-
-Sunucu cevap verir. Sürüm bilgisi, header’lar, her şey görünür.
-
-**Banner Grabbing — Sunucu Kendini Tanıtıyor:**
-
-```bash
-nc hedef.com 22
-
-```
-
-Cevap:
-`SSH-2.0-OpenSSH_7.4`
-
-Bu sürümün bilinen bir CVE’si var mı? Bir Google aramasıyla öğrenirsin.
-
-```bash
-nc hedef.com 25
-
-```
-
-Cevap:
-`220 mail.hedef.com ESMTP Sendmail 8.14.4`
-
-Versiyon belli. Exploit veritabanında ara.
-
-**Mantık:**
-
-* `curl` -> HTTP'yi elle yönet, kısıtlamaları bypass et
-* `nc` -> Servisle doğrudan konuş, kendini ifşa ettir
-
-İkisi de sistemin içinde zaten var. Sen sadece doğru sordun.
+Bir portun açık olması, servis üzerinde güvenlik açığı bulunduğunu kanıtlamaz. Servisin amacı, yapılandırması ve erişim politikaları ayrıca değerlendirilmelidir.
 
 ---
 
-## Zafiyet Zincirleme (Attack Chain)
+## 5. Zafiyet Zincirleme (Attack Chain)
 
-Tek bir teknik nadiren yeterlidir. Gerçek sızma = birden fazla zayıflığı zincirlemek.
+![Siber güvenlik saldırı zinciri ve risk ilişkileri](/blogs/img/toolsuzsizma/attack-chain.png)
 
-Bir senaryo işleyelim. Hedef: orta ölçekli bir şirketin web uygulaması.
+*Şekil 4 — Farklı güvenlik bulgularının bir araya gelerek daha yüksek etkili bir risk oluşturması.*
 
-### Adım 1 — Keşif (Tool Yok)
+Gerçek dünyadaki güvenlik olayları çoğu zaman tek bir zafiyetten değil, birden fazla zayıflığın birleşmesinden kaynaklanır.
 
-Google’a yazıyorsun:
+Bu durum **zafiyet zincirleme** veya *attack chain* yaklaşımıyla açıklanabilir.
 
-`site:linkedin.com "HedefAS" "sistem yöneticisi"`
+Örneğin, yetkili bir güvenlik değerlendirmesinde şu bulguların bir arada bulunduğunu varsayalım:
 
-İsim buldun: Ahmet Yılmaz, IT Admin.
+1. **Keşif (OSINT):** Kurumun kamuya açık teknik altyapısı hakkında bilgi edinilir.
+2. **Bilgi sızıntısı:** Bir depoda hassas yapılandırma bilgileri bulunduğu tespit edilir.
+3. **Kimlik bilgisi riski:** Bir anahtarın veya parolanın başka sistemlerde de kullanıldığı belirlenir.
+4. **Erişim kontrolü hatası:** Bir HTTP başlığının güvenlik kararı üzerinde gereğinden fazla etkili olduğu görülür.
+5. **Nesne düzeyinde yetkilendirme hatası:** Kullanıcıların kendilerine ait olmayan kayıtlara erişebildiği doğrulanır.
 
-Sonra GitHub:
+Bu bulguların her biri ayrı ayrı incelenebilir. Ancak bir araya geldiklerinde daha yüksek etkili bir risk oluşturabilirler.
 
-`"hedefas.com" filename:.env`
-
-Bir repo çıkıyor. Eski bir geliştirici yanlışlıkla commit’lemiş:
+### Saldırı zincirinin kavramsal gösterimi
 
 ```text
-DB_PASS=Ahmet2019!
-MAIL_USER=ahmet@hedefas.com
-
+[OSINT]
+   |
+   v
+[Bilgi Sızıntısı]
+   |
+   v
+[Kimlik Bilgisi Riski]
+   |
+   v
+[Hatalı Güven Sınırı]
+   |
+   v
+[Yetkilendirme Hatası]
+   |
+   v
+[Veri Gizliliğinin İhlali]
 ```
 
-### Adım 2 — Giriş Denemesi (Sadece Tarayıcı)
+Bu şema, her ortamda aynı sırayla gerçekleşen bir saldırıyı değil, güvenlik bulgularının birbirini nasıl etkileyebileceğini gösteren kavramsal bir örneği temsil eder.
 
-`ahmet@hedefas.com` + `Ahmet2019!` kombinasyonunu şirketin mail portalında dene.
+### Risk neden artabilir?
 
-Giriş başarılı. İnsanlar aynı şifreyi birden fazla yerde kullanır.
+Bir sistemde birden fazla zayıflık bulunduğunda toplam risk, her bulgunun tek başına değerlendirilmesinden daha yüksek olabilir.
 
-### Adım 3 — Yetki Yükseltme (curl)
+Örneğin:
 
-Mail sistemine girdin ama admin paneli farklı bir endpoint’te:
+- Açığa çıkan bir anahtar, sınırlı izinlere sahipse etkisi düşük olabilir.
+- Aynı anahtar yönetici yetkilerine sahipse etki ciddi biçimde artabilir.
+- Yönetici erişiminin yanında nesne düzeyinde yetkilendirme kontrolleri de hatalıysa veri gizliliği ve bütünlüğü daha büyük risk altına girebilir.
 
-```bash
-curl -H "Cookie: session=ele_geçirilen_token" \
-     -H "X-Forwarded-For: 127.0.0.1" \
-     [http://hedefas.com/internal/admin](http://hedefas.com/internal/admin)
-
-```
-
-Sistem iç ağdan geldiğini sanıyor. Panel açılıyor.
-
-### Adım 4 — Veri (Tarayıcı + Mantık)
-
-Admin panelinde kullanıcı listesi var:
-
-* `/users/1`
-* `/users/2`
-* `/users/3`
-
-IDOR. `/users/1`’den `/users/500`’e kadar tek tek dene. Filtreleme yoksa — tüm kullanıcı verisi önünde.
-
-### Zincirin Şeması
-
-`OSINT` -> `Config Leak` -> `Credential Reuse` -> `Header Spoofing` -> `IDOR`
-
-Her adım bir öncekinin üstüne oturuyor. Hiçbiri tek başına yeterli değildi.
+Bu nedenle güvenlik değerlendirmelerinde yalnızca zafiyet sayısı değil, bulgular arasındaki ilişkiler de dikkate alınmalıdır.
 
 ---
 
-## Genel Ders
+## 6. Savunma Perspektifi
 
-Sistem ne kadar güçlü olursa olsun, zincirin en zayıf halkası kadar güvenlidir.
+Araçsız analiz yaklaşımının amacı, araçları tamamen bırakmak değildir. Amaç, otomasyonun ötesine geçerek sistemin güven sınırlarını ve iş mantığını anlayabilmektir.
 
-Bu zincirde kullandıklarımız:
+Bir güvenlik bulgusunu değerlendirirken aşağıdaki kontrol listesinden yararlanılabilir:
 
-* Google
-* Tarayıcı
-* curl
-* Mantık
+- [ ] Kullanıcı girdileri güvenli biçimde işleniyor mu?
+- [ ] SQL sorgularında parametreli sorgular kullanılıyor mu?
+- [ ] Her hassas nesne için sunucu tarafında yetkilendirme kontrolü yapılıyor mu?
+- [ ] Çıktılar bağlama uygun biçimde kodlanıyor mu?
+- [ ] Gizli bilgiler kaynak kodundan ayrı tutuluyor mu?
+- [ ] Varsayılan hesaplar ve gereksiz servisler denetleniyor mu?
+- [ ] Proxy başlıkları yalnızca güvenilir altyapıdan mı kabul ediliyor?
+- [ ] Yönetim arayüzleri uygun erişim kontrolleriyle korunuyor mu?
+- [ ] Bulguların olası etkileri ve birbirleriyle ilişkileri analiz ediliyor mu?
 
-Hepsi bu.
+Bu kontrollerin amacı, yalnızca zafiyetleri tespit etmek değil, aynı zafiyetlerin tekrar oluşmasını önleyecek tasarım ve yapılandırma iyileştirmelerini belirlemektir.
 
-```
+---
 
-```
+## Sonuç
+
+Sızma testi, yalnızca araç çalıştırmak ve tarama sonuçlarını raporlamak değildir. Güvenlik araştırmacısının asıl değeri; bir sistemin nasıl çalıştığını anlaması, varsayımları sorgulaması ve farklı bulgular arasındaki bağlantıları ortaya çıkarmasıdır.
+
+Otomatik araçlar keşif ve doğrulama süreçlerini hızlandırır. Ancak iş mantığı hatalarını, yanlış güven varsayımlarını ve yetkilendirme eksikliklerini anlamak için teknik analiz ve eleştirel düşünme hâlâ önemlidir.
+
+**Unutma: Araçlar sana bulguları gösterebilir; bu bulguların neden ortaya çıktığını ve ne anlama geldiğini anlamak ise senin işindir.**
+
+> **Etik not:** Bu yazıdaki örnekler eğitim ve yetkili güvenlik testleri içindir. Gerçek sistemlerde test yapmadan önce açık izin alınmalı, test kapsamına uyulmalı ve kullanıcı verilerinin gizliliği korunmalıdır.
