@@ -447,5 +447,3 @@ Sızma testi, yalnızca araç çalıştırmak ve tarama sonuçlarını raporlama
 Otomatik araçlar keşif ve doğrulama süreçlerini hızlandırır. Ancak iş mantığı hatalarını, yanlış güven varsayımlarını ve yetkilendirme eksikliklerini anlamak için teknik analiz ve eleştirel düşünme hâlâ önemlidir.
 
 **Unutma: Araçlar sana bulguları gösterebilir; bu bulguların neden ortaya çıktığını ve ne anlama geldiğini anlamak ise senin işindir.**
-
-> **Etik not:** Bu yazıdaki örnekler eğitim ve yetkili güvenlik testleri içindir. Gerçek sistemlerde test yapmadan önce açık izin alınmalı, test kapsamına uyulmalı ve kullanıcı verilerinin gizliliği korunmalıdır.
