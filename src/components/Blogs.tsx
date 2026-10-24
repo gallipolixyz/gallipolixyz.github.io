@@ -13,6 +13,14 @@ interface Blog {
 }
 
   const blogs: Blog[] = [
+    {
+  slug: 'php2shell',
+  title: 'PHP2Shell Krizi: CVE-2026-109618 & CVE-2026-109619',
+  excerpt: 'PHP çekirdeğindeki iki kritik güvenlik açığının teknik analizi, yapay zeka destekli keşif süreci, yama stratejileri ve tehdit avı yöntemleri.',
+  author: 'bcaglarr',
+  tags: ['cybersecurity', 'php', 'rce', 'vulnerability', 'incident-response'],
+  image: '/blogs/img/php2shell/kapak-00.png',
+},
   {
     slug: 'toolsuzsizma',
     title: 'Her Zaman Tool Kullanmak Zorunda Değilsin',
