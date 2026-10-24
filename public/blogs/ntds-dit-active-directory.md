@@ -1,30 +1,15 @@
 # NTDS.dit Nedir? Active Directory Veritabanının Güvenlik Önemi
 
-Bu yazıda **NTDS.dit** dosyasını, hiç bilmeyen birine anlatır gibi, adım adım ve günlük hayattan örneklerle anlatacağız. Teknik terimleri kullanacağız ama her birini ilk geçtiği yerde açıklayacağız. Sonunda küçük bir sözlük de var.
 
 > ⚠️ Bu yazı **eğitim ve savunma** amaçlıdır. Buradaki bilgileri yalnızca kendi sahip olduğunuz veya yazılı izin aldığınız sistemlerde deneyin.
 
 ---
 
-## İçindekiler
 
-1. [Önce büyük resim: Active Directory nedir?](#önce-büyük-resim-active-directory-nedir)
-2. [NTDS.dit nedir?](#ntdsdit-nedir)
-3. [Nerede duruyor?](#nerede-duruyor)
-4. [Defterin içinde neler yazıyor?](#defterin-içinde-neler-yazıyor)
-5. [Parolalar nasıl saklanır?](#parolalar-nasıl-saklanır)
-6. [Defter çalınırsa neden büyük sorun?](#defter-çalınırsa-neden-büyük-sorun)
-7. [Saldırgan defteri nasıl ele geçirmeye çalışır?](#saldırgan-defteri-nasıl-ele-geçirmeye-çalışır)
-8. [Nasıl korunuruz?](#nasıl-korunuruz)
-9. [Nasıl fark ederiz?](#nasıl-fark-ederiz)
-10. [Kendin dene (güvenli lab)](#kendin-dene-güvenli-lab)
-11. [Mini sözlük](#mini-sözlük)
-12. [Özet ve kontrol listesi](#özet-ve-kontrol-listesi)
-13. [Kaynaklar](#kaynaklar)
 
----
 
-## Önce büyük resim: Active Directory nedir?
+
+## Active Directory nedir?
 
 Bir şirketin 500 çalışanı, 500 bilgisayarı ve onlarca sunucusu olduğunu düşünün. Şu sorulara birinin cevap vermesi gerekir:
 
@@ -80,7 +65,7 @@ Aynı klasörde yardımcı dosyalar da vardır:
 | `temp.edb` | Geçici çalışma dosyası |
 | `res1.log`, `res2.log` | Disk dolarsa güvenli kapanış için ayrılmış yedek alan |
 
-Gerçek konumu kendi DC'nizde şu komutla görebilirsiniz (sadece **okur**, hiçbir şeyi değiştirmez):
+Gerçek konumu kendi DC'nizde şu komutla görebilirsiniz:
 
 ```powershell
 Get-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Services\NTDS\Parameters" |
@@ -123,7 +108,7 @@ Kulağa çok güvenli geliyor, değil mi? Ama şu detaya dikkat:
 
 > **Kilit ile defter aynı sunucuda durur.** Yani sunucuya yönetici yetkisiyle giren biri, hem defteri hem de kilidin anahtarını alabilir. Bu koruma, defterin yanlışlıkla bir yere sızmasına karşı bir önlemdir. **Yetkili bir saldırganı durdurmak için tasarlanmamıştır.**
 
-Üstelik bir hash ele geçirilse bile (zayıf parolalarda) saldırgan onu **tahmin yoluyla kırmayı** deneyebilir. Bazı durumlarda ise hash'in kendisi, parolanın yerine geçebilir (buna *Pass-the-Hash* denir). Yani hash'in ele geçmesi bile başlı başına risktir.
+Üstelik bir hash ele geçirilse bile saldırgan onu **tahmin yoluyla kırmayı** deneyebilir. Bazı durumlarda ise hash'in kendisi, parolanın yerine geçebilir (buna *Pass-the-Hash* denir). Yani hash'in ele geçmesi bile başlı başına risktir.
 
 ---
 
@@ -246,51 +231,6 @@ auditpol /get /category:"DS Access"
 
 ---
 
-## Kendin dene (güvenli lab)
-
-En iyi öğrenme yolu **izole bir test ortamıdır**. İnternete bağlı gerçek sistemlerde deneme yapmayın.
-
-**Kurulum:**
-1. Bilgisayarında VirtualBox, VMware veya Hyper-V kur.
-2. Microsoft'un ücretsiz **Windows Server değerlendirme sürümünü** indirip sanal makineye kur.
-3. AD DS rolünü ekleyip `lab.local` gibi bir test domaini oluştur.
-4. Birkaç test kullanıcısı ve grubu ekle.
-5. Sanal ağı **internete kapalı** (yalnızca iç ağ) olarak ayarla.
-
-**Yapabileceğin güvenli alıştırmalar:**
-
-1. `C:\Windows\NTDS` klasörüne bak. Dosyaları ve boyutlarını gör:
-   ```powershell
-   Get-ChildItem "$env:SystemRoot\NTDS" | Select-Object Name, Length, LastWriteTime
-   ```
-2. Yukarıdaki PowerShell ile **eşitleme haklarına** kimin sahip olduğunu listele.
-3. `auditpol` ile denetim ayarlarını kontrol et, kapalıysa aç ve **Olay Görüntüleyici**'de (Event Viewer) 4662 olaylarının nasıl göründüğünü incele.
-4. `wbadmin` ile **meşru bir sistem durumu yedeği** al. Bunun hangi olayları ürettiğine bak. **Normal** ile **şüpheli** hareketi ayırt etmeyi öğrenmek, tespit mühendisliğinin temelidir.
-5. Ekran görüntülerini al, bir "öncesi / sonrası" raporu hazırla. Staj başvurularında portföy olarak çok işe yarar.
-
----
-
-## Mini sözlük
-
-| Terim | Basit anlamı |
-|---|---|
-| **Active Directory (AD)** | Şirket ağının kimlik ve yetki merkezi |
-| **Domain Controller (DC)** | AD'nin çalıştığı ana sunucu |
-| **NTDS.dit** | AD'nin veritabanı dosyası, yani "büyük defter" |
-| **Hash** | Parolanın tek yönlü karıştırılmış hâli |
-| **Boot key** | Hash'lerin üzerindeki ek kilidi açan anahtar |
-| **krbtgt** | Kerberos "pasaportlarını" imzalayan özel hesap |
-| **Kerberos** | AD'nin kullandığı kimlik doğrulama yöntemi (bilet sistemi) |
-| **Golden Ticket** | `krbtgt` anahtarıyla üretilen sahte "altın pasaport" |
-| **DCSync** | DC gibi davranıp kimlik bilgilerini "eşitleme" bahanesiyle istemek |
-| **Gölge kopya (VSS)** | Sunucunun belirli bir andaki anlık görüntüsü |
-| **Replikasyon** | DC'lerin birbiriyle verileri eşitlemesi |
-| **LAPS** | Her bilgisayara otomatik farklı yerel yönetici parolası veren araç |
-| **gMSA** | Parolası otomatik yönetilen servis hesabı |
-| **SIEM** | Logları tek yerde toplayıp analiz eden sistem |
-
----
-
 ## Özet ve kontrol listesi
 
 **NTDS.dit**, Active Directory'nin büyük defteridir. Ağdaki herkesin kimliği, grup üyelikleri, yetkileri ve parola izleri orada durur. Eline geçen biri için bu, **bütün kapılara uyan bir anahtar demeti** demektir.
@@ -322,4 +262,4 @@ Unutmamamız gereken tek cümle:
 
 ---
 
-*Bu makale eğitim amaçlıdır. İçerikteki bilgilerin izinsiz sistemlerde kullanılmasından yazar sorumlu değildir.*
+
