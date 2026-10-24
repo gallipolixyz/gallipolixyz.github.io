@@ -13,6 +13,14 @@ interface Blog {
 }
 
   const blogs: Blog[] = [
+      {
+    slug: 'ntds-dit-active-directory',
+    title: 'NTDS.dit Nedir? Active Directory Veritabanının Güvenlik Önemi',
+    excerpt: 'Active Directory ağındaki tüm kimlik bilgilerinin tutulduğu NTDS.dit dosyası nedir, içinde neler vardır, neden saldırganların ilk hedefidir ve nasıl korunup izlenir? Sade bir dille ve görsellerle anlatım.',
+    author: 'Burak Kıraç',
+    tags: ['Siber Güvenlik', 'Active Directory', 'NTDS.dit', 'Windows Server', 'Blue Team'],
+    image: '/blogs/img/ntds-dit-active-directory/01-nufus-mudurlugu.png',
+  },
   {
     slug: 'toolsuzsizma',
     title: 'Her Zaman Tool Kullanmak Zorunda Değilsin',
