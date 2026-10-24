@@ -14,6 +14,22 @@ interface Blog {
 
   const blogs: Blog[] = [
     {
+    slug: 'chocolatefactory-writeup',
+    title: 'Chocolate Factory Write-up',
+    excerpt: 'Bu yazıda Tryhackme platformunda bulunan chocolate factory isimli ctfi çözeceğiz',
+    author: 'Abdulkadir Kayacan',
+    tags: ['ctf', 'tryhackme', 'write-up'],
+    image: '/blogs/img/chocolatefactory-writeup/1.png',
+  },
+    {
+    slug: 'wifi-vulns',
+    title: 'Bir Hacker, Aynı Wi-Fi Ağındaki İnsanlar Hakkında Ne Kadar Bilgi Edinebilir?',
+    excerpt: 'Bu yazıda hackerlerin bir wifi ağındaki insanlar hakkında ne kadar bilgi edinebileceğini öğreneceğiz.',
+    author: 'Abdulkadir Kayacan',
+    tags: ['wifi', 'wifi-attack', 'hacker'],
+    image: '/blogs/img/wifi-vulns/wifi_attacks.png',
+  },
+    {
   slug: 'php2shell',
   title: 'PHP2Shell Krizi: CVE-2026-109618 & CVE-2026-109619',
   excerpt: 'PHP çekirdeğindeki iki kritik güvenlik açığının teknik analizi, yapay zeka destekli keşif süreci, yama stratejileri ve tehdit avı yöntemleri.',
