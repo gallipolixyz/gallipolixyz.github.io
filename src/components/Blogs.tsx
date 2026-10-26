@@ -13,6 +13,14 @@ interface Blog {
 }
 
   const blogs: Blog[] = [
+    {
+    slug: 'vulnnet-active-directory-sizma-testi',
+    title: 'VulnNet - Active Directory Sızma Testi Write-Up',
+    excerpt: 'Redis şifresiz erişimi, UNC path injection ile NTLMv2 hash yakalama, hashcat ile kırma ve PrintNightmare (CVE-2021-1675) ile Active Directory ortamında SYSTEM olma adımları.',
+    author: 'Burak Kıraç',
+    tags: ['Active Directory', 'Penetration Testing', 'TryHackMe', 'Redis', 'PrintNightmare'],
+    image: 'img/vulnnet-ad-writeup/01-nmap-tarama.png',
+  },
   {
     slug: 'toolsuzsizma',
     title: 'Her Zaman Tool Kullanmak Zorunda Değilsin',
