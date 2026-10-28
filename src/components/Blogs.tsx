@@ -43,7 +43,7 @@ interface Blog {
     excerpt: 'Redis şifresiz erişimi, UNC path injection ile NTLMv2 hash yakalama, hashcat ile kırma ve PrintNightmare (CVE-2021-1675) ile Active Directory ortamında SYSTEM olma adımları.',
     author: 'Burak Kıraç',
     tags: ['Active Directory', 'Penetration Testing', 'TryHackMe', 'Redis', 'PrintNightmare'],
-    image: 'img/vulnnet-ad-writeup/kapakresmi.png',
+    image: '/blogs/img/vulnnet-ad-writeup/kapakresmi.png',
   },
   {
   slug: 'php2shell',
