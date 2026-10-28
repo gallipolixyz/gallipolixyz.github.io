@@ -14,6 +14,14 @@ interface Blog {
 
   const blogs: Blog[] = [
     {
+    slug: 'vulnnet-active-directory-sizma-testi',
+    title: 'VulnNet - Active Directory Sızma Testi Write-Up',
+    excerpt: 'Redis şifresiz erişimi, UNC path injection ile NTLMv2 hash yakalama, hashcat ile kırma ve PrintNightmare (CVE-2021-1675) ile Active Directory ortamında SYSTEM olma adımları.',
+    author: 'Burak Kıraç',
+    tags: ['Active Directory', 'Penetration Testing', 'TryHackMe', 'Redis', 'PrintNightmare'],
+    image: 'img/vulnnet-ad-writeup/01-nmap-tarama.png',
+  },
+  {
   slug: 'php2shell',
   title: 'PHP2Shell Krizi: CVE-2026-109618 & CVE-2026-109619',
   excerpt: 'PHP çekirdeğindeki iki kritik güvenlik açığının teknik analizi, yapay zeka destekli keşif süreci, yama stratejileri ve tehdit avı yöntemleri.',
