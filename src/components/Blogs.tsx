@@ -14,6 +14,22 @@ interface Blog {
 
   const blogs: Blog[] = [
     {
+    slug: 'chocolatefactory-writeup',
+    title: 'Chocolate Factory Write-up',
+    excerpt: 'Bu yazıda Tryhackme platformunda bulunan chocolate factory isimli ctfi çözeceğiz',
+    author: 'Abdulkadir Kayacan',
+    tags: ['ctf', 'tryhackme', 'write-up'],
+    image: '/blogs/img/chocolatefactory-writeup/1.png',
+  },
+    {
+    slug: 'wifi-vulns',
+    title: 'Bir Hacker, Aynı Wi-Fi Ağındaki İnsanlar Hakkında Ne Kadar Bilgi Edinebilir?',
+    excerpt: 'Bu yazıda hackerlerin bir wifi ağındaki insanlar hakkında ne kadar bilgi edinebileceğini öğreneceğiz.',
+    author: 'Abdulkadir Kayacan',
+    tags: ['wifi', 'wifi-attack', 'hacker'],
+    image: '/blogs/img/wifi-vulns/wifi_attacks.png',
+  },
+    {
     slug: 'vulnnet-active-directory-sizma-testi',
     title: 'VulnNet - Active Directory Sızma Testi Write-Up',
     excerpt: 'Redis şifresiz erişimi, UNC path injection ile NTLMv2 hash yakalama, hashcat ile kırma ve PrintNightmare (CVE-2021-1675) ile Active Directory ortamında SYSTEM olma adımları.',
