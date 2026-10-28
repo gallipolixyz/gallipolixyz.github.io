@@ -59,7 +59,7 @@ interface Blog {
     excerpt: 'Bir pentest aracı açmadan sadece mantık, OSINT, web zafiyetleri ve temel sistem komutlarıyla sızma testi yaklaşımı.',
     author: 'Yusuf Eren Koçak',
     tags: ['cybersecurity', 'pentest', 'osint', 'web'],
-    image: '/blogs/img/default/cover.jpg',
+    image: '/blogs/img/default/kapakresmi.jpg',
     },
     {
     slug: 'devops',
