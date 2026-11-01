@@ -14,6 +14,14 @@ interface Blog {
 
   const blogs: Blog[] = [
       {
+    slug: 'oauth-201',
+    title: 'OAuth/OIDC İstemci Tarafı Zafiyetleri: Laboratuvarda Adım Adım',
+    excerpt: 'Keycloak ve elle yazılmış bir Flask istemcisiyle kurulan laboratuvarda redirect_uri, state, aud, nonce ve imza doğrulamasındaki beş hatanın sömürüsü ve düzeltmesi.',
+    author: 'Onur Kütük',
+    tags: ['oauth', 'oidc', 'web security', 'keycloak'],
+    image: '/blogs/img/oauth-201/kapak-00.jpg',
+  },
+      {
     slug: 'ntds-dit-active-directory',
     title: 'NTDS.dit Nedir? Active Directory Veritabanının Güvenlik Önemi',
     excerpt: 'Active Directory ağındaki tüm kimlik bilgilerinin tutulduğu NTDS.dit dosyası nedir, içinde neler vardır, neden saldırganların ilk hedefidir ve nasıl korunup izlenir? Sade bir dille ve görsellerle anlatım.',
