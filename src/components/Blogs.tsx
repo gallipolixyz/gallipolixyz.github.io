@@ -13,6 +13,22 @@ interface Blog {
 }
 
   const blogs: Blog[] = [
+    {
+    slug: 'library-writeup',
+    title: 'Library Write-up',
+    excerpt: 'Bu yazıda Tryhackme platformunda bulunan library isimli ctfi çözeceğiz',
+    author: 'Abdulkadir Kayacan',
+    tags: ['ctf', 'tryhackme', 'write-up'],
+    image: '/blogs/img/library-writeup/0.png',
+  },
+  {
+    slug: 'dijital-delil-kurtarma',
+    title: 'Silinmiş Bir Dosyanın Peşinde: Dijital Delil Kurtarma Senaryosu',
+    excerpt: 'Bu yazıda silinmiş dosyaların dijital delil kurtarma senaryosu ile nasıl bulunabileceğini öğreneceğiz.',
+    author: 'Abdulkadir Kayacan',
+    tags: ['adli bilişim', 'digital forensics', 'dijital delil'],
+    image: '/blogs/img/dijital-delil-kurtarma/1.png',
+  },
       {
     slug: 'oauth-201',
     title: 'OAuth/OIDC İstemci Tarafı Zafiyetleri: Laboratuvarda Adım Adım',
