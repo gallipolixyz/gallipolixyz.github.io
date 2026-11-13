@@ -66,7 +66,7 @@ git push -u origin main
 
 Creating a branch (`git checkout -b feature-branch`) lets you build new features or test bug fixes without impacting anyone else. Once the work is tested and complete, you bring those changes back into the main timeline by merging the branch (`git merge feature-branch`). Instead of making risky changes directly to your stable code (usually the main branch), you create an isolated environment.
 
-![Diagram of a repository: a main timeline with commits c1, c2 and c3, and a feature branch with commits c2a and c2b that merges back into c3, with HEAD pointing to the current commit](images/Image3.png)
+![Diagram of a repository: a main timeline with commits c1, c2 and c3, and a feature branch with commits c2a and c2b that merges back into c3, with HEAD pointing to the current commit](/blogs/img/Version_control_git_github/Image3.png)
 
 ---
 
@@ -74,7 +74,7 @@ Creating a branch (`git checkout -b feature-branch`) lets you build new features
 
 A Remote Repository is a version-controlled project repository hosted on another computer or server, usually accessible over a network. In simple terms: Your local repository is stored on your computer, whereas a remote repository is stored somewhere else, such as GitHub.
 
-![Local repository on your computer and GitHub repository in the cloud, connected by git push and git pull arrows](images/Image1.png)
+![Local repository on your computer and GitHub repository in the cloud, connected by git push and git pull arrows](/blogs/img/Version_control_git_github/Image1.png)
 
 **1. Clone a remote repository**
 
@@ -106,7 +106,7 @@ git push
 
 Collaboration means multiple developers working together on the same software project. Git makes this possible by allowing developers to maintain separate branches, record their changes, and share their work.
 
-![Shared project: Banking Application. A GitHub remote repository with three developers working on login.py, database.py and interface.py](images/Image4.png)
+![Shared project: Banking Application. A GitHub remote repository with three developers working on login.py, database.py and interface.py](/blogs/img/Version_control_git_github/Image4.png)
 
 ---
 
@@ -116,7 +116,7 @@ Conflict Resolution is the process of identifying and resolving incompatible cha
 
 In Git, this commonly happens when two developers modify the same lines of a file and Git cannot automatically determine which change should be retained.
 
-![Git merge conflicts: Branch A sets color = blue, Branch B sets color = red, producing conflict markers in the merged file](images/Image2.png)
+![Git merge conflicts: Branch A sets color = blue, Branch B sets color = red, producing conflict markers in the merged file](/blogs/img/Version_control_git_github/Image2.png)
 
 For Example : two developers are working on the same application.
 
@@ -161,4 +161,4 @@ git commit
 
 Conversely, Git and GitHub provide the architectural foundation for modern DevSecOps, allowing security to be automated and integrated directly into the developer workflow
 
-**Shift-Left Security via CI/CD:** GitHub Actions and webhooks allow security teams to embed automated scanning into the Pull Request process. Every commit can be automatically checked for vulnerable dependencies (via tools like Dependabot or Snyk), statically analyzed for insecure code (SAST), and scanned for leaked secrets before the code is ever merged into the main branch.
+**Shift-Left Security via CI/CD:** GitHub Actions and webhooks allow security teams to embed automated scanning into the Pull Request process. Every commit can be automatically checked for vulnerable dependencies (via tools like Dependabot or Snyk), statically analyzed for insecure code (SAST), and scanned for leaked secrets before the code is ever merged into the main branch.via tools like Dependabot or Snyk), statically analyzed for insecure code (SAST), and scanned for leaked secrets before the code is ever merged into the main branch.
