@@ -13,7 +13,15 @@ interface Blog {
 }
 
   const blogs: Blog[] = [
-    {
+  {
+    slug: 'git-and-github-version-control-guide',
+    title: 'Git and GitHub',
+    excerpt: 'A beginner-friendly walkthrough of version control with Git and GitHub.',
+    author: 'aymaan-balbale',
+    tags: ['git', 'github', 'version-control', 'devsecops'],
+    image: '/blogs/img/Version_control_git_github/Image1.png',
+  },  
+  {
     slug: 'library-writeup',
     title: 'Library Write-up',
     excerpt: 'Bu yazıda Tryhackme platformunda bulunan library isimli ctfi çözeceğiz',
