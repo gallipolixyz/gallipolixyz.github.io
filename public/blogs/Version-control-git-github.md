@@ -1,3 +1,5 @@
+# Git and GitHub
+
 # What is a Version control software ?
 
 > "Version Control software is a system that records and manages state changes to a set of digital artifacts over time. In software engineering, it acts as a structured ledger for a codebase, enabling temporal navigation (reverting to previous states), concurrent development (branching and merging), and auditing. It resolves the problem of concurrent state mutation by establishing deterministic rules for integrating divergent code paths and tracking exactly who modified what, and when".
