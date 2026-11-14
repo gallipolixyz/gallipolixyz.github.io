@@ -24,7 +24,7 @@ Whereas, GitHub was launched in 2008. The platform was created to make collabora
 
 ---
 
-# Let's look at Commands of "GitHub" :
+# Let's look at Basic Git Commands :
 
 **1. Initialize repository**
 
@@ -163,4 +163,4 @@ git commit
 
 Conversely, Git and GitHub provide the architectural foundation for modern DevSecOps, allowing security to be automated and integrated directly into the developer workflow
 
-**Shift-Left Security via CI/CD:** GitHub Actions and webhooks allow security teams to embed automated scanning into the Pull Request process. Every commit can be automatically checked for vulnerable dependencies (via tools like Dependabot or Snyk), statically analyzed for insecure code (SAST), and scanned for leaked secrets before the code is ever merged into the main branch.via tools like Dependabot or Snyk), statically analyzed for insecure code (SAST), and scanned for leaked secrets before the code is ever merged into the main branch.
+**Shift-Left Security via CI/CD:** GitHub Actions and webhooks allow security teams to embed automated scanning into the Pull Request process. Every commit can be automatically checked for vulnerable dependencies (via tools like Dependabot or Snyk), statically analyzed for insecure code (SAST), and scanned for leaked secrets before the code is ever merged into the main branch.
