@@ -14,7 +14,7 @@ interface Blog {
 
   const blogs: Blog[] = [
   {
-    slug: 'git-and-github-version-control-guide',
+    slug: 'Version-control-git-github',
     title: 'Git and GitHub',
     excerpt: 'A beginner-friendly walkthrough of version control with Git and GitHub.',
     author: 'aymaan-balbale',
