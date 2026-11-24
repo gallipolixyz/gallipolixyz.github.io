@@ -69,14 +69,14 @@ const team: TeamMember[] = [
   },
   {
     name: 'ss',
-    role: 'Champions Team Member',
-    bio: 'Cyber Security Analyst',
+    role: 'Beta Team Lead',
+    bio: '',
     image: '/img/emre.jpg',
     linkedin: 'https://www.linkedin.com/in/güven-emre-keskin-553160294/',
   },
   {
     name: 'simi',
-    role: 'Champions Team Member',
+    role: 'Alpha Team Lead',
     bio: '',
     image: '/img/simi.jpg',
     linkedin: 'https://www.linkedin.com/in/simge-yigit-simiv/',
