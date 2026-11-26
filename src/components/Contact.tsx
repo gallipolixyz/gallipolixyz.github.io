@@ -323,7 +323,7 @@ export function Contact() {
                   </a>
 
                   <Link
-                    to="/career"
+                    to="/programs#career"
                     className="px-7 py-3.5 rounded-lg border border-custom-cyan/30 bg-black/40 text-custom-cyan/90 hover:border-custom-cyan hover:bg-custom-cyan/10 hover:text-custom-cyan font-mono text-sm sm:text-base font-medium flex items-center gap-1.5 transition-all duration-300 hover:shadow-[0_0_12px_rgba(0,255,255,0.25)]"
                   >
                     <span>Learn More</span>

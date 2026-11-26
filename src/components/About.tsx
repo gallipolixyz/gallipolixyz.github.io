@@ -235,7 +235,15 @@ export function About() {
           </div>
         </section>
 
-        {/* Join Us */}
+      </div>
+    </div>
+  );
+}
+
+export function JoinUs() {
+  return (
+    <div className="bg-black text-custom-cyan pb-20 pt-10">
+      <div className="container mx-auto px-4">
         <section className="text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-8">Join Us_</h2>
           <div className="max-w-3xl mx-auto text-lg font-mono text-center">

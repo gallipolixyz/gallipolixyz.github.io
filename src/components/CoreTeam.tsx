@@ -155,7 +155,7 @@ export const CoreTeam: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-black text-custom-cyan py-20 flex flex-col items-center justify-center relative">
+    <div className="min-h-screen bg-black text-custom-cyan pt-28 pb-20 flex flex-col items-center justify-center relative">
       <div className="container mx-auto px-4 max-w-6xl">
         <ScrollAnimation>
           <h1 className="text-4xl md:text-5xl font-extrabold text-center mb-6 tracking-tight font-mono drop-shadow-[0_2px_16px_rgba(0,255,255,0.2)]">

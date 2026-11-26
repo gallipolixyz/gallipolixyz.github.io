@@ -134,7 +134,7 @@ export const BlogDetails: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-tr from-black via-slate-900 to-gray-900 text-sky-200 py-20 px-3 sm:px-6 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-tr from-black via-slate-900 to-gray-900 text-sky-200 pt-28 pb-20 px-3 sm:px-6 relative overflow-hidden">
       <div className="absolute inset-0 pointer-events-none" style={{ boxShadow: '0 0 200px 100px rgba(14, 116, 144, 0.3), 0 0 400px 200px rgba(14, 116, 144, 0.15)', filter: 'blur(80px)', zIndex: 0 }} />
 
       <div className="container mx-auto max-w-7xl relative z-10">
