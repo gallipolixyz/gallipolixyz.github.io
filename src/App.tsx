@@ -1,13 +1,10 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import ScrollToTop from './components/ScrollToTop';
 import { Navigation } from './components/Navigation';
 import { Home } from './pages/Home';
 import { Programs } from './pages/Programs';
 import { About } from './pages/About';
-import { Career } from './pages/Career';
-import { Timeline } from './pages/Timeline';
-import { Social } from './pages/Social';
 import { Events } from './pages/Events';
 import BlogList from './components/Blogs';
 import BlogDetails from './components/BlogDetails';
@@ -30,9 +27,9 @@ function App() {
         <Route path="/blog/:slug" element={<BlogDetails />} />
         <Route path="/programs" element={<Programs />} />
         <Route path="/about" element={<About />} />
-        <Route path="/career" element={<Career />} />
-        <Route path="/timeline" element={<Timeline />} />
-        <Route path="/social" element={<Social />} />
+        <Route path="/career" element={<Navigate to="/programs#career" replace />} />
+        <Route path="/timeline" element={<Navigate to="/about#timeline" replace />} />
+        <Route path="/social" element={<Navigate to="/contact#social" replace />} />
         <Route path="/events" element={<Events />} />
         <Route path="/events/:id" element={<EventDetails />} />
         <Route path="/teams" element={<CoreTeam />} />
